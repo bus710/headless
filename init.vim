@@ -3,6 +3,9 @@
 " - https://vimhelp.org/quickref.txt.html
 " - https://devhints.io/vimscript
 
+set nocompatible              " be iMproved, required
+filetype plugin indent off    " required
+
 " Variables
 let hostname = substitute(system('hostname'), '\n', '', '')
 let whoami = substitute(system('whoami'), '\n', '', '')
@@ -43,25 +46,30 @@ set fdc=4
 set fdl=1
 set foldlevelstart=20
 
-" Filetype related
-filetype plugin indent on
-
 " Vim-Plug related. Do :PlugInstall
 call plug#begin('~/.config/nvim/plugged')
-Plug 'roxma/nvim-completion-manager'
+" Basics
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " file tap
+Plug 'majutsushi/tagbar' " ctags should be installed
+Plug 'godlygeek/tabular' " https://devhints.io/tabular (:Tab /=)
+Plug 'ncm2/ncm2' " instead of nvim-completion-manager
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --go-completer'}
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'Shougo/vimshell.vim'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g:ctrlp_custom_ignore
+" YCM
+Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --go-completer'}
+" Go
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'sebdah/vim-delve'
-Plug 'godlygeek/tabular'
+" Dart/Flutter
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'thosakwe/vim-flutter'
+" Markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim'
 " Color Themes
@@ -86,3 +94,5 @@ nmap <C-n> :NERDTreeToggle<CR>
 " Plug-in variables
 let g:flutter_hot_reload_on_save = 0
 let g:flutter_hot_restart_on_save = 0
+
+filetype plugin indent on    " required
