@@ -30,6 +30,7 @@ then
     apt install -y bash-completion 
     apt install -y command-not-found 
     apt install -y bmon 
+    apt install -y htop
     apt install -y tmux
     apt install -y minicom
     apt install -y powerline
