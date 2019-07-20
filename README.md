@@ -1,14 +1,12 @@
 # Headless
 
 To install these:
-- basic packages and environment variables
-- Go SDK
-- Flutter/Web SDK (not for mobile)
-- nvim (appimage version)
-- vim-plug and some plug-ins
-- dracula theme for nvim
-- Docker and Docker composer
-- ufw and some configuration
+1. basic packages and environment variables
+2. Go SDK
+3. Flutter/Web SDK (not for mobile)
+4. nvim (appimage version), vim-plug, some plug-ins, and dracula theme
+5. Docker and Docker composer
+6. ufw and some configuration
 
 for headless debian/ubuntu servers.
 
