@@ -3,7 +3,7 @@
 VERSION="flutter_linux_v1.7.8+hotfix.3-stable.tar.xz"
 
 if [ "$EUID" == 0 ]
-  then echo "Please run as a normal user"
+then echo "Please run as a normal user (w/o sudo)"
   exit
 fi
 

@@ -14,19 +14,20 @@ for headless debian/ubuntu servers.
 
 ## How to use
 
-Just run one by one from 0 to N in the terminal.
+Just run one by one from in the terminal with **sudo**.  
+(Flutter doesn't need sudo permission.)
 
 ```
 $ git clone https://github.com/bus710/headless
 $ cd headless
 $ chmod 744 *.sh
 
-$ 01_basic_install.sh
-$ 02_golang_install.sh
-$ 03_flutter_install.sh
-$ 04_nvim_install_plugin.sh
-$ 05_docker_install.sh
-$ 06_hardening.sh
+$ sudo 01_basic_install.sh
+$ sudo 02_golang_install.sh
+$      03_flutter_install.sh
+$ sudo 04_nvim_install_plugin.sh
+$ sudo 05_docker_install.sh
+$ sudo 06_hardening.sh
 ```
 
 ## Start a new project
