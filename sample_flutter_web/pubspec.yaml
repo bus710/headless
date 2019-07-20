@@ -1,3 +1,5 @@
+# 1. The name should match to the main.dart files in lib and web directory.
+# 2. After adding a dependency, please run "flutter packages get"
 name: hello_world
 
 environment:

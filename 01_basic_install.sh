@@ -1,42 +1,55 @@
 #!/bin/bash
 
 echo
-echo "Start installing things for NeoVim/Go/Flutter/Docker development system"
+echo "Start installing some basic packages"
+echo "  for NeoVim/Go/Flutter/Docker development."
 echo
 
-echo
-echo "Press ^c to cancel in 5 seconds."
-echo
+echo "Do you want to install? (y/n)."
 
-for i in {5..0}
-do 
-	sleep 1
-	echo "$i"
-done
-
+read -n 1 ans
 echo
 
-sudo apt install -y build-essential 
-sudo apt install -y cmake 
-sudo apt install -y exuberant-ctags
-sudo apt install -y git
-sudo apt install -y bash-completion 
-sudo apt install -y command-not-found 
-sudo apt install -y bmon 
-sudo apt install -y tmux
-sudo apt install -y minicom
-sudo apt install -y powerline
-sudo apt install -y curl
-sudo apt install -y tree
-sudo apt install -y openssh-server
-sudo apt install -y avahi-daemon
-sudo apt install -y avahi-utils
+if [ $ans == "y" ]
+then 
+    apt update
 
-cat bashrc >> ~/.bashrc
-source ~/.bashrc
+    # For general packages
+    apt install -y build-essential 
+    apt install -y cmake 
+    apt install -y exuberant-ctags
+    apt install -y git
+    apt install -y bash-completion 
+    apt install -y command-not-found 
+    apt install -y bmon 
+    apt install -y tmux
+    apt install -y minicom
+    apt install -y powerline
+    apt install -y curl
+    apt install -y tree
 
-sudo apt autoremove
+    # For Flutter SDK 
+    apt install -y lib32stdc++6
 
-echo
-echo "!! CHANGE THE PORT NUMBER OF SSH !!"
-echo
+    # For daemons required
+    apt install -y openssh-server
+    apt install -y avahi-daemon
+    apt install -y avahi-utils
+
+    # For Docker
+    apt install -y apt-transport-https
+    apt install -y ca-certificates
+    apt install -y gnupg-agent 
+    apt install -y software-properties-common
+
+    # To apply Go/Flutter SDK path to the PATH variable
+    cat bashrc >> ~/.bashrc
+    source ~/.bashrc
+
+    # Cleanup
+    apt autoremove
+
+    echo
+    echo "!! CHANGE THE PORT NUMBER OF SSH !!"
+    echo
+fi
