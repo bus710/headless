@@ -13,7 +13,7 @@ for headless debian/ubuntu servers.
 ## How to use
 
 Just run one by one from in the terminal with **sudo**.  
-(Flutter doesn't need sudo permission.)
+(Flutter and Delve don't need the sudo permission.)
 
 ```
 $ git clone https://github.com/bus710/headless
@@ -26,6 +26,8 @@ $      03_flutter_install.sh
 $ sudo 04_nvim_install_plugin.sh
 $ sudo 05_docker_install.sh
 $ sudo 06_hardening.sh
+
+$ go get -u github.com/go-delve/delve/cmd/dlv
 ```
 
 ## Start a new project
