@@ -53,19 +53,20 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' } " file tap
 Plug 'majutsushi/tagbar' " ctags should be installed
 Plug 'godlygeek/tabular' " https://devhints.io/tabular (:Tab /=)
 Plug 'ncm2/ncm2' " instead of nvim-completion-manager
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-fugitive'
-Plug 'Shougo/vimshell.vim'
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/deol.nvim' " try :Deol in nvim (this replaces Shougo/vimshell.vim)
+Plug 'Shougo/vimproc.vim', { 'do': 'make' } " for async exec.
+Plug 'vim-airline/vim-airline' " for the nice status bar + @
+Plug 'tpope/vim-fugitive' " for git in nvim
+Plug 'airblade/vim-gitgutter' " To see if a file changed after the last commit
 Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g:ctrlp_custom_ignore
-" YCM
+" Snippet related
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets' " 
+" YCM - for auto completion 
 Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --go-completer'}
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'sebdah/vim-delve'
+Plug 'jodosha/vim-godebug' " a bridge between dlv and nvim (this replaces Plug 'sebdah/vim-delve')
 " Dart/Flutter
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
