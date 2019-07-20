@@ -46,6 +46,7 @@ set fdc=4
 set fdl=1
 set foldlevelstart=20
 
+" ==========================================================
 " Vim-Plug related. Do :PlugInstall
 call plug#begin('~/.config/nvim/plugged')
 " Basics
@@ -64,6 +65,8 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets' " 
 " YCM - for auto completion 
 Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --go-completer'}
+" Linter
+Plug 'w0rp/ale'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'jodosha/vim-godebug' " a bridge between dlv and nvim (this replaces Plug 'sebdah/vim-delve')
@@ -81,6 +84,7 @@ Plug 'dracula/vim'
 "Plug 'vim-syntastic/syntastic' " This makes some delay on dart files
 call plug#end()
 
+" ==========================================================
 " Color settings should come after Vim-Plug config
 set termguicolors
 set t_Co=256
@@ -88,6 +92,7 @@ syntax on
 color dracula
 colorscheme dracula
 
+" ==========================================================
 " Some good guides for shortcuts and variables
 " - https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
 
@@ -96,7 +101,16 @@ nmap <C-t> :TagbarToggle<CR>
 nmap <C-n> :NERDTreeToggle<CR>
 
 " Plug-in variables
+" Don't do hot-reload for flutter when save.
 let g:flutter_hot_reload_on_save = 0
 let g:flutter_hot_restart_on_save = 0
 
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1 
+
+" ==========================================================
 filetype plugin indent on    " required
