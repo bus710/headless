@@ -12,6 +12,7 @@ echo "Please check the website if there is a newer version"
 echo "https://golang.org/dl/"
 echo 
 echo "$VERSION will be installed"
+echo "/usr/local/bin and ~/go will be deleted"
 echo 
 echo "Do you want to install? (y/n)"
 echo
@@ -50,7 +51,10 @@ then
     rm go*.tar.gz
 
     echo 
-    echo "Please install Delve:"
-    echo "go get -u github.com/go-delve/delve/cmd/dlv"
+    echo "1. Please install Delve:"
+    echo "  go get -u github.com/go-delve/delve/cmd/dlv"
+    echo 
+    echo "2. Please run this in nvim:"
+    echo "  :GoInstallBinaries"
     echo 
 fi

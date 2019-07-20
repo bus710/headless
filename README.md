@@ -32,6 +32,14 @@ $ sudo 06_hardening.sh
 $ go get -u github.com/go-delve/delve/cmd/dlv
 ```
 
+Also, run this in nvim to install vim-go plug-ins:
+
+```
+$ nvim
+
+:GoInstallBinaries
+```
+
 ## Start a new project
 
 Go can be started from **go mod init main**.

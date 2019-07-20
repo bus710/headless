@@ -12,6 +12,7 @@ echo "Please check the website if there is a newer version"
 echo "https://flutter.dev/docs/get-started/install/linux"
 echo 
 echo "$VERSION will be installed"
+echo "!/flutter will be deleted"
 echo 
 echo "Do you want to install? (y/n)"
 echo
