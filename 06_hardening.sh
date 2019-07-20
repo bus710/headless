@@ -1,39 +1,40 @@
 #!/bin/bash
 
-echo
-echo "DID YOU CHANGE THE SSH PORT NUMBER??"
-echo
-
-echo
-echo "Press ^c to cancel in 5 seconds."
-echo
-
-for i in {5..0}
-do 
-	sleep 1
-	echo "$i"
-done
-
-echo
-
-# Disable the installed services for now
-#sudo systemctl disable ssh.service 
-#sudo systemctl stop ssh.service 
-echo 
-echo "!! PLEASE CHANGE OPENSSH PORT and RELOGIN !!"
-
-sudo systemctl disable avahi-daemon.service 
-sudo systemctl stop avahi-daemon.service 
-
-sudo apt install -y ufw
-
-sudo ufw allow 2222/tcp
-sudo ufw allow 80
-sudo ufw allow 443
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw enable
-sudo ufw status verbose
+if [ "$EUID" != 0 ]
+then echo "Please run as the super user (w/ sudo)"
+  exit
+fi
 
 echo 
-echo "!! UFW is enabled !!"
+echo "This will enable/start these services:"
+echo "  1. sshd"
+echo "  2. avahi"
+echo "  3. ufw (and add the poicy deny everything)"
+echo 
+echo "Do you want to install? (y/n)"
+echo
+
+read -n 1 ans
+echo
+
+if [ $ans == "y" ]
+then
+    systemctl enable ssh.service 
+    systemctl start ssh.service 
+
+    systemctl enable avahi-daemon.service 
+    systemctl start avahi-daemon.service 
+
+    apt install -y ufw
+
+    ufw allow 2222/tcp
+    ufw allow 80
+    ufw allow 443
+    ufw default deny incoming
+    ufw default allow outgoing
+    ufw enable
+    ufw status verbose
+
+    echo 
+    echo "!! UFW is enabled !!"
+fi
