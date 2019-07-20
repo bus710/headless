@@ -12,8 +12,8 @@ for headless debian/ubuntu servers.
 
 ## How to use
 
-Just run one by one in the terminal with **sudo**.
-(Flutter and Delve don't need the sudo permission.)
+Just run one by one in the terminal with **sudo**.  
+(source, Flutter, and go-get don't need the sudo permission.)
 
 ```
 $ git clone https://github.com/bus710/headless
@@ -21,6 +21,8 @@ $ cd headless
 $ chmod 744 *.sh
 
 $ sudo 01_basic_install.sh
+$ source ~/.bashrc
+
 $ sudo 02_golang_install.sh
 $      03_flutter_install.sh
 $ sudo 04_nvim_install_plugin.sh

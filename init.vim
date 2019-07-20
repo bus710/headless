@@ -20,7 +20,7 @@ au BufRead,BufNewFile *.dart,*.md,*.go,*py,*pyw,*.c,*.h,*.js,*.html,*.css set ta
 " Options <interface>
 set number
 set laststatus=2
-set statusline=%{name}
+set statusline=%{name} " see how to use variable
 "set lines=60 columns=100 " If really want
 
 " Options <tab size>
@@ -87,6 +87,9 @@ set t_Co=256
 syntax on
 color dracula
 colorscheme dracula
+
+" Some good guides for shortcuts and variables
+" - https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
 
 " Short-cuts
 nmap <C-t> :TagbarToggle<CR>
