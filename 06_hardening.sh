@@ -1,5 +1,7 @@
 #!/bin/bash
 
+SSH_PORT="2222"
+
 if [ "$EUID" != 0 ]
 then echo "Please run as the super user (w/ sudo)"
   exit
@@ -7,11 +9,11 @@ fi
 
 echo 
 echo "This will enable/start these services:"
-echo "  1. sshd"
+echo "  1. sshd (port $SSH_PORT)"
 echo "  2. avahi"
-echo "  3. ufw (and add the poicy deny everything)"
+echo "  3. ufw (and it adds the poicies to deny almost everything)"
 echo 
-echo "Do you want to install? (y/n)"
+echo "Do you want to run it? (y/n)"
 echo
 
 read -n 1 ans
@@ -27,7 +29,7 @@ then
 
     apt install -y ufw
 
-    ufw allow 2222/tcp
+    ufw allow $SSH_PORT/tcp
     ufw allow 80
     ufw allow 443
     ufw default deny incoming
