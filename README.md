@@ -2,11 +2,11 @@
 
 To install these:
 - basic packages and environment variables
+- Go SDK
+- Flutter/Web SDK (not for mobile)
 - nvim (appimage version)
 - vim-plug and some plug-ins
 - dracula theme for nvim
-- Go SDK
-- Flutter/Web SDK (not for mobile)
 - Docker and Docker composer
 - ufw and some configuration
 
@@ -15,15 +15,29 @@ for headless debian/ubuntu servers.
 ## How to use
 
 Just run one by one from 0 to N in the terminal.
-However, check 02, 03, and 04 to pick a certain SDK version of each SDK.
+
+```
+$ git clone https://github.com/bus710/headless
+$ cd headless
+$ chmod 744 *.sh
+
+$ 01_basic_install.sh
+$ 02_golang_install.sh
+$ 03_flutter_install.sh
+$ 04_nvim_install_plugin.sh
+$ 05_docker_install.sh
+$ 06_hardening.sh
+```
 
 ## Start a new project
 
-After the installation, check the sample projects out.
-Go can be started from **go mod**.
-However, Flutter/Web can be started from the scratch (please use the sample + **flutter packages get**).
+Go can be started from **go mod init main**.
 
-## Guide and/or cheatsheet
+Flutter/Web can be started from the scratch:
+- Please check the **sample_flutter_web**
+- Also, don't forget running **flutter packages get** in the directory.
+
+## References
 
 - [nvim](https://neovim.io/)
 - [delve](https://github.com/go-delve/delve)
@@ -34,3 +48,5 @@ However, Flutter/Web can be started from the scratch (please use the sample + **
 - [dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)
 - [vim-flutter](https://github.com/thosakwe/vim-flutter)
 - [vim-markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
+- [My neovim setup for Go](https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876)
+
