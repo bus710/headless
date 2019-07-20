@@ -12,7 +12,7 @@ for headless debian/ubuntu servers.
 
 ## How to use
 
-Just run one by one from in the terminal with **sudo**.  
+Just run one by one in the terminal with **sudo**.
 (Flutter and Delve don't need the sudo permission.)
 
 ```
