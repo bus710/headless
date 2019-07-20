@@ -7,7 +7,6 @@ export PATH=$PATH:$HOME/flutter/bin
 export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
 export PATH=$PATH:$HOME/flutter/.pub-cache/bin
 
-
-
-
-
+alias nv="nvim"
+alias ll="ls -la"
+alias rw="cd ~/repo"
