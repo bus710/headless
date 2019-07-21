@@ -102,7 +102,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 
 " Shortcuts for Go
 let mapleader = ","
-"au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+au Filetype go nmap gr :GoRun<CR>
 "au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
 "au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
 
