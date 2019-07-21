@@ -61,6 +61,7 @@ Flutter/Web can be started from the scratch:
 - [dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)
 - [vim-flutter](https://github.com/thosakwe/vim-flutter)
 - [vim-markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
+- [Learn Vimscript the Hardway](http://learnvimscriptthehardway.stevelosh.com)
 - [My neovim setup for Go](https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876)
 
 ## Cheatsheets
