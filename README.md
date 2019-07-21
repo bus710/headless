@@ -1,14 +1,12 @@
 # Headless
 
-To install these:
+To install these for headless x64 debian/ubuntu servers:
 1. basic packages and environment variables
 2. Go SDK
 3. Flutter/Web SDK (not for mobile)
 4. nvim (appimage version), vim-plug, some plug-ins, and dracula theme
 5. Docker and Docker composer
 6. ufw and some configuration
-
-for headless debian/ubuntu servers.
 
 ## How to use
 
