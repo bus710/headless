@@ -96,9 +96,15 @@ colorscheme dracula
 " Some good guides for shortcuts and variables
 " - https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
 
-" Short-cuts
+" Shortcuts
 nmap <C-t> :TagbarToggle<CR>
 nmap <C-n> :NERDTreeToggle<CR>
+
+" Shortcuts for Go
+let mapleader = ","
+"au Filetype go nmap <leader>ga <Plug>(go-alternate-edit)
+"au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
+"au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
 
 " Plug-in variables
 " Don't do hot-reload for flutter when save.

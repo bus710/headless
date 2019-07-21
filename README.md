@@ -20,14 +20,14 @@ $ git clone https://github.com/bus710/headless
 $ cd headless
 $ chmod 744 *.sh
 
-$ sudo 01_basic_install.sh
+$ sudo ./01_basic_install.sh
 $ source ~/.bashrc
 
-$ sudo 02_golang_install.sh
-$      03_flutter_install.sh
-$ sudo 04_nvim_install_plugin.sh
-$ sudo 05_docker_install.sh
-$ sudo 06_hardening.sh
+$ sudo ./02_golang_install.sh
+$      ./03_flutter_install.sh
+$ sudo ./04_nvim_install_plugin.sh
+$ sudo ./05_docker_install.sh
+$ sudo ./06_hardening.sh
 
 $ go get -u github.com/go-delve/delve/cmd/dlv
 ```
