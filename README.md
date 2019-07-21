@@ -10,6 +10,13 @@ To install these for headless x64 debian/ubuntu servers:
 
 ## How to use
 
+First of all, please check each of these to see what is the newest version:
+- Go: https://golang.org/dl/
+- Flutter: https://flutter.dev/docs/get-started/install/linux
+- Docker-compose: https://github.com/docker/compose/releases
+
+When each script (of Go, Flutter, and Docker) is being executed, it will show the version it will install and ask if the version is fine for you (if not, please edit the scripts).
+
 Just run one by one in the terminal with **sudo**.  
 (source, Flutter, and go-get don't need the sudo permission.)
 
@@ -30,11 +37,12 @@ $ sudo ./06_hardening.sh
 $ go get -u github.com/go-delve/delve/cmd/dlv
 ```
 
-Also, run this in nvim to install vim-go plug-ins:
+Also, run this in nvim to install plug-ins of vim-plug and vim-go:
 
 ```
 $ nvim
 
+:PlugInstall
 :GoInstallBinaries
 ```
 
