@@ -3,8 +3,19 @@
 DOCKER_COMPOSE_VERSION="1.24.0"
 
 if [ "$EUID" != 0 ]
-then echo "Please run as the super user (w/ sudo)"
-  exit
+then 
+    echo "Please run as the super user (w/ sudo)"
+    exit
+fi
+
+OSNAME="$(lsb_release -ds)"
+
+if [[ "$OSNAME" == *"Debian"* ]]
+then
+    echo "Sorry, Debian is not supported by this script"
+    exit
+else
+    echo "ok"
 fi
 
 echo
@@ -21,27 +32,18 @@ echo
 
 if [ $ans == "y" ]
 then 
-    OSNAME="$(lsb_release -ds)"
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" 
 
-    if [ "$OSNAME" == *"Debian"* ]
-    then
-        echo "debian"
-        curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - 
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-    else
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" 
-    fi
+    apt update
+    apt install -y docker-ce docker-ce-cli containerd.io
 
-    sudo apt-get update
-    sudo apt-get install docker-ce docker-ce-cli containerd.io
-
-    sudo systemctl enable docker
-    sudo systemctl start docker
+    systemctl enable docker
+    systemctl start docker
 
     # For Docker-compose
-    sudo curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
+    curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
 
     echo
     echo "!! Docker daemon is enabled/started !!"
