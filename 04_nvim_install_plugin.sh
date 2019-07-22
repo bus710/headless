@@ -23,7 +23,7 @@ then
     echo 
 
     apt remove neovim
-    rm /usr/bin/nvim /usr/bin/nvim.appimage
+    rm /home/$LOGNAME/.tools/nvim /home/$LOGNAME/.tools/nvim.appimage
     rm -rf /home/$LOGNAME/.config/nvim/*
 
     echo 
@@ -31,9 +31,11 @@ then
     echo
 
     curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    chown $LOGNAME:$LOGNAME nvim.appimage
     chmod u+x nvim.appimage
-    mv nvim.appimage /usr/bin/nvim.appimage
-    ln -s /usr/bin/nvim.appimage /usr/bin/nvim 
+    mkdir /home/$LOGNAME/.tools
+    mv nvim.appimage /home/$LOGNAME/.tools/nvim.appimage
+    ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
 
     apt install -y fuse libfuse2 ack-grep 
     apt install -y python3-pip
@@ -52,6 +54,9 @@ then
 
     curl -fLo /home/$LOGNAME/.config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     cp init.vim /home/$LOGNAME/.config/nvim/init.vim
+
+    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.config -R
+    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.local -R
 
     nvim -v
 
