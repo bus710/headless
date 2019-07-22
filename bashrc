@@ -1,8 +1,9 @@
 # ===================================================
 export PATH=$PATH:$HOME/.tools
-
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export GOPATH=$HOME/go
+
+export DELVE_EDITOR=nvim
 
 export PATH=$PATH:$HOME/flutter/bin
 export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin

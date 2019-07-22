@@ -8,5 +8,8 @@ import (
 func main() {
 	log.Println("")
 	log.Println("/")
-	time.Sleep(time.Millisecond * 100)
+	for {
+		time.Sleep(time.Millisecond * 1000)
+		log.Println("test")
+	}
 }

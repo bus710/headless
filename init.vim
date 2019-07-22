@@ -69,7 +69,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-co
 Plug 'w0rp/ale'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'jodosha/vim-godebug' " a bridge between dlv and nvim (this replaces Plug 'sebdah/vim-delve')
+Plug 'sebdah/vim-delve' " a bridge between dlv and nvim 
 " Dart/Flutter
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
@@ -97,26 +97,39 @@ colorscheme dracula
 " - https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
 
 " Shortcuts
+let mapleader = ","
 nmap <C-t> :TagbarToggle<CR>
 nmap <C-n> :NERDTreeToggle<CR>
 
 " Shortcuts for Go
-let mapleader = ","
+" - https://github.com/sebdah/vim-delve
 au Filetype go nmap gr :GoRun<CR>
+au Filetype go nmap gdd :DlvDebug<CR>
+au Filetype go nmap gdt :DlvToggleBreakpoint<CR>
 "au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
 "au Filetype go nmap <leader>gav <Plug>(go-alternate-vertical)
 
+" Shortcuts of Delve cli
+" - https://github.com/go-delve/delve/tree/master/Documentation/cli
+" - next (n): to go to the next code line
+" - continue (c): to go to the next breakpoint
+" - breakpoints: to see the breakpoints
+" - clear breakpoint-id: to delete a breakpoint
+" - print (p) variable-name: to print the content of a var
+" - goroutines/goroutine: to play with go-routines
+
+" ==========================================================
 " Plug-in variables
 " Don't do hot-reload for flutter when save.
 let g:flutter_hot_reload_on_save = 0
 let g:flutter_hot_restart_on_save = 0
-
 " Error and warning signs.
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
-
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1 
+" Make Delve to be backend
+let g:delve_backend = "native"
 
 " ==========================================================
 filetype plugin indent on    " required
