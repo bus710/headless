@@ -14,8 +14,6 @@ if [[ "$OSNAME" == *"Debian"* ]]
 then
     echo "Sorry, Debian is not supported by this script"
     exit
-else
-    echo "ok"
 fi
 
 echo
@@ -35,6 +33,7 @@ then
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" 
 
+    apt remove docker-ce docker-ce-cli containerd.io
     apt update
     apt install -y docker-ce docker-ce-cli containerd.io
 
@@ -42,6 +41,7 @@ then
     systemctl start docker
 
     # For Docker-compose
+    rm -rf /usr/local/bin/docker-compose
     curl -L "https://github.com/docker/compose/releases/download/$DOCKER_COMPOSE_VERSION/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
 
