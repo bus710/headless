@@ -35,6 +35,7 @@ then
     chmod u+x nvim.appimage
     mkdir /home/$LOGNAME/.tools
     mv nvim.appimage /home/$LOGNAME/.tools/nvim.appimage
+    cp /home/$LOGNAME/.tools/nvim* /usr/bin/
     ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
 
     apt install -y fuse libfuse2 ack-grep 
