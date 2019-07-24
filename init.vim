@@ -3,9 +3,11 @@
 " - https://vimhelp.org/quickref.txt.html
 " - https://devhints.io/vimscript
 
+" ==========================================================
 set nocompatible              " be iMproved, required
 filetype plugin indent off    " required
 
+" ==========================================================
 " Variables
 let hostname = substitute(system('hostname'), '\n', '', '')
 let whoami = substitute(system('whoami'), '\n', '', '')
@@ -14,9 +16,11 @@ let name = hostname . "/" . whoami " Concat the strings
 if hostname == "test"
 endif
 
+" ==========================================================
 " Autocommand - these file types need tabstop 4 when being read.
 au BufRead,BufNewFile *.dart,*.md,*.go,*py,*pyw,*.c,*.h,*.js,*.html,*.css set tabstop=4
 
+" ==========================================================
 " Options <interface>
 set number
 set laststatus=2
@@ -95,6 +99,7 @@ colorscheme dracula
 " ==========================================================
 " Some good guides for shortcuts and variables
 " - https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876
+" - https://tpaschalis.github.io/vim-go-setup/
 
 " Shortcuts
 let mapleader = ","
@@ -132,7 +137,6 @@ let g:airline#extensions#ale#enabled = 1
 let g:delve_backend = "native"
 " Put imports when save
 let g:go_fmt_command = "goimports"
-
 
 " ==========================================================
 filetype plugin indent on    " required
