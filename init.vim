@@ -130,6 +130,9 @@ let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1 
 " Make Delve to be backend
 let g:delve_backend = "native"
+" Put imports when save
+let g:go_fmt_command = "goimports"
+
 
 " ==========================================================
 filetype plugin indent on    " required
