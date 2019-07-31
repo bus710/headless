@@ -4,6 +4,7 @@
 
 - git install 
 - mkdir ~/repo
+- clone headless and scripts repos under ~/repo
 
 ## in bus710/headless
 
@@ -26,8 +27,10 @@
 - desktop background
 - power, universal access, dock, notification configuration
 - caps-lock disable
+- chromium > gmail sync and github login
 - vscode, slack, insync, gitkraken install
 - vscode extensions > vim, go, flutter, dracula, markdown-pdf
+- vscode go plugin activation
 - startup application configuration
 
 ## repos
