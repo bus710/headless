@@ -20,11 +20,11 @@
 - 01_bash_setup
 - 05_after_install_basic
 - 06_after_install_heavy
-- 97_tlp
-- about_gdm3_bgcolor > #222222
-- about_grub_parameter > nosplash
-- about_fcitx > gnome language install
-- desktop background
+- 97_tlp > /etc/default/tlp > INTEL_GPU_MAX_FREQ_ON_AC=2700000
+- about_gdm3_bgcolor > /etc/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
+- about_grub_parameter > /etc/default/grub > nosplash
+- about_fcitx > settings > language install > install fcitx
+- change desktop background
 - power, universal access, dock, notification configuration
 - caps-lock disable
 - chromium > gmail sync and github login
