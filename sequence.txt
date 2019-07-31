@@ -21,10 +21,11 @@
 - 05_after_install_basic
 - 06_after_install_heavy
 - 97_tlp > /etc/default/tlp > INTEL_GPU_MAX_FREQ_ON_AC=2700000
+- place the dock icons > settings/file/terminal/gitkraken/code/slack/chromium
+- change terminal color
 - about_gdm3_bgcolor > /etc/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
 - about_grub_parameter > /etc/default/grub > nosplash
 - about_fcitx > settings > language install > install fcitx
-- change desktop background
 - power, universal access, dock, notification configuration
 - caps-lock disable
 - chromium > gmail sync and github login
@@ -32,6 +33,7 @@
 - vscode extensions > vim, go, flutter, dracula, markdown-pdf
 - vscode go plugin activation
 - startup application configuration
+- change desktop background
 
 ## repos
 
