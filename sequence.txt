@@ -27,6 +27,7 @@
 - power, universal access, dock, notification configuration
 - caps-lock disable
 - vscode, slack, insync, gitkraken install
+- vscode extensions > vim, go, flutter, dracula, markdown-pdf
 - startup application configuration
 
 ## repos
