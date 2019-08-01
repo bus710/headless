@@ -3,10 +3,11 @@
 To install these for headless x64 debian/ubuntu servers:
 1. basic packages and environment variables
 2. Go SDK
-3. Flutter/Web SDK (not for mobile)
-4. nvim (appimage version), vim-plug, some plug-ins, and dracula theme
-5. Docker and Docker composer
-6. ufw and some configuration
+3. Flutter SDK (without Java)
+4. go-flutter-desktop (and hover) package
+5. nvim (appimage version), vim-plug, some plug-ins, and dracula theme
+6. Docker and Docker composer
+7. ufw and some configuration
 
 ## How to use
 
@@ -30,9 +31,10 @@ $ source ~/.bashrc
 
 $ sudo ./02_golang_install.sh
 $      ./03_flutter_install.sh
-$ sudo ./04_nvim_install_plugin.sh
-$ sudo ./05_docker_install.sh
-$ sudo ./06_hardening.sh
+$ sudo ./04_go_flutter_desktop_install.sh
+$ sudo ./05_nvim_install_plugin.sh
+$ sudo ./06_docker_install.sh
+$ sudo ./07_hardening.sh
 
 $ go get -u github.com/go-delve/delve/cmd/dlv
 ```
