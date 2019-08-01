@@ -27,7 +27,7 @@
 - 97_tlp > sudo tlp-stat -p > /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
 - change terminal color
 - change desktop background
-- about_gdm3_bgcolor > /etc/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
+- about_gdm3_bgcolor > /usr/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
 - about_grub_parameter > /etc/default/grub > nosplash
 
 ## in settings and tweaks
