@@ -47,7 +47,7 @@ then
     echo "Change the channel"
     echo
 
-    flutter channel beta
+    flutter channel master
     flutter upgrade
 
     echo 
