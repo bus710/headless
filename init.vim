@@ -108,7 +108,7 @@ nmap <C-n> :NERDTreeToggle<CR>
 
 " Shortcuts for Go
 " - https://github.com/sebdah/vim-delve
-au Filetype go nmap gr :GoRun<CR>
+au Filetype go nmap gdr :GoRun<CR>
 au Filetype go nmap gdd :DlvDebug<CR>
 au Filetype go nmap gdt :DlvToggleBreakpoint<CR>
 "au Filetype go nmap <leader>gah <Plug>(go-alternate-split)
