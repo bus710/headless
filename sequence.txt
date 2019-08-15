@@ -4,14 +4,14 @@
 
 - git install 
 - mkdir ~/repo
-- clone headless and scripts repos under ~/repo
+- clone the headless and scripts repos under ~/repo
 
 ## in bus710/headless
 
 - 01_basic
 - 02_go_install
 - 03_flutter_install
-- 04_nvim_install > plug install
+- 04_nvim_install > plug-ins install (:PlugInstall in nvim)
 - 05_docker_install
 - sshd config
 
@@ -24,13 +24,14 @@
 
 ## etc
 
+- Reduce power off time of cups-browsed (sudo sustemctl edit cups-browsed.service > [Service] TimeoutStopSec=10)
 - 97_tlp > sudo tlp-stat -p > /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
 - change terminal color
 - change desktop background
 - about_gdm3_bgcolor > /usr/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
 - about_grub_parameter > /etc/default/grub > nosplash
 
-## in settings and tweaks
+## in the settings and tweaks GUIs
 
 - about_fcitx > settings > language install > install fcitx
 - power, universal access, dock, notification configuration
@@ -46,5 +47,5 @@
 
 ## repos
 
-- gows, fltws, docs
+- gows, fltws, gfws, docs
 
