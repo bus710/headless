@@ -24,7 +24,7 @@
 
 ## etc
 
-- Reduce power off time of cups-browsed (sudo sustemctl edit cups-browsed.service > [Service] TimeoutStopSec=10)
+- Reduce power off time of cups-browsed (sudo systemctl edit cups-browsed.service > [Service] TimeoutStopSec=10)
 - 97_tlp > sudo tlp-stat -p > /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
 - change terminal color
 - change desktop background
