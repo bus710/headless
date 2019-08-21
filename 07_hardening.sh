@@ -8,10 +8,12 @@ then echo "Please run as the super user (w/ sudo)"
 fi
 
 echo 
+echo -e "\e[91m"
 echo "This will enable/start these services:"
 echo "  1. sshd (port $SSH_PORT)"
 echo "  2. avahi"
 echo "  3. ufw (and it adds the poicies to deny almost everything)"
+echo -e "\e[39m"
 echo 
 echo "Do you want to run it? (y/n)"
 echo

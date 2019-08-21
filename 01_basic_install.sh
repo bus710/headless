@@ -6,8 +6,10 @@ then echo "Please run as the super user (w/ sudo)"
 fi
 
 echo
+echo -e "\e[91m"
 echo "Start installing some basic packages"
-echo "  for NeoVim/Go/Flutter/Docker development"
+echo "  for the NeoVim/Go/Flutter/Docker development"
+echo -e "\e[39m"
 echo
 
 echo "Do you want to install? (y/n)"

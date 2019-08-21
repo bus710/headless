@@ -17,10 +17,12 @@ then
 fi
 
 echo
+echo -e "\e[91m"
 echo "Please check the website if there is a newer version of docker-compose"
 echo "https://github.com/docker/compose/releases"
 echo
 echo "$DOCKER_COMPOSE_VERSION will be installed"
+echo -e "\e[39m"
 echo
 echo "Do you want to install? (y/n)"
 echo

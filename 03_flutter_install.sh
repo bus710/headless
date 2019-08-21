@@ -8,11 +8,13 @@ then echo "Please run as a normal user (w/o sudo)"
 fi
 
 echo
+echo -e "\e[91m"
 echo "Please check the website if there is a newer version"
 echo "https://flutter.dev/docs/get-started/install/linux"
 echo 
 echo "$VERSION will be installed"
-echo "!/flutter will be deleted"
+echo "~/flutter will be deleted"
+echo -e "\e[39m"
 echo 
 echo "Do you want to install? (y/n)"
 echo

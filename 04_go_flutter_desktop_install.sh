@@ -6,6 +6,7 @@ then echo "Please run as the super user (w/ sudo)"
 fi
 
 echo
+echo -e "\e[91m"
 echo "Please check the website as a reference"
 echo "https://github.com/go-flutter-desktop/hover"
 echo 
@@ -13,6 +14,7 @@ echo "These will be installed"
 echo "- hover"
 echo "- libgl1-mesa-dev"
 echo "- xorg-dev"
+echo -e "\e[39m"
 echo 
 echo "Do you want to install? (y/n)"
 echo

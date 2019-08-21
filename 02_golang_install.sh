@@ -8,11 +8,13 @@ then echo "Please run as the super user (w/ sudo)"
 fi
 
 echo
+echo -e "\e[91m"
 echo "Please check the website if there is a newer version"
 echo "https://golang.org/dl/"
 echo 
 echo "$VERSION will be installed"
 echo "/usr/local/bin and ~/go will be deleted"
+echo -e "\e[39m"
 echo 
 echo "Do you want to install? (y/n)"
 echo
