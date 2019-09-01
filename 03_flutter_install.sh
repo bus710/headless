@@ -57,4 +57,12 @@ then
     echo
 
     flutter pub global activate webdev
+
+    echo
+    echo "Enable chrome as a target device"
+    echo
+
+    flutter config --enable-web
+    flutter devices
+
 fi
