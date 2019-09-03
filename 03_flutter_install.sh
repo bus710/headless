@@ -50,6 +50,7 @@ then
     echo
 
     flutter channel beta
+    flutter channel
     flutter upgrade
 
     echo 
