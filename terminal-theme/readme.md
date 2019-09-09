@@ -1,4 +1,10 @@
 
+## Purpose
+
+To use the existing color profile of gnome-terminal that looks like this:
+
+<img src="gnome-terminal-color-scheme.png" width="300">
+
 ## Reference
 
 https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc
