@@ -26,7 +26,7 @@
 
 - Reduce power off time of cups-browsed (sudo systemctl edit cups-browsed.service > [Service] TimeoutStopSec=10)
 - 97_tlp > sudo tlp-stat -p > /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
-- change terminal color
+- change terminal color (dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ < theme-a.txt)
 - change desktop background
 - about_gdm3_bgcolor > /usr/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
 - about_grub_parameter > /etc/default/grub > nosplash
