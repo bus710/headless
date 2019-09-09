@@ -3,7 +3,7 @@
 
 To use the existing color profile of gnome-terminal that looks like this:
 
-<img src="gnome-terminal-color-scheme.png" width="300">
+<img src="gnome-terminal-color-scheme.png" width="800">
 
 ## Reference
 
