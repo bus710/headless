@@ -21,6 +21,8 @@ then
     # Get logname first (this is not $USER)
     LOGNAME="$(logname)"
 
+    HOME="/home/$LOGNAME"
+
     echo 
     echo "Clean up first"
     echo 
@@ -33,7 +35,7 @@ then
     echo "Install neovim and packages"
     echo
 
-    curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage
+    curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
     chown $LOGNAME:$LOGNAME nvim.appimage
     chmod u+x nvim.appimage
     mkdir /home/$LOGNAME/.tools
