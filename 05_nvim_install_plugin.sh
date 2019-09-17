@@ -38,7 +38,7 @@ then
     curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
     chown $LOGNAME:$LOGNAME nvim.appimage
     chmod u+x nvim.appimage
-    mkdir /home/$LOGNAME/.tools
+    mkdir -p /home/$LOGNAME/.tools
     mv nvim.appimage /home/$LOGNAME/.tools/nvim.appimage
     ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
     cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
@@ -55,9 +55,9 @@ then
     echo "Copy the config files and run the post processor"
     echo 
 
-    mkdir /home/$LOGNAME/.config/nvim
-    mkdir /home/$LOGNAME/.config/nvim/autoload
-    mkdir /home/$LOGNAME/.config/nvim/plugged
+    mkdir -p /home/$LOGNAME/.config/nvim
+    mkdir -p /home/$LOGNAME/.config/nvim/autoload
+    mkdir -p /home/$LOGNAME/.config/nvim/plugged
 
     curl -fLo /home/$LOGNAME/.config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     cp init.vim /home/$LOGNAME/.config/nvim/init.vim
