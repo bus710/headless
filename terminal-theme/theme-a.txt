@@ -1,8 +1,0 @@
-[/]
-use-theme-transparency=false
-background-color='rgb(0,0,0)'
-foreground-color='rgb(255,255,255)'
-audible-bell=false
-use-theme-colors=false
-palette=['rgb(77,152,171)', 'rgb(220,50,47)', 'rgb(214,238,61)', 'rgb(181,137,0)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(174,232,228)', 'rgb(238,232,213)', 'rgb(29,168,204)', 'rgb(203,75,22)', 'rgb(24,119,150)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']
-visible-name='a'

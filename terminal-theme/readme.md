@@ -1,23 +1,16 @@
+# GNOME terminal dracula theme
 
-## Purpose
-
-To use the existing color profile of gnome-terminal that looks like this:
-
-<img src="gnome-terminal-color-scheme.png" width="774">
-
-## Reference
-
-https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc
+https://github.com/dracula/gnome-terminal
 
 ## Howto
 
-To find: 
-- dconf dump /org/gnome/terminal/legacy/profiles:/
+```
+sudo apt-get install dconf-cli
+git clone https://github.com/GalaticStryder/gnome-terminal-colors-dracula
+cd gnome-terminal-colors-dracula
+./install.sh
+```
 
-To export: 
-- dconf dump /org/gnome/terminal/legacy/profiles:/:1430663d-083b-4737-a7f5-8378cc8226d1/ > material-theme-profile.dconf
-
-To import:
-- dconf load /org/gnome/terminal/legacy/profiles:/:1430663d-083b-4737-a7f5-8378cc8226d1/ < material-theme-profile.dconf
+Then, there might be some questions for config
 
 
