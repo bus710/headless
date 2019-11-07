@@ -1,51 +1,57 @@
 # general sequence for a new linux box
 
-## first of all
+## 1. first of all
 
 - git install 
 - mkdir ~/repo
-- clone the headless and scripts repos under ~/repo
+- git clone https://github.com/bus710/headless
+- git clone https://github.com/bus710/scripts
 
-## in bus710/headless
+## 2. bus710/headless
 
 - 01_basic
-- 02_go_install
+- 02_golang_install
 - 03_flutter_install
-- 04_nvim_install > plug-ins install (:PlugInstall in nvim)
-- 05_docker_install
+- 04_go_flutter_desktop_install
+- 05_nvim_install > plug-ins install (:PlugInstall in nvim)
+- 06_docker_install
 - sshd config
 
-## in bus710/scripts
+## 3. bus710/scripts
 
 - 01_bash_setup
 - 05_after_install_basic
 - 06_after_install_heavy
 - place the dock icons > settings/file/terminal/gitkraken/code/slack/chromium
 
-## etc
+## 4. configurations in the terminal
 
-- Reduce power off time of cups-browsed (sudo systemctl edit cups-browsed.service > [Service] TimeoutStopSec=10)
-- 97_tlp > sudo tlp-stat -p > /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
-- change terminal color (scripts/about_dracula_terminal)
-- change desktop background
-- about_gdm3_bgcolor > /usr/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
-- about_grub_parameter > /etc/default/grub > nosplash
+- scripts/about_dracula_terminal
+- Reduce power off time of cups-browsed 
+    - sudo systemctl edit cups-browsed.service
+    - [Service] TimeoutStopSec=10
+- scripts/97_tlp > sudo tlp-stat -p > /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
+- scripts/about_gdm3_bgcolor
+    - /usr/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
+- scripts/about_grub_parameter
+    - /etc/default/grub > nosplash
+    - sudo update-grub
 
-## in the settings and tweaks GUIs
+## 5. configurations in the settings/tweaks
 
-- about_fcitx > settings > language install > install fcitx
-- power, universal access, dock, notification configuration
-- caps-lock disable
+- scripts/about_fcitx > settings > language install
+- settings > background, power, universal access, dock, notification
+- tweaks > caps-lock disable
 
-## app settings
+## 6. app settings
 
-- chromium > gmail sync and github login
+- chrome > gmail sync and github login
 - vscode, slack, insync, gitkraken install
-- vscode extensions > vim, go, flutter, dracula, markdown-pdf
+- vscode extensions > vim, go, flutter, dracula, markdown-pdf, sftp
 - vscode go plugin activation
-- startup application configuration
+- edit startup application
 
-## repos
+## 7. repos
 
 - gows, fltws, gfws, docs
 
