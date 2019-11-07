@@ -20,28 +20,30 @@
 ## 3. bus710/scripts
 
 - 01_bash_setup
-- 05_after_install_basic
-- 06_after_install_heavy
-- place the dock icons > settings/file/terminal/gitkraken/code/slack/chromium
+- 02_after_install_basic
+- 03_after_install_heavy
+- 04_tlp_install
 
 ## 4. configurations in the terminal
 
 - scripts/about_dracula_terminal
-- Reduce power off time of cups-browsed 
-    - sudo systemctl edit cups-browsed.service
-    - [Service] TimeoutStopSec=10
-- scripts/97_tlp > sudo tlp-stat -p > /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
+- scripts/04_tlp_install > sudo tlp-stat -p
+    - /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
 - scripts/about_gdm3_bgcolor
     - /usr/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
 - scripts/about_grub_parameter
     - /etc/default/grub > nosplash
     - sudo update-grub
+- Reduce power off time of cups-browsed 
+    - sudo systemctl edit cups-browsed.service
+    - [Service] TimeoutStopSec=10
 
 ## 5. configurations in the settings/tweaks
 
 - scripts/about_fcitx > settings > language install
 - settings > background, power, universal access, dock, notification
 - tweaks > caps-lock disable
+- place the dock icons > settings/file/terminal/gitkraken/code/slack/chromium
 
 ## 6. app settings
 
