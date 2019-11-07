@@ -43,15 +43,17 @@
 - scripts/about_fcitx > settings > language install
 - settings > background, power, universal access, dock, notification
 - tweaks > caps-lock disable
-- place the dock icons > settings/file/terminal/gitkraken/code/slack/chromium
 
 ## 6. app settings
 
 - chrome > gmail sync and github login
-- vscode, slack, insync, gitkraken install
-- vscode extensions > vim, go, flutter, dracula, markdown-pdf, sftp
-- vscode go plugin activation
+- vscode, slack, insync, gitkraken, android studio install
+- vscode 
+    - extensions > vim, go, flutter, dracula, markdown-pdf, sftp
+    - go plugin activation
 - edit startup application
+- place the dock icons 
+    - settings/file/terminal/gitkraken/code/slack/chromium
 
 ## 7. repos
 
