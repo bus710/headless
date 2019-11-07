@@ -23,10 +23,12 @@
 - 02_basic_packages
 - 03_heavy_packages
 - 04_tlp_install
+- 10_suru_icons
+- 11_fcitx_install
+- 12_dracula_terminal_theme
 
 ## 4. configurations in the terminal
 
-- scripts/about_dracula_terminal
 - scripts/04_tlp_install > sudo tlp-stat -p
     - /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
 - scripts/about_gdm3_bgcolor
@@ -53,7 +55,7 @@
     - go plugin activation
 - edit startup application
 - place the dock icons 
-    - settings/file/terminal/gitkraken/code/slack/chromium
+    - settings/file/terminal/gitkraken/code/slack/chrome
 
 ## 7. repos
 
