@@ -20,8 +20,8 @@
 ## 3. bus710/scripts
 
 - 01_bash_setup
-- 02_after_install_basic
-- 03_after_install_heavy
+- 02_basic_packages
+- 03_heavy_packages
 - 04_tlp_install
 
 ## 4. configurations in the terminal
