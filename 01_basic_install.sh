@@ -55,6 +55,7 @@ then
 
     # To apply Go/Flutter SDK path to the PATH variable
     cat bashrc >> /home/$LOGNAME/.bashrc
+    source /home/$LOGNAME/.bashrc
 
     # Cleanup
     apt autoremove
