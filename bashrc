@@ -1,3 +1,4 @@
+
 # by bus710/headless ================================
 export PATH=$PATH:$HOME/.tools
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
@@ -9,7 +10,7 @@ export PATH=$PATH:$HOME/flutter/bin
 export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
 export PATH=$PATH:$HOME/flutter/.pub-cache/bin
 
-export JAVA_HOME=$HOME/android-studio-ide-191/android-studio/jre
+export JAVA_HOME=$HOME/android-studio/jre
 export PATH=$JAVA_HOME/bin:$PATH
 
 alias nv="nvim"
