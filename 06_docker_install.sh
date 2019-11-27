@@ -33,7 +33,7 @@ echo
 if [ $ans == "y" ]
 then 
     apt update
-    apt install -y containerd.io
+    apt install -y containerd.io docker.io
 
     systemctl enable docker
     systemctl start docker

@@ -16,3 +16,4 @@ export PATH=$JAVA_HOME/bin:$PATH
 alias nv="nvim"
 alias ll="ls -la"
 alias rw="cd ~/repo"
+alias hw="cd ~/repo/headless"
