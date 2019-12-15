@@ -32,7 +32,6 @@ then
         curl \
         tree \
         cmake \
-        glances \
         minicom \
         neofetch \
         powerline \
