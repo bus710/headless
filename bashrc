@@ -12,6 +12,7 @@ export PATH=$PATH:$HOME/flutter/.pub-cache/bin
 
 export JAVA_HOME=$HOME/android-studio/jre
 export PATH=$JAVA_HOME/bin:$PATH
+export PATH=$HOME/android-studio/bin:$PATH
 
 alias nv="nvim"
 alias ll="ls -la"
