@@ -18,7 +18,7 @@ endif
 
 " ==========================================================
 " Autocommand - these file types need tabstop 4 when being read.
-au BufRead,BufNewFile *.dart,*.md,*.go,*py,*pyw,*.c,*.h,*.js,*.html,*.css set tabstop=4
+au BufRead,BufNewFile *.dart,*.md,*.go,*py,*pyw,*.c,*.h,*.js,*.html,*.css,*.kt set tabstop=4
 
 " ==========================================================
 " Options <interface>
@@ -77,6 +77,8 @@ Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Dart/Flutter
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
+" Kotlin
+Plug 'udaluv/kotlin-vim'
 " Markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim'
