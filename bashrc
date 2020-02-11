@@ -15,8 +15,11 @@ export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$HOME/android-studio/bin:$PATH
 export PATH=$HOME/Android/Sdk/platform-tools:$PATH
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 alias nv="nvim"
 alias ll="ls -la"
 alias rw="cd ~/repo"
 alias hw="cd ~/repo/headless"
 alias tw="cd ~/repo/scripts"
+alias ew="cd ~/repo/rustw"

@@ -12,9 +12,10 @@
 - 01_basic
 - 02_golang_install
 - 03_flutter_install
-- 04_go_flutter_desktop_install
-- 05_nvim_install > plug-ins install (:PlugInstall in nvim)
-- 06_docker_install
+- 04_rust_install
+- 07_go_flutter_desktop_install
+- 08_nvim_install > plug-ins install (:PlugInstall in nvim)
+- 09_docker_install
 - sshd config
 
 ## 3. bus710/scripts
