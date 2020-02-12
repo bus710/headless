@@ -62,7 +62,7 @@ then
     apt autoremove
 
     echo
-    echo "!! CHANGE THE PORT NUMBER OF SSH !!"
-    echo "!! SOURCE YOUR .bashrc (source ~/.bashrc) !!"
+    echo "1. CHANGE THE PORT NUMBER OF SSH"
+    echo "2. SOURCE YOUR .bashrc (source ~/.bashrc)"
     echo
 fi
