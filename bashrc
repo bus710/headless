@@ -19,6 +19,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 alias nv="nvim"
 alias ll="ls -la"
-alias ww="cd ~/repo"
+alias ew="cd ~/repo"
 alias hw="cd ~/repo/headless"
 alias tw="cd ~/repo/scripts"
