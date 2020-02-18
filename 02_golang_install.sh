@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="go1.13.linux-amd64.tar.gz"
+VERSION="go1.13.8.linux-amd64.tar.gz"
 
 if [ "$EUID" != 0 ]
 then echo "Please run as the super user (w/ sudo)"
