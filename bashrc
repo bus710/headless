@@ -23,5 +23,4 @@ alias ll="ls -la"
 alias ew="cd ~/repo"
 alias hw="cd ~/repo/headless"
 alias tw="cd ~/repo/scripts"
-
 alias gp="git pull"
