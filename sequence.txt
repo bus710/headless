@@ -60,5 +60,5 @@
 
 ## 7. repos
 
-- gows, fltws, gfws, docs
+- gows, gqws, fltws, docs, blog
 
