@@ -20,9 +20,21 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 alias nv="nvim"
 alias ll="ls -la"
+alias gp="git pull"
+alias gf="git fetch --dry-run -v"
+
 alias ew="cd ~/repo"
 alias hw="cd ~/repo/headless"
 alias tw="cd ~/repo/scripts"
+alias bw='cd ~/repo/blog'
+alias dw='cd ~/repo/docs'
+alias gw='cd ~/repo/gows'
+alias gq='cd ~/repo/gqws'
+alias fw='cd ~/repo/fltws'
+alias pw='cd ~/repo/pyws'
+alias rw='cd ~/repo/rustw'
 
-alias gp="git pull"
-alias gf="git fetch --dry-run -v"
+alias av1='avahi-resolve -n -4 rpi3.local'
+alias am='sudo minicom -b 115200 -o -D /dev/ttyUSB0'
+
+
