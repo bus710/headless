@@ -62,6 +62,7 @@ then
 
     curl -fLo /home/$LOGNAME/.config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     cp init.vim /home/$LOGNAME/.config/nvim/init.vim
+    cp ./coc-settings.json /home/$LOGNAME/.config/nvim/coc-settings.json
 
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.config -R
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.local -R
