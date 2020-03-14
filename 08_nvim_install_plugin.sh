@@ -46,10 +46,11 @@ then
 
     apt install -y fuse libfuse2 ack-grep 
     apt install -y python3-pip
-    apt install -y python-pip
-
-    pip install --user neovim
+    pip3 install wheel
     pip3 install --user neovim
+    pip3 install pynvim
+    #apt install -y python-pip
+    #pip install --user neovim
 
     echo 
     echo "Copy the config files and run the post processor"

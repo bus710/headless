@@ -66,9 +66,9 @@ Plug 'airblade/vim-gitgutter' " To see if a file changed after the last commit
 Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g:ctrlp_custom_ignore
 " Snippet related
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets' " 
-" YCM - for auto completion 
-Plug 'Valloric/YouCompleteMe', { 'do': '/usr/bin/python3 ./install.py --clang-completer --go-completer'}
+Plug 'honza/vim-snippets'
+" Code Complitor
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Linter
 Plug 'w0rp/ale'
 " Go

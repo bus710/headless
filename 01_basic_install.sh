@@ -43,6 +43,9 @@ then
     # For Flutter SDK 
     apt install -y lib32stdc++6
 
+    # For neovim and coc
+    apt install -y python3-dev
+
     # For daemons required
     apt install -y openssh-server \
         avahi-daemon \
