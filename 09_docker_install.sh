@@ -47,5 +47,6 @@ then
     echo "!! Docker daemon is enabled/started !!"
     echo "!! Check Docker-Compose version (Currently $DOCKER_COMPOSE_VERSION) !!"
     echo "!! Add the user to the docker group !!"
+    echo "!! sudo usermod -aG docker $USER !!"
     echo
 fi
