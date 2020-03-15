@@ -46,9 +46,11 @@ then
 
     apt install -y fuse libfuse2 ack-grep 
     apt install -y python3-pip
-    pip3 install wheel
-    pip3 install --user neovim
-    pip3 install pynvim
+    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
+    pip3 install --user -U wheel
+    pip3 install --user -U neovim
+    pip3 install --user -U pynvim
+
     #apt install -y python-pip
     #pip install --user neovim
 
