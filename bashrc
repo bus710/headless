@@ -33,6 +33,7 @@ alias gq='cd ~/repo/gqws'
 alias fw='cd ~/repo/fltws'
 alias pw='cd ~/repo/pyws'
 alias rw='cd ~/repo/rustws'
+alias ow='cd ~/repo/reactws'
 
 alias av1='avahi-resolve -n -4 rpi3.local'
 alias am='sudo minicom -b 115200 -o -D /dev/ttyUSB0'
