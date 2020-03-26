@@ -48,6 +48,7 @@ then
     apt install -y python3-pip
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
     pip3 install --user -U wheel
+    pip3 install --user -U setuptools
     pip3 install --user -U neovim
     pip3 install --user -U pynvim
 
