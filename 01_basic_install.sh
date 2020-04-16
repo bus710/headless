@@ -61,11 +61,15 @@ then
     cat bashrc >> /home/$LOGNAME/.bashrc
     source /home/$LOGNAME/.bashrc
 
+    # To apply ^a shortcut to the tmux config
+    cat tmux.conf >> /home/$LOGNAME/.tmux.conf
+
     # Cleanup
     apt autoremove
 
     echo
     echo "1. CHANGE THE PORT NUMBER OF SSH"
     echo "2. SOURCE YOUR .bashrc (source ~/.bashrc)"
+    echo "3. CHECK YOUR .tmux.conf"
     echo
 fi
