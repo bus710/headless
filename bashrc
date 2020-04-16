@@ -37,6 +37,6 @@ alias ow='cd ~/repo/reactws'
 
 alias av1='avahi-resolve -n -4 rpi3.local'
 alias am='sudo minicom -b 115200 -o -D /dev/ttyUSB0'
-alias an='sudo minicom -b 9200 -o -D /dev/ttyACM0'
+alias an='sudo minicom -b 9600 -o -D /dev/ttyACM0'
 
 
