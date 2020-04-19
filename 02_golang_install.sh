@@ -53,8 +53,9 @@ then
     rm go*.tar.gz
 
     echo 
-    echo "1. Please install Delve:"
+    echo "1. Please install these:"
     echo "  go get -u github.com/go-delve/delve/cmd/dlv"
+    echo "  go get -u github.com/shurcooL/goexec"
     echo 
     echo "2. Please run this in nvim:"
     echo "  :GoInstallBinaries"
