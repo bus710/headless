@@ -32,6 +32,7 @@ then
         curl \
         tree \
         cmake \
+        nmap \
         minicom \
         neofetch \
         powerline \
@@ -52,7 +53,8 @@ then
         avahi-utils
 
     # For Docker
-    apt install -y gnupg-agent \
+    apt install -y \
+        gnupg-agent \
         apt-transport-https \
         ca-certificates \
         software-properties-common
