@@ -25,7 +25,9 @@ then
     apt update
 
     # For general packages
-    apt install -y git \
+    apt install -y \
+        vim \
+        git \
         bmon \
         htop \
         tmux \
