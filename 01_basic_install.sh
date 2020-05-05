@@ -41,6 +41,15 @@ then
         bash-completion \
         command-not-found
 
+    # For general packages (cont.)
+    apt install -y \
+        net-tools \
+        wireless-tools \
+        ufw \
+        gufw \
+        inxi \
+        glmark2
+
     # For Flutter SDK 
     apt install -y lib32stdc++6
 
