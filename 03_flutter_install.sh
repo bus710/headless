@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="flutter_linux_v1.12.13+hotfix.8-stable.tar.xz"
+VERSION="flutter_linux_v1.17.1-stable.tar.xz"
 
 if [ "$EUID" == 0 ]
 then echo "Please run as a normal user (w/o sudo)"
