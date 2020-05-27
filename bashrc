@@ -38,6 +38,7 @@ alias pw='cd ~/repo/pyws'
 alias rw='cd ~/repo/rustws'
 alias ow='cd ~/repo/reactws'
 alias lw='cd ~/repo/leetcode-go'
+alias tp='cat /sys/class/thermal/thermal_zone0/temp'
 
 alias av1='avahi-resolve -n -4 rpi3.local'
 alias am='sudo minicom -b 115200 -o -D /dev/ttyUSB0'
