@@ -12,7 +12,7 @@ echo -e "\e[91m"
 echo "This will enable/start these services:"
 echo "  1. sshd (port $SSH_PORT)"
 echo "  2. avahi"
-echo "  3. ufw (and it adds the poicies to deny almost everything)"
+echo "  3. ufw (and it adds the policies to deny almost everything)"
 echo -e "\e[39m"
 echo 
 echo "Do you want to run it? (y/n)"
@@ -29,15 +29,20 @@ then
     systemctl enable avahi-daemon.service 
     systemctl start avahi-daemon.service 
 
-    apt install -y ufw
-
     ufw allow $SSH_PORT/tcp
-    ufw allow 80
-    ufw allow 443
+    ufw allow 123
+    ufw allow 53
+    ufw allow git
+
+    ufw allow in http
+    ufw allow out http
+    ufw allow in https
+    ufw allow out https
+
     ufw default deny incoming
     ufw default allow outgoing
-    ufw enable
     ufw status verbose
+    ufw enable
 
     echo 
     echo "!! UFW is enabled !!"
