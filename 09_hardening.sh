@@ -29,6 +29,9 @@ then
     systemctl enable avahi-daemon.service 
     systemctl start avahi-daemon.service 
 
+    systemctl enable fail2ban
+    systemctl start fail2ban
+
     ufw allow $SSH_PORT/tcp
     ufw allow 123
     ufw allow 53
@@ -45,5 +48,12 @@ then
     ufw enable
 
     echo 
-    echo "!! UFW is enabled !!"
+    echo "UFW is enabled"
+    echo "- iptables -L"
+    echo 
+    echo "Fail2ban is enabled"
+    echo "- https://help.ubuntu.com/community/Fail2ban"
+    echo "- cp /etc/fail2ban/jail.conf jail.local"
+    echo "- tail -f /var/log/fail2ban.log"
+    echo 
 fi
