@@ -12,19 +12,16 @@
 - 01_basic
 - 02_golang_install
 - 03_flutter_install
-- 04_rust_install
-- 07_go_flutter_desktop_install
-- 08_nvim_install > plug-ins install (:PlugInstall in nvim)
-- 09_docker_install
-- sshd config
+- 04_nodejs (for nvim)
+- 05_nvim_install > Do ":PlugInstall in nvim"
+- 07_docker_install
+- sshd config (port and alive time)
 
 ## 3. bus710/scripts
 
 - 01_bash_setup
 - 02_basic_packages
 - 03_heavy_packages
-- 04_tlp_install
-- 10_icons
 - 11_fcitx_install
 - 12_dracula_terminal_theme
 
@@ -32,8 +29,6 @@
 
 - scripts/04_tlp_install > sudo tlp-stat -p
     - /etc/default/tlp > CPU_SCALING_MAX_FREQ_ON_AC=2400000
-- scripts/about_gdm3_bgcolor
-    - /usr/share/gnome-shell/theme/gdm3.css > lockDialogGroup > #222222
 - scripts/about_grub_parameter
     - /etc/default/grub > nosplash
     - sudo update-grub
