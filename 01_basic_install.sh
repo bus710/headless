@@ -36,6 +36,7 @@ then
         cmake \
         nmap \
         minicom \
+        fail2ban \
         neofetch \
         powerline \
         build-essential \
