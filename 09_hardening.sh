@@ -48,6 +48,8 @@ then
     ufw enable
 
     echo 
+    echo "Consider PSAD"
+    echo 
     echo "UFW is enabled"
     echo "- iptables -L"
     echo 
