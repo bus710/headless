@@ -30,6 +30,7 @@ alias ew="cd ~/repo"
 alias hw="cd ~/repo/headless"
 alias tw="cd ~/repo/scripts"
 alias bw='cd ~/repo/blog'
+alias mw='cd ~/repo/monitor'
 alias dw='cd ~/repo/docs'
 alias gw='cd ~/repo/gows'
 alias gq='cd ~/repo/gqws'
