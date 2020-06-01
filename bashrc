@@ -19,8 +19,6 @@ export PATH=$HOME/android-studio/bin:$PATH
 export PATH=$HOME/Android/Sdk/tools/bin:$PATH
 export PATH=$HOME/Android/Sdk/platform-tools:$PATH
 
-export PATH=HOME/.cargo/bin:$PATH
-
 alias nv="nvim"
 alias ll="ls -la"
 alias gp="git pull"
