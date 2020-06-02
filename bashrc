@@ -5,6 +5,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[0
 
 export PATH=$PATH:$HOME/.tools
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 
 export DELVE_EDITOR=nvim
