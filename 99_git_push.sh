@@ -2,13 +2,13 @@
 # Can check the repo from 00_git_setup.sh.
 
 echo -e "\e[91m"
-echo "git diff --name-status"
+echo "Updated files (git diff --name-status)"
 echo -e "\e[39m"
 
 git diff --name-status
 
 echo -e "\e[91m"
-echo "git ls-files --others --exclude-standard"
+echo "Untracked files (git ls-files --others --exclude-standard)"
 echo -e "\e[39m"
 
 git ls-files --others --exclude-standard
@@ -24,7 +24,14 @@ then
     echo 
     echo
     git add --all
-    git commit -m "A minor update"
+
+    echo -e "\e[91m"
+    echo "Message?"
+    echo -e "\e[39m"
+
+    read msg
+
+    git commit -m msg
     git push
 
     echo 
