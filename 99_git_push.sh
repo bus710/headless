@@ -16,6 +16,7 @@ read -n 1 ans
 if [ $ans == "y" ]
 then
     echo 
+    echo
     git add --all
     git commit -m "A minor update"
     git push
