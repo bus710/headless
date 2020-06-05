@@ -10,3 +10,9 @@ git config --global user.email "bus710@gmail.com"
 git config --global user.name "bus710"
 git config --global push.default simple
 git config --global core.editor nvim
+
+echo 
+echo "Git config -l"
+echo 
+
+git config -l
