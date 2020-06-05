@@ -28,13 +28,15 @@ then
     apt install -y \
         vim \
         git \
+        fzf \
         bmon \
         htop \
         tmux \
         curl \
         tree \
-        cmake \
         nmap \
+        cmake \
+        ripgrep \
         minicom \
         fail2ban \
         neofetch \
