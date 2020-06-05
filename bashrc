@@ -3,7 +3,7 @@
 
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 
-export PATH=$PATH:$HOME/.tools
+export PATH=$PATH:$HOME/.tools #nvim
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
