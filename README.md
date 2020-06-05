@@ -1,13 +1,16 @@
 # Headless
 
 To install these for headless x64 debian/ubuntu servers:
-1. basic packages and environment variables
+0. Global git config
+1. Basic packages and environment variables
 2. Go SDK
-3. Flutter SDK (without Java)
-4. go-flutter-desktop (and hover) package
-5. nvim (appimage version), vim-plug, some plug-ins, and dracula theme
-6. Docker and Docker composer
-7. ufw and some configuration
+3. Flutter SDK
+4. NodeJS for nvim
+5. Nvim (appimage version)
+7. Docker and Docker composer
+9. Ufw and some configuration
+
+<br/><br/>
 
 ## How to use
 
@@ -18,43 +21,34 @@ First of all, please check each of these to see what is the newest version:
 
 When each script (of Go, Flutter, and Docker) is being executed, it will show the version it will install and ask if the version is fine for you (if not, please edit the scripts).
 
-Just run one by one in the terminal with **sudo**.  
-(source, Flutter, and go-get don't need the sudo permission.)
+Just run one by one in the terminal with **sudo** except Flutter.  
 
-```
+```sh
 $ git clone https://github.com/bus710/headless
 $ cd headless
 $ chmod 744 *.sh
 
+$ ./00_git_setup.sh
 $ sudo ./01_basic_install.sh
 $ source ~/.bashrc
 
 $ sudo ./02_golang_install.sh
 $      ./03_flutter_install.sh
-$ sudo ./04_go_flutter_desktop_install.sh
+$ sudo ./04_nodejs_install.sh
 $ sudo ./05_nvim_install_plugin.sh
-$ sudo ./06_docker_install.sh
-$ sudo ./07_hardening.sh
-
-$ go get -u github.com/go-delve/delve/cmd/dlv
+$ sudo ./07_docker_install.sh
+$ sudo ./09_hardening.sh
 ```
 
 Also, run this in nvim to install plug-ins of vim-plug and vim-go:
-
-```
+```sh
 $ nvim
 
 :PlugInstall
 :GoInstallBinaries
 ```
 
-## Start a new project
-
-Go can be started from **go mod init main**.
-
-Flutter/Web can be started from the scratch:
-- Please check the **sample_flutter_web**
-- Also, don't forget running **flutter packages get** in the directory.
+<br/><br/>
 
 ## References
 
@@ -72,6 +66,3 @@ Flutter/Web can be started from the scratch:
 - [Learn Vimscript the Hardway](http://learnvimscriptthehardway.stevelosh.com)
 - [My neovim setup for Go](https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876)
 
-## Cheatsheets
-
-WIP
