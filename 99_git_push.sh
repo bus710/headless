@@ -30,13 +30,14 @@ then
     echo -e "\e[39m"
 
     read msg
+    echo
 
-    git commit -m msg
+    git commit -m $msg
     git push
 
     echo 
     echo "git add --all"
-    echo "git commit -m 'A minor update'"
+    echo "git commit -m $msg"
     echo "git push"
     echo
 fi
