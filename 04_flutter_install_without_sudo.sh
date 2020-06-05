@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="flutter_linux_v1.17.1-stable.tar.xz"
+VERSION="flutter_linux_1.18.0-11.1.pre-beta.tar.xz"
 
 if [ "$EUID" == 0 ]
 then echo "Please run as a normal user (w/o sudo)"
@@ -28,7 +28,7 @@ then
     echo "Download and install flutter SDK"
     echo 
 
-    wget https://storage.googleapis.com/flutter_infra/releases/stable/linux/$VERSION
+    wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/$VERSION
 
     echo
     echo "Wait for untar..."
