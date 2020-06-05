@@ -1,7 +1,12 @@
-# Installing node.js v8.
+#!/bin/bash
 
-sudo curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-sudo apt install -y nodejs
+if [ "$EUID" != 0 ]
+then echo "Please run as the super user (w/ sudo)"
+  exit
+fi
+
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+apt install -y nodejs
 
 echo
 echo "What is done?"
