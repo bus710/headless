@@ -2,6 +2,12 @@
 # Can check the repo from 00_git_setup.sh.
 
 echo -e "\e[91m"
+echo "Which branch (git branch)"
+echo -e "\e[39m"
+
+git branch
+
+echo -e "\e[91m"
 echo "Updated files (git diff --name-status)"
 echo -e "\e[39m"
 
