@@ -2,10 +2,10 @@
 # Can check the repo from 00_git_setup.sh.
 
 echo
-echo "git diff --name-only"
+echo "git diff --name-status"
 echo
 
-git diff --name-only
+git diff --name-status
 
 echo
 echo "Do you want to add and commit all changes? (y/n)"
