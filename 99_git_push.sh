@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Pushing commits to a pre-configured repository.
 # Can check the repo from 00_git_setup.sh.
 
