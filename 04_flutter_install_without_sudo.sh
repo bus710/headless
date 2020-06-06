@@ -1,6 +1,8 @@
 #!/bin/bash
 
+URL="https://storage.googleapis.com/flutter_infra/releases/beta/linux/"
 VERSION="flutter_linux_1.18.0-11.1.pre-beta.tar.xz"
+
 
 if [ "$EUID" == 0 ]
 then echo "Please run as a normal user (w/o sudo)"
@@ -9,14 +11,15 @@ fi
 
 echo
 echo -e "\e[91m"
-echo "Please check the website if there is a newer version"
-echo "https://flutter.dev/docs/get-started/install/linux"
-echo 
-echo "$VERSION will be installed"
-echo "~/flutter will be deleted"
-echo -e "\e[39m"
+echo "1. Please check the website if there is a newer version"
+echo "  https://flutter.dev/docs/development/tools/sdk/releases?tab=linux"
+echo "2. This will be installed"
+echo "  $VERSION"
+echo "3. Existing SDK directory will be deleted"
+echo "  rm $HOME/flutter"
 echo 
 echo "Do you want to install? (y/n)"
+echo -e "\e[39m"
 echo
 
 read -n 1 ans
@@ -28,7 +31,7 @@ then
     echo "Download and install flutter SDK"
     echo 
 
-    wget https://storage.googleapis.com/flutter_infra/releases/beta/linux/$VERSION
+    wget $URL$VERSION
 
     echo
     echo "Wait for untar..."
@@ -49,8 +52,8 @@ then
     echo "Change the channel"
     echo
 
-    flutter channel beta
     flutter channel
+    flutter channel beta
     flutter upgrade
 
     echo 
