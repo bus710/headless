@@ -40,7 +40,7 @@ then
     read msg
     echo
 
-    git commit -m $msg
+    git commit -m "$msg"
     git push
 
     echo 
