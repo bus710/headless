@@ -74,8 +74,8 @@ then
         software-properties-common
 
     # To apply Go/Flutter SDK path to the PATH variable
-    cp bashrc_ext >> /home/$LOGNAME/.bashrc_ext
-    echo "source /home/$LOGNAME/.bashrc_ext" >> /home/$LOGNAME/.bashrc
+    cp shrc_ext >> /home/$LOGNAME/.shrc_ext
+    echo "source /home/$LOGNAME/.shrc_ext" >> /home/$LOGNAME/.bashrc
     source /home/$LOGNAME/.bashrc
 
     # To apply ^a shortcut to the tmux config
