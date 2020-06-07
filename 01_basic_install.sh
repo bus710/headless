@@ -26,6 +26,7 @@ then
 
     # For general packages
     apt install -y \
+	zsh \
         vim \
         git \
         fzf \
@@ -74,8 +75,8 @@ then
         software-properties-common
 
     # To apply Go/Flutter SDK path to the PATH variable
-    cp shrc_ext >> /home/$LOGNAME/.shrc_ext
-    echo "source /home/$LOGNAME/.shrc_ext" >> /home/$LOGNAME/.bashrc
+    cp shrc >> /home/$LOGNAME/.shrc
+    echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.bashrc
     source /home/$LOGNAME/.bashrc
 
     # To apply ^a shortcut to the tmux config
