@@ -51,8 +51,9 @@ then
     echo "Change the channel"
     echo
 
-    flutter channel
+    flutter channel beta
     flutter upgrade
+    flutter channel
 
     echo 
     echo "Install webdev" 
