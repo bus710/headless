@@ -63,7 +63,8 @@ then
     apt install -y python3-dev
 
     # For daemons required
-    apt install -y openssh-server \
+    apt install -y \
+        openssh-server \
         avahi-daemon \
         avahi-utils
 
