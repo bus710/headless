@@ -58,7 +58,7 @@ then
     echo -e "\e[91m"
     echo "Powerlevel10k install"
     echo "  - set: ZSH_THEME=\"powerlevel10k/powerlevel10k\""
-    echo "  - reset: rm ~/.p10k.zsh"
+    echo "  - config: p10k configure"
     echo -e "\e[39m"
 
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
