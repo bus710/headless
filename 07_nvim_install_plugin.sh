@@ -47,10 +47,11 @@ then
     apt install -y fuse libfuse2 ack-grep 
     apt install -y python3-pip
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
-    pip3 install --user -U wheel
-    pip3 install --user -U setuptools
-    pip3 install --user -U neovim
-    pip3 install --user -U pynvim
+    sudo -H pip3 install --user -U testresources
+    sudo -H pip3 install --user -U wheel
+    sudo -H pip3 install --user -U setuptools --no-warn-script-location
+    sudo -H pip3 install --user -U neovim
+    sudo -H pip3 install --user -U pynvim
 
     #apt install -y python-pip
     #pip install --user neovim
@@ -73,8 +74,9 @@ then
 
     nvim -v
 
-    echo
+    echo -e "\e[91m"
     echo "Run :PlugInstall"
+    echo -e "\e[39m"
     echo
 
     # TODO: airline installation
