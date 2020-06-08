@@ -70,14 +70,10 @@ then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
     echo -e "\e[91m"
-    echo "1. Add plugins to zshrc like:"
-    echo "  plugins=("
-    echo "      git"
-    echo "      golang"
-    echo "      flutter"
-    echo "      zsh-autosuggestions"
-    echo "  )"
-    echo 
-    echo "2. Please reload terminal"
+    echo "1. Add plugins for:"
+    echo "  git golang flutter zsh-autosuggestions"
+    echo "2. Enable theme"
+    echo "3. Reload terminal"
+    echo "4. Config p10k prompt"
     echo -e "\e[39m"
 fi
