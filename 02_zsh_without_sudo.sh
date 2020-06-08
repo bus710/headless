@@ -57,12 +57,20 @@ then
 
     echo -e "\e[91m"
     echo "Powerlevel10k install"
-    echo "  - set: ZSH_THEME=\"powerlevel10k/powerlevel10k\""
-    echo "  - config: p10k configure"
+    echo "  - to enable: ZSH_THEME=\"powerlevel10k/powerlevel10k\""
+    echo "  - to config: p10k configure"
     echo -e "\e[39m"
 
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/powerlevel10k
 
-    echo 
-    echo "Please reload terminal"
+    echo -e "\e[91m"
+    echo "Zsh-autosuggestions install"
+    echo -e "\e[39m"
+
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+    echo -e "\e[91m"
+    echo "1. Add plugins to zshrc"
+    echo "2. Please reload terminal"
+    echo -e "\e[39m"
 fi
