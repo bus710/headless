@@ -35,17 +35,26 @@ then
     rm /home/$LOGNAME/.oh-my-zsh -rf
 
     echo -e "\e[91m"
-    echo "OMZ install"
+    echo "OMZ install (w/ RUNZSH=no)"
     echo -e "\e[39m"
+
+    export RUNZSH=no
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     echo -e "\e[91m"
-    echo "Apply zsh"
+    echo "Change shell (need password)"
     echo -e "\e[39m"
 
     chsh -s $(which zsh)
 
-    echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.zshrc
-    source /home/$LOGNAME/.zshrc
+    echo -e "\e[91m"
+    echo "Make zshrc to source shrc"
+    echo -e "\e[39m"
+
+    echo "" >> /home/$LOGNAME/.oh-my-zsh/oh-my-zsh.sh # for space 
+    echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.oh-my-zsh/oh-my-zsh.sh
+
+    echo 
+    echo "Please reload terminal"
 fi

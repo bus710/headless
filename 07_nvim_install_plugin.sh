@@ -69,6 +69,7 @@ then
 
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.config -R
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.local -R
+    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tools -R
 
     nvim -v
 
