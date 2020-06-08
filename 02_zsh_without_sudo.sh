@@ -43,7 +43,7 @@ then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
     echo -e "\e[91m"
-    echo "Change shell (need password)"
+    echo "chsh -s $(which zsh) (need password)"
     echo -e "\e[39m"
 
     chsh -s $(which zsh)
@@ -52,8 +52,8 @@ then
     echo "Make zshrc to source shrc"
     echo -e "\e[39m"
 
-    echo "" >> /home/$LOGNAME/.oh-my-zsh/oh-my-zsh.sh # for space 
-    echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.oh-my-zsh/oh-my-zsh.sh
+    echo "" >> /home/$LOGNAME/.zshrc # for space 
+    echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.zshrc
 
     echo 
     echo "Please reload terminal"
