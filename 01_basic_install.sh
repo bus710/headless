@@ -37,6 +37,7 @@ then
         tree \
         nmap \
         cmake \
+        sshfs \
         ripgrep \
         minicom \
         fail2ban \
