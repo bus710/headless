@@ -23,6 +23,7 @@ export PATH=$PATH:$HOME/flutter/.pub-cache/bin
 #export PATH=$HOME/Android/Sdk/tools/bin:$PATH
 #export PATH=$HOME/Android/Sdk/platform-tools:$PATH
 
+alias disk620="sshfs bus710@disk620:/ ~/disk620"
 alias nv="nvim"
 alias ll="ls -la"
 alias gp="git pull"
