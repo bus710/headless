@@ -77,12 +77,16 @@ then
         software-properties-common
 
     # To apply Go/Flutter SDK path to the PATH variable
-    cp shrc >> /home/$LOGNAME/.shrc
+    cat shrc >> /home/$LOGNAME/.shrc
+    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.shrc
+
+    echo "" >> /home/$LOGNAME/.bashrc
     echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.bashrc
     source /home/$LOGNAME/.bashrc
 
     # To apply ^a shortcut to the tmux config
     cat tmux.conf >> /home/$LOGNAME/.tmux.conf
+    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tmux.conf
 
     # Cleanup
     apt autoremove
