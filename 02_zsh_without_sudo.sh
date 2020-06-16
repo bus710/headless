@@ -71,9 +71,10 @@ then
 
     echo -e "\e[91m"
     echo "1. Add plugins for:"
-    echo "  git golang flutter zsh-autosuggestions"
+    echo "     git golang flutter zsh-autosuggestions"
     echo "2. Enable theme"
     echo "3. Reload terminal"
     echo "4. Config p10k prompt"
     echo -e "\e[39m"
 fi
+

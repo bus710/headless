@@ -53,9 +53,6 @@ then
     sudo -H pip3 install --user -U neovim
     sudo -H pip3 install --user -U pynvim
 
-    #apt install -y python-pip
-    #pip install --user neovim
-
     echo 
     echo "Copy the config files and run the post processor"
     echo 
@@ -79,5 +76,6 @@ then
     echo -e "\e[39m"
     echo
 
-    # TODO: airline installation
+    # Do this in case of error - no python3 provider found
+    # pip3 install pynvim
 fi
