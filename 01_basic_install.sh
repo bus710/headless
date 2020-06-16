@@ -39,6 +39,7 @@ then
         cmake \
         sshfs \
         ripgrep \
+        sqlite3 \
         minicom \
         fail2ban \
         neofetch \
