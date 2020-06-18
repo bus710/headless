@@ -5,14 +5,12 @@ then echo "Please run as the super user (w/ sudo)"
   exit
 fi
 
-echo
 echo -e "\e[91m"
 echo "Start installing some basic packages"
 echo "  for the NeoVim/Go/Flutter/Docker development"
-echo -e "\e[39m"
 echo
-
 echo "Do you want to install? (y/n)"
+echo -e "\e[39m"
 
 read -n 1 ans
 echo
@@ -92,9 +90,13 @@ then
     # Cleanup
     apt autoremove
 
-    echo
-    echo "1. CHANGE THE PORT NUMBER OF SSH"
-    echo "2. SOURCE YOUR .bashrc (source ~/.bashrc)"
-    echo "3. CHECK YOUR .tmux.conf"
-    echo
+    # Change sshd port
+
+    sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+
+    echo -e "\e[91m"
+    echo "1. SSH port number is changed"
+    echo "2. Source your .bashrc (source ~/.bashrc)"
+    echo "3. Check your .tmux.conf"
+    echo -e "\e[39m"
 fi
