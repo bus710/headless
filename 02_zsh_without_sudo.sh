@@ -36,13 +36,11 @@ then
 
     echo -e "\e[91m"
     echo "OMZ install (w/ RUNZSH=no)"
-    echo "Get .zshrc from OMZ"
     echo -e "\e[39m"
 
     export RUNZSH=no
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    cp /home/$LOGNAME/.oh-my-zsh/templates/zshrc.zsh-template /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
     echo "chsh -s $(which zsh) (need password)"
@@ -54,7 +52,7 @@ then
     echo "Make zshrc to source shrc"
     echo -e "\e[39m"
 
-    echo "" >> /home/$LOGNAME/.zshrc # for space 
+    #echo "" >> /home/$LOGNAME/.zshrc # for space 
     echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
