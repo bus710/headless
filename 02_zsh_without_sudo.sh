@@ -27,8 +27,8 @@ then
     LOGNAME="$(logname)"
 
     echo -e "\e[91m"
-    echo "Delete ~/.zshrc"
-    echo "Delete ~/.oh-my-zsh"
+    echo "Delete /home/$LOGNAME/.zshrc"
+    echo "Delete /home/$LOGNAME/.oh-my-zsh"
     echo -e "\e[39m"
 
     rm /home/$LOGNAME/.zshrc
@@ -36,11 +36,13 @@ then
 
     echo -e "\e[91m"
     echo "OMZ install (w/ RUNZSH=no)"
+    echo "Get .zshrc from OMZ"
     echo -e "\e[39m"
 
     export RUNZSH=no
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    cp /home/$LOGNAME/.oh-my-zsh/templates/zshrc.zsh-template /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
     echo "chsh -s $(which zsh) (need password)"
@@ -80,6 +82,7 @@ then
 
     echo -e "\e[91m"
     echo "Please reboot and run 'p10k prompt'"
+    echo "(For cloud platforms, edit /etc/pam.d/chsh - required to sufficient)"
     echo -e "\e[39m"
 fi
 
