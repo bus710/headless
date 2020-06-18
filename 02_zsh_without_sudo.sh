@@ -41,6 +41,7 @@ then
     export RUNZSH=no
 
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    cp /home/$LOGNAME/.oh-my-zsh/templates/zshrc.zsh-template /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
     echo "chsh -s $(which zsh) (need password)"
@@ -52,7 +53,7 @@ then
     echo "Make zshrc to source shrc"
     echo -e "\e[39m"
 
-    #echo "" >> /home/$LOGNAME/.zshrc # for space 
+    echo "" >> /home/$LOGNAME/.zshrc # for space 
     echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
@@ -76,7 +77,7 @@ then
     echo -e "\e[39m"
 
     cat /home/$LOGNAME/.zshrc | sed 's/plugins=(git)/plugins=(git golang flutter zsh-autosuggestions)/g' > /home/$LOGNAME/.zshrc
-    cat /home/$LOGNAME/.zshrc | sed 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"/g' > /home/$LOGNAME/.zshrc
+    cat /home/$LOGNAME/.zshrc | sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k/powerlevel10k\"/g' > /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
     echo "Please reboot and run 'p10k prompt'"
