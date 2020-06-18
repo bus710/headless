@@ -76,8 +76,8 @@ then
     echo "  - Enable theme (powerlevel10k)"
     echo -e "\e[39m"
 
-    cat /home/$LOGNAME/.zshrc | sed 's/plugins=(git)/plugins=(git golang flutter zsh-autosuggestions)/g' > /home/$LOGNAME/.zshrc
-    cat /home/$LOGNAME/.zshrc | sed 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k/powerlevel10k\"/g' > /home/$LOGNAME/.zshrc
+    sed -i 's/plugins=(git)/plugins=(git golang flutter zsh-autosuggestions)/g' /home/$LOGNAME/.zshrc
+    sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k\/powerlevel10k\"/g' /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
     echo "Please reboot and run 'p10k prompt'"
