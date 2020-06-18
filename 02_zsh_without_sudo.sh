@@ -71,7 +71,7 @@ then
 
     echo -e "\e[91m"
     echo "Update zshrc"
-    echo "  - Add plugins to .zshrc (golang flutter zsh-autosuggestions)"
+    echo "  - Add plugins to .zshrc (git golang flutter zsh-autosuggestions)"
     echo "  - Enable theme (powerlevel10k)"
     echo -e "\e[39m"
 
