@@ -70,10 +70,16 @@ then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
     echo -e "\e[91m"
-    echo "1. Add plugins to .zshrc (golang flutter zsh-autosuggestions)"
-    echo "2. Enable theme (powerlevel10k)"
-    echo "3. Reboot"
-    echo "4. Config p10k prompt"
+    echo "Update zshrc"
+    echo "  - Add plugins to .zshrc (golang flutter zsh-autosuggestions)"
+    echo "  - Enable theme (powerlevel10k)"
+    echo -e "\e[39m"
+
+    cat /home/$LOGNAME/.zshrc | sed 's/plugins=(git)/plugins=(git golang flutter zsh-autosuggestions)/g' > /home/$LOGNAME/.zshrc
+    cat /home/$LOGNAME/.zshrc | sed 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k/powerlevel10k"/g' > /home/$LOGNAME/.zshrc
+
+    echo -e "\e[91m"
+    echo "Please reboot and run 'p10k prompt'"
     echo -e "\e[39m"
 fi
 
