@@ -29,6 +29,7 @@ alias ll="ls -la"
 alias gp="git pull"
 alias gf="git fetch --dry-run -v"
 alias gprls="git ls-remote origin 'pull/*/head'"
+# TODO: make this "git pull origin pull/1/head" as function
 
 alias ew="cd ~/repo"
 alias hw="cd ~/repo/headless"
