@@ -28,7 +28,7 @@ alias nv="nvim"
 alias ll="ls -la"
 alias gp="git pull"
 alias gf="git fetch --dry-run -v"
-alias gpls="git ls-remote origin 'pull/*/head'"
+alias gprls="git ls-remote origin 'pull/*/head'"
 
 alias ew="cd ~/repo"
 alias hw="cd ~/repo/headless"
