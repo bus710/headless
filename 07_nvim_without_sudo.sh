@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$EUID" != 0 ]
-then echo "Please run as the super user (w/ sudo)"
+if [ "$EUID" == 0 ]
+then echo "Please run as a normal user (w/0 sudo)"
   exit
 fi
 
@@ -27,7 +27,7 @@ then
     echo "Clean up first"
     echo 
 
-    apt remove neovim
+    sudo apt remove neovim
     rm /home/$LOGNAME/.tools/nvim /home/$LOGNAME/.tools/nvim.appimage
     rm -rf /home/$LOGNAME/.config/nvim/*
 
@@ -44,14 +44,15 @@ then
     cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
     ln -s /usr/bin/nvim.appimage /usr/bin/nvim
 
-    apt install -y fuse libfuse2 ack-grep 
-    apt install -y python3-pip
+    sudo apt install -y fuse libfuse2 ack-grep 
+    sudo apt install -y python3-pip
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
-    sudo -H pip3 install --user -U testresources
-    sudo -H pip3 install --user -U wheel
-    sudo -H pip3 install --user -U setuptools --no-warn-script-location
-    sudo -H pip3 install --user -U neovim
-    sudo -H pip3 install --user -U pynvim
+    pip3 install --user -U testresources
+    pip3 install --user -U wheel
+    pip3 install --user -U setuptools --no-warn-script-location
+    pip3 install --user -U neovim
+    pip3 install --user -U pynvim
+    pip3 install --user -U ranger-fm
 
     echo 
     echo "Copy the config files and run the post processor"
