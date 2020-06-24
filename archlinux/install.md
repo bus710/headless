@@ -30,7 +30,7 @@ $ dd bs=4M \
 
 <br/><br/>
 
-## 2. In BIOS
+## 2. In the BIOS
 
 Disable secure boot, fast boot, and CSM mode.
 
@@ -38,7 +38,7 @@ Then, boot with the live disk
 
 <br/><br/>
 
-## 3. In live disk
+## 3. In the live disk
 
 ### 3.1 For HiDPI
 
@@ -148,13 +148,16 @@ $ pacstrap /mnt \
     base \
     base-devel \
     vim \
+    git \
+    ntp
     man-db \
     man-pages \
     dosfstools \
     e2fsprogs \
     mdadm \
     lvm2 \
-    git \
+    grub \
+    efibootmgr \
     dhcpcd \
     networkmanager
 ```
@@ -170,6 +173,80 @@ $ arch-chroot /mnt
 
 <br/><br/>
 
-## 4. In target root
+## 4. In the chroot
 
+### 4.1 Config time
 
+```sh
+#$ ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+$ ln -sf /usr/share/zoneinfo/US/Pacific-New /etc/localtime
+$ ntpdate 0.north-america.pool.ntp.org
+$ hwclock -w
+$ timedatectl status
+```
+
+<br/><br/>
+
+### 4.2 Locale and language
+
+```sh
+# uncomment "en_US.UTF-8 UTF-8"
+$ vim /etc/locale.gen
+$ locale-gen
+
+$ export LANG=en_US.UTF-8
+$ echo LANG=en_US.UTF-8 > /etc/locale.conf
+```
+
+<br/><br/>
+
+### 4.3 Hostname
+
+```sh
+$ vim /etc/hostname
+```
+
+<br/><br/>
+
+### 4.4 Change root password
+
+```sh
+$ passwd
+```
+
+<br/><br/>
+
+### 4.5 Add user
+
+```sh
+$ useradd -m -g users -G wheel -s /bin/bash $USER_NAME
+$ passwd $USER_NAME
+
+# allow wheel group to access sudo 
+# uncomment "%wheel ALL=(ALL) ALL"
+$ visudo /etc/sudoers
+```
+
+<br/><br/>
+
+### 4.6 Config GRUB
+
+```sh
+$ pacman -Syu
+$ pacman -S grub efibootmgr
+
+$ grub-install \
+        --target=x86_64-efi \
+        --efi-directory=/boot \
+        --bootloader-id=arch \
+        --recheck
+
+$ vim /etc/default/grub # if needed
+$ grub-mkconfig -o /boot/grub/grub.cfg 
+```
+
+Then, exit and reboot
+
+<br/><br/>
+
+## 5. In the fresh system
