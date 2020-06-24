@@ -10,6 +10,7 @@ git config --global user.email "bus710@gmail.com"
 git config --global user.name "bus710"
 git config --global push.default simple
 git config --global core.editor nvim
+git config --global core.pager cat
 
 # this turns off pager config that works like the less command
 git config --global pager.branch false 
