@@ -143,14 +143,13 @@ $ vi /etc/pacman.d/mirrorlist
 
 # run pacstrap with packages required
 # pick dhcpcd or networkmanager for future usage
-pacstrap /mnt \
+$ pacstrap /mnt \
     linux linux-firmware \
     base \
     base-devel \
     vim \
     man-db \
     man-pages \
-    texinfo \
     dosfstools \
     e2fsprogs \
     mdadm \
@@ -159,5 +158,18 @@ pacstrap /mnt \
     dhcpcd \
     networkmanager
 ```
+
+<br/><br/>
+
+### 3.5 config fstab and chroot
+
+```sh
+$ genfstab -U /mnt >> /mnt/etc/fstab
+$ arch-chroot /mnt
+```
+
+<br/><br/>
+
+## 4. In target root
 
 
