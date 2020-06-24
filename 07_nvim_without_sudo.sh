@@ -24,10 +24,17 @@ then
     HOME="/home/$LOGNAME"
 
     echo 
-    echo "Clean up first"
+    echo "Ask password for apt commands to install/remove things"
     echo 
 
     sudo apt remove neovim
+    sudo apt install -y fuse libfuse2 ack-grep 
+    sudo apt install -y python3-pip
+
+    echo 
+    echo "Clean up existing"
+    echo 
+
     rm /home/$LOGNAME/.tools/nvim /home/$LOGNAME/.tools/nvim.appimage
     rm -rf /home/$LOGNAME/.config/nvim/*
 
@@ -44,8 +51,6 @@ then
     cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
     ln -s /usr/bin/nvim.appimage /usr/bin/nvim
 
-    sudo apt install -y fuse libfuse2 ack-grep 
-    sudo apt install -y python3-pip
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
     pip3 install --user -U testresources
     pip3 install --user -U wheel
