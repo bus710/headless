@@ -1,0 +1,25 @@
+## default passwords
+
+for raspbian
+
+    id: pi
+    pw: raspberry
+
+for ubuntu
+
+    id: ubuntu
+    pw: ubuntu
+
+for odroid linux
+
+    id: root
+    pw: odroid
+
+## tip to start
+
+for rpi serial console, add a line to a file (config.txt) in boot partition.
+enable_uart=1
+
+The baudrate is 115200, no hardware flow contorl.
+
+In rpi console, use raspi-config to setup the wifi and interface.

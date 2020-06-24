@@ -1,0 +1,41 @@
+// http://odroid.com/dokuwiki/doku.php?id=en:minimal_image_wifi_setup
+
+1. Find the usb dongle's name by iwconfig.
+2. If the name is not readable, need to append the net.ifnames=0 to bootargs in /media/boot/boot.ini to change the interface name to wlan0.
+
+3. Find SSID by sudo iwlist wlan0 scanning | egrep 'Cell |Encryption|Quality|Last beacon|ESSID'
+
+4. sudo touch /etc/wpa_supplicant/wpa_supplicant.conf
+5. wpa_passphrase MY_SSID MYPASSWORD > /etc/wpa_supplicant/wpa_supplicant.conf
+
+6. sudo touch /etc/systemd/system/network-wireless@.service
+7. sudo vi /etc/systemd/system/network-wireless@.service
+
+```
+[Unit]
+Description=Wireless network connectivity (%i)
+Wants=network.target
+Before=network.target
+BindsTo=sys-subsystem-net-devices-%i.device
+After=sys-subsystem-net-devices-%i.device
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/sbin/ip link set dev %i up
+ExecStart=/sbin/wpa_supplicant -B -i %i -c /etc/wpa_supplicant/wpa_supplicant.conf
+ExecStart=/sbin/dhclient %i
+
+ExecStop=/sbin/ip link set dev %i down
+
+[Install]
+WantedBy=multi-user.target
+```
+
+8. ln -s /etc/systemd/system/network-wireless@.service /etc/systemd/system/multi-user.target.wants/network-wireless@wlan0.service
+(without sudo)
+
+9. systemctl enable network-wireless@wlan0.service
+10. systemctl daemon-reload
+11. systemctl start network-wireless@wlan0.service

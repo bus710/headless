@@ -1,0 +1,10 @@
+tmux new                    # new session
+tmux a #                    # attach
+
+^B + d                      # detach
+^B + "                      # make a new pane in vertical
+^B + %                      # make a new pane in horizontal
+^B + ^up/down/left/right    # resize the current pane
+^B + up/down/left/right     # go to the other pane
+
+^B + pgup/pgdown            # scroll up/down

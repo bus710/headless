@@ -1,0 +1,14 @@
+<?xml version="1.0" standalone='no'?>
+
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+
+<service-group>
+  <name replace-wildcards="yes">%h avahi-test</name>
+  <service protocol="ipv4">  
+  <type>_ws._tcp</type>
+  <port>9999</port>
+  <txt-record>path=/</txt-record>  
+  </service>
+</service-group>
+
+<!-- save this file to /etc/avahi/services/ws.service -->

@@ -1,0 +1,33 @@
+For mint linux 18.3, I had an issue with nvidia properitary driver.
+Some manual work is requred to boot well.
+
+1. USB installer 
+- assign nomodeset option for kernel parameter 
+- install Mint without 3rd party gpu driver
+
+2. First time
+- assign nosplash and pci=noacpi to kernel parameter
+- edit /etc/default/grub to assign above option (and update-grub)
+- reboot
+
+3. Second and later time
+- normal booting
+
+4. How to know if everything is fine?
+- because of noacpi parameter, the nividia-setting cannot show the nvidia properitary GUI
+- but it shows prime setting and intel driver works well
+- there might be a conf file (nvidia-VERSION-hybrid.conf) in /etc/modprobe.d
+- and inxi -xG shows both drivers
+
+5. If don't configure pci=noacpi?
+- intel mode: power control issue can appear (poweroff/reboot)
+- nvidia mode: fan noise...
+- I decide not to use nvidia mode in normal use.
+
+6. summary
+- utilize nomodeset, nosplash, and pci=noacpi
+- don't use nvidia with noacpi (especially during nvidia driver installation)
+- use intel with noacpi 
+
+7. reference
+- https://forums.linuxmint.com/viewtopic.php?t=250235

@@ -1,0 +1,5 @@
+1. edit /usr/share/gnome-shell/theme/gdm3.css
+
+2. find lockDialogGroup
+
+3. change the color code
