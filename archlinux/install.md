@@ -40,7 +40,15 @@ Then, boot with the live disk
 
 ## 3. In live disk
 
-### 3.1 Network config
+### 3.1 For HiDPI
+
+```sh
+$ setfont -h24 /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz
+```
+
+<br/><br/>
+
+### 3.2 Network config
 
 In case of wifi
 
@@ -58,6 +66,9 @@ $ iwctl
 
 $ ping 8.8.8.8
 ```
+
+<details>
+<summary> In case of ethernet </summary>
 
 In case of ethernet + dhcp
 ```sh
@@ -81,6 +92,10 @@ $ ip route add default via 192.168.1.1
 $ ip link set ens192 up
 ```
 
-### 3.2 Partition
+</details>
+
+<br/><br/>
+
+### 3.3 Partition
 
 
