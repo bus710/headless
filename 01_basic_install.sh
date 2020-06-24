@@ -91,7 +91,6 @@ then
     apt autoremove
 
     # Change sshd port
-
     sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
 
     echo -e "\e[91m"
