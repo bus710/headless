@@ -33,7 +33,7 @@ alias gprls="git ls-remote origin 'pull/*/head'"
 
 alias ew="cd ~/repo"
 alias hw="cd ~/repo/headless"
-alias aw="cd ~/repo/headless/archlinux_x86"
+alias aw="cd ~/repo/headless/archlinux"
 alias kw="cd ~/repo/headless/desktop"
 alias bw='cd ~/repo/blog'
 alias cl='cd ~/repo/cloud'
