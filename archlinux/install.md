@@ -76,7 +76,7 @@ In case of ethernet + dhcp
 
 $ ip link
 $ lspci | grep Ethernet
-$ ip link set ens192 up
+$ ip link set $DEVICE up
 $ dhcpcd
 ```
 
@@ -86,10 +86,10 @@ In case of ethernet + static
 
 $ ip link
 $ lspci | grep Ethernet
-$ ip link set ens192 down
-$ ip addr add address 192.168.1.2/24 dev ens192
+$ ip link set $DEVICE down
+$ ip addr add address 192.168.1.2/24 dev $DEVICE
 $ ip route add default via 192.168.1.1
-$ ip link set ens192 up
+$ ip link set $DEVICE up
 ```
 
 </details>
@@ -97,5 +97,67 @@ $ ip link set ens192 up
 <br/><br/>
 
 ### 3.3 Partition
+
+Find out if EFI is available:
+```sh
+$ ls /sys/firmware/efi | grep efivars
+```
+
+Run these to set partition:
+```sh
+$ lsblk
+$ cfdisk /dev/nvme0n1 # gdisk can be used as well
+
+# Delete all existing and create 2 partitions as primary:
+# - /boot, 512M, EFI
+# - /, 32G~, Linux Root x86-64 to be mounted automatically)
+# - /swap, 8G, Linux swap
+# - Write and quit
+```
+
+Format disks:
+```sh
+$ mkfs.vfat -F32 /dev/nvme0n1p1
+$ mkfs.ext4 -j /dev/nvme0n1p2
+$ mkswap /dev/nvme0n1p3
+$ swapon /dev/nvme0n1p3
+```
+
+Mount disks:
+```sh
+# mount target / 
+$ mount /dev/nvme0n1p2 /mnt
+
+# create and mount target /boot
+$ mkdir /mnt/boot
+$ mount /dev/nvme0n1p1 /mnt/boot
+```
+
+<br/><br/>
+
+### 3.4 Config mirror and pacstrap
+
+```sh
+# uncomment mirror sites to be used
+$ vi /etc/pacman.d/mirrorlist
+
+# run pacstrap with packages required
+# pick dhcpcd or networkmanager for future usage
+pacstrap /mnt \
+    linux linux-firmware \
+    base \
+    base-devel \
+    vim \
+    man-db \
+    man-pages \
+    texinfo \
+    dosfstools \
+    e2fsprogs \
+    mdadm \
+    lvm2 \
+    git \
+    dhcpcd \
+    networkmanager
+```
 
 
