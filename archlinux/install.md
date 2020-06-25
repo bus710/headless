@@ -286,7 +286,7 @@ Yay is an AUR helper.
 ```sh
 $ git clone https://aur.archlinux.org/yay.git
 $ cd yay
-$ makepkg -si
+$ makepkg -si # this installs system level golang
 $ yay # to update index
 ```
 
@@ -305,9 +305,31 @@ $ yay gnome-shell-extension-dash-to-dock # this requires re-login
 
 <br/><br/>
 
+## Touble shooting
+
+To install Intel micro code (ucode):
+```sh
+# in case of GRUB
+$ sudo pacman -S intel-ucode
+$ sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+To check hidden issues:
+```sh
+# find errors on boot
+$ sudo journalctl -p 3 -xb
+
+# find errors on systemd
+$ sudo systemctl --failed
+```
+
+<br/><br/>
+
 ## Etc.
 
 ```sh
 # disable root
 $ sudo passwd -l root
 ```
+
+
