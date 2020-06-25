@@ -305,6 +305,12 @@ $ yay gnome-shell-extension-dash-to-dock # this requires re-login
 
 <br/><br/>
 
+### 5.4 GUI input method
+
+TBD - ibus/fcitx and fonts
+
+<br/><br/>
+
 ## Touble shooting
 
 To install Intel micro code (ucode):
