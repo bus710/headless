@@ -159,7 +159,10 @@ $ pacstrap /mnt \
     grub \
     efibootmgr \
     dhcpcd \
-    networkmanager
+    networkmanager \
+    iw \
+    iwd \
+    wpa_supplicant
 ```
 
 <br/><br/>
@@ -250,3 +253,61 @@ Then, exit and reboot
 <br/><br/>
 
 ## 5. In the fresh system
+
+First of all, config network with iwctl.
+
+### 5.1 Install Gnome
+
+```sh
+$ sudo pacman -S xorg-server gdm gnome gnome-tweaks gnome-extra
+$ sudo systemctl enable gdm
+$ reboot
+```
+
+<br/><br/>
+
+### 5.2 Config network with NetworkManager
+
+```sh
+$ sudo systemctl stop iwd.service
+$ sudo systemctl disable iwd.service
+$ sudo systemctl enable NetworkManager.service
+$ sudo systemctl start NetworkManager.service
+```
+
+Then, use GUI
+
+<br/><br/>
+
+### 5.3 Yay for AUR 
+
+Yay is an AUR helper.
+
+```sh
+$ git clone https://aur.archlinux.org/yay.git
+$ cd yay
+$ makepkg -si
+$ yay # to update index
+```
+
+To install some pacakges from AUR:
+``` sh
+# Manually
+# - visit https://aur.archlinux.org/
+# - search for google-chrome (https://aur.archlinux.org/packages/google-chrome/)
+# - download 
+# - run 
+
+# with yay
+$ yay google-chrome # and pick the version wated
+$ yay gnome-shell-extension-dash-to-dock # this requires re-login
+```
+
+<br/><br/>
+
+## Etc.
+
+```sh
+# disable root
+$ sudo passwd -l root
+```
