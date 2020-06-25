@@ -6,8 +6,8 @@
 
 - https://wiki.archlinux.org/index.php/Main_page
 - https://wiki.archlinux.org/index.php/Installation_guide
-- https://whjeon.com/arch-install :south_korea:
-- https://www.codentalks.com/t/topic/4446 :south_korea:
+- https://whjeon.com/arch-install :kr:
+- https://www.codentalks.com/t/topic/4446 :kr:
 
 <br/><br/>
 
