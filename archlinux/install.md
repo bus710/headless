@@ -269,8 +269,11 @@ $ reboot
 ### 5.2 Config network with NetworkManager
 
 ```sh
+$ sudo systemctl stop dhcpcd.service
+$ sudo systemctl disable dhcpcd.service
 $ sudo systemctl stop iwd.service
 $ sudo systemctl disable iwd.service
+
 $ sudo systemctl enable NetworkManager.service
 $ sudo systemctl start NetworkManager.service
 ```
