@@ -1,5 +1,5 @@
-add-apt-repository ppa:mc3man/mpv-tests
-apt-get install mpv
+sudo add-apt-repository ppa:mc3man/mpv-tests
+sudo apt-get install mpv
 
 
 
