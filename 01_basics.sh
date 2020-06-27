@@ -91,7 +91,8 @@ then
     apt autoremove
 
     # Change sshd port
-    sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+    # sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+    sed -i '/#Port 22/c\Port 2222' /etc/ssh/sshd_config
 
     echo -e "\e[91m"
     echo "1. SSH port number is changed"
