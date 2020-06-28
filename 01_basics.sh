@@ -27,25 +27,21 @@ then
 
     apt update
 
-    # For general packages
     apt install -y \
     	zsh \
         vim \
         git \
         fzf \
-        bmon \
         htop \
         tmux \
+        inxi \
         curl \
         tree \
-        nmap \
         make \
         cmake \
-        sshfs \
         ripgrep \
         sqlite3 \
         minicom \
-        fail2ban \
         neofetch \
         powerline \
         build-essential \
@@ -53,26 +49,38 @@ then
         bash-completion \
         command-not-found
 
-    # For general packages (cont.)
+    echo
+    echo "Install network packages"
+    echo
+
     apt install -y \
+        ufw \
+        bmon \
+        nmap \
+        sshfs \
+        fail2ban \
         net-tools \
         wireless-tools \
-        ufw \
-        gufw \
-        inxi \
-        glmark2
 
-    # For Flutter SDK 
-    apt install -y lib32stdc++6
+    echo
+    echo "Install for nvim"
+    echo
 
-    # For neovim and coc
     apt install -y python3-dev
+
+    echo
+    echo "Install some daemons"
+    echo
 
     # For daemons required
     apt install -y \
         openssh-server \
         avahi-daemon \
         avahi-utils
+
+    echo
+    echo "Install for docker"
+    echo
 
     # For Docker
     apt install -y \
@@ -83,7 +91,14 @@ then
 
     # RPi related
     CPU_TYPE=$(uname -p)
-    if [[ $CPU_TYPE == "aarch64" ]]; then
+
+    if [[ $CPU_TYPE == "x86_64" ]]; then
+        echo
+        echo "Install for Flutter SDK"
+        echo
+
+        apt install -y lib32stdc++6
+    elif [[ $CPU_TYPE == "aarch64" ]]; then
         echo
         echo "Install basics for RPi"
         echo
