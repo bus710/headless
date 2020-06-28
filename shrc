@@ -27,6 +27,7 @@ export PATH=$PATH:/snap/bin
 
 alias disk620="sshfs bus710@disk620:/ ~/disk620"
 alias nv="nvim"
+alias rr="ranger"
 alias ll="ls -la"
 alias gp="git pull"
 alias gf="git fetch --dry-run -v"
