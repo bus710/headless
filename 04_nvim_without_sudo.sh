@@ -39,17 +39,25 @@ then
     rm -rf /home/$LOGNAME/.config/nvim/*
 
     echo 
-    echo "Install neovim and packages"
+    echo "Install neovim"
     echo
 
-    curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-    chown $LOGNAME:$LOGNAME nvim.appimage
-    chmod u+x nvim.appimage
-    mkdir -p /home/$LOGNAME/.tools
-    mv nvim.appimage /home/$LOGNAME/.tools/nvim.appimage
-    ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
-    cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
-    ln -s /usr/bin/nvim.appimage /usr/bin/nvim
+    CPU_TYPE=$(uname -p)
+
+    if [[ "$CPU_TYPE" == "x86_64" ]]; then
+        curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+        chown $LOGNAME:$LOGNAME nvim.appimage
+        chmod u+x nvim.appimage
+        mkdir -p /home/$LOGNAME/.tools
+        mv nvim.appimage /home/$LOGNAME/.tools/nvim.appimage
+        ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
+        cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
+        ln -s /usr/bin/nvim.appimage /usr/bin/nvim
+    elif [[ "$CPU_TYPE" == "aarch64" ]]; then
+        sudo apt install neovim
+    else
+        exit
+    fi
 
     echo 
     echo "Install nvim dependencies"

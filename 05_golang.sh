@@ -1,6 +1,17 @@
 #!/bin/bash
 
-VERSION="go1.14.1.linux-amd64.tar.gz"
+CPU_TYPE=$(uname -p)
+CPU_TARGET=""
+
+if [[ $CPU_TYPE == "x86_64" ]]; then
+    CPU_TARGET="amd64" 
+elif [[ $CPU_TYPE == "aarch64" ]]; then
+    CPU_TARGET="arm64"
+else
+    exit
+fi
+
+VERSION="go1.14.4.linux-$CPU_TARGET.tar.gz"
 
 if [ "$EUID" != 0 ]
 then echo "Please run as the super user (w/ sudo)"
@@ -10,7 +21,7 @@ fi
 echo
 echo -e "\e[91m"
 echo "Please check the website if there is a newer version"
-echo "https://golang.org/dl/"
+echo "- https://golang.org/dl/"
 echo 
 echo "$VERSION will be installed"
 echo "/usr/local/bin and ~/go will be deleted"
@@ -18,7 +29,7 @@ echo
 echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
 echo
-
+echo
 read -n 1 ans
 echo
 
@@ -42,7 +53,10 @@ then
     echo "Download and install Go SDK"
     echo 
 
+    # Remove if there is old tarballs
     rm go*.tar.gz*
+    echo
+
     wget https://dl.google.com/go/$VERSION
 
     echo
@@ -52,12 +66,17 @@ then
     tar -xf go*.tar.gz --strip-components=1 -C /usr/local/go
     rm go*.tar.gz
 
+    echo
+    echo "Installed Go version"
+    go version
+    echo
+
     echo 
-    echo "1. Please install these:"
-    echo "  go get -u github.com/go-delve/delve/cmd/dlv"
-    echo "  go get -u github.com/shurcooL/goexec"
-    echo 
-    echo "2. Please run this in nvim:"
-    echo "  :GoInstallBinaries"
-    echo 
+    echo "Additional tools:"
+    echo "- go get -u github.com/go-delve/delve/cmd/dlv"
+    echo "- go get -u github.com/shurcooL/goexec"
+    echo
+
+    # Please run this in nvim:
+    # - GoInstallBinaries
 fi
