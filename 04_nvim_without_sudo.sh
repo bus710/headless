@@ -51,12 +51,21 @@ then
     cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
     ln -s /usr/bin/nvim.appimage /usr/bin/nvim
 
+    echo 
+    echo "Install nvim dependencies"
+    echo 
+
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
     pip3 install --user -U testresources
     pip3 install --user -U wheel
     pip3 install --user -U setuptools --no-warn-script-location
     pip3 install --user -U neovim
     pip3 install --user -U pynvim
+
+    echo 
+    echo "Install range-fm"
+    echo
+
     pip3 install --user -U ranger-fm
 
     echo 
