@@ -12,13 +12,14 @@ echo
 echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
 
+echo
 read -n 1 ans
 echo
 
 if [ $ans == "y" ]
 then 
     # Get logname first (this is not $USER)
-    LOGNAME="$(logname)"
+    LOGNAME=$(logname)
 
     echo
     echo "Install basics"
@@ -38,6 +39,7 @@ then
         curl \
         tree \
         nmap \
+        make \
         cmake \
         sshfs \
         ripgrep \
@@ -78,6 +80,32 @@ then
         apt-transport-https \
         ca-certificates \
         software-properties-common
+
+    # RPi related
+    CPU_TYPE=$(uname -p)
+    if [[ $CPU_TYPE == "aarch64" ]]; then
+        echo
+        echo "Install basics for RPi"
+        echo
+
+        apt install \
+            bluez \
+            bluetooth \
+            bluez-tools \
+            pi-bluetooth
+        systemctl enable bluetooth.service
+        systemctl start bluetooth.service
+        usermod -aG bluetooth ubuntu
+                    
+        echo
+        echo "Disable networkd wait"
+        echo
+        # to check boot delay                  
+        # systemd-analyze blame                
+        # to eliminate boot delay              
+        systemctl disable systemd-networkd-wait-online.service
+        systemctl mask systemd-networkd-wait-online.service
+    fi
 
     echo
     echo "Config bash/zsh"

@@ -13,13 +13,14 @@ echo
 echo "Do you want to install? (y/n)"
 echo
 
+echo
 read -n 1 ans
 echo
 
 if [ $ans == "y" ]
 then 
     # Get logname first (this is not $USER)
-    LOGNAME="$(logname)"
+    LOGNAME=$(logname)
 
     HOME="/home/$LOGNAME"
 

@@ -18,6 +18,7 @@ echo
 echo "Do you want to run it? (y/n)"
 echo
 
+echo
 read -n 1 ans
 echo
 

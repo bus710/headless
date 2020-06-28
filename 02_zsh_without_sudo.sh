@@ -18,13 +18,14 @@ echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
 echo
 
+echo
 read -n 1 ans
 echo
 
 if [ $ans == "y" ]
 then
     # Get logname first (this is not $USER)
-    LOGNAME="$(logname)"
+    LOGNAME=$(logname)
 
     echo -e "\e[91m"
     echo "Delete /home/$LOGNAME/.zshrc"

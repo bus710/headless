@@ -29,6 +29,7 @@ echo
 echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
 echo
+
 echo
 read -n 1 ans
 echo
@@ -36,7 +37,7 @@ echo
 if [ $ans == "y" ]
 then
     # Get logname first (this is not $USER)
-    LOGNAME="$(logname)"
+    LOGNAME=$(logname)
 
     echo 
     echo "Existing Go directories will be deleted"
@@ -54,6 +55,7 @@ then
     echo 
 
     # Remove if there is old tarballs
+    echo
     rm go*.tar.gz*
     echo
 
