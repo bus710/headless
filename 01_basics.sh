@@ -20,11 +20,15 @@ then
     # Get logname first (this is not $USER)
     LOGNAME="$(logname)"
 
+    echo
+    echo "Install basics"
+    echo
+
     apt update
 
     # For general packages
     apt install -y \
-	zsh \
+    	zsh \
         vim \
         git \
         fzf \
@@ -75,6 +79,10 @@ then
         ca-certificates \
         software-properties-common
 
+    echo
+    echo "Config bash/zsh"
+    echo
+
     # To apply Go/Flutter SDK path to the PATH variable
     cat shrc >> /home/$LOGNAME/.shrc
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.shrc
@@ -83,14 +91,23 @@ then
     echo "source /home/$LOGNAME/.shrc" >> /home/$LOGNAME/.bashrc
     source /home/$LOGNAME/.bashrc
 
+    echo
+    echo "Config tmux"
+    echo
+
     # To apply ^a shortcut to the tmux config
     cat tmux.conf >> /home/$LOGNAME/.tmux.conf
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tmux.conf
 
-    # Cleanup
+    echo
+    echo "Cleanup"
+    echo 
+
     apt autoremove
 
-    # Change sshd port
+    echo
+    echo "Change sshd port"
+    echo
     # sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
     sed -i '/#Port 22/c\Port 2222' /etc/ssh/sshd_config
 

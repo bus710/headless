@@ -89,7 +89,6 @@ then
     echo -e "\e[91m"
     echo "Run :PlugInstall"
     echo -e "\e[39m"
-    echo
 
     # Do this in case of error - no python3 provider found
     # pip3 install pynvim
