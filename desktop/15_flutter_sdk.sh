@@ -21,6 +21,7 @@ echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
 echo
 
+echo
 read -n 1 ans
 echo
 

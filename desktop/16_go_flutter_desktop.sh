@@ -19,6 +19,7 @@ echo
 echo "Do you want to install? (y/n)"
 echo
 
+echo
 read -n 1 ans
 echo
 
@@ -29,7 +30,7 @@ then
     echo
 
     # Get logname first (this is not $USER)
-    LOGNAME="$(logname)"
+    LOGNAME=$(logname)
     sudo -u $LOGNAME /usr/local/go/bin/go get -u github.com/go-flutter-desktop/hover
 
     echo 
