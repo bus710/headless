@@ -18,6 +18,7 @@ export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
 export PATH=$PATH:$HOME/flutter/.pub-cache/bin
 
 export PATH=$PATH:/snap/bin
+export PATH=$PATH:$HOME/.local/bin
 
 #export JAVA_HOME=$HOME/android-studio/jre
 #export PATH=$JAVA_HOME/bin:$PATH
