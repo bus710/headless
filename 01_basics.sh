@@ -33,7 +33,6 @@ then
         fzf \
         htop \
         tmux \
-        inxi \
         curl \
         tree \
         make \
@@ -102,7 +101,7 @@ then
         echo "Install basics for RPi"
         echo
 
-        apt install \
+        apt install -y \
             bluez \
             bluetooth \
             bluez-tools \

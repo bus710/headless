@@ -6,5 +6,6 @@ sudo apt remove -y \
 # sudo apt install -y libgnome-keyring0 #for gitkraken
 
 sudo apt install -y \
+    inxi \
     gufw \
     glmark2
