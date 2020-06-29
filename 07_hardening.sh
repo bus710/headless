@@ -3,7 +3,7 @@
 SSH_PORT="2222"
 
 if [ "$EUID" != 0 ]
-then echo "Please run as the super user (w/ sudo)"
+then echo "Please run as super user (w/ sudo)"
   exit
 fi
 

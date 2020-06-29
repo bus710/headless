@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$EUID" == 0 ]
-then echo "Please run as a normal user (w/0 sudo)"
+then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
@@ -28,7 +28,7 @@ then
     echo "Ask password for apt commands to install/remove things"
     echo 
 
-    sudo apt remove neovim
+    sudo apt remove -y neovim
     sudo apt install -y fuse libfuse2 ack-grep 
     sudo apt install -y python3-pip
 
@@ -55,7 +55,7 @@ then
         cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
         ln -s /usr/bin/nvim.appimage /usr/bin/nvim
     elif [[ "$CPU_TYPE" == "aarch64" ]]; then
-        sudo apt install neovim
+        sudo apt install -y neovim
     else
         exit
     fi

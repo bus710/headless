@@ -2,7 +2,7 @@
 
 if [ "$EUID" == 0 ]
 then 
-    echo "Please run as the super user (w/o sudo)"
+    echo "Please run as super user (w/o sudo)"
     exit
 fi
 
