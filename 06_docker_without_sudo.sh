@@ -21,6 +21,10 @@ if [ $ans == "y" ]
 then 
     LOGNAME=$(logname)
 
+    echo
+    echo "Install docker & docker-compose"
+    echo
+
     sudo apt update
     sudo apt install -y docker.io
     sudo apt install -y docker-compose
