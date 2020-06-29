@@ -68,11 +68,6 @@ then
     tar -xf go*.tar.gz --strip-components=1 -C /usr/local/go
     rm go*.tar.gz
 
-    echo
-    echo "Installed Go version"
-    go version
-    echo
-
     echo 
     echo "Additional tools:"
     echo "- go get -u github.com/go-delve/delve/cmd/dlv"
