@@ -7,7 +7,6 @@ fi
 
 echo -e "\e[91m"
 echo "Start installing some basic packages"
-echo "  for the NeoVim/Go/Flutter/Docker development"
 echo
 echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
