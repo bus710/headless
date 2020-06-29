@@ -69,11 +69,6 @@ then
     rm go*.tar.gz
 
     echo 
-    echo "Additional tools:"
-    echo "- go get -u github.com/go-delve/delve/cmd/dlv"
-    echo "- go get -u github.com/shurcooL/goexec"
+    echo "Done"
     echo
-
-    # Please run this in nvim:
-    # - GoInstallBinaries
 fi

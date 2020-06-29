@@ -1,0 +1,27 @@
+# This is splitted from Golang installation because 
+
+if [ "$EUID" == 0 ]
+then echo "Please run without sudo" 
+  exit
+fi
+
+echo 
+echo "Install dlv"
+echo 
+
+go get -u github.com/go-delve/delve/cmd/dlv
+
+echo
+echo "Install goexec"
+echo
+
+go get -u github.com/shurcooL/goexec
+
+echo
+echo "Install vim-go plugins"
+nv -c :GoInstallBinaries
+echo
+
+echo
+echo "Done"
+echo
