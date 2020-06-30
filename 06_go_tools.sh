@@ -1,6 +1,8 @@
+#!/bin/bash
+
 # This is splitted from Golang installation because 
 
-if [ "$EUID" == 0 ]
+if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)" 
   exit
 fi
@@ -19,7 +21,7 @@ go get -u github.com/shurcooL/goexec
 
 echo
 echo "Install vim-go plugins"
-nv -c :GoInstallBinaries
+nvim -c :GoInstallBinaries
 echo
 
 echo

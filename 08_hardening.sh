@@ -2,7 +2,7 @@
 
 SSH_PORT="2222"
 
-if [ "$EUID" == 0 ]
+if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
   exit
 fi
@@ -22,7 +22,7 @@ echo
 read -n 1 ans
 echo
 
-if [ $ans == "y" ]
+if [[ $ans == "y" ]]
 then
     sudo systemctl enable ssh.service 
     sudo systemctl start ssh.service 

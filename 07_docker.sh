@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$EUID" == 0 ]
+if [[ "$EUID" == 0 ]]
 then 
     echo "Please run as super user (w/o sudo)"
     exit
@@ -17,7 +17,7 @@ echo
 read -n 1 ans
 echo
 
-if [ $ans == "y" ]
+if [[ $ans == "y" ]]
 then 
     LOGNAME=$(logname)
 

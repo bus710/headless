@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$EUID" == 0 ]
+if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
   exit
 fi
@@ -15,7 +15,7 @@ echo
 read -n 1 ans
 echo
 
-if [ $ans == "y" ]
+if [[ $ans == "y" ]]
 then 
     # Get logname first (this is not $USER)
     LOGNAME=$(logname)
