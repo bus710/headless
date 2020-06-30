@@ -2,8 +2,8 @@
 
 SSH_PORT="2222"
 
-if [ "$EUID" != 0 ]
-then echo "Please run as super user (w/ sudo)"
+if [ "$EUID" == 0 ]
+then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
@@ -24,29 +24,29 @@ echo
 
 if [ $ans == "y" ]
 then
-    systemctl enable ssh.service 
-    systemctl start ssh.service 
+    sudo systemctl enable ssh.service 
+    sudo systemctl start ssh.service 
 
-    systemctl enable avahi-daemon.service 
-    systemctl start avahi-daemon.service 
+    sudo systemctl enable avahi-daemon.service 
+    sudo systemctl start avahi-daemon.service 
 
-    systemctl enable fail2ban
-    systemctl start fail2ban
+    sudo systemctl enable fail2ban
+    sudo systemctl start fail2ban
 
-    ufw allow $SSH_PORT/tcp
-    ufw allow 123
-    ufw allow 53
-    ufw allow git
+    sudo ufw allow $SSH_PORT/tcp
+    sudo ufw allow 123
+    sudo ufw allow 53
+    sudo ufw allow git
 
-    ufw allow in http
-    ufw allow out http
-    ufw allow in https
-    ufw allow out https
+    sudo ufw allow in http
+    sudo ufw allow out http
+    sudo ufw allow in https
+    sudo ufw allow out https
 
-    ufw default deny incoming
-    ufw default allow outgoing
-    ufw status verbose
-    ufw enable
+    sudo ufw default deny incoming
+    sudo ufw default allow outgoing
+    sudo ufw status verbose
+    sudo ufw enable
 
     echo 
     echo "Consider PSAD"

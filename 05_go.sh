@@ -43,10 +43,10 @@ then
     echo "Existing Go directories will be deleted"
     echo 
 
-    rm -rf /usr/local/go
+    sudo bash -c "rm -rf /usr/local/go"
     rm -rf /home/$LOGNAME/go
 
-    mkdir -p /usr/local/go
+    sudo bash -c "mkdir -p /usr/local/go"
     mkdir /home/$LOGNAME/go
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/go
 
@@ -65,7 +65,7 @@ then
     echo "Wait for untar..."
     echo
 
-    tar -xf go*.tar.gz --strip-components=1 -C /usr/local/go
+    sudo bash -c "tar -xf go*.tar.gz --strip-components=1 -C /usr/local/go"
     rm go*.tar.gz
 
     echo 

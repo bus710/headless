@@ -1,7 +1,7 @@
 # This is splitted from Golang installation because 
 
 if [ "$EUID" == 0 ]
-then echo "Please run without sudo" 
+then echo "Please run as normal user (w/o sudo)" 
   exit
 fi
 

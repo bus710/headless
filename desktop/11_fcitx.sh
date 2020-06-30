@@ -1,6 +1,15 @@
 #!/bin/bash
 
-sudo apt install fcitx fcitx-config-gtk fcitx-hangul
+if [ "$EUID" == 0 ]
+then echo "Please run as normal user (w/o sudo)"
+  exit
+fi
+
+sudo apt install -y \
+    fcitx \
+    fcitx-config-gtk \
+    fcitx-hangul
+
 im-config -n fcitx
 
 sudo bash -c 'echo "GTK_IM_MODULE=fcitx" >> /etc/environment'

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$EUID" != 0 ]
-then echo "Please run as the super user (w/ sudo)"
+if [ "$EUID" == 0 ]
+then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
@@ -35,5 +35,11 @@ then
 
     echo 
 
-    apt install -y libgl1-mesa-dev xorg-dev
+    apt install -y \
+        libgl1-mesa-dev \
+        xorg-dev
+
+    echo
+    echo "Done"
+    echo
 fi

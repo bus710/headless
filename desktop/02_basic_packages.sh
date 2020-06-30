@@ -1,3 +1,10 @@
+#!/bin/bash
+
+if [ "$EUID" == 0 ]
+then echo "Please run as normal user (w/o sudo)"
+  exit
+fi
+
 # Removing some heavy applications.
 sudo apt remove -y \
     firefox \

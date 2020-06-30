@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$EUID" != 0 ]
-then echo "Please run as the super user (w/ sudo)"
+if [ "$EUID" == 0 ]
+then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
@@ -15,9 +15,9 @@ echo
 
 if [ $ans == "y" ]
 then
-    add-apt-repository ppa:linrunner/tlp
-    apt update
-    apt install -y tlp tlp-rdw
+    sudo add-apt-repository ppa:linrunner/tlp
+    sudo apt update
+    sudo apt install -y tlp tlp-rdw
 fi
 
 echo 

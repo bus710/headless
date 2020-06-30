@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ "$EUID" != 0 ]
-then echo "Please run as super user (w/ sudo)"
+if [ "$EUID" == 0 ]
+then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
@@ -24,9 +24,9 @@ then
     echo "Install basics"
     echo
 
-    apt update
+    sudo apt update
 
-    apt install -y \
+    sudo apt install -y \
     	zsh \
         vim \
         git \
@@ -51,7 +51,7 @@ then
     echo "Install network packages"
     echo
 
-    apt install -y \
+    sudo apt install -y \
         ufw \
         bmon \
         nmap \
@@ -64,14 +64,15 @@ then
     echo "Install for nvim"
     echo
 
-    apt install -y python3-dev
+    sudo apt install -y \
+        python3-dev
 
     echo
     echo "Install some daemons"
     echo
 
     # For daemons required
-    apt install -y \
+    sudo apt install -y \
         openssh-server \
         avahi-daemon \
         avahi-utils
@@ -81,7 +82,7 @@ then
     echo
 
     # For Docker
-    apt install -y \
+    sudo apt install -y \
         gnupg-agent \
         apt-transport-https \
         ca-certificates \
@@ -95,20 +96,20 @@ then
         echo "Install for Flutter SDK"
         echo
 
-        apt install -y lib32stdc++6
+        sudo apt install -y lib32stdc++6
     elif [[ $CPU_TYPE == "aarch64" ]]; then
         echo
         echo "Install basics for RPi"
         echo
 
-        apt install -y \
+        sudo apt install -y \
             bluez \
             bluetooth \
             bluez-tools \
             pi-bluetooth
-        systemctl enable bluetooth.service
-        systemctl start bluetooth.service
-        usermod -aG bluetooth ubuntu
+        sudo systemctl enable bluetooth.service
+        sudo systemctl start bluetooth.service
+        sudo usermod -aG bluetooth ubuntu
                     
         echo
         echo "Disable networkd wait"
@@ -116,8 +117,8 @@ then
         # to check boot delay                  
         # systemd-analyze blame                
         # to eliminate boot delay              
-        systemctl disable systemd-networkd-wait-online.service
-        systemctl mask systemd-networkd-wait-online.service
+        sudo systemctl disable systemd-networkd-wait-online.service
+        sudo systemctl mask systemd-networkd-wait-online.service
     fi
 
     echo
@@ -125,6 +126,7 @@ then
     echo
 
     # To apply Go/Flutter SDK path to the PATH variable
+    rm /home/$LOGNAME/.shrc
     cat shrc >> /home/$LOGNAME/.shrc
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.shrc
 
@@ -144,13 +146,13 @@ then
     echo "Cleanup"
     echo 
 
-    apt autoremove
+    sudo apt autoremove
 
     echo
     echo "Change sshd port"
     echo
-    # sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
-    sed -i '/#Port 22/c\Port 2222' /etc/ssh/sshd_config
+    # sudo sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+    sudo bash -c "sed -i '/#Port 22/c\Port 2222' /etc/ssh/sshd_config"
 
     echo -e "\e[91m"
     echo "1. SSH port number is changed"

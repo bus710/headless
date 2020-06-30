@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$EUID" == 0 ]
+then echo "Please run as normal user (w/o sudo)"
+  exit
+fi
+
 # https://typora.io/#linux
 
 echo
@@ -15,7 +20,8 @@ sudo add-apt-repository 'deb https://typora.io/linux ./'
 sudo apt-get update
 
 # install typora
-sudo apt-get install typora
+sudo apt-get install -y \
+    typora
 
 echo
 echo "Done"
