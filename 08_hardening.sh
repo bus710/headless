@@ -53,6 +53,7 @@ then
     echo 
     echo "UFW is enabled"
     echo "- iptables -L"
+    echo "- ufw status verbose"
     echo 
     echo "Fail2ban is enabled"
     echo "- https://help.ubuntu.com/community/Fail2ban"
