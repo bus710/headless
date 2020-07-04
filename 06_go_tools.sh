@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # This is splitted from Golang installation because 
 
 if [[ "$EUID" == 0 ]]

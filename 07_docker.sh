@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ "$EUID" == 0 ]]
 then 
     echo "Please run as super user (w/o sudo)"

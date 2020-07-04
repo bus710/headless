@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # - https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH
 # - https://ohmyz.sh/
 

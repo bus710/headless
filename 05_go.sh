@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 CPU_TYPE=$(uname -p)
 CPU_TARGET=""
 

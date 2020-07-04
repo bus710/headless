@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 SSH_PORT="2222"
 
 if [[ "$EUID" == 0 ]]
