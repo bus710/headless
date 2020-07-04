@@ -34,8 +34,8 @@ then
     echo "Delete /home/$LOGNAME/.oh-my-zsh"
     echo -e "\e[39m"
 
-    rm /home/$LOGNAME/.zshrc
-    rm /home/$LOGNAME/.oh-my-zsh -rf
+    rm -rf /home/$LOGNAME/.zshrc
+    rm -rf /home/$LOGNAME/.oh-my-zsh
 
     echo -e "\e[91m"
     echo "OMZ install (w/ RUNZSH=no)"

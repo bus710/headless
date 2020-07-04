@@ -11,7 +11,7 @@ echo
 echo "Install snapd and snap packages"
 echo
 
-sudo apt install snapd
+sudo apt install -y snapd
 
 # Classic
 #sudo snap install --classic goland

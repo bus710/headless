@@ -58,7 +58,7 @@ then
 
     # Remove if there is old tarballs
     echo
-    rm go*.tar.gz*
+    rm -rf go*.tar.gz*
     echo
 
     wget https://dl.google.com/go/$VERSION
@@ -68,7 +68,7 @@ then
     echo
 
     sudo bash -c "tar -xf go*.tar.gz --strip-components=1 -C /usr/local/go"
-    rm go*.tar.gz
+    rm -rf go*.tar.gz
 
     echo 
     echo "Done"

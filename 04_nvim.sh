@@ -38,7 +38,7 @@ then
     echo "Clean up existing"
     echo 
 
-    rm /home/$LOGNAME/.tools/nvim /home/$LOGNAME/.tools/nvim.appimage
+    rm -rf /home/$LOGNAME/.tools/nvim /home/$LOGNAME/.tools/nvim.appimage
     rm -rf /home/$LOGNAME/.config/nvim/*
 
     echo 
@@ -54,8 +54,8 @@ then
         mkdir -p /home/$LOGNAME/.tools
         mv nvim.appimage /home/$LOGNAME/.tools/nvim.appimage
         ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
-        cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
-        ln -s /usr/bin/nvim.appimage /usr/bin/nvim
+        sudo cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
+        sudo ln -s /usr/bin/nvim.appimage /usr/bin/nvim
     elif [[ "$CPU_TYPE" == "aarch64" ]]; then
         sudo apt install -y neovim
     else

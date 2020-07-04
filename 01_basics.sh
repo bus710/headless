@@ -128,7 +128,7 @@ then
     echo
 
     # To apply Go/Flutter SDK path to the PATH variable
-    rm /home/$LOGNAME/.shrc
+    rm -rf /home/$LOGNAME/.shrc
     cat shrc >> /home/$LOGNAME/.shrc
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.shrc
 
@@ -148,7 +148,7 @@ then
     echo "Cleanup"
     echo 
 
-    sudo apt autoremove
+    sudo apt autoremove -y
 
     echo
     echo "Change sshd port"

@@ -20,3 +20,7 @@ sudo apt install -y \
     inxi \
     gufw \
     glmark2
+
+echo
+echo "Done"
+echo

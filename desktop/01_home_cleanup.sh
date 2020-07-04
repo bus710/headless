@@ -17,3 +17,6 @@ rmdir ~/Videos
 rmdir ~/Templates
 rmdir ~/Public
 
+echo
+echo "Done"
+echo
