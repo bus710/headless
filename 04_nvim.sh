@@ -56,6 +56,7 @@ then
         ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
         sudo cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
         sudo ln -s /usr/bin/nvim.appimage /usr/bin/nvim
+        sudo ln -s /usr/bin/nvim.appimage /usr/bin/nv
     elif [[ "$CPU_TYPE" == "aarch64" ]]; then
         sudo apt install -y neovim
     else
