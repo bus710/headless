@@ -8,13 +8,27 @@ then echo "Please run as normal user (w/o sudo)"
 fi
 
 echo
+echo "Install language packs and fonts"
+echo 
+
+sudo apt install -y \
+    language-pack-gnome-ko \
+    language-pack-gnome-en
+
+sudo apt install -y \
+    fonts-nanum \
+    fonts-nanum-coding \
+    fonts-noto-cjk \
+    fonts-unfonts
+
+echo
 echo "Install fcitx"
 echo
 
 sudo apt install -y \
-    fcitx \
     fcitx-config-gtk \
-    fcitx-hangul
+    fcitx-hangul \
+    fcitx 
 
 echo
 echo "Set fcitx as IME of Gnome"
@@ -48,3 +62,4 @@ echo "- add /usr/bin/fcitx to Startup Applications"
 echo "- reboot and run fcitx-config-gtk3"
 echo "- also, install the korean support in settings - language/method"
 echo
+
