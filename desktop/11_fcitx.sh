@@ -7,16 +7,40 @@ then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
+echo
+echo "Install fcitx"
+echo
+
 sudo apt install -y \
     fcitx \
     fcitx-config-gtk \
     fcitx-hangul
 
+echo
+echo "Set fcitx as IME of Gnome"
+echo
+
 im-config -n fcitx
+
+echo
+echo "Set required Wayland global variables"
+echo
 
 sudo bash -c 'echo "GTK_IM_MODULE=fcitx" >> /etc/environment'
 sudo bash -c 'echo "QT_IM_MODULE=fcitx" >> /etc/environment'
 sudo bash -c 'echo "XMODIFIERS=@im=fcitx" >> /etc/environment'
+
+echo
+echo "Add fcitx as startup app"
+echo
+
+FCITX_DESKTOP="/home/$(logname)/.config/autostart/fcitx.desktop" 
+mkdir ~/.config/autostart -p
+rm -rf $FCITX_DESKTOP
+echo "[Desktop Entry]" >> $FCITX_DESKTOP
+echo "Type=Application" >> $FCITX_DESKTOP
+echo "Name=fcitx" >> $FCITX_DESKTOP
+echo "Exec=/usr/bin/fcitx" >> $FCITX_DESKTOP
 
 echo
 echo "Done!"
