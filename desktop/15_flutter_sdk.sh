@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 URL="https://storage.googleapis.com/flutter_infra/releases/stable/linux/"
 VERSION="flutter_linux_1.17.3-stable.tar.xz"
 
