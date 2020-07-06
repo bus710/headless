@@ -10,6 +10,12 @@ then echo "Please run as normal user (w/o sudo)"
 fi
 
 echo 
+echo "Install range-fm"
+echo
+
+pip3 install --user -U ranger-fm
+
+echo 
 echo "Install dlv"
 echo 
 

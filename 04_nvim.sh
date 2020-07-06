@@ -75,12 +75,6 @@ then
     pip3 install --user -U pynvim
 
     echo 
-    echo "Install range-fm"
-    echo
-
-    pip3 install --user -U ranger-fm
-
-    echo 
     echo "Copy the config files and run the post processor"
     echo 
 
