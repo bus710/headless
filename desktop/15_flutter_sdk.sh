@@ -69,6 +69,7 @@ then
     echo
 
     flutter config --enable-web
+    flutter config --enable-linux-desktop
     flutter devices
 
 fi
