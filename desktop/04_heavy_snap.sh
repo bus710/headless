@@ -15,6 +15,7 @@ sudo apt install -y snapd
 
 # Classic
 #sudo snap install --classic goland
+sudo snap install --classic snapcraft
 sudo snap install --classic android-studio 
 sudo snap install --classic code 
 sudo snap install --classic code-insiders 
