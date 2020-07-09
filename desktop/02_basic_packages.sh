@@ -21,6 +21,14 @@ sudo apt install -y \
     gufw \
     glmark2
 
+# For flutter 
+
+sudo apt install -y \
+    cmake \
+    clang \
+    ninja-build \
+    libgtk-3-dev
+
 echo
 echo "Done"
 echo
