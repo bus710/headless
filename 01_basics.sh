@@ -155,6 +155,7 @@ then
     echo
     # sudo sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
     sudo bash -c "sed -i '/#Port 22/c\Port 2222' /etc/ssh/sshd_config"
+    # Also, "UseDNS no" should be uncommented if sshd is too slow
 
     echo -e "\e[91m"
     echo "1. SSH port number is changed"
