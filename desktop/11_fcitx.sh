@@ -18,8 +18,7 @@ sudo apt install -y \
 sudo apt install -y \
     fonts-nanum \
     fonts-nanum-coding \
-    fonts-noto-cjk \
-    fonts-unfonts
+    fonts-noto-cjk 
 
 echo
 echo "Install fcitx"

@@ -34,6 +34,10 @@ then
     sudo systemctl enable docker
     sudo systemctl start docker
 
+    echo
+    echo "Add permission of docker for the current user - ${LOGNAME}"
+    echo
+
     sudo usermod -aG docker ${LOGNAME}
 
     echo

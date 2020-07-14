@@ -21,7 +21,7 @@ then
     extensions=(
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
-        "ms-vscode.Go"
+        "golang.Go"
         "Dart-Code.dart-code" 
         "Dart-Code.flutter"
         "ms-azuretools.vscode-docker"
