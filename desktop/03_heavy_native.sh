@@ -18,10 +18,11 @@ echo "- Pinta"
 echo
 
 sudo apt install -y \
+    pinta \
     vim-gtk3 \
     gnome-tweak-tool \
-    simplescreenrecorder \
-    pinta
+    gnome-shell-extensions \
+    simplescreenrecorder 
 
 echo 
 echo "Install Chrome Browser"
