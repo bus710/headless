@@ -79,7 +79,7 @@ then
     echo "  - Enable theme (powerlevel10k)"
     echo -e "\e[39m"
 
-    sed -i 's/plugins=(git)/plugins=(git golang flutter zsh-autosuggestions)/g' /home/$LOGNAME/.zshrc
+    sed -i 's/plugins=(git)/plugins=(ssh-agent git golang flutter zsh-autosuggestions)/g' /home/$LOGNAME/.zshrc
     sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k\/powerlevel10k\"/g' /home/$LOGNAME/.zshrc
 
     echo -e "\e[91m"
