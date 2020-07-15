@@ -42,6 +42,7 @@ then
         ripgrep \
         sqlite3 \
         minicom \
+        keychain \
         neofetch \
         powerline \
         build-essential \
