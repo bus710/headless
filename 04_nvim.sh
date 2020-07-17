@@ -75,6 +75,7 @@ then
     pip3 install --user -U setuptools --no-warn-script-location
     pip3 install --user -U neovim
     pip3 install --user -U pynvim
+    sudo npm install -g neovim
 
     echo 
     echo "Copy the config files and run the post processor"
