@@ -1,23 +1,23 @@
 # Headless
 
-To install these for headless x64 debian/ubuntu servers:
+To install tools on Ubuntu 20.04 (and onward):
 - Global git config
-- Basic packages and environment variables
-- Zsh and oh-my-zsh
-- Go SDK
-- Flutter SDK
-- NodeJS for nvim
-- Nvim (appimage version)
-- Docker and Docker composer
-- Ufw and some configuration
+- Basic packages 
+- Zsh 
+- NodeJS
+- Nvim (+vim-plug)
+- Go
+- Docker
+- Firebase
+- GCP
 
 <br/><br/>
 
 ## References
 
+- [git](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html)
 - [nvim](https://neovim.io/)
 - [delve](https://github.com/go-delve/delve)
-- [git](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html)
 - [vim-plug](https://github.com/junegunn/vim-plug)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [vim-go](https://github.com/fatih/vim-go)
