@@ -32,14 +32,12 @@ then
     	zsh \
         vim \
         git \
-        fzf \
         htop \
         tmux \
         curl \
         tree \
         make \
         cmake \
-        ripgrep \
         sqlite3 \
         minicom \
         keychain \
@@ -49,6 +47,10 @@ then
         exuberant-ctags \
         bash-completion \
         command-not-found
+
+    sudo apt install -y \
+        fzf \
+        ripgrep
 
     echo
     echo "Install network packages"
