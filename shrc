@@ -35,7 +35,8 @@ alias gf="git fetch --dry-run -v"
 alias gprls="git ls-remote origin 'pull/*/head'"
 # TODO: make this "git pull origin pull/1/head" as function
 
-alias ew="cd ~/repo"
+alias rw='cd ~/repo'
+alias tw='cd ~/repo/tmp'
 alias hw="cd ~/repo/headless"
 alias aw="cd ~/repo/headless/archlinux"
 alias kw="cd ~/repo/headless/desktop"
@@ -46,7 +47,6 @@ alias gw='cd ~/repo/gows'
 alias gq='cd ~/repo/gqws'
 alias fw='cd ~/repo/fltws'
 alias pw='cd ~/repo/pyws'
-alias rw='cd ~/repo/rustws'
 alias ow='cd ~/repo/reactws'
 alias lw='cd ~/repo/leetcode-go'
 alias tp='cat /sys/class/thermal/thermal_zone0/temp'
