@@ -40,7 +40,6 @@ then
 
     sudo apt-get remove -y \
         docker \
-        docker-engine \
         docker.io \
         containerd \
         runc
