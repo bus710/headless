@@ -26,20 +26,20 @@ export PATH=$PATH:$HOME/.local/bin
 #export PATH=$HOME/Android/Sdk/tools/bin:$PATH
 #export PATH=$HOME/Android/Sdk/platform-tools:$PATH
 
-alias disk620="sshfs bus710@disk620:/ ~/disk620"
-alias nv="nvim"
-alias rr="ranger"
-alias ll="ls -la"
-alias gp="git pull"
-alias gf="git fetch --dry-run -v"
+alias disk620='sshfs bus710@disk620:/ ~/disk620'
+alias nv='nvim'
+alias rr='ranger'
+alias ll='ls -la'
+alias gp='git pull'
+alias gf='git fetch --dry-run -v'
 alias gprls="git ls-remote origin 'pull/*/head'"
 # TODO: make this "git pull origin pull/1/head" as function
 
 alias rw='cd ~/repo'
 alias tw='cd ~/repo/tmp'
-alias hw="cd ~/repo/headless"
-alias aw="cd ~/repo/headless/archlinux"
-alias kw="cd ~/repo/headless/desktop"
+alias hw='cd ~/repo/headless'
+alias aw='cd ~/repo/headless/archlinux'
+alias kw='cd ~/repo/headless/desktop'
 alias bw='cd ~/repo/blog'
 alias cl='cd ~/repo/cloud'
 alias dw='cd ~/repo/docs'
