@@ -5,5 +5,5 @@ network:
     wlp3s0:
       dhcp4: yes
       access-points:
-        "BELLA":
-          password: "8584864589"
+        "":
+          password: ""
