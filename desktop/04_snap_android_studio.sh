@@ -8,7 +8,7 @@ then echo "Please run as normal user (w/o sudo)"
 fi
 
 echo
-echo "Install snapd and snap packages"
+echo "Install snapd and android-studio"
 echo
 
 sudo apt install -y snapd
@@ -17,28 +17,12 @@ sudo apt install -y snapd
 #sudo snap install --classic goland
 sudo snap install --classic snapcraft
 sudo snap install --classic android-studio 
-sudo snap install --classic code 
-sudo snap install --classic code-insiders 
-sudo snap install --classic slack
-sudo snap install --beta sqlitebrowser
-
-# Not classic
-sudo snap install mqtt-explorer
 
 echo
 echo "Config ideavim for no sound"
 echo
 
 cat ideavimrc >> ~/.ideavimrc
-
-echo
-echo "These are installed:"
-echo "- Android Studio"
-echo "- Vscode"
-echo "- Vscode insider"
-echo "- Mqtt explorer"
-echo "- Sqlite browser"
-echo
 
 echo
 echo "For Android Studio:"
