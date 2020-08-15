@@ -1,9 +1,17 @@
+# wifi device name can be wlp2s0, wlp3s0, or so
+
 network:
   version: 2
-  renderer: NetworkManager
+  ethernets:
+    eth0:
+      dhcp4: false
+      optional: false
+      addresses: [192.168.0.2/24]
   wifis:
-    wlp3s0:
-      dhcp4: yes
+    wlan0:
+      dhcp4: true
+      optional: true
+      gateway4: 192.168.1.1
       access-points:
-        "":
-          password: ""
+        "ID":
+          password: "PW"
