@@ -38,6 +38,7 @@ then
         tree \
         make \
         cmake \
+        unzip \
         sqlite3 \
         minicom \
         keychain \
