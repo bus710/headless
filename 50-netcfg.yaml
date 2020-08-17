@@ -1,3 +1,4 @@
+# ethernet device name can be enp2s0, enp3s0, or so
 # wifi device name can be wlp2s0, wlp3s0, or so
 
 network:
