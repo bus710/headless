@@ -29,7 +29,16 @@ read -n 1 ans
 echo
 
 if [[ $ans == "y" ]]
-then
+then 
+    
+    echo 
+    echo "Config for USB debugging"
+    echo
+
+    sudo usermod -aG plugdev $LOGNAME
+    sudo apt install -y \
+        android-sdk-platform-tools-common
+
     echo 
     echo "Download and install flutter SDK"
     echo 
