@@ -18,6 +18,7 @@ echo "- Pinta"
 echo
 
 sudo apt install -y \
+    solaar \
     pinta \
     vim-gtk3 \
     gnome-tweak-tool \
