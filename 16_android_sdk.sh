@@ -55,8 +55,9 @@ then
     echo "Wait for untar..."
     echo
 
-    tar xvf android-studio-ide-*-linux.tar.gz -C Android >> /dev/null 2>&1 
-    rm -rf android-studio-ide-*-linux.tar.gz 
+    ls android-studio-ide-*.tar.gz | xargs tar xvf >> /dev/null 2>&1
+    mv android-studio Android
+    rm -rf android-studio-ide-*.tar.gz 
 
     unzip commandlinetools-linux-*_latest.zip >> /dev/null 2>&1
     mv tools Android/cmdline-tools/
@@ -81,21 +82,14 @@ then
     java -version
 
     echo
-    echo "Add these variables to runcom"
-    echo "  export JAVA_HOME=$HOME/Android/android-studio/jre"
-    echo "  export PATH=$JAVA_HOME/bin:$PATH"
-    echo "  export PATH=$HOME/Android/android-studio/bin:$PATH"
-    echo "  export ANDROID_SDK_ROOT=$HOME/Android"
-    echo "  export PATH=$HOME/Android/cmdline-tools/tools/bin:$PATH"
-    echo "  export PATH=$HOME/Android/platform-tools:$PATH"
+    echo "Add variables to ~/.shrc"
+    echo "Please source ~/.shrc"
     echo
-
-    echo
-    echo "Install build tools"
-    echo "  sdkmanager --version"
-    echo "  sdkmanager --list"
-    echo "  sdkmanager \"platform-tools\" \"platforms;android-29\""
-    echo "  sdkmanager \"build-tools;29.0.3\""
-    echo "  sdkmanager --licenses"
+    echo "export JAVA_HOME=$HOME/Android/android-studio/jre" >> $HOME/.shrc
+    echo "export PATH=$JAVA_HOME/bin:$PATH" >> $HOME/.shrc
+    echo "export PATH=$HOME/Android/android-studio/bin:$PATH" >> $HOME/.shrc
+    echo "export ANDROID_SDK_ROOT=$HOME/Android" >> $HOME/.shrc
+    echo "export PATH=$HOME/Android/cmdline-tools/tools/bin:$PATH" >> $HOME/.shrc
+    echo "export PATH=$HOME/Android/platform-tools:$PATH"  >> $HOME/.shrc
     echo
 fi
