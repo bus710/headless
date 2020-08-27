@@ -31,7 +31,7 @@ then
     LOGNAME=$(logname)
 
     echo 
-    echo "Adding repo"
+    echo "Add repo"
     echo 
 
     wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
