@@ -27,8 +27,19 @@ then
 
     sdkmanager --version
     sdkmanager --list
+
+    echo
+
     sdkmanager "platform-tools" "platforms;android-29"
+
+    echo
+
     sdkmanager "build-tools;29.0.3"
+
+    echo
+    echo License confirmation
+    echo
+
     sdkmanager --licenses
 
     echo
