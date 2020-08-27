@@ -74,22 +74,28 @@ then
             "/home/$LOGNAME/Android/android-studio/jre/bin/java" \
             1
 
+    echo
+
     sudo update-alternatives \
             --set \
             java \
             /home/$LOGNAME/Android/android-studio/jre/bin/java
 
+    echo 
+
     java -version
 
     echo
     echo "Add variables to ~/.shrc"
-    echo "Please source ~/.shrc"
     echo
-    echo "export JAVA_HOME=$HOME/Android/android-studio/jre" >> $HOME/.shrc
-    echo "export PATH=$JAVA_HOME/bin:$PATH" >> $HOME/.shrc
-    echo "export PATH=$HOME/Android/android-studio/bin:$PATH" >> $HOME/.shrc
-    echo "export ANDROID_SDK_ROOT=$HOME/Android" >> $HOME/.shrc
-    echo "export PATH=$HOME/Android/cmdline-tools/tools/bin:$PATH" >> $HOME/.shrc
-    echo "export PATH=$HOME/Android/platform-tools:$PATH"  >> $HOME/.shrc
+    echo "# Android SDK for server" >> $HOME/.shrc
+    echo "export JAVA_HOME=\$HOME/Android/android-studio/jre" >> $HOME/.shrc
+    echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> $HOME/.shrc
+    echo "export PATH=\$HOME/Android/android-studio/bin:\$PATH" >> $HOME/.shrc
+    echo "export ANDROID_SDK_ROOT=\$HOME/Android" >> $HOME/.shrc
+    echo "export PATH=\$HOME/Android/cmdline-tools/tools/bin:\$PATH" >> $HOME/.shrc
+    echo "export PATH=\$HOME/Android/platform-tools:\$PATH"  >> $HOME/.shrc
+    echo
+    echo "Please source ~/.shrc"
     echo
 fi
