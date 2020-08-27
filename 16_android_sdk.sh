@@ -46,7 +46,7 @@ then
     echo "Wait for untar..."
     echo
 
-    ls android-studio-ide-*.tar.gz | xargs tar xvf >> /dev/null 2>&1
+    ls android-studio-ide-*.tar.gz | xargs tar xf >> /dev/null 2>&1
     mv android-studio Android
     rm -rf android-studio-ide-*.tar.gz 
 
