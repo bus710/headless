@@ -27,6 +27,12 @@ echo
 
 if [[ $ans == "y" ]]
 then 
+    echo 
+    echo "Download IDE and SDK"
+    echo 
+
+    wget $URL_STUDIO
+    wget $URL_SDK
 
     echo
     echo "Prep directory"
@@ -35,22 +41,7 @@ then
     cd ~
     rm -rf Android
     mkdir -p Android/cmdline-tools
-    
-    echo 
-    echo "Config for USB debugging"
-    echo
-
-    sudo usermod -aG plugdev $LOGNAME
-    sudo apt install -y \
-        android-sdk-platform-tools-common
-
-    echo 
-    echo "Download IDE and SDK"
-    echo 
-
-    wget $URL_STUDIO
-    wget $URL_SDK
-
+ 
     echo
     echo "Wait for untar..."
     echo
@@ -75,15 +66,21 @@ then
             1
 
     echo
-
     sudo update-alternatives \
             --set \
             java \
             /home/$LOGNAME/Android/android-studio/jre/bin/java
 
     echo 
-
     java -version
+
+    echo 
+    echo "Config for USB debugging"
+    echo
+
+    sudo usermod -aG plugdev $LOGNAME
+    sudo apt install -y \
+        android-sdk-platform-tools-common
 
     echo
     echo "Add variables to ~/.shrc"
