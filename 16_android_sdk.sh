@@ -27,18 +27,33 @@ echo
 
 if [[ $ans == "y" ]]
 then 
+
+    cd $HOME
+
     echo 
     echo "Download IDE and SDK"
     echo 
 
-    wget $URL_STUDIO
-    wget $URL_SDK
+    FILE_STUDIO=$(ls $HOME/android-studio-ide*.tar.gz 2> /dev/null | wc -l)
+    if [[ $FILE_STUDIO == "0" ]]; then
+        echo "STUDIO file is not exist"
+        wget $URL_STUDIO
+    else
+        echo "STUDIO file is exist"
+    fi
+
+    FILE_SDK=$(ls $HOME/commandlinetools-linux-*_latest.zip 2> /dev/null | wc -l)
+    if [[ $FILE_SDK == "0" ]]; then
+        echo "SDK file is not exist"
+        wget $URL_SDK
+    else
+        echo "SDK file is exist"
+    fi
 
     echo
     echo "Prep directory"
     echo 
 
-    cd ~
     rm -rf Android
     mkdir -p Android/cmdline-tools
  
@@ -48,11 +63,9 @@ then
 
     ls android-studio-ide-*.tar.gz | xargs tar xf >> /dev/null 2>&1
     mv android-studio Android
-    rm -rf android-studio-ide-*.tar.gz 
 
     unzip commandlinetools-linux-*_latest.zip >> /dev/null 2>&1
     mv tools Android/cmdline-tools/
-    rm -rf commandlinetools-linux-*_latest.zip
 
     echo
     echo "Java config"
