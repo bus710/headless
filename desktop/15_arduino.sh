@@ -15,6 +15,7 @@ fi
 echo
 echo -e "\e[91m"
 echo "Please check these web sites:"
+echo "- https://arduino.github.io/arduino-cli/latest/getting-started/"
 echo "- https://github.com/arduino/arduino-cli/releases/latest"
 echo "- https://github.com/arduino/arduino-pro-ide/releases/latest"
 echo 
