@@ -6,29 +6,6 @@ then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 fi
 
-export PATH=$PATH:$HOME/.tools #nvim
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-
-export DELVE_EDITOR=nvim
-
-export PATH=$PATH:$HOME/flutter/bin
-export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
-export PATH=$PATH:$HOME/flutter/.pub-cache/bin
-
-export PATH=$PATH:/snap/bin
-export PATH=$PATH:$HOME/.local/bin
-
-alias disk620='sshfs bus710@disk620:/ ~/disk620'
-alias nv='nvim'
-alias rr='ranger'
-alias ll='ls -la'
-alias gp='git pull'
-alias gf='git fetch --dry-run -v'
-alias gprls="git ls-remote origin 'pull/*/head'"
-# TODO: make this "git pull origin pull/1/head" as function
-
 alias rw='cd ~/repo'
 alias tw='cd ~/repo/tmp'
 alias hw='cd ~/repo/headless'
@@ -49,5 +26,31 @@ alias av1='avahi-resolve -n -4 rpi3.local'
 alias am='sudo minicom -b 115200 -o -D /dev/ttyUSB0'
 alias an='sudo minicom -b 9600 -o -D /dev/ttyACM0'
 
+alias disk620='sshfs bus710@disk620:/ ~/disk620'
+alias nv='nvim'
+alias rr='ranger'
+alias ll='ls -la'
+alias gp='git pull'
+alias gf='git fetch --dry-run -v'
+alias gprls="git ls-remote origin 'pull/*/head'"
+# TODO: make this "git pull origin pull/1/head" as function
+
 # eval $(keychain --eval --quite $PRIVATE_KEY)
+
+
+
+export PATH=$PATH:$HOME/.tools #nvim
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+
+export DELVE_EDITOR=nvim
+
+export PATH=$PATH:$HOME/flutter/bin
+export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
+export PATH=$PATH:$HOME/flutter/.pub-cache/bin
+
+export PATH=$PATH:/snap/bin
+export PATH=$PATH:$HOME/.local/bin
+
 
