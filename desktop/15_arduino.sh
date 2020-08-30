@@ -3,6 +3,9 @@
 set -e
 
 
+VERSION_CLASSIC_PART1="arduino-1.8.13"
+VERSION_CLASSIC_PART2="-linux64.tar.xz"
+VERSION_CLASSIC=${VERSION_CLASSIC_PART1}${VERSION_CLASSIC_PART2}
 VERSION_IDE="arduino-pro-ide_0.1.1_Linux_64bit"
 
 
@@ -15,8 +18,8 @@ fi
 echo
 echo -e "\e[91m"
 echo "Please check these web sites:"
-echo "- https://arduino.github.io/arduino-cli/latest/getting-started/"
 echo "- https://github.com/arduino/arduino-cli/releases/latest"
+echo "-"
 echo "- https://github.com/arduino/arduino-pro-ide/releases/latest"
 echo 
 echo "Do you want to install? (y/n)"
@@ -33,21 +36,33 @@ then
     echo "Existing Arduino directory will be deleted"
     echo 
 
-    rm -rf $HOME/Arduino
-    mkdir -p $HOME/Arduino/tools/arduino-cli
+    rm -rf $HOME/Arduino_tools
+    mkdir -p $HOME/Arduino_tools/arduino-cli
 
     echo
     echo "Download and install Arduino CLI"
     echo 
 
-    cd $HOME/Arduino/tools/arduino-cli
+    cd $HOME/Arduino_tools/arduino-cli
     curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
 
     echo
-    echo "Download and install Arduino IDE"
+    echo "Download and install Arduino Classic IDE"
     echo 
 
-    cd $HOME/Arduino/tools
+    cd $HOME/Arduino_tools
+    wget https://downloads.arduino.cc/${VERSION_CLASSIC}
+    tar xvf ${VERSION_CLASSIC} >> /dev/null 2>&1
+    rm -rf *.tar.xz
+    mv ${VERSION_CLASSIC_PART1} arduino
+    cd arduino
+    sh ./arduino-linux-setup.sh $USER
+
+    echo
+    echo "Download and install Arduino Pro IDE"
+    echo 
+
+    cd $HOME/Arduino_tools
     wget https://downloads.arduino.cc/arduino-pro-ide/${VERSION_IDE}.zip
     unzip -q ${VERSION_IDE}.zip 
     mv ${VERSION_IDE} arduino-pro-ide
@@ -59,8 +74,9 @@ then
 
     echo "" >> $HOME/.shrc
     echo "# For Arduino SDK" >> $HOME/.shrc
-    echo "PATH=\$PATH:\$HOME/Arduino/tools/arduino-cli/bin" >> $HOME/.shrc
-    echo "PATH=\$PATH:\$HOME/Arduino/tools/arduino-pro-ide" >> $HOME/.shrc
+    echo "PATH=\$PATH:\$HOME/Arduino_tools/arduino" >> $HOME/.shrc
+    echo "PATH=\$PATH:\$HOME/Arduino_tools/arduino-cli/bin" >> $HOME/.shrc
+    echo "PATH=\$PATH:\$HOME/Arduino_tools/arduino-pro-ide" >> $HOME/.shrc
 
     echo 
     echo "Done."
