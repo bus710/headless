@@ -98,6 +98,7 @@ then
     echo
     echo "Add variables to ~/.shrc"
     echo
+    echo "" >> $HOME/.shrc
     echo "# Android SDK for server" >> $HOME/.shrc
     echo "export JAVA_HOME=\$HOME/Android/android-studio/jre" >> $HOME/.shrc
     echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> $HOME/.shrc
