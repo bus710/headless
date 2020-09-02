@@ -2,9 +2,8 @@
 
 set -e
 
-URL="https://storage.googleapis.com/flutter_infra/releases/stable/linux/"
-VERSION="flutter_linux_1.20.2-stable.tar.xz"
-
+URL="https://storage.googleapis.com/flutter_infra/releases/beta/linux/"
+VERSION="flutter_linux_1.21.0-9.2.pre-beta.tar.xz"
 
 
 if [[ "$EUID" == 0 ]]
@@ -82,19 +81,19 @@ then
     #flutter upgrade
     #flutter channel
 
-    #echo 
-    #echo "Install webdev" 
-    #echo
+    echo 
+    echo "Install webdev" 
+    echo
 
-    #flutter pub global activate webdev
+    flutter pub global activate webdev
 
-    #echo
-    #echo "Enable chrome as a target device"
-    #echo
+    echo
+    echo "Enable chrome as a target device"
+    echo
 
-    #flutter config --enable-web # --no-enable-web
-    #flutter config --enable-linux-desktop
-    #flutter devices
+    # --no-enable-web, --enable-linux-desktop
+    flutter config --enable-web 
+    flutter devices
 
     echo
     echo "Done"
