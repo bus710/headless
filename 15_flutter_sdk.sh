@@ -6,10 +6,24 @@ URL="https://storage.googleapis.com/flutter_infra/releases/stable/linux/"
 VERSION="flutter_linux_1.20.2-stable.tar.xz"
 
 
+
 if [[ "$EUID" == 0 ]]
 then echo "Please run as a normal user (w/o sudo)"
   exit
 fi
+
+
+
+CPU_TYPE=$(uname -p)
+
+if [[ $CPU_TYPE != "x86_64" ]]; then
+    echo
+    echo "Only x86_64 can be used"
+    echo
+    exit
+fi
+
+
 
 echo
 echo -e "\e[91m"
@@ -60,25 +74,25 @@ then
 
     flutter doctor
 
-    #echo
-    #echo "Change the channel"
-    #echo
+    echo
+    echo "Change the channel"
+    echo
 
-    #flutter channel dev
-    #flutter upgrade
-    #flutter channel
+    flutter channel beta
+    flutter upgrade
+    flutter channel
 
-    #echo 
-    #echo "Install webdev" 
-    #echo
+    echo 
+    echo "Install webdev" 
+    echo
 
-    #flutter pub global activate webdev
+    flutter pub global activate webdev
 
-    #echo
-    #echo "Enable chrome as a target device"
-    #echo
+    echo
+    echo "Enable chrome as a target device"
+    echo
 
-    #flutter config --enable-web
+    flutter config --enable-web
     #flutter config --enable-linux-desktop
     flutter devices
 

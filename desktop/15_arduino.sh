@@ -15,11 +15,23 @@ then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
+
+
+CPU_TYPE=$(uname -p)
+
+if [[ $CPU_TYPE != "x86_64" ]]; then
+    echo
+    echo "Only x86_64 can be used."
+    echo
+    exit
+fi
+
+
+
 echo
 echo -e "\e[91m"
 echo "Please check these web sites:"
 echo "- https://github.com/arduino/arduino-cli/releases/latest"
-echo "-"
 echo "- https://github.com/arduino/arduino-pro-ide/releases/latest"
 echo 
 echo "Do you want to install? (y/n)"
