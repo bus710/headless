@@ -72,6 +72,7 @@ then
     echo 
 
     flutter doctor
+    flutter update-packages
 
     #echo
     #echo "Change the channel"
