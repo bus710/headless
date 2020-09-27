@@ -23,6 +23,7 @@ sudo apt install -y \
     vim-gtk3 \
     gnome-tweak-tool \
     gnome-shell-extensions \
+    chrome-gnome-shell \
     simplescreenrecorder 
 
 echo 
@@ -36,8 +37,9 @@ sudo apt install -y google-chrome-stable
 sudo rm -rf /etc/apt/sources.list.d/google-chrome.list
 
 echo
-echo "And more:"
-echo "- https://slack.com/downloads/linux"
-echo "- https://www.microsoft.com/en-us/microsoft-365/microsoft-teams/download-app#desktopAppDownloadregion"
-echo "- https://members.symless.com/synergy/downloads/list/s1"
+echo "Gnome Extensions:"
+echo "- https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep?hl=en"
+echo "- https://extensions.gnome.org/extension/307/dash-to-dock/"
+echo "- https://extensions.gnome.org/extension/1765/transparent-topbar/"
+echo "- https://extensions.gnome.org/extension/2588/fully-transparent-top-bar/"
 echo 
