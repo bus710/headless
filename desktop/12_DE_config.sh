@@ -72,8 +72,10 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # - how to use xfconf-query
 
     echo 
-    echo "1. Change wm theme, color theme, icon, font size, sleep config"
-    echo "2. Add icons to dock"
+    echo "1. Change wm theme, color theme, icon, font size"
+    echo "2. Change language and power config"
+    echo "3. Change terminal preference"
+    echo "4. Add icons to dock"
     echo
 fi
 
