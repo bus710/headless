@@ -23,13 +23,13 @@ sudo apt install -y \
     solaar \
     pinta \
     vim-gtk3 \
-    chrome-gnome-shell \
     simplescreenrecorder 
 
 if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
     sudo apt install -y \
         gnome-tweak-tool \
-        gnome-shell-extensions
+        gnome-shell-extensions \
+        chrome-gnome-shell
 fi
 
 echo 
