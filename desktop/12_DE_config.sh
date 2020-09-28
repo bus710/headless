@@ -66,17 +66,17 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # Disable Caps lock
     sudo echo "XKBOPTIONS=ctrl:nocaps" >> /etc/default/keyboard
 
-    # TODO:
-    # - terminal font size? and hide menu?
-    # - no suspend?
-    # - how to use xfconf-query
-
     echo 
     echo "1. Change wm theme, color theme, icon, font size"
     echo "2. Change language and power config"
     echo "3. Change terminal preference"
     echo "4. Add icons to dock"
     echo
+
+    # TODO:
+    # - terminal font size? and hide menu?
+    # - no suspend?
+    # - how to use xfconf-query
 fi
 
 echo
