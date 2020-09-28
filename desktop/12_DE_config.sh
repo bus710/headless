@@ -1,0 +1,81 @@
+#!/bin/bash
+
+set -e
+
+if [[ "$EUID" == 0 ]]
+then echo "Please run as normal user (w/o sudo)"
+  exit
+fi
+
+if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
+    # WM theme
+    git clone https://github.com/Jannomag/Yaru-Colors
+    cd Yaru-Colors
+    ./install.sh
+    cd ..
+    rm -rf Yaru-Colors
+
+    # Terminal theme
+    sudo apt install -y \
+        dconf-cli
+    git clone https://github.com/GalaticStryder/gnome-terminal-colors-dracula
+    cd gnome-terminal-colors-dracula
+    ./install.sh
+    cd ..
+    rm -rf gnome-terminal-colors-dracula*
+
+elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
+    # WM theme
+    git clone https://github.com/tdloi/nanodesu-xfwm4
+    mkdir ~/.local/share/themes
+    mv nanodesu-xfwm4/nanodesu* ~/.local/share/themes/
+    # Change WM theme in settings => Window Manager
+
+    # Theme
+    git clone https://github.com/Michedev/Ant-Dracula-Blue.git
+    mv Ant-Dracula-Blue ~/.themes
+    gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula-Blue"
+
+    # Terminal
+    git clone https://github.com/kuangyujing/dracula-xfce4-terminal
+    cd dracula-xfce4-terminal
+    mkdir -p ~/.local/share/xfce4/terminal/colorschemes
+    cp Dracula.theme ~/.local/share/xfce4/terminal/colorschemes/
+    cd ..
+    rm dracula-xfce4-terminal
+
+    # Icons
+    git clone https://github.com/vinceliuice/Qogir-icon-theme
+    cd Qogir-icon-theme 
+    ./install.sh
+    cd ..
+    rm Qogir-icon-theme 
+
+    # Dock
+    sudo apt install plank
+    PLANK_DESKTOP="/home/$LOGNAME/.config/autostart/plank.desktop"
+    rm -rf $PLANK_DESKTOP
+    echo "[Desktop Entry]" >> $PLANK_DESKTOP
+    echo "Type=Application" >> $PLANK_DESKTOP
+    echo "Exec=plank" >> $PLANK_DESKTOP
+    echo "Hidden=false" >> $PLANK_DESKTOP
+    echo "NoDisplay=false" >> $PLANK_DESKTOP
+    echo "X-GNOME-Autostart-enabled=true" >> $PLANK_DESKTOP
+    echo "Name=Plank" >> $PLANK_DESKTOP
+
+    # Disable Caps lock
+    sudo echo "XKBOPTIONS=ctrl:nocaps" >> /etc/default/keyboard
+
+    # TODO:
+    # - terminal font size? and hide menu?
+    # - no suspend?
+    # - how to use xfconf-query
+
+    echo 
+    echo "Change font size, hibernation, and etc... "
+    echo
+fi
+
+echo
+echo "Done"
+echo

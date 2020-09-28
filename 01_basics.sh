@@ -162,5 +162,6 @@ then
     echo "1. SSH port number is changed"
     echo "2. Source your .bashrc (source ~/.bashrc)"
     echo "3. Check your .tmux.conf"
+    echo "4. Try neofetch --ascii_distro Kubuntu|Xubuntu|Lubuntu"
     echo -e "\e[39m"
 fi
