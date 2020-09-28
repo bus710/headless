@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Preferred font size for Chrome - zoom 125%, font size 15
+
 set -e
 
 if [[ "$EUID" == 0 ]]

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Preferred font size - 17
+
 set -e
 
 if [[ "$EUID" == 0 ]]
