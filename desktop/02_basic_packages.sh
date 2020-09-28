@@ -14,15 +14,12 @@ sudo apt remove -y \
 sudo apt remove -y \
     thunderbird
 
-# sudo apt install -y libgnome-keyring0 #for gitkraken
-
 sudo apt install -y \
     inxi \
     gufw \
     glmark2
 
 # For flutter 
-
 sudo apt install -y \
     cmake \
     clang \
