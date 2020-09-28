@@ -72,7 +72,8 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # - how to use xfconf-query
 
     echo 
-    echo "Change font size, hibernation, and etc... "
+    echo "1. Change wm theme, color theme, icon, font size, sleep config"
+    echo "2. Add icons to dock"
     echo
 fi
 
