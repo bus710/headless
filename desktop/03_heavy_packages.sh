@@ -23,10 +23,12 @@ sudo apt install -y \
     solaar \
     pinta \
     vim-gtk3 \
-    gnome-tweak-tool \
-    gnome-shell-extensions \
     chrome-gnome-shell \
     simplescreenrecorder 
+
+sudo apt install -y \
+    gnome-tweak-tool \
+    gnome-shell-extensions
 
 echo 
 echo "Install Chrome Browser"
