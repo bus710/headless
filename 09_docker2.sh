@@ -32,8 +32,6 @@ echo
 
 if [[ $ans == "y" ]]
 then 
-    LOGNAME=$(logname)
-
     echo
     echo "Remove old docker & docker-compose"
     echo

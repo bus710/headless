@@ -26,9 +26,11 @@ sudo apt install -y \
     chrome-gnome-shell \
     simplescreenrecorder 
 
-sudo apt install -y \
-    gnome-tweak-tool \
-    gnome-shell-extensions
+if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
+    sudo apt install -y \
+        gnome-tweak-tool \
+        gnome-shell-extensions
+fi
 
 echo 
 echo "Install Chrome Browser"

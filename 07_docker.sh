@@ -21,8 +21,6 @@ echo
 
 if [[ $ans == "y" ]]
 then 
-    LOGNAME=$(logname)
-
     echo
     echo "Install docker & docker-compose"
     echo

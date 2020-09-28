@@ -31,13 +31,11 @@ then
     echo "wait for hover installation"
     echo
 
-    # Get logname first (this is not $USER)
-    LOGNAME=$(logname)
     sudo -u $LOGNAME /usr/local/go/bin/go get -u github.com/go-flutter-desktop/hover
 
     echo 
 
-    apt install -y \
+    sudo apt install -y \
         libgl1-mesa-dev \
         xorg-dev
 

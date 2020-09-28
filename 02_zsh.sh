@@ -26,9 +26,6 @@ echo
 
 if [[ $ans == "y" ]]
 then
-    # Get logname first (this is not $USER)
-    LOGNAME=$(logname)
-
     echo -e "\e[91m"
     echo "Delete /home/$LOGNAME/.zshrc"
     echo "Delete /home/$LOGNAME/.oh-my-zsh"

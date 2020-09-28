@@ -29,9 +29,6 @@ echo
 
 if [[ $ans == "y" ]]
 then
-    # Get logname first (this is not $USER)
-    LOGNAME=$(logname)
-
     echo 
     echo "Add repo"
     echo 
