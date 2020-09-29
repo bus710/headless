@@ -26,33 +26,37 @@ if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
 
 elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # WM theme
-    git clone https://github.com/tdloi/nanodesu-xfwm4
+    rm -rf ~/.local/share/themes
     mkdir ~/.local/share/themes
-    mv nanodesu-xfwm4/nanodesu* ~/.local/share/themes/
+    git clone https://github.com/tdloi/nanodesu-xfwm4
+    cp -r nanodesu-xfwm4/nanodesu* ~/.local/share/themes/
+    rm -rf nanodesu-xfwm4
     # Change WM theme in settings => Window Manager
 
     # Theme
+    rm -rf ~/.themes/Ant-Dracula-Blue
     git clone https://github.com/Michedev/Ant-Dracula-Blue.git
     mv Ant-Dracula-Blue ~/.themes
     gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula-Blue"
 
     # Terminal
+    rm -rf ~/.local/share/xfce4/terminal/colorschemes
+    mkdir -p ~/.local/share/xfce4/terminal/colorschemes
     git clone https://github.com/kuangyujing/dracula-xfce4-terminal
     cd dracula-xfce4-terminal
-    mkdir -p ~/.local/share/xfce4/terminal/colorschemes
     cp Dracula.theme ~/.local/share/xfce4/terminal/colorschemes/
     cd ..
-    rm dracula-xfce4-terminal
+    rm -rf dracula-xfce4-terminal
 
     # Icons
     git clone https://github.com/vinceliuice/Qogir-icon-theme
     cd Qogir-icon-theme 
     ./install.sh
     cd ..
-    rm Qogir-icon-theme 
+    rm -rf Qogir-icon-theme 
 
     # Dock
-    sudo apt install plank
+    sudo apt install -y plank
     PLANK_DESKTOP="/home/$LOGNAME/.config/autostart/plank.desktop"
     rm -rf $PLANK_DESKTOP
     echo "[Desktop Entry]" >> $PLANK_DESKTOP
@@ -64,7 +68,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "Name=Plank" >> $PLANK_DESKTOP
 
     # Disable Caps lock
-    sudo echo "XKBOPTIONS=ctrl:nocaps" >> /etc/default/keyboard
+    sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
 
     echo 
     echo "1. Change wm theme, color theme, icon, font size"
