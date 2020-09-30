@@ -289,7 +289,7 @@ $ sudo systemctl disable iwd.service
 $ sudo systemctl enable NetworkManager.service
 $ sudo systemctl start NetworkManager.service
 
-$ nmcli radio wifi off
+$ nmcli radio wifi on
 $ nmcli device wifi list
 $ nmcli device wifi connect SSID password PASSWORD
 
@@ -325,12 +325,11 @@ $ yay google-chrome # and pick the version wated
 
 <br/><br/>
 
-### 2.x Install Gnome
+### 2.x Install X11, XFCE, Lightdm
 
 ```sh
-$ sudo pacman -S xorg-server gdm gnome gnome-tweaks gnome-extra
-$ sudo systemctl enable gdm
-$ yay gnome-shell-extension-dash-to-dock # this requires re-login
+$ sudo pacman -S xorg-server xfce4 lightdm lightdm-gtk-greeter
+$ sudo systemctl enable lightdm
 $ reboot
 ```
 
