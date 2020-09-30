@@ -6,7 +6,9 @@ pacstrap /mnt \
     linux linux-firmware \
     base \
     base-devel \
+    zsh \
     vim \
+    neovim \
     git \
     ntp
     man-db \
