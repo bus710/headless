@@ -38,7 +38,7 @@ $ dd bs=4M \
 
 <br/><br/>
 
-## 1. In the live disk
+## 1. Base system
 
 ### 1.1 For HiDPI
 
@@ -64,7 +64,7 @@ $ iwctl
 [iwd] station wlan0 connect SSID
 [iwd] exit
 
-$ ping 8.8.8.8
+$ ping -c 3 8.8.8.8
 ```
 
 <details>
@@ -100,7 +100,7 @@ $ ip link set $DEVICE up
 
 Find out if EFI is available:
 ```sh
-$ ls /sys/firmware/efi | grep efivars
+$ ls /sys/firmware/efi 
 ```
 
 Run these to set partition:
@@ -109,16 +109,17 @@ $ lsblk
 $ cfdisk /dev/nvme0n1 # gdisk can be used as well
 
 # Delete all existing and create 2 partitions as primary:
-# - /boot, 512M, EFI
-# - /, 32G~, Linux Root x86-64 to be mounted automatically)
-# - /swap, 8G, Linux swap
-# - Write and quit
+# - /boot,  size 512M,  type EFI
+# - /,      size 32G,   type Linux Root x86-64 
+# - /swap,  size 8G,    type Linux swap
+
+# Write and quit
 ```
 
 Format disks:
 ```sh
 $ mkfs.vfat -F32 /dev/nvme0n1p1
-$ mkfs.ext4 -j /dev/nvme0n1p2
+$ mkfs.ext4 -j /dev/nvme0n1p2 # >> /dev/null 2>&1
 $ mkswap /dev/nvme0n1p3
 $ swapon /dev/nvme0n1p3
 ```
@@ -254,7 +255,7 @@ Then, exit and reboot
 
 <br/><br/>
 
-## 2. In the fresh system
+## 2. Actual system
 
 These need to be done:
 - disable root account
