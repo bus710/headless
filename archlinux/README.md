@@ -13,7 +13,15 @@
 
 ----
 
-## 1. Flash media
+## Prerequisites
+
+### BIOS
+
+Disable secure boot, fast boot, and CSM mode.
+
+<br/>
+
+### Flash media
 
 Download ISO from a mirrorsite:
 - https://www.archlinux.org/download/
@@ -30,17 +38,9 @@ $ dd bs=4M \
 
 <br/><br/>
 
-## 2. In the BIOS
+## 1. In the live disk
 
-Disable secure boot, fast boot, and CSM mode.
-
-Then, boot with the live disk
-
-<br/><br/>
-
-## 3. In the live disk
-
-### 3.1 For HiDPI
+### 1.1 For HiDPI
 
 ```sh
 $ setfont -h24 /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz
@@ -48,7 +48,7 @@ $ setfont -h24 /usr/share/kbd/consolefonts/iso01-12x22.psfu.gz
 
 <br/><br/>
 
-### 3.2 Network config
+### 1.2 Network config
 
 In case of wifi
 
@@ -96,7 +96,7 @@ $ ip link set $DEVICE up
 
 <br/><br/>
 
-### 3.3 Partition
+### 1.3 Partition
 
 Find out if EFI is available:
 ```sh
@@ -135,7 +135,18 @@ $ mount /dev/nvme0n1p1 /mnt/boot
 
 <br/><br/>
 
-### 3.4 Config mirror and pacstrap
+### 1.4 Install git
+
+```sh
+$ pacman -Sy
+$ pacman -Sy git
+
+$ git clone https://github.com/bus710/headless
+```
+
+<br/><br/>
+
+### 1.5 Config mirror and pacstrap
 
 ```sh
 # uncomment mirror sites to be used
@@ -167,7 +178,7 @@ $ pacstrap /mnt \
 
 <br/><br/>
 
-### 3.5 config fstab and chroot
+### 1.6 config fstab and chroot
 
 ```sh
 $ genfstab -U /mnt >> /mnt/etc/fstab
@@ -176,9 +187,7 @@ $ arch-chroot /mnt
 
 <br/><br/>
 
-## 4. In the chroot
-
-### 4.1 Config time
+### 1.7 Config time
 
 ```sh
 #$ ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
@@ -190,7 +199,7 @@ $ timedatectl status
 
 <br/><br/>
 
-### 4.2 Locale and language
+### 1.8 Locale and language
 
 ```sh
 # uncomment "en_US.UTF-8 UTF-8"
@@ -203,7 +212,7 @@ $ echo LANG=en_US.UTF-8 > /etc/locale.conf
 
 <br/><br/>
 
-### 4.3 Hostname
+### 1.9 Hostname
 
 ```sh
 $ vim /etc/hostname
@@ -211,7 +220,7 @@ $ vim /etc/hostname
 
 <br/><br/>
 
-### 4.4 Change root password
+### 1.10 Change root password
 
 ```sh
 $ passwd
@@ -219,7 +228,7 @@ $ passwd
 
 <br/><br/>
 
-### 4.5 Add user
+### 1.11 Add user
 
 ```sh
 $ useradd -m -g users -G wheel -s /bin/bash $USER_NAME
@@ -232,7 +241,7 @@ $ visudo /etc/sudoers
 
 <br/><br/>
 
-### 4.6 Config GRUB
+### 1.12 Config GRUB
 
 ```sh
 $ pacman -Syu
@@ -252,21 +261,17 @@ Then, exit and reboot
 
 <br/><br/>
 
-## 5. In the fresh system
+## 2. In the fresh system
 
-First of all, config network with iwctl.
-
-### 5.1 Install Gnome
-
-```sh
-$ sudo pacman -S xorg-server gdm gnome gnome-tweaks gnome-extra
-$ sudo systemctl enable gdm
-$ reboot
-```
+These need to be done:
+- config network 
+- install dev tools
+- install gui tools
+- etc
 
 <br/><br/>
 
-### 5.2 Config network with NetworkManager
+### 2.1 Config network with NetworkManager
 
 ```sh
 $ sudo systemctl stop dhcpcd.service
@@ -282,7 +287,7 @@ Then, use GUI
 
 <br/><br/>
 
-### 5.3 Yay for AUR 
+### 2.2 Yay for AUR 
 
 Yay is an AUR helper.
 
@@ -308,7 +313,15 @@ $ yay gnome-shell-extension-dash-to-dock # this requires re-login
 
 <br/><br/>
 
-### 5.4 GUI input method
+### 2.x Install Gnome
+
+```sh
+$ sudo pacman -S xorg-server gdm gnome gnome-tweaks gnome-extra
+$ sudo systemctl enable gdm
+$ reboot
+```
+
+### 2.x GUI input method
 
 TBD - ibus/fcitx and fonts
 
