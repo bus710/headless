@@ -1,5 +1,7 @@
 # Archlinux installation
 
+Having issue with NVME. Keep getting error like blk_update_request.... because of NVME firmware
+
 <br/><br/>
 
 ## Reference
