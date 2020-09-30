@@ -1,6 +1,6 @@
 #!/bin/bash
 
-useradd -m -g users -G wheel -s /bin/bash bus710
+useradd -m -g users -G wheel -s /bin/zsh bus710
 passwd bus710
 
 # allow wheel group to access sudo 
