@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 pacman -Sy \
     linux linux-firmware \
     base \
@@ -24,3 +22,7 @@ pacman -Sy \
     iw \
     iwd \
     wpa_supplicant
+
+echo
+echo "Please clone headless repo again"
+echo 
