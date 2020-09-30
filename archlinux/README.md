@@ -1,7 +1,5 @@
 # Archlinux installation
 
-Having issue with NVME. Keep getting error like blk_update_request.... because of NVME firmware
-
 <br/><br/>
 
 ## Reference
@@ -22,6 +20,10 @@ Having issue with NVME. Keep getting error like blk_update_request.... because o
 Disable secure boot, fast boot, and CSM mode.
 
 <br/>
+
+### Kernel parameter
+
+If NVME has issue(like blk_update_request), please add **quiet loglevel=0** to the kernel parameter (press ? and edit...)
 
 ### Flash media
 
