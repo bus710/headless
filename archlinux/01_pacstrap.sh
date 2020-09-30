@@ -3,14 +3,10 @@
 set -e
 
 pacstrap /mnt \
-    linux linux-firmware \
+    linux \
+    linux-firmware \
     base \
     base-devel \
-    zsh \
-    vim \
-    neovim \
-    git \
-    ntp
     man-db \
     man-pages \
     dosfstools \
@@ -18,9 +14,8 @@ pacstrap /mnt \
     mdadm \
     lvm2 \
     grub \
+    git \
+    vim \
+    neovim \
     efibootmgr \
-    dhcpcd \
-    networkmanager \
-    iw \
-    iwd \
-    wpa_supplicant
+    networkmanager
