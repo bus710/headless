@@ -10,7 +10,7 @@ pacman -Sy \
     vim \
     neovim \
     git \
-    ntp
+    ntp \
     man-db \
     man-pages \
     dosfstools \
