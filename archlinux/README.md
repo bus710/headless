@@ -141,7 +141,8 @@ $ mount /dev/nvme0n1p1 /mnt/boot
 $ pacman -Sy
 $ pacman -Sy git
 
-$ git clone https://github.com/bus710/headless
+$ mkdir -p /mnt/tmp
+$ git clone https://github.com/bus710/headless /mnt/tmp
 ```
 
 <br/><br/>
@@ -220,15 +221,7 @@ $ vim /etc/hostname
 
 <br/><br/>
 
-### 1.10 Change root password
-
-```sh
-$ passwd
-```
-
-<br/><br/>
-
-### 1.11 Add user
+### 1.10 Add user
 
 ```sh
 $ useradd -m -g users -G wheel -s /bin/bash $USER_NAME
@@ -241,7 +234,7 @@ $ visudo /etc/sudoers
 
 <br/><br/>
 
-### 1.12 Config GRUB
+### 1.11 Config GRUB
 
 ```sh
 $ pacman -Syu
@@ -264,10 +257,19 @@ Then, exit and reboot
 ## 2. In the fresh system
 
 These need to be done:
+- disable root account
 - config network 
 - install dev tools
 - install gui tools
 - etc
+
+<br/><br/>
+
+### 2.1 Disable root account
+
+```sh
+$ sudo passwd -l root
+```
 
 <br/><br/>
 
@@ -281,9 +283,15 @@ $ sudo systemctl disable iwd.service
 
 $ sudo systemctl enable NetworkManager.service
 $ sudo systemctl start NetworkManager.service
-```
 
-Then, use GUI
+$ nmcli radio wifi off
+$ nmcli device wifi list
+$ nmcli device wifi connect SSID password PASSWORD
+
+# change existing connection
+$ nmcli connection
+$ nmcli connection edit
+```
 
 <br/><br/>
 
@@ -308,7 +316,6 @@ To install some pacakges from AUR:
 
 # with yay
 $ yay google-chrome # and pick the version wated
-$ yay gnome-shell-extension-dash-to-dock # this requires re-login
 ```
 
 <br/><br/>
@@ -318,6 +325,7 @@ $ yay gnome-shell-extension-dash-to-dock # this requires re-login
 ```sh
 $ sudo pacman -S xorg-server gdm gnome gnome-tweaks gnome-extra
 $ sudo systemctl enable gdm
+$ yay gnome-shell-extension-dash-to-dock # this requires re-login
 $ reboot
 ```
 
@@ -346,12 +354,4 @@ $ sudo systemctl --failed
 ```
 
 <br/><br/>
-
-## Etc.
-
-```sh
-# disable root
-$ sudo passwd -l root
-```
-
 
