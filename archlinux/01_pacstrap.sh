@@ -1,6 +1,7 @@
 #!/bin/bash
 
-pacstrap /mnt \
+pacstrap \
+    /mnt \
     linux \
     linux-firmware \
     base \
@@ -11,6 +12,7 @@ pacstrap /mnt \
     e2fsprogs \
     mdadm \
     lvm2 \
+    ntp \
     grub \
     git \
     vim \

@@ -146,8 +146,8 @@ $ mount /dev/nvme0n1p1 /mnt/boot
 $ pacman -Sy
 $ pacman -Sy git
 
-$ mkdir -p /mnt/tmp
-$ git clone https://github.com/bus710/headless /mnt/tmp
+$ cd /mnt
+$ git clone https://github.com/bus710/headless
 ```
 
 <br/><br/>
@@ -161,12 +161,13 @@ $ vi /etc/pacman.d/mirrorlist
 # run pacstrap with packages required
 # pick dhcpcd or networkmanager for future usage
 $ pacstrap /mnt \
-    linux linux-firmware \
+    linux \
+    linux-firmware \
     base \
     base-devel \
     vim \
     git \
-    ntp
+    ntp \
     man-db \
     man-pages \
     dosfstools \
@@ -175,11 +176,7 @@ $ pacstrap /mnt \
     lvm2 \
     grub \
     efibootmgr \
-    dhcpcd \
-    networkmanager \
-    iw \
-    iwd \
-    wpa_supplicant
+    networkmanager
 ```
 
 <br/><br/>
