@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+pacstrap /mnt \
+    linux linux-firmware \
+    base \
+    base-devel \
+    vim \
+    git \
+    ntp
+    man-db \
+    man-pages \
+    dosfstools \
+    e2fsprogs \
+    mdadm \
+    lvm2 \
+    grub \
+    efibootmgr \
+    dhcpcd \
+    networkmanager \
+    iw \
+    iwd \
+    wpa_supplicant
