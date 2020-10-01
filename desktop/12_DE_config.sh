@@ -36,7 +36,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # Theme
     rm -rf ~/.themes/Ant-Dracula-Blue
     git clone https://github.com/Michedev/Ant-Dracula-Blue.git
-    mv Ant-Dracula-Blue ~/.themes
+    mv Ant-Dracula-Blue ~/.themes/
     gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula-Blue"
 
     # Terminal
@@ -58,6 +58,9 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # Dock
     sudo apt install -y plank
     PLANK_DESKTOP="/home/$LOGNAME/.config/autostart/plank.desktop"
+    if [[ ! -d ~/.config/autostart ]]; then
+        mkdir ~/.config/autostart -p                  
+    fi                                                
     rm -rf $PLANK_DESKTOP
     echo "[Desktop Entry]" >> $PLANK_DESKTOP
     echo "Type=Application" >> $PLANK_DESKTOP

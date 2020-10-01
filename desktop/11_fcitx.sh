@@ -48,7 +48,9 @@ echo "Add fcitx as startup app"
 echo
 
 FCITX_DESKTOP="/home/$LOGNAME/.config/autostart/fcitx.desktop" 
-mkdir ~/.config/autostart -p
+if [[ ! -d ~/.config/autostart ]]; then
+    mkdir ~/.config/autostart -p
+fi
 rm -rf $FCITX_DESKTOP
 echo "[Desktop Entry]" >> $FCITX_DESKTOP
 echo "Type=Application" >> $FCITX_DESKTOP
