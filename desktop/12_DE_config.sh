@@ -36,7 +36,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # Theme
     rm -rf ~/.themes/Ant-Dracula-Blue
     git clone https://github.com/Michedev/Ant-Dracula-Blue.git
-    mv Ant-Dracula-Blue ~/.themes/
+    mv Ant-Dracula-Blue ~/.themes/Ant-Dracula-Blue
     gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula-Blue"
 
     # Terminal
