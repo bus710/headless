@@ -52,12 +52,15 @@ echo
 aws --version
 
 echo
-echo "Add completer path"
+echo "Add completer to path"
 echo 
 
 AWS_COMPLETER=$(grep -rnw ~/.shrc -e 'aws_completer' | wc -c)
 
 if [[ $AWS_COMPLETER -eq 0 ]]; then
+    echo "# AWS completion" >> ~/.shrc
+    echo "autoload bashcompinit && bashcompinit" >> ~/.shrc
+    echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.shrc
     echo "export PATH=/usr/local/bin/aws_completer:\$PATH" >> ~/.shrc
 else
     echo ""
