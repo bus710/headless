@@ -47,6 +47,7 @@ then
         command-not-found
 
     sudo apt install -y \
+        jq \
         fzf \
         ripgrep
 
