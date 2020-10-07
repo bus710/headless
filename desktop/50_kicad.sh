@@ -36,8 +36,10 @@ echo "# sudo mv kicad-foorprints/* /usr/share/kicad/footprints"
 echo 
 echo "...and configure the path for KiCad Symbol/Footprint Manager."
 echo
-echo "==== To make Picoscope shortcut ===="
-echo 
-echo "check /opt/picoscope/share and bin"
-echo
+
+# echo
+# echo "==== To make Picoscope shortcut ===="
+# echo 
+# echo "check /opt/picoscope/share and bin"
+# echo
 
