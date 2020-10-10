@@ -80,6 +80,8 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "4. Add icons to dock"
     echo
 
+    sudo apt remove liblreoffice-common
+
     # TODO:
     # - terminal font size? and hide menu?
     # - no suspend?
