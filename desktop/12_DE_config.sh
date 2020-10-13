@@ -55,7 +55,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     cd ..
     rm -rf Qogir-icon-theme 
 
-    # Dock
+    # Dock (^+RMB for preference)
     sudo apt install -y plank
     PLANK_DESKTOP="/home/$LOGNAME/.config/autostart/plank.desktop"
     if [[ ! -d ~/.config/autostart ]]; then
