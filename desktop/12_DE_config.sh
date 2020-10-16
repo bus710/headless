@@ -34,9 +34,10 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # Change WM theme in settings => Window Manager
 
     # Theme
-    rm -rf ~/.themes/Ant-Dracula-Blue
+    rm -rf ~/.themes
+    mkdir ~/.themes
     git clone https://github.com/Michedev/Ant-Dracula-Blue.git
-    mv Ant-Dracula-Blue ~/.themes/Ant-Dracula-Blue
+    mv ./Ant-Dracula-Blue ~/.themes/Ant-Dracula-Blue
     gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula-Blue"
 
     # Terminal
@@ -80,7 +81,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "4. Add icons to dock"
     echo
 
-    sudo apt remove liblreoffice-common
+    sudo apt remove libreoffice-common
 
     # TODO:
     # - terminal font size? and hide menu?
