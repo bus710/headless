@@ -29,4 +29,3 @@ To install tools on Ubuntu 20.04 (and onward):
 - [Learn Vimscript the Hardway](http://learnvimscriptthehardway.stevelosh.com)
 - [My neovim setup for Go](https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876)
 
-
