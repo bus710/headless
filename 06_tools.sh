@@ -16,12 +16,6 @@ if [[ "$CPU_TYPE" == "x86_64" ]]; then
 fi
 
 echo 
-echo "Install range-fm"
-echo
-
-pip3 install --user -U ranger-fm
-
-echo 
 echo "Install dlv"
 echo 
 
@@ -35,8 +29,9 @@ go get -u github.com/shurcooL/goexec
 
 echo
 echo "Install vim-go plugins"
-nvim -c :GoInstallBinaries
 echo
+
+nvim -c :GoInstallBinaries
 
 echo
 echo "Done"

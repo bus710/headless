@@ -49,6 +49,7 @@ then
     sudo apt install -y \
         jq \
         fzf \
+        ranger \
         ripgrep
 
     echo
