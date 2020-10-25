@@ -58,6 +58,7 @@ then
         sudo ln -s /usr/bin/nvim.appimage /usr/bin/nv
     elif [[ "$CPU_TYPE" == "aarch64" ]]; then
         sudo apt install -y neovim
+        mkdir -p /home/$LOGNAME/.tools
     else
         exit
     fi
