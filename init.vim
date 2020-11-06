@@ -89,6 +89,7 @@ Plug 'dracula/vim'
 "Plug 'sickill/vim-monokai'
 "Plug 'ayu-theme/ayu-vim'
 "Plug 'vim-syntastic/syntastic' " This makes some delay on dart files
+Plug 'stephpy/vim-yaml'
 call plug#end()
 
 " ==========================================================
