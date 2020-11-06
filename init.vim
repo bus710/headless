@@ -19,6 +19,7 @@ endif
 " ==========================================================
 " Autocommand - these file types need tabstop 4 when being read.
 au BufRead,BufNewFile *.dart,*.md,*.go,*py,*pyw,*.c,*.h,*.js,*.html,*.css,*.kt set tabstop=4
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " ==========================================================
 " Options <interface>
