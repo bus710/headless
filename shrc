@@ -53,4 +53,4 @@ export PATH=$PATH:$HOME/flutter/.pub-cache/bin
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin
 
-
+export PATH=$HOME/.cargo/bin:$PATH
