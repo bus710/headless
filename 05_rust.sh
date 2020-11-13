@@ -25,7 +25,7 @@ echo
 
 # To start a new project
 # $ cd ~/repo
-# $ cargo new hello_world --bin
+# $ cargo new hello_world --bin --vcs none
 # $ cd hello_world
 # $ cargo build
 # $ cargo run
