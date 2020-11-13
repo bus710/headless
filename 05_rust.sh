@@ -23,4 +23,9 @@ echo
 echo "Done"
 echo
 
-
+# To start a new project
+# $ cd ~/repo
+# $ cargo new hello_world --bin
+# $ cd hello_world
+# $ cargo build
+# $ cargo run
