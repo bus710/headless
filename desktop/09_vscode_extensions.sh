@@ -32,6 +32,10 @@ then
         "liximomo.sftp"
         "redhat.vscode-yaml"
         "bungcip.better-toml"
+        "rust-lang.rust"
+        "matklad.rust-analyzer"
+        "vadimcn.vscode-lldb"
+        "serayuzgur.crates"
     )
 
     for e in ${extensions[@]}; do
