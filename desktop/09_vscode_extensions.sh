@@ -31,7 +31,7 @@ then
         "ms-vscode-remote.remote-ssh-edit"
         "liximomo.sftp"
         "redhat.vscode-yaml"
-        "bungcip.better-toml"
+        "be5invis.toml"
         "rust-lang.rust"
         "matklad.rust-analyzer"
         "vadimcn.vscode-lldb"
