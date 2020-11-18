@@ -7,19 +7,20 @@ then
 fi
 
 alias rw='cd ~/repo'
-alias tw='cd ~/repo/tmp'
 alias hw='cd ~/repo/headless'
 alias aw='cd ~/repo/headless/archlinux'
 alias kw='cd ~/repo/headless/desktop'
+alias dw='cd ~/repo/docs'
+
 alias ru='cd ~/repo/rustws'
 alias gw='cd ~/repo/gows'
 alias fw='cd ~/repo/fltws'
+alias pw='cd ~/repo/pyws'
+
+alias tw='cd ~/repo/tmp'
 alias bw='cd ~/repo/blog'
 alias cl='cd ~/repo/cloud'
-alias dw='cd ~/repo/docs'
-alias pw='cd ~/repo/pyws'
-alias ow='cd ~/repo/reactws'
-alias lw='cd ~/repo/leetcode-go'
+
 alias tp='cat /sys/class/thermal/thermal_zone0/temp'
 
 alias av1='avahi-resolve -n -4 rpi3.local'
