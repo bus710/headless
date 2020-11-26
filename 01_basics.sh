@@ -35,6 +35,7 @@ then
         tree \
         make \
         cmake \
+        iotop \
         unzip \
         sqlite3 \
         minicom \
