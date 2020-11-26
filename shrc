@@ -38,9 +38,8 @@ alias gprls="git ls-remote origin 'pull/*/head'"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
-
-
-export PATH=$PATH:$HOME/.tools #nvim
+export PATH=$HOME/.cargo/bin:$PATH # rust
+export PATH=$PATH:$HOME/.tools # nvim
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -54,4 +53,3 @@ export PATH=$PATH:$HOME/flutter/.pub-cache/bin
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin
 
-export PATH=$HOME/.cargo/bin:$PATH
