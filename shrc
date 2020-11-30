@@ -20,6 +20,7 @@ alias pw='cd ~/repo/pyws'
 alias tw='cd ~/repo/tmp'
 alias bw='cd ~/repo/blog'
 alias cl='cd ~/repo/cloud'
+alias lc='cd ~/repo/leetcode-go'
 
 alias tp='cat /sys/class/thermal/thermal_zone0/temp'
 
