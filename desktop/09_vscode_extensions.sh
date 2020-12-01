@@ -32,11 +32,13 @@ then
         "liximomo.sftp"
         "redhat.vscode-yaml"
         "be5invis.toml"
-        "rust-lang.rust"
-        "matklad.rust-analyzer"
-        "vadimcn.vscode-lldb"
-        "serayuzgur.crates"
+        "ms-vscode.cpptools"
     )
+    #"rust-lang.rust"
+    #"matklad.rust-analyzer"
+    #"vadimcn.vscode-lldb"
+    #"serayuzgur.crates"
+
 
     for e in ${extensions[@]}; do
         echo
