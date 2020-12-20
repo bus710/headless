@@ -13,7 +13,7 @@ else
     exit
 fi
 
-VERSION="go1.14.4.linux-$CPU_TARGET.tar.gz"
+VERSION="go1.15.6.linux-$CPU_TARGET.tar.gz"
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
