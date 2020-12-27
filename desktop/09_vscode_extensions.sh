@@ -33,12 +33,11 @@ then
         "redhat.vscode-yaml"
         "be5invis.toml"
         "ms-vscode.cpptools"
-        "rust-lang.rust"
         "matklad.rust-analyzer"
         "vadimcn.vscode-lldb"
         "serayuzgur.crates"
     )
-
+    #"rust-lang.rust"
 
     for e in ${extensions[@]}; do
         echo
