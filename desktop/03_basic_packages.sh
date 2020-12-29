@@ -21,9 +21,6 @@ sudo apt install -y \
 
 # For flutter 
 sudo apt install -y \
-    cmake \
-    clang \
-    ninja-build \
     libgtk-3-dev
 
 echo

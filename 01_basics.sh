@@ -34,7 +34,6 @@ then
         curl \
         tree \
         make \
-        cmake \
         iotop \
         unzip \
         sqlite3 \
