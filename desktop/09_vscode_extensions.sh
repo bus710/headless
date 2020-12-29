@@ -21,23 +21,22 @@ then
     extensions=(
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
+        "ms-vscode.cpptools"
+        "vadimcn.vscode-lldb"
         "golang.Go"
         "Dart-Code.dart-code" 
         "Dart-Code.flutter"
-        "ms-azuretools.vscode-docker"
-        "yzhang.markdown-all-in-one"
-        "yzane.markdown-pdf"
-        "ms-vscode-remote.remote-ssh"
-        "ms-vscode-remote.remote-ssh-edit"
-        "liximomo.sftp"
         "redhat.vscode-yaml"
         "be5invis.toml"
-        "ms-vscode.cpptools"
-        "matklad.rust-analyzer"
-        "vadimcn.vscode-lldb"
-        "serayuzgur.crates"
+        "ms-azuretools.vscode-docker"
+        "ms-vscode-remote.remote-ssh"
+        "ms-vscode-remote.remote-ssh-edit"
+        "yzhang.markdown-all-in-one"
+        "yzane.markdown-pdf"
+        "liximomo.sftp"
     )
-    #"rust-lang.rust"
+    # "matklad.rust-analyzer"
+    # "serayuzgur.crates"
 
     for e in ${extensions[@]}; do
         echo
