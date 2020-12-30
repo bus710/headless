@@ -23,6 +23,7 @@ then
         "dracula-theme.theme-dracula"
         "ms-vscode.cpptools"
         "vadimcn.vscode-lldb"
+        "llvm-vs-code-extensions.vscode-clangd"
         "golang.Go"
         "Dart-Code.dart-code" 
         "Dart-Code.flutter"
