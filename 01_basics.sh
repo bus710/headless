@@ -33,7 +33,6 @@ then
         tmux \
         curl \
         tree \
-        make \
         iotop \
         unzip \
         sqlite3 \
@@ -41,7 +40,6 @@ then
         keychain \
         neofetch \
         powerline \
-        build-essential \
         exuberant-ctags \
         bash-completion \
         command-not-found

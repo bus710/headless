@@ -9,8 +9,7 @@ fi
 
 echo
 echo -e "\e[91m"
-echo "This is for C programming with LLVM and Cmake."
-echo "For more information, please check https://apt.llvm.org/"
+echo "This is for C programming with GCC and Cmake."
 echo
 echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
@@ -27,16 +26,10 @@ then
     echo 
 
     sudo apt install -y \
-        clang \
-        clangd \
-        clang-tools \
-        clang-format \
-        lldb \
-        lld 
-
-    sudo apt install -y \
+        make \
         cmake \
-        ninja-build
+        ninja-build \
+        build-essential
 
     sudo apt install -y \
         kore
