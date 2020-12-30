@@ -45,6 +45,12 @@ then
         command-not-found
 
     sudo apt install -y \
+        make \
+        cmake \
+        ninja-build \
+        build-essential
+
+    sudo apt install -y \
         jq \
         fzf \
         ranger \

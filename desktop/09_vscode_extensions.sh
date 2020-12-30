@@ -22,8 +22,9 @@ then
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
         "ms-vscode.cpptools"
-        "ms-vscode.cmake-tools"
-        "surajbarkale.ninja"
+        "matklad.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
         "golang.Go"
         "Dart-Code.dart-code" 
         "Dart-Code.flutter"
@@ -36,9 +37,6 @@ then
         "yzane.markdown-pdf"
         "liximomo.sftp"
     )
-    # "matklad.rust-analyzer"
-    # "serayuzgur.crates"
-    # "vadimcn.vscode-lldb"
 
     for e in ${extensions[@]}; do
         echo
