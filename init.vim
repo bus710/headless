@@ -20,6 +20,7 @@ endif
 " Autocommand - these file types need tabstop 4 when being read.
 au BufRead,BufNewFile *.dart,*.md,*.go,*py,*pyw,*.c,*.h,*.js,*.html,*.css,*.kt set tabstop=4
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType c ClangFormatAutoEnable
 
 " ==========================================================
 " Options <interface>
@@ -31,9 +32,10 @@ set statusline=%{name} " see how to use variable
 " Options <tab size>
 set ts=4 
 set softtabstop=4
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set autoindent
+set cindent
 set smartindent
 
 " Options <encoding>
@@ -72,6 +74,10 @@ Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Linter
 Plug 'w0rp/ale'
+" Clang related
+Plug 'rip-rip/clang_complete'
+Plug 'rhysd/vim-clang-format'
+Plug 'vhdirk/vim-cmake'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim 
@@ -130,6 +136,9 @@ au Filetype go nmap gdt :DlvToggleBreakpoint<CR>
 
 " ==========================================================
 " Plug-in variables
+
+" Clang_complete - path to directory where library can be found
+let g:clang_library_path='/usr/lib/llvm-11/lib'
 " Don't do hot-reload for flutter when save.
 let g:flutter_hot_reload_on_save = 0
 let g:flutter_hot_restart_on_save = 0

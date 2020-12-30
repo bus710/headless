@@ -11,3 +11,8 @@ pubspec.lock
 sample_flutter/android/*
 sample_flutter/ios/*
 
+sample_c/build/*
+sample_c/CMakeFiles/*
+sample_c/CMakeCache.txt
+sample_c/cmake_install.cmake
+sample_c/Makefile

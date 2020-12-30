@@ -24,6 +24,7 @@ then
         "ms-vscode.cpptools"
         "vadimcn.vscode-lldb"
         "llvm-vs-code-extensions.vscode-clangd"
+        "ms-vscode.cmake-tools"
         "golang.Go"
         "Dart-Code.dart-code" 
         "Dart-Code.flutter"
