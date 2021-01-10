@@ -19,23 +19,30 @@ echo
 if [[ $ans == "y" ]]
 then 
     extensions=(
+        # Editor
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
+        # Go
         "golang.Go"
+        # Flutter
         "Dart-Code.dart-code" 
         "Dart-Code.flutter"
-        "redhat.vscode-yaml"
-        "be5invis.toml"
+        # remote/docker
         "ms-azuretools.vscode-docker"
         "ms-vscode-remote.remote-ssh"
         "ms-vscode-remote.remote-ssh-edit"
+        "liximomo.sftp"
+        # Config files
+        "redhat.vscode-yaml"
+        "be5invis.toml"
         "yzhang.markdown-all-in-one"
         "yzane.markdown-pdf"
-        "liximomo.sftp"
+        # Rust
+        "matklad.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
+        # Embedded
         #"ms-vscode.cpptools"
-        #"matklad.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb"
     )
 
     for e in ${extensions[@]}; do
