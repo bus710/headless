@@ -32,10 +32,10 @@ then
         "yzhang.markdown-all-in-one"
         "yzane.markdown-pdf"
         "liximomo.sftp"
-        "ms-vscode.cpptools"
-        "matklad.rust-analyzer"
-        "serayuzgur.crates"
-        "vadimcn.vscode-lldb"
+        #"ms-vscode.cpptools"
+        #"matklad.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb"
     )
 
     for e in ${extensions[@]}; do
