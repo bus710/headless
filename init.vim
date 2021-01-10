@@ -70,23 +70,16 @@ Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g
 " Snippet related
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" Code Complitor
+" COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Linter
 Plug 'w0rp/ale'
-" Clang related
-Plug 'rip-rip/clang_complete'
-Plug 'rhysd/vim-clang-format'
-Plug 'vhdirk/vim-cmake'
 " Go
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim 
 " Dart/Flutter
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'thosakwe/vim-flutter'
-" Rust
-Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 " Markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim'
@@ -138,7 +131,8 @@ au Filetype go nmap gdt :DlvToggleBreakpoint<CR>
 " Plug-in variables
 
 " Clang_complete - path to directory where library can be found
-let g:clang_library_path='/usr/lib/llvm-11/lib'
+" let g:clang_library_path='/usr/lib/llvm-11/lib'
+
 " Don't do hot-reload for flutter when save.
 let g:flutter_hot_reload_on_save = 0
 let g:flutter_hot_restart_on_save = 0
