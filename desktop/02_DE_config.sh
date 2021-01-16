@@ -71,6 +71,17 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "X-GNOME-Autostart-enabled=true" >> $PLANK_DESKTOP
     echo "Name=Plank" >> $PLANK_DESKTOP
 
+    # Enable Natural Scroll for Touchpad
+    SYNCLIENT_DESKTOP="/home/$LOGNAME/.config/autostart/synclient.desktop" 
+    if [[ ! -d ~/.config/autostart ]]; then
+      mkdir ~/.config/autostart -p
+    fi
+    rm -rf $SYNCLIENT_DESKTOP
+    echo "[Desktop Entry]" >> $SYNCLIENT_DESKTOP
+    echo "Type=Application" >> $SYNCLIENT_DESKTOP
+    echo "Name=synclient" >> $SYNCLIENT_DESKTOP
+    echo "Exec=/usr/bin/synclient VertScrollDelta=-27" >> $SYNCLIENT_DESKTOP
+    
     # Disable Caps lock
     sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
 
