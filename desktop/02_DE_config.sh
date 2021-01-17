@@ -100,6 +100,11 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # - how to use xfconf-query
 fi
 
+echo 
+echo "Change the time to stop services (90s => 5s)"
+echo
+sudo bash -c "sed -i '/#DefaultTimeoutStopSec=90s/c\DefaultTimeoutStopSec=5s' /etc/systemd/system.conf"
+
 echo
 echo "Done"
 echo
