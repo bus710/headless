@@ -6,7 +6,8 @@ then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 fi
 
-alias rw='cd ~/repo'
+alias re='cd ~/repo'
+alias rw='cd ~/repo-work'
 alias hw='cd ~/repo/headless'
 alias aw='cd ~/repo/headless/archlinux'
 alias kw='cd ~/repo/headless/desktop'
