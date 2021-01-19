@@ -41,7 +41,7 @@ else
   mkdir -p ~/repo-work
   touch ~/repo-work/.gitconfig
   echo "[user]" >> ~/repo-work/.gitconfig
-  echo "    name = skim" >> ~/repo-work/.gitconfig
+  echo "    name = Seongjun Kim" >> ~/repo-work/.gitconfig
   echo "    email = skim@egnyte.com" >> ~/repo-work/.gitconfig
 fi
 
