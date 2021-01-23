@@ -38,9 +38,9 @@ then
         "yzhang.markdown-all-in-one"
         "yzane.markdown-pdf"
         # Rust
-        #"matklad.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb"
+        "matklad.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
         # Embedded
         #"ms-vscode.cpptools"
     )
