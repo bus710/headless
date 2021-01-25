@@ -104,6 +104,14 @@ echo "Change the time to stop services (90s => 5s)"
 echo
 sudo bash -c "sed -i '/#DefaultTimeoutStopSec=90s/c\DefaultTimeoutStopSec=5s' /etc/systemd/system.conf"
 
+echo 
+echo "Disable Ubuntu error report"
+echo
+sudo bash -c "sed -i '/enabled=1/c\enabled=0' /etc/default/apport"
+
+
+
+
 echo
 echo "Done"
 echo
