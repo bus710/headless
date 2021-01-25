@@ -16,8 +16,7 @@ if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
     rm -rf Yaru-Colors
 
     # Terminal theme
-    sudo apt install -y \
-        dconf-cli
+    sudo apt install -y dconf-cli
     git clone https://github.com/GalaticStryder/gnome-terminal-colors-dracula
     cd gnome-terminal-colors-dracula
     ./install.sh
@@ -92,7 +91,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "4. Add icons to dock"
     echo
 
-    sudo apt remove libreoffice-common
+    sudo apt remove -y libreoffice-common
 
     # TODO:
     # - terminal font size? and hide menu?
