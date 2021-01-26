@@ -4,13 +4,6 @@ set -e
 
 git config remote.origin.url git@github.com:bus710/headless.git
 
-git config user.email "bus710@gmail.com"
-git config user.name "bus710"
-git config push.default simple
-git config pull.rebase false
-
-#git config --global user.email "bus710@gmail.com"
-#git config --global user.name "bus710"
 git config --global push.default simple
 git config --global core.editor /home/${LOGNAME}/.tools/nvim
 git config --global core.pager cat
@@ -31,6 +24,9 @@ else
   echo '[includeIf "gitdir:~/repo-work/"]' >> ~/.gitconfig
   echo "    path = ~/repo-work/.gitconfig" >> ~/.gitconfig
   echo "" >> ~/.gitconfig
+  echo '[url "ssh://git@git.egnyte-internal.com:"]'
+  echo "    insteadOf = https://git.egnyte-internal.com"
+  echo "" >> ~/.gitconfig
 
   # create files
   mkdir -p ~/repo
@@ -38,11 +34,12 @@ else
   echo "[user]" >> ~/repo/.gitconfig
   echo "    name = bus710" >> ~/repo/.gitconfig
   echo "    email = bus710@gmail.com" >> ~/repo/.gitconfig
+
   mkdir -p ~/repo-work
   touch ~/repo-work/.gitconfig
   echo "[user]" >> ~/repo-work/.gitconfig
-  echo "    name = Seongjun Kim" >> ~/repo-work/.gitconfig
-  echo "    email = skim@egnyte.com" >> ~/repo-work/.gitconfig
+  echo "    name = skim" >> ~/repo-work/.gitconfig
+  echo "    email = skim@git.egnyte-internal.com" >> ~/repo-work/.gitconfig
 fi
 
 # print
