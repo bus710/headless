@@ -20,6 +20,7 @@ endif
 " Autocommand - these file types need tabstop 4 when being read.
 au BufRead,BufNewFile *.dart,*.md,*.go,*py,*pyw,*.c,*.h,*.js,*.html,*.css,*.kt set tabstop=4
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType c ClangFormatAutoEnable
 
 " ==========================================================
@@ -32,7 +33,7 @@ set statusline=%{name} " see how to use variable
 " Options <tab size>
 set ts=4 
 set softtabstop=4
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 set autoindent
 set cindent
