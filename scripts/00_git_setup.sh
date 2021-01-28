@@ -4,10 +4,10 @@ set -e
 
 git config remote.origin.url git@github.com:bus710/headless.git
 
-git config --global push.default simple
 git config --global core.editor /home/${LOGNAME}/.tools/nvim
 git config --global core.pager cat
 git config --global pull.rebase false
+git config --global push.default simple
 
 # this turns off pager config that works like the less command
 git config --global pager.branch false 
