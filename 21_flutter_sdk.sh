@@ -3,8 +3,7 @@
 set -e
 
 URL="https://storage.googleapis.com/flutter_infra/releases/beta/linux/"
-VERSION="flutter_linux_1.21.0-9.2.pre-beta.tar.xz"
-
+VERSION="flutter_linux_1.25.0-8.3.pre-beta.tar.xz"
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as a normal user (w/o sudo)"
