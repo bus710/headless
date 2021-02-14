@@ -29,5 +29,12 @@ rm -rf ~/Templates
 rm -rf ~/Public
 
 echo
+echo "Remove some packages"
+echo
+
+sudo apt remove -y libreoffice-common
+sudo apt remove -y parole
+
+echo
 echo "Done"
 echo
