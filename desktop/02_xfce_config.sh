@@ -14,6 +14,23 @@ if [[ ! $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     exit
 
 elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
+    echo
+    echo "Home directory cleanup."
+    echo
+
+    rm -rf ~/Documents
+    rm -rf ~/Music
+    rm -rf ~/Videos
+    rm -rf ~/Templates
+    rm -rf ~/Public
+
+    echo
+    echo "Remove some packages"
+    echo
+
+    sudo apt remove -y libreoffice-common
+    sudo apt remove -y parole
+
     # WM theme
     rm -rf ~/.local/share/themes
     mkdir ~/.local/share/themes
@@ -82,8 +99,6 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo
 
     # TODO:
-    # - terminal font size? and hide menu?
-    # - no suspend?
     # - how to use xfconf-query
 fi
 
