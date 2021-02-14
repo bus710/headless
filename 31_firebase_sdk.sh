@@ -7,7 +7,7 @@ then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
-CPU_TYPE=$(uname -p)
+CPU_TYPE=$(uname -m)
 
 if [[ $CPU_TYPE != "x86_64" ]]; then
     echo

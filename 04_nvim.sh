@@ -42,7 +42,7 @@ then
     echo "Install neovim"
     echo
 
-    CPU_TYPE=$(uname -p)
+    CPU_TYPE=$(uname -m)
 
     if [[ "$CPU_TYPE" == "x86_64" ]]; then
         curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage

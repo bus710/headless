@@ -16,14 +16,13 @@ echo "Install"
 echo "- Vim-gnome"
 echo "- Gnome Tweak Tools"
 echo "- Simple Screen Recorder"
-echo "- Pinta"
 echo
 
 sudo apt install -y \
     solaar \
-    pinta \
     vim-gtk3 \
     simplescreenrecorder 
+    #pinta \
 
 if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
     sudo apt install -y \
@@ -48,4 +47,6 @@ echo "- https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhap
 echo "- https://extensions.gnome.org/extension/307/dash-to-dock/"
 echo "- https://extensions.gnome.org/extension/1765/transparent-topbar/"
 echo "- https://extensions.gnome.org/extension/2588/fully-transparent-top-bar/"
+echo 
+echo "Done"
 echo 

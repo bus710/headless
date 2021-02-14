@@ -16,8 +16,8 @@ sudo apt remove -y \
 
 sudo apt install -y \
     inxi \
-    gufw \
-    glmark2
+    gufw
+    #glmark2
 
 # For flutter 
 sudo apt install -y \

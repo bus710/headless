@@ -11,8 +11,7 @@ then echo "Please run as a normal user (w/o sudo)"
 fi
 
 
-
-CPU_TYPE=$(uname -p)
+CPU_TYPE=$(uname -m)
 
 if [[ $CPU_TYPE != "x86_64" ]]; then
     echo

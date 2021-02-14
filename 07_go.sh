@@ -2,7 +2,7 @@
 
 set -e
 
-CPU_TYPE=$(uname -p)
+CPU_TYPE=$(uname -m)
 CPU_TARGET=""
 
 if [[ $CPU_TYPE == "x86_64" ]]; then

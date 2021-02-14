@@ -11,9 +11,9 @@ echo
 echo "Install language packs and fonts"
 echo 
 
-sudo apt install -y \
-    language-pack-gnome-ko \
-    language-pack-gnome-en
+#sudo apt install -y \
+#    language-pack-gnome-ko \
+#    language-pack-gnome-en
 
 sudo apt install -y \
     fonts-nanum \
