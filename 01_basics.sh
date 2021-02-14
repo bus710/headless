@@ -90,7 +90,7 @@ then
     echo "Install for nodejs for nvim/coc"
     echo
 
-    sudo apt install -y nodejs
+    sudo apt install -y nodejs npm
 
     echo
     echo "Install for docker"
