@@ -87,6 +87,12 @@ then
         avahi-utils
 
     echo
+    echo "Install for nodejs for nvim/coc"
+    echo
+
+    sudo apt install -y nodejs
+
+    echo
     echo "Install for docker"
     echo
 
@@ -106,6 +112,7 @@ then
         echo
 
         sudo apt install -y lib32stdc++6
+
     elif [[ $CPU_TYPE == "aarch64" ]]; then
         echo
         echo "Install basics for RPi"
@@ -120,14 +127,14 @@ then
         sudo systemctl start bluetooth.service
         sudo usermod -aG bluetooth ubuntu
                     
-        echo
-        echo "Disable networkd wait"
-        echo
+        #echo
+        #echo "Disable networkd wait"
+        #echo
         # to check boot delay                  
         # systemd-analyze blame                
         # to eliminate boot delay              
-        sudo systemctl disable systemd-networkd-wait-online.service
-        sudo systemctl mask systemd-networkd-wait-online.service
+        #sudo systemctl disable systemd-networkd-wait-online.service
+        #sudo systemctl mask systemd-networkd-wait-online.service
     fi
 
     echo
@@ -162,7 +169,7 @@ then
     echo
     # sudo sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
     sudo bash -c "sed -i '/#Port 22/c\Port 2222' /etc/ssh/sshd_config"
-    # Also, "UseDNS no" should be uncommented if sshd is too slow
+    # Also, "UseDNS no" can be uncommented if sshd is too slow
 
     echo -e "\e[91m"
     echo "1. SSH port number is changed"
@@ -170,4 +177,7 @@ then
     echo "3. Check your .tmux.conf"
     echo "4. Try neofetch --ascii_distro Kubuntu|Xubuntu|Lubuntu"
     echo -e "\e[39m"
+    echo
+    echo "Done"
+    echo
 fi

@@ -8,6 +8,17 @@ then echo "Please run as normal user (w/o sudo)"
 fi
 
 echo
+echo "Install XFCE4"
+echo
+
+sudo apt install -y \
+    task-xfce-desktop \
+    xfce4-goodies \
+    xserver-xorg-input-synaptics
+
+sudo systemctl enable lightdm
+
+echo
 echo "Home directory cleanup."
 echo
 

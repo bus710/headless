@@ -27,43 +27,22 @@ then
     echo "Ask password for apt commands to install/remove things"
     echo 
 
-    sudo apt remove -y neovim
+    sudo apt install -y neovim
     sudo apt install -y fuse libfuse2 ack-grep 
     sudo apt install -y python3-pip
 
     echo 
-    echo "Clean up existing"
+    echo "Clean up existing configuration"
     echo 
 
-    rm -rf /home/$LOGNAME/.tools/nvim /home/$LOGNAME/.tools/nvim.appimage
     rm -rf /home/$LOGNAME/.config/nvim/*
+    mkdir -p /home/$LOGNAME/.tools
 
     echo 
-    echo "Install neovim"
+    echo "Create a symlink"
     echo
 
-    CPU_TYPE=$(uname -m)
-
-    if [[ "$CPU_TYPE" == "x86_64" ]]; then
-        curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
-        chown $LOGNAME:$LOGNAME nvim.appimage
-        chmod u+x nvim.appimage
-        mkdir -p /home/$LOGNAME/.tools
-        mv nvim.appimage /home/$LOGNAME/.tools/nvim.appimage
-        ln -s /home/$LOGNAME/.tools/nvim.appimage /home/$LOGNAME/.tools/nvim 
-        sudo cp /home/$LOGNAME/.tools/nvim.appimage /usr/bin/nvim.appimage
-        sudo rm -rf /usr/bin/nvim
-        sudo rm -rf /usr/bin/nv
-        sudo ln -s /usr/bin/nvim.appimage /usr/bin/nvim
-        sudo ln -s /usr/bin/nvim.appimage /usr/bin/nv
-    elif [[ "$CPU_TYPE" == "aarch64" ]]; then
-        sudo apt install -y neovim
-        sudo rm -rf /usr/nin/nv
-        sudo ln -s /usr/bin/nvim /usr/bin/nv
-        mkdir -p /home/$LOGNAME/.tools
-    else
-        exit
-    fi
+    sudo ln -s /usr/bin/nvim /usr/bin/nv
 
     echo 
     echo "Install nvim dependencies"
@@ -89,9 +68,9 @@ then
     cp init.vim /home/$LOGNAME/.config/nvim/init.vim
     cp ./coc-settings.json /home/$LOGNAME/.config/nvim/coc-settings.json
 
-    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.config -R
-    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.local -R
-    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tools -R
+    chown -R $LOGNAME:$LOGNAME /home/$LOGNAME/.config
+    chown -R $LOGNAME:$LOGNAME /home/$LOGNAME/.local 
+    chown -R $LOGNAME:$LOGNAME /home/$LOGNAME/.tools 
 
     nvim -v
 

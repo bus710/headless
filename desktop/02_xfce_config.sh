@@ -7,21 +7,11 @@ then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
-if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
-    # WM theme
-    git clone https://github.com/Jannomag/Yaru-Colors
-    cd Yaru-Colors
-    ./install.sh
-    cd ..
-    rm -rf Yaru-Colors
-
-    # Terminal theme
-    sudo apt install -y dconf-cli
-    git clone https://github.com/GalaticStryder/gnome-terminal-colors-dracula
-    cd gnome-terminal-colors-dracula
-    ./install.sh
-    cd ..
-    rm -rf gnome-terminal-colors-dracula*
+if [[ ! $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
+    echo
+    echo "Not XFCE."
+    echo
+    exit
 
 elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     # WM theme
@@ -104,14 +94,6 @@ echo
 echo "Change the time to stop services (90s => 5s)"
 echo
 sudo bash -c "sed -i '/#DefaultTimeoutStopSec=90s/c\DefaultTimeoutStopSec=5s' /etc/systemd/system.conf"
-
-echo 
-echo "Disable Ubuntu error report"
-echo
-sudo bash -c "sed -i '/enabled=1/c\enabled=0' /etc/default/apport"
-
-
-
 
 echo
 echo "Done"

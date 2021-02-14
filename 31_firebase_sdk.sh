@@ -32,3 +32,5 @@ echo
 echo "Check the detail:"
 echo "- https://github.com/firebase/firebase-tools"
 echo
+echo "Done"
+echo

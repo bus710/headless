@@ -42,4 +42,6 @@ then
     echo "Docker daemon is enabled/started"
     echo "(reboot to take effect)"
     echo
+    echo "Done"
+    echo
 fi

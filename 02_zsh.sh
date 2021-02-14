@@ -83,5 +83,9 @@ then
     echo "Please reboot and run 'p10k prompt'"
     echo "(For cloud platforms, edit /etc/pam.d/chsh - required to sufficient)"
     echo -e "\e[39m"
+
+    echo
+    echo "Done"
+    echo
 fi
 

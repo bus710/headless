@@ -35,18 +35,16 @@ echo
 echo "Install Chrome Browser"
 echo 
 
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-sudo apt update 
-sudo apt install -y google-chrome-stable
-sudo rm -rf /etc/apt/sources.list.d/google-chrome.list
+#wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+#sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+#sudo apt update 
+#sudo apt install -y google-chrome-stable
+#sudo rm -rf /etc/apt/sources.list.d/google-chrome.list
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt install ./google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
 
 echo
-echo "Gnome Extensions:"
-echo "- https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep?hl=en"
-echo "- https://extensions.gnome.org/extension/307/dash-to-dock/"
-echo "- https://extensions.gnome.org/extension/1765/transparent-topbar/"
-echo "- https://extensions.gnome.org/extension/2588/fully-transparent-top-bar/"
-echo 
 echo "Done"
 echo 

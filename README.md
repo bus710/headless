@@ -1,11 +1,10 @@
 # Headless
 
-To install tools on Ubuntu 20.04 (and onward):
+To install tools on Debian Buster (or newer):
 - Global git config
 - Basic packages 
 - Zsh 
-- NodeJS
-- Nvim (+vim-plug)
+- Nvim (+ vim-plug)
 - Go
 - Docker
 - Firebase

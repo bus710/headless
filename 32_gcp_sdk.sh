@@ -60,5 +60,6 @@ echo
 echo "Check the detail:"
 echo "- https://cloud.google.com/sdk/docs/downloads-apt-get"
 echo
-
+echo "Done"
+echo
 

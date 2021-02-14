@@ -43,4 +43,6 @@ then
     sdkmanager --licenses
 
     echo
+    echo "Done"
+    echo
 fi

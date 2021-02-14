@@ -109,4 +109,6 @@ then
     echo
     echo "Please source ~/.shrc"
     echo
+    echo "Done"
+    echo
 fi
