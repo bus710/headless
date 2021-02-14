@@ -162,7 +162,7 @@ then
     echo "Disable Capslock"
     echo
 
-    sudo echo "XKBOPTIONS=ctrl:nocaps" >> /etc/default/keyboard
+    sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
     setupcon -k
 
     echo
