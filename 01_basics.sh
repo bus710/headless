@@ -104,7 +104,7 @@ then
         software-properties-common
 
     # RPi related
-    CPU_TYPE=$(uname -p)
+    CPU_TYPE=$(uname -m)
 
     if [[ $CPU_TYPE == "x86_64" ]]; then
         echo
@@ -159,6 +159,13 @@ then
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tmux.conf
 
     echo
+    echo "Disable Capslock"
+    echo
+
+    sudo echo "XKBOPTIONS=ctrl:nocaps" >> /etc/default/keyboard
+    setupcon -k
+
+    echo
     echo "Cleanup"
     echo 
 
@@ -175,7 +182,8 @@ then
     echo "1. SSH port number is changed"
     echo "2. Source your .bashrc (source ~/.bashrc)"
     echo "3. Check your .tmux.conf"
-    echo "4. Try neofetch --ascii_distro Kubuntu|Xubuntu|Lubuntu"
+    echo "4. Capslock is disabled"
+    echo "5. Try neofetch --ascii_distro Kubuntu|Xubuntu|Lubuntu"
     echo -e "\e[39m"
     echo
     echo "Done"
