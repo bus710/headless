@@ -42,6 +42,7 @@ then
     echo "Create a symlink"
     echo
 
+    sudo rm -rf /usr/bin/nv
     sudo ln -s /usr/bin/nvim /usr/bin/nv
 
     echo 
