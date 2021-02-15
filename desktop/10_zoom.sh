@@ -10,9 +10,9 @@ fi
 SLACK_VER="slack-desktop-4.12.2-amd64.deb"
 ZOOM_VER="zoom_amd64.deb"
 
-wget https://downloads.slack-edge.com/linux_releases/$SLACK_VER
-sudo dpkg -i $SLACK_VER
-rm -rf $SLACK_VER
+#wget https://downloads.slack-edge.com/linux_releases/$SLACK_VER
+#sudo dpkg -i $SLACK_VER
+#rm -rf $SLACK_VER
 
 wget https://zoom.us/client/latest/$ZOOM_VER
 sudo dpkg -i $ZOOM_VER
