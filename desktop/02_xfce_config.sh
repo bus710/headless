@@ -62,6 +62,20 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     cd ..
     rm -rf Qogir-icon-theme 
 
+    echo
+    echo "Create a shortcut for xfce4 appfinder"
+    echo
+
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>q" \
+        --create --type string --set xfce4-appfinder
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --list -v | grep -i appfinder
+
+    echo
+    echo "Install Plank"
+    echo
+
     # Dock (^+RMB for preference)
     sudo apt install -y plank
     PLANK_DESKTOP="/home/$LOGNAME/.config/autostart/plank.desktop"
