@@ -17,6 +17,7 @@ sudo apt remove -y \
 # Install some packages
 
 sudo apt install -y \
+    scrcpy \
     inxi \
     gufw \
     mpv
