@@ -14,7 +14,15 @@ ZOOM_VER="zoom_amd64.deb"
 #sudo dpkg -i $SLACK_VER
 #rm -rf $SLACK_VER
 
+sudo apt install -y \
+    libgl1-mesa-glx \
+    libegl1-mesa \
+    libxcb-xtest0
+
 wget https://zoom.us/client/latest/$ZOOM_VER
 sudo dpkg -i $ZOOM_VER
 rm -rf $ZOOM_VER
 
+echo
+echo "Done"
+echo
