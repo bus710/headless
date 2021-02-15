@@ -7,16 +7,19 @@ then echo "Please run as normal user (w/o sudo)"
   exit
 fi
 
-# Removing some heavy applications.
+# Remove some packages.
 sudo apt remove -y \
     firefox 
 
 sudo apt remove -y \
     thunderbird
 
+# Install some packages
+
 sudo apt install -y \
     inxi \
-    gufw
+    gufw \
+    mpv
     #glmark2
 
 # For flutter 
