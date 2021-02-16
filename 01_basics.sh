@@ -103,7 +103,20 @@ then
         ca-certificates \
         software-properties-common
 
-    # RPi related
+    echo
+    echo "Bluetooth"
+    echo
+
+    sudo apt install -y \
+        bluez \
+        bluetooth \
+        bluez-tools
+
+    sudo systemctl enable bluetooth.service
+    sudo systemctl start bluetooth.service
+    sudo usermod -aG bluetooth $USER
+ 
+    # Depends on the architecture 
     CPU_TYPE=$(uname -m)
 
     if [[ $CPU_TYPE == "x86_64" ]]; then
@@ -114,19 +127,7 @@ then
         sudo apt install -y lib32stdc++6
 
     elif [[ $CPU_TYPE == "aarch64" ]]; then
-        echo
-        echo "Install basics for RPi"
-        echo
-
-        sudo apt install -y \
-            bluez \
-            bluetooth \
-            bluez-tools \
-            pi-bluetooth
-        sudo systemctl enable bluetooth.service
-        sudo systemctl start bluetooth.service
-        sudo usermod -aG bluetooth ubuntu
-                    
+                   
         #echo
         #echo "Disable networkd wait"
         #echo
