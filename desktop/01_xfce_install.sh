@@ -17,7 +17,12 @@ sudo apt install -y \
     lightdm-gtk-greeter-settings \
     xserver-xorg-input-synaptics
 
+sudo apt install -y \
+    pulseaudio-module-bluetooth \
+    blueman
+
 sudo systemctl enable lightdm
+sudo systemctl enable bluetooth
 
 echo
 echo "Done"
