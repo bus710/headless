@@ -10,7 +10,7 @@ touch ~/.gitconfig
 
 git config remote.origin.url git@github.com:bus710/headless.git
 
-git config --global core.editor /home/${LOGNAME}/.tools/nvim
+git config --global core.editor /usr/bin/nvim
 git config --global core.pager cat
 git config --global pull.rebase false
 git config --global push.default simple
