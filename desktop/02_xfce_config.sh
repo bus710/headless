@@ -106,7 +106,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
 
     echo 
-    echo "1. Enable Gnome Keyring services"
+    echo "1. Enable Gnome Keyring services in the Advanced tab"
     echo "2. Change wm theme, color theme, icon, font size"
     echo "3. Change language and power config"
     echo "4. Change terminal preference"
