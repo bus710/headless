@@ -18,6 +18,7 @@ sudo apt remove -y \
 
 sudo apt install -y \
     scrcpy \
+    sshfs \
     inxi \
     gufw \
     mpv
