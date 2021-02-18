@@ -40,6 +40,7 @@ then
         keychain \
         neofetch \
         powerline \
+        lm-sensors \
         exuberant-ctags \
         bash-completion \
         command-not-found
@@ -128,13 +129,10 @@ then
 
     elif [[ $CPU_TYPE == "aarch64" ]]; then
         echo
-        #echo "Disable networkd wait"
-        #echo
-        # to check boot delay                  
-        # systemd-analyze blame                
-        # to eliminate boot delay              
-        #sudo systemctl disable systemd-networkd-wait-online.service
-        #sudo systemctl mask systemd-networkd-wait-online.service
+        echo "Install pi-bluetooth"
+        echo
+
+        sudo apt install -y pi-bluetooth
     fi
 
     echo
