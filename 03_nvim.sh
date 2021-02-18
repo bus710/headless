@@ -58,7 +58,7 @@ then
     sudo npm install -g neovim
 
     echo 
-    echo "Copy the config files and run the post processor"
+    echo "Copy the config files and run the post process"
     echo 
 
     mkdir -p /home/$LOGNAME/.config/nvim
