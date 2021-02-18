@@ -127,8 +127,7 @@ then
         sudo apt install -y lib32stdc++6
 
     elif [[ $CPU_TYPE == "aarch64" ]]; then
-                   
-        #echo
+        echo
         #echo "Disable networkd wait"
         #echo
         # to check boot delay                  
