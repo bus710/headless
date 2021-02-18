@@ -183,7 +183,7 @@ then
     echo "2. Source your .bashrc (source ~/.bashrc)"
     echo "3. Check your .tmux.conf"
     echo "4. Capslock is disabled"
-    echo "5. Try neofetch --ascii_distro Kubuntu|Xubuntu|Lubuntu"
+    echo "5. Try neofetch"
     echo -e "\e[39m"
     echo
     echo "Done"
