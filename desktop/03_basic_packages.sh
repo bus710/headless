@@ -26,7 +26,9 @@ sudo apt install -y \
 
 # For flutter 
 sudo apt install -y \
-    libgtk-3-dev
+    libgtk-3-dev \
+    mtp-tools \
+    jmtpfs
 
 echo
 echo "Done"
