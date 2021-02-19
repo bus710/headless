@@ -33,8 +33,10 @@ then
         tmux \
         curl \
         tree \
+        udev \
         iotop \
         unzip \
+        autofs \
         sqlite3 \
         minicom \
         keychain \
