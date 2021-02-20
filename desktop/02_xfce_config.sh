@@ -47,13 +47,9 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     gsettings set org.gnome.desktop.interface gtk-theme "Ant-Dracula-Blue"
 
     # Terminal
-    #rm -rf ~/.local/share/xfce4/terminal/colorschemes
-    #mkdir -p ~/.local/share/xfce4/terminal/colorschemes
-    #git clone https://github.com/kuangyujing/dracula-xfce4-terminal
-    #cd dracula-xfce4-terminal
-    #cp Dracula.theme ~/.local/share/xfce4/terminal/colorschemes/
-    #cd ..
-    #rm -rf dracula-xfce4-terminal
+    rm -rf ~/.local/share/xfce4/terminal/colorschemes
+    mkdir -p ~/.local/share/xfce4/terminal/colorschemes
+    cp ./Dracula.theme ~/.local/share/xfce4/terminal/colorschemes/
 
     # Icons
     git clone https://github.com/vinceliuice/Qogir-icon-theme
