@@ -28,6 +28,12 @@ echo
 go get -u github.com/shurcooL/goexec
 
 echo
+echo "Install wasmserve"
+echo
+
+go get -u github.com/hajimehoshi/wasmserve
+
+echo
 echo "Install vim-go plugins"
 echo
 
