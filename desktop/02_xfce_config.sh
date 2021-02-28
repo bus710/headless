@@ -73,19 +73,19 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo
 
     # Dock (^+RMB for preference)
-    sudo apt install -y plank
-    PLANK_DESKTOP="/home/$LOGNAME/.config/autostart/plank.desktop"
-    if [[ ! -d ~/.config/autostart ]]; then
-        mkdir ~/.config/autostart -p                  
-    fi                                                
-    rm -rf $PLANK_DESKTOP
-    echo "[Desktop Entry]" >> $PLANK_DESKTOP
-    echo "Type=Application" >> $PLANK_DESKTOP
-    echo "Exec=plank" >> $PLANK_DESKTOP
-    echo "Hidden=false" >> $PLANK_DESKTOP
-    echo "NoDisplay=false" >> $PLANK_DESKTOP
-    echo "X-GNOME-Autostart-enabled=true" >> $PLANK_DESKTOP
-    echo "Name=Plank" >> $PLANK_DESKTOP
+    #sudo apt install -y plank
+    #PLANK_DESKTOP="/home/$LOGNAME/.config/autostart/plank.desktop"
+    #if [[ ! -d ~/.config/autostart ]]; then
+    #    mkdir ~/.config/autostart -p                  
+    #fi                                                
+    #rm -rf $PLANK_DESKTOP
+    #echo "[Desktop Entry]" >> $PLANK_DESKTOP
+    #echo "Type=Application" >> $PLANK_DESKTOP
+    #echo "Exec=plank" >> $PLANK_DESKTOP
+    #echo "Hidden=false" >> $PLANK_DESKTOP
+    #echo "NoDisplay=false" >> $PLANK_DESKTOP
+    #echo "X-GNOME-Autostart-enabled=true" >> $PLANK_DESKTOP
+    #echo "Name=Plank" >> $PLANK_DESKTOP
 
     # Enable Natural Scroll for Touchpad
     SYNCLIENT_DESKTOP="/home/$LOGNAME/.config/autostart/synclient.desktop" 
