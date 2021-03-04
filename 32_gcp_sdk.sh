@@ -39,16 +39,13 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
     sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
 echo
-echo "Install GCP SDK"
+echo "Install GCP SDK, App engine, Kubectl"
 echo
 
-sudo apt update && sudo apt install -y google-cloud-sdk
-
-echo
-echo "Install App Engine - Go"
-echo
-
-sudo apt install -y google-cloud-sdk-app-engine-go
+sudo apt update && sudo apt install -y \
+    google-cloud-sdk \
+    google-cloud-sdk-app-engine-go \
+    kubectl
 
 echo 
 echo "Init"
