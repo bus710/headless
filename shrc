@@ -34,7 +34,7 @@ alias disk620='sshfs bus710@disk620:/ ~/disk620'
 alias nv='nvim'
 alias rr='ranger'
 alias ll='ls -la'
-alias gp='git pull'
+alias gp='git pull origin HEAD'
 alias gf='git fetch --dry-run -v'
 alias gprls="git ls-remote origin 'pull/*/head'"
 # TODO: make this "git pull origin pull/1/head" as function
