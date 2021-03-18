@@ -15,14 +15,22 @@ sudo apt remove -y \
     thunderbird
 
 # Install some packages
-
 sudo apt install -y \
-    scrcpy \
     sshfs \
     inxi \
     gufw \
     mpv
     #glmark2
+
+# Install scrcpy
+# To access Android wirelessly:
+# - connect a target and enable USB debugging
+# - run "adb tcpip 5555"
+# - run "adb connect $DEVICE_IP:5555
+# - disconnect the target
+# - run "scrcpy -b2M -m800"
+sudo apt install -y \
+    scrcpy
 
 # For flutter 
 sudo apt install -y \
