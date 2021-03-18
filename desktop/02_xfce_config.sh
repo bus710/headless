@@ -62,11 +62,25 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "Create a shortcut for xfce4 appfinder"
     echo
 
+
+    # Set Super + q to open appfinder
     xfconf-query --channel xfce4-keyboard-shortcuts \
         --property "/commands/custom/<Super>q" \
         --create --type string --set xfce4-appfinder
+    # Set Super + Left to tile window to left
     xfconf-query --channel xfce4-keyboard-shortcuts \
-        --list -v | grep -i appfinder
+         --property "/commands/custom/<Super>Left" \
+         --create --type string --set tile_left_key
+    # Set Super + Right to tile window to right
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+         --property "/commands/custom/<Super>Right" \
+         --create --type string --set tile_right_key
+    # Set Super + d to to show desktop
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+         --property "/commands/custom/<Super>d" \
+         --create --type string --set show_desktop_key
+    # To confirm
+    xfconf-query --channel xfce4-keyboard-shortcuts --list -v | grep -i appfiner
 
     echo
     echo "Install Plank"
