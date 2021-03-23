@@ -38,6 +38,7 @@ alias gp='git pull origin HEAD'
 alias gf='git fetch --dry-run -v'
 alias gprls="git ls-remote origin 'pull/*/head'"
 # TODO: make this "git pull origin pull/1/head" as function
+alias go-export="export GOPROXY=direct; export GOSUMDB=off; export GO111MODULE=on"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
