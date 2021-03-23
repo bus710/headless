@@ -34,6 +34,7 @@ touch ~/repo-work/.gitconfig
 echo "[user]" >> ~/repo-work/.gitconfig
 echo "    name = skim" >> ~/repo-work/.gitconfig
 echo "    email = skim@egnyte.com" >> ~/repo-work/.gitconfig
+#echo "    email = skim@git.egnyte-internal.com" >> ~/repo-work/.gitconfig
 
 # print
 
