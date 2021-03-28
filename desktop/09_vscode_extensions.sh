@@ -19,6 +19,8 @@ echo
 if [[ $ans == "y" ]]
 then 
     extensions=(
+        # Git
+        "ext install eamodio.gitlens"
         # Editor
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
