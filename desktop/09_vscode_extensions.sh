@@ -20,7 +20,7 @@ if [[ $ans == "y" ]]
 then 
     extensions=(
         # Git
-        "ext install eamodio.gitlens"
+        "eamodio.gitlens"
         # Editor
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
@@ -61,3 +61,15 @@ then
 fi
 
 echo
+
+# {
+#     "workbench.startupEditor": "newUntitledFile",
+#     "workbench.sideBar.location": "right",
+#     "workbench.colorTheme": "Dracula",
+#     "editor.fontSize": 16,
+#     "editor.minimap.enabled": false,
+#     "git.enableSmartCommit": true,
+#     "git.autofetch": true,
+#     "go.toolsManagement.autoUpdate": true,
+#     "terminal.integrated.fontSize": 16
+# }
