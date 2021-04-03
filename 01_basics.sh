@@ -56,6 +56,7 @@ then
     sudo apt install -y \
         jq \
         fzf \
+        ncdu \
         ranger \
         ripgrep
 
