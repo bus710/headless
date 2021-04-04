@@ -19,7 +19,8 @@ sudo apt install -y \
 
 sudo apt install -y \
     pulseaudio-module-bluetooth \
-    blueman
+    blueman \
+    firmware-sof-signed
 
 sudo systemctl enable lightdm
 sudo systemctl enable bluetooth
