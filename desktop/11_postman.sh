@@ -12,10 +12,11 @@ sudo echo "" # to get sudo power
 POSTMAN_VER="postman_latest.tar.gz"
 
 # Download and untar 
+sudo rm -rf /usr/share/Postman
 cd /usr/share
-wget https://dl.pstmn.io/download/latest/linux64 -O $POSTMAN_VER
-tar xvf $POSTMAN_VER
-rm -rf $POSTMAN_VER
+sudo wget https://dl.pstmn.io/download/latest/linux64 -O $POSTMAN_VER
+sudo tar xvf $POSTMAN_VER
+sudo rm -rf $POSTMAN_VER
 
 # Register 
 cd /usr/bin
