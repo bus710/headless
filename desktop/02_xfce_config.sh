@@ -68,23 +68,34 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
         --property "/commands/custom/<Super>q" \
         --create --type string --set xfce4-appfinder
 
+    # Set Super + q to open terminal
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>w" \
+        --create --type string --set xfce4-terminal
+
     # Set Super + d to to show desktop
     xfconf-query --channel xfce4-keyboard-shortcuts \
-        --property "/commands/custom/<Super>d" \
+        --property "/xfwm4/custom/<Super>d" --reset
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/xfwm4/custom/<Super>d" \
         --create --type string --set show_desktop_key
 
     # Set Super + Left to tile window to left
     xfconf-query --channel xfce4-keyboard-shortcuts \
-        --property "/commands/custom/<Super>Left" \
+        --property "/xfwm4/custom/<Super>Left" --reset
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/xfwm4/custom/<Super>Left" \
         --create --type string --set tile_left_key
 
     # Set Super + Right to tile window to right
     xfconf-query --channel xfce4-keyboard-shortcuts \
-        --property "/commands/custom/<Super>Right" \
+        --property "/xfwm4/custom/<Super>Right" --reset
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/xfwm4/custom/<Super>Right" \
         --create --type string --set tile_right_key
     
     # To confirm
-    xfconf-query --channel xfce4-keyboard-shortcuts -lv | grep -i appfinder
+    xfconf-query --channel xfce4-keyboard-shortcuts -lv 
 
     echo
     echo "Install Plank"
