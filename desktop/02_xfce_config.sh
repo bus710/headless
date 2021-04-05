@@ -67,27 +67,22 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     xfconf-query --channel xfce4-keyboard-shortcuts \
         --property "/commands/custom/<Super>q" \
         --create --type string --set xfce4-appfinder
-    # Set Super + Left to tile window to left
-    xfconf-query --channel xfce4-keyboard-shortcuts \
-         --property "/commands/custom/<Super>Left" \
-         --reset --type string --set tile_left_key
-    xfconf-query --channel xfce4-keyboard-shortcuts \
-         --property "/commands/custom/<Super>Left" \
-         --create --type string --set tile_left_key
-    # Set Super + Right to tile window to right
-    xfconf-query --channel xfce4-keyboard-shortcuts \
-         --property "/commands/custom/<Super>Right" \
-         --reset --type string --set tile_right_key
-    xfconf-query --channel xfce4-keyboard-shortcuts \
-         --property "/commands/custom/<Super>Right" \
-         --create --type string --set tile_right_key
+
     # Set Super + d to to show desktop
     xfconf-query --channel xfce4-keyboard-shortcuts \
-         --property "/commands/custom/<Super>d" \
-         --reset --type string --set show_desktop_key
+        --property "/commands/custom/<Super>d" \
+        --create --type string --set show_desktop_key
+
+    # Set Super + Left to tile window to left
     xfconf-query --channel xfce4-keyboard-shortcuts \
-         --property "/commands/custom/<Super>d" \
-         --create --type string --set show_desktop_key
+        --property "/commands/custom/<Super>Left" \
+        --create --type string --set tile_left_key
+
+    # Set Super + Right to tile window to right
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>Right" \
+        --create --type string --set tile_right_key
+    
     # To confirm
     xfconf-query --channel xfce4-keyboard-shortcuts -lv | grep -i appfinder
 
