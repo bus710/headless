@@ -32,6 +32,7 @@ then
         htop \
         tmux \
         curl \
+        http \
         tree \
         udev \
         iotop \
