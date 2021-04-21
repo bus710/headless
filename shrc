@@ -34,10 +34,13 @@ alias disk620='sshfs bus710@disk620:/ ~/disk620'
 alias nv='nvim'
 alias rr='ranger'
 alias ll='ls -la'
+
 alias gp='git pull origin HEAD'
 alias gf='git fetch --dry-run -v'
 alias gprls="git ls-remote origin 'pull/*/head'"
+alias git-log-color-less="git log --oneline --color=always | less"
 # TODO: make this "git pull origin pull/1/head" as function
+
 alias go-export="export GOPROXY=direct; export GOSUMDB=off; export GO111MODULE=on"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
