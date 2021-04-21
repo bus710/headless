@@ -128,7 +128,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "[Desktop Entry]" >> $SYNCLIENT_DESKTOP
     echo "Type=Application" >> $SYNCLIENT_DESKTOP
     echo "Name=synclient" >> $SYNCLIENT_DESKTOP
-    echo "Exec=/usr/bin/synclient VertScrollDelta=-27" >> $SYNCLIENT_DESKTOP
+    echo "Exec=/usr/bin/synclient VertScrollDelta=-56" >> $SYNCLIENT_DESKTOP
     
     # Disable Caps lock
     sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
