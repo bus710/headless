@@ -22,6 +22,15 @@ rustup update
 rustup component add rustfmt clippy rls rust-analysis rust-src
 
 echo
+echo "Some cargo tools"
+echo
+
+cargo install cargo-watch
+cargo install cargo-edit
+cargo install cargo-deb
+cargo install cargo-outdated
+
+echo
 echo "Additional packages for OpenCV"
 echo
 
