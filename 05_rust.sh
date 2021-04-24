@@ -29,6 +29,7 @@ cargo install cargo-watch
 cargo install cargo-edit
 cargo install cargo-deb
 cargo install cargo-outdated
+# https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands
 
 echo
 echo "Additional packages for OpenCV"
