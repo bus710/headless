@@ -9,7 +9,8 @@ fi
 
 # Remove some packages.
 sudo apt remove -y \
-    firefox 
+    firefox \
+    firefox-esr
 
 sudo apt remove -y \
     thunderbird
