@@ -32,7 +32,6 @@ then
         htop \
         tmux \
         curl \
-        http \
         tree \
         udev \
         iotop \
@@ -47,6 +46,7 @@ then
         exuberant-ctags \
         bash-completion \
         command-not-found
+#http \ #ubuntu 21.04 doesn't have it
 
     sudo apt install -y \
         make \
