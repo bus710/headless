@@ -26,7 +26,6 @@ echo "Some cargo tools"
 echo
 
 cargo install cargo-watch
-cargo install cargo-edit
 cargo install cargo-deb
 cargo install cargo-outdated
 # https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands
