@@ -19,7 +19,7 @@ echo
 echo "Install basic tools, dlv, goexec, wasmserve, swaggo"
 echo 
 
-go get -u golang.org/x/tools/...
+#go get -u golang.org/x/tools/...
 go get -u github.com/go-delve/delve/cmd/dlv
 go get -u github.com/shurcooL/goexec
 go get -u github.com/hajimehoshi/wasmserve
