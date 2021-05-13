@@ -91,6 +91,9 @@ Plug 'dracula/vim'
 "Plug 'ayu-theme/ayu-vim'
 "Plug 'vim-syntastic/syntastic' " This makes some delay on dart files
 Plug 'stephpy/vim-yaml'
+" Elixir
+Plug 'elixir-editors/vim-elixir'
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 call plug#end()
 
 " ==========================================================
