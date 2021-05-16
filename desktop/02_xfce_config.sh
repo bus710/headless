@@ -64,15 +64,30 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
 
     # This is for shortcuts of apps 
 
+    # Set Super + s to open settings manager
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>s" \
+        --create --type string --set xfce4-settings-manager 
+
     # Set Super + q to open appfinder
     xfconf-query --channel xfce4-keyboard-shortcuts \
         --property "/commands/custom/<Super>q" \
         --create --type string --set xfce4-appfinder
 
-    # Set Super + q to open terminal
+    # Set Super + w to open terminal
     xfconf-query --channel xfce4-keyboard-shortcuts \
         --property "/commands/custom/<Super>w" \
         --create --type string --set xfce4-terminal
+
+    # Set Super + c to open chrome
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>c" \
+        --create --type string --set google-chrome
+
+    # Set Super + v to open vscode
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>v" \
+        --create --type string --set code
 
     # This is for shortcuts of window control
 
