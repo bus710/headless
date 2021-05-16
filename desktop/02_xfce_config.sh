@@ -66,7 +66,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
 
     # Set Super + l to open session login panel
     xfconf-query --channel xfce4-keyboard-shortcuts \
-        --property "/commands/custom/<Super>s" \
+        --property "/commands/custom/<Super>l" \
         --create --type string --set xfce4-session-login
 
     # Set Super + s to open settings manager
