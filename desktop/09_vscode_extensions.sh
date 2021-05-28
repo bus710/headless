@@ -45,7 +45,7 @@ then
         "serayuzgur.crates"
         "vadimcn.vscode-lldb"
         # Elixir
-        "JakeBecker.elixir-ls"
+        #"JakeBecker.elixir-ls"
         # Embedded
         #"ms-vscode.cpptools"
     )
