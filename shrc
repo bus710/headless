@@ -45,6 +45,7 @@ alias git-log-graph-color-less="git log --graph --color=always | less"
 # TODO: make this "git pull origin pull/1/head" as function
 
 alias go-export="export GOPROXY=direct; export GOSUMDB=off; export GO111MODULE=on"
+alias pulseaudio-restart="rm -rf ~/.config/pulse /tmp/pulse-*; systemctl --user restart pulseaudio.service"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
