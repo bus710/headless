@@ -84,6 +84,16 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
         --property "/commands/custom/<Super>q" \
         --create --type string --set xfce4-terminal
 
+    # Set Super + z to open screen shooter
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>z" \
+        --create --type string --set xfce4-screenshooter
+
+    # Set Super + x to open remmina
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>x" \
+        --create --type string --set remmina
+
     # Set Super + c to open chrome
     xfconf-query --channel xfce4-keyboard-shortcuts \
         --property "/commands/custom/<Super>c" \
