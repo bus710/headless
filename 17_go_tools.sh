@@ -22,9 +22,9 @@ echo
 #go get -u golang.org/x/tools/...
 go get -u github.com/go-delve/delve/cmd/dlv
 go get -u github.com/shurcooL/goexec
-go get -u github.com/hajimehoshi/wasmserve
-go get -u github.com/swaggo/swag/cmd/swag
-go get -u github.com/google/gops
+#go get -u github.com/hajimehoshi/wasmserve
+#go get -u github.com/swaggo/swag/cmd/swag
+#go get -u github.com/google/gops
 
 echo
 echo "Install vim-go plugins"
