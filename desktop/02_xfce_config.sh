@@ -62,7 +62,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     echo "Create a shortcut for xfce4 appfinder"
     echo
 
-    # This is for shortcuts of apps 
+    # This is for shortcuts of apps (settings => keyboard => app shortcuts)
 
     # Set Super + l to open session logout panel
     xfconf-query --channel xfce4-keyboard-shortcuts \
@@ -104,7 +104,7 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
         --property "/commands/custom/<Super>v" \
         --create --type string --set code
 
-    # This is for shortcuts of window control
+    # This is for shortcuts of window control (settings => window manager => keyboard)
 
     # Set Super + d to to show desktop
     xfconf-query --channel xfce4-keyboard-shortcuts \
