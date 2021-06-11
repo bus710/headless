@@ -39,6 +39,10 @@ sudo apt install -y \
     mtp-tools \
     jmtpfs
 
+# For rdp
+sudo apt install -y \
+    remmina
+
 echo
 echo "Done"
 echo
