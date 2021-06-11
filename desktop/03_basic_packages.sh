@@ -41,7 +41,9 @@ sudo apt install -y \
 
 # For rdp
 sudo apt install -y \
-    remmina
+    remmina \
+    ristretto \
+    evince
 
 echo
 echo "Done"
