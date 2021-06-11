@@ -11,16 +11,25 @@ echo
 echo "Install XFCE4"
 echo
 
-sudo apt install -y \
-    task-xfce-desktop \
-    xfce4-goodies \
-    lightdm-gtk-greeter-settings \
-    xserver-xorg-input-synaptics
+DISTRO=lsb_release -a | grep ID | awk -F " " '{print $3}';
+
+if [[ $DISTRO =~ "Debian" ]]; then
+    sudo apt install -y \
+        task-xfce-desktop \
+        xfce4-goodies \
+        xserver-xorg-input-synaptics
+
+
+    sudo apt install -y \
+        pulseaudio-module-bluetooth \
+        blueman \
+        firmware-sof-signed
+fi
 
 sudo apt install -y \
-    pulseaudio-module-bluetooth \
-    blueman \
-    firmware-sof-signed
+    lightdm-settings \
+    lightdm-gtk-greeter \
+    lightdm-gtk-greeter-settings
 
 sudo systemctl enable lightdm
 sudo systemctl enable bluetooth
