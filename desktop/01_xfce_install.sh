@@ -11,22 +11,24 @@ echo
 echo "Install XFCE4"
 echo
 
-DISTRO=lsb_release -a | grep ID | awk -F " " '{print $3}';
+DISTRO=$(lsb_release -a | grep ID | awk -F " " '{print $3}');
+CPU_VENDOR=$(lscpu | grep Vendor | awk -F " " '{print $2}');
 
 if [[ $DISTRO =~ "Debian" ]]; then
     sudo apt install -y \
         task-xfce-desktop \
-        xfce4-goodies \
         xserver-xorg-input-synaptics
+fi
 
-
+if  [[ !$CPU_VENDOR =~ "AMD" ]]; then
     sudo apt install -y \
-        pulseaudio-module-bluetooth \
-        blueman \
         firmware-sof-signed
 fi
 
 sudo apt install -y \
+    blueman \
+    xfce4-goodies \
+    pulseaudio-module-bluetooth \
     lightdm-settings \
     lightdm-gtk-greeter \
     lightdm-gtk-greeter-settings
