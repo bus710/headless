@@ -20,7 +20,7 @@ if [[ $DISTRO =~ "Debian" ]]; then
         xserver-xorg-input-synaptics
 elif [[ $DISTRO =~ "Ubuntu" ]]; then
     sudo apt install -y \
-        xubuntu-desktop \
+        xubuntu-core \
         lightdm
 fi
 
