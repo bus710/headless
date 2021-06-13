@@ -16,7 +16,7 @@ if [[ "$CPU_TYPE" == "x86_64" ]]; then
 fi
 
 echo 
-echo "Install basic tools, dlv, goexec, wasmserve, swaggo"
+echo "Install basic tools - dlv and goexec"
 echo 
 
 #go get -u golang.org/x/tools/...
