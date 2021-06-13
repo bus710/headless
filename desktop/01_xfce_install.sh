@@ -18,9 +18,13 @@ if [[ $DISTRO =~ "Debian" ]]; then
     sudo apt install -y \
         task-xfce-desktop \
         xserver-xorg-input-synaptics
+elif [[ $DISTRO =~ "Ubuntu" ]]; then
+    sudo apt install -y \
+        xubuntu-desktop \
+        lightdm
 fi
 
-if  [[ !$CPU_VENDOR =~ "AMD" ]]; then
+if  [[ $CPU_VENDOR =~ "GenineIntel" ]]; then
     sudo apt install -y \
         firmware-sof-signed
 fi
