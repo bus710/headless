@@ -101,9 +101,9 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
         --property "/commands/custom/<Super>w" \
         --create --type string --set google-chrome
 
-    # Set Super + v to open vscode
+    # Set Super + c to open vscode
     xfconf-query --channel xfce4-keyboard-shortcuts \
-        --property "/commands/custom/<Super>v" \
+        --property "/commands/custom/<Super>c" \
         --create --type string --set code
 
     # This is for shortcuts of window control (settings => window manager => keyboard)
