@@ -94,9 +94,11 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
         --property "/commands/custom/<Super>x" \
         --create --type string --set remmina
 
-    # Set Super + c to open chrome
+    # Set Super + w to open chrome
     xfconf-query --channel xfce4-keyboard-shortcuts \
-        --property "/commands/custom/<Super>c" \
+        --property "/commands/custom/<Super>w" --reset
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>w" \
         --create --type string --set google-chrome
 
     # Set Super + v to open vscode
