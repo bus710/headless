@@ -3,8 +3,8 @@
 set -e
 
 
-URL="https://storage.googleapis.com/flutter_infra/releases/beta/linux/"
-VERSION="flutter_linux_2.0.1-beta.tar.xz"
+URL="https://storage.googleapis.com/flutter_infra_release/releases/beta/linux/"
+VERSION="flutter_linux_2.2.2-beta.tar.xz"
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as a normal user (w/o sudo)"
@@ -14,9 +14,9 @@ fi
 
 CPU_TYPE=$(uname -m)
 
-if [[ $CPU_TYPE != "x86_64" ]]; then
+if [[ $CPU_TYPE != "x86_64" ]] && [[ $CPUTYPE != "aarch64" ]]; then
     echo
-    echo "Only x86_64 can be used"
+    echo "x86_64 or aarch64 can be used"
     echo
     exit
 fi
