@@ -42,7 +42,15 @@ alias gprls="git ls-remote origin 'pull/*/head'"
 alias git-log-oneline-color-less="git log --oneline --color=always | less"
 alias git-log-pretty-color-less="git log --pretty --color=always | less"
 alias git-log-graph-color-less="git log --graph --color=always | less"
-# TODO: make this "git pull origin pull/1/head" as function
+alias git-pull-all-remote-branches="git-pull-all-remote-branches-function"
+
+git-pull-all-remote-branches-function()
+{
+    git branch -r | grep -v '\->' | while read remote; 
+    do git branch --track "${remote#origin/}" "$remote"; done
+    git fetch --all
+    git pull --all
+}
 
 alias go-export="export GOPROXY=direct; export GOSUMDB=off; export GO111MODULE=on"
 alias pulseaudio-restart="rm -rf ~/.config/pulse /tmp/pulse-*; systemctl --user restart pulseaudio.service"
