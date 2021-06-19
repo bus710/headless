@@ -20,7 +20,8 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
 
     # If below keys don't work, 
     # visit Settings => Settings Editor => xfce4-keyboard-shortcuts.
-    # and remove all the overlapping entries
+    # and remove all the overlapping entries for tile_left_key and tile_right_key
+    # then run this script again
 
     # To confirm,
     # xfconf-query --channel xfce4-keyboard-shortcuts -lv 
