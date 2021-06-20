@@ -24,7 +24,7 @@ elif [[ $DISTRO =~ "Ubuntu" ]]; then
         lightdm
 fi
 
-if  [[ $CPU_VENDOR =~ "GenineIntel" ]]; then
+if  [[ $CPU_VENDOR =~ "GenuineIntel" ]]; then
     sudo apt install -y \
         firmware-sof-signed
 fi
@@ -32,10 +32,11 @@ fi
 sudo apt install -y \
     blueman \
     xfce4-goodies \
-    pulseaudio-module-bluetooth \
+    gtk-3-examples \
     lightdm-settings \
     lightdm-gtk-greeter \
-    lightdm-gtk-greeter-settings
+    lightdm-gtk-greeter-settings \
+    pulseaudio-module-bluetooth
 
 sudo systemctl enable lightdm
 sudo systemctl enable bluetooth
