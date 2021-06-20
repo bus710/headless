@@ -98,6 +98,12 @@ elif [[ $XDG_CURRENT_DESKTOP =~ "XFCE" ]]; then
     xfconf-query --channel xfce4-keyboard-shortcuts \
         --property "/commands/custom/<Super>c" \
         --create --type string --set code
+
+    # Set Super + v to open vscode
+    xfconf-query --channel xfce4-keyboard-shortcuts \
+        --property "/commands/custom/<Super>v" \
+        --create --type string --set code-insiders
+
 fi
 
 echo
