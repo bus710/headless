@@ -16,6 +16,7 @@ alias dw='cd ~/repo/docs'
 alias ru='cd ~/repo/rustws'
 alias ew='cd ~/repo/elixirws'
 alias gw='cd ~/repo/gows'
+alias cs='cd ~/repo/csws'
 alias fw='cd ~/repo/fltws'
 alias pw='cd ~/repo/pyws'
 
