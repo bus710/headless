@@ -44,6 +44,8 @@ then
         "matklad.rust-analyzer"
         "serayuzgur.crates"
         "vadimcn.vscode-lldb"
+        # Elm
+        "Elmtooling.elm-ls-vscode"
         # Elixir
         #"JakeBecker.elixir-ls"
         # Embedded
