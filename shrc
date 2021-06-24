@@ -60,8 +60,8 @@ alias pulseaudio-restart="rm -rf ~/.config/pulse /tmp/pulse-*; systemctl --user 
 
 export PATH=$HOME/.cargo/bin:$PATH # rust
 export PATH=$PATH:$HOME/.tools # nvim
-export PATH=/usr/local/elixir/bin:$PATH # elixir
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+export PATH=$PATH:/usr/local/elm
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 
