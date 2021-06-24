@@ -73,7 +73,12 @@ then
     echo "Install Elm linter and test packages"
     echo
 
-    sudo npm install -g elm-test elm-format
+    sudo npm install -g elm-test 
+    sudo npm install -g elm-json
+    sudo npm install -g elm-live
+    sudo npm install -g elm-format
+    sudo npm install -g elm-analyse
+    sudo npm install -g create-elm-app
 
     echo 
     echo "Done - don't forget to have PATH of Elm"
