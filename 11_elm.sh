@@ -70,6 +70,12 @@ then
     sudo mv elm /usr/local/elm
 
     echo 
+    echo "Install Elm linter and test packages"
+    echo
+
+    sudo npm install -g elm-test elm-format
+
+    echo 
     echo "Done - don't forget to have PATH of Elm"
     echo
 fi
