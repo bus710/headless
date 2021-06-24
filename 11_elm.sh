@@ -9,6 +9,7 @@ if [[ $CPU_TYPE == "x86_64" ]]; then
     CPU_TARGET="amd64" 
 elif [[ $CPU_TYPE == "aarch64" ]]; then
     CPU_TARGET="arm64"
+    echo "Not supported architecture"
 else
     echo "Not supported architecture"
     exit
