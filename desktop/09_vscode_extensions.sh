@@ -44,6 +44,9 @@ then
         "matklad.rust-analyzer"
         "serayuzgur.crates"
         "vadimcn.vscode-lldb"
+        # Svelte
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
         # Elm
         "Elmtooling.elm-ls-vscode"
         # Elixir
