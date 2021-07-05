@@ -18,6 +18,7 @@ alias ew='cd ~/repo/elmws'
 alias gw='cd ~/repo/gows'
 alias cs='cd ~/repo/csws'
 alias fw='cd ~/repo/fltws'
+alias sw='cd ~/repo/svtws'
 alias pw='cd ~/repo/pyws'
 
 alias tw='cd ~/repo/tmp'
