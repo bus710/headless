@@ -21,14 +21,10 @@ then
     extensions=(
         # Git
         "eamodio.gitlens"
+        "mhutchie.git-graph"
         # Editor
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
-        # Go
-        "golang.Go"
-        # Flutter
-        "Dart-Code.dart-code" 
-        "Dart-Code.flutter"
         # remote/docker
         "ms-azuretools.vscode-docker"
         "ms-vscode-remote.remote-ssh"
@@ -38,8 +34,14 @@ then
         # Config files
         "redhat.vscode-yaml"
         "be5invis.toml"
+        # PDF and markdown files
         "yzhang.markdown-all-in-one"
         "yzane.markdown-pdf"
+        # Go
+        "golang.Go"
+        # Flutter
+        "Dart-Code.dart-code" 
+        "Dart-Code.flutter"
         # Rust
         "matklad.rust-analyzer"
         "serayuzgur.crates"
@@ -50,7 +52,7 @@ then
         "msjsdiag.debugger-for-chrome"
         "eg2.vscode-npm-script"
         # Elm
-        "Elmtooling.elm-ls-vscode"
+        #"Elmtooling.elm-ls-vscode"
         # Elixir
         #"JakeBecker.elixir-ls"
         # Embedded
