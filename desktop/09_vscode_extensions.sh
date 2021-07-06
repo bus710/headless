@@ -48,6 +48,7 @@ then
         "svelte.svelte-vscode"
         "ardenivanov.svelte-intellisense"
         "msjsdiag.debugger-for-chrome"
+        "eg2.vscode-npm-script"
         # Elm
         "Elmtooling.elm-ls-vscode"
         # Elixir
