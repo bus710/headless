@@ -38,6 +38,7 @@ then
     npm -v
 
     sudo npm install -g degit
+    sudo npm install -g svelte-language-server
 
     echo 
     echo "Done"
