@@ -2,20 +2,10 @@
 
 set -e
 
-
-VERSION_CLASSIC_PART1="arduino-1.8.13"
-VERSION_CLASSIC_PART2="-linux64.tar.xz"
-VERSION_CLASSIC=${VERSION_CLASSIC_PART1}${VERSION_CLASSIC_PART2}
-VERSION_IDE="arduino-pro-ide_0.1.1_Linux_64bit"
-
-
-
 if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
   exit
 fi
-
-
 
 CPU_TYPE=$(uname -p)
 
@@ -26,13 +16,10 @@ if [[ $CPU_TYPE != "x86_64" ]]; then
     exit
 fi
 
-
-
 echo
 echo -e "\e[91m"
 echo "Please check these web sites:"
-echo "- https://github.com/arduino/arduino-cli/releases/latest"
-echo "- https://github.com/arduino/arduino-pro-ide/releases/latest"
+echo "- https://github.com/arduino/arduino-ide/releases/latest"
 echo 
 echo "Do you want to install? (y/n)"
 echo -e "\e[39m"
@@ -48,36 +35,41 @@ then
     echo "Existing Arduino directory will be deleted"
     echo 
 
-    rm -rf $HOME/Arduino_tools
-    mkdir -p $HOME/Arduino_tools/arduino-cli
+    rm -rf $HOME/Arduino
+    mkdir -p $HOME/Arduino
+    cd $HOME/Arduino
 
-    echo
-    echo "Download and install Arduino CLI"
+    echo 
+    echo "Install prerequisites of Arduino core for ESP32"
     echo 
 
-    cd $HOME/Arduino_tools/arduino-cli
-    curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
+    sudo usermod -a -G dialout $USER && \
+    sudo apt-get install git && \
+    wget https://bootstrap.pypa.io/get-pip.py && \
+    sudo python3 get-pip.py && \
+    sudo pip3 install pyserial && \
+    mkdir -p ~/Arduino/hardware/espressif && \
+    cd ~/Arduino/hardware/espressif && \
+    git clone https://github.com/espressif/arduino-esp32.git esp32 && \
+    cd esp32 && \
+    git submodule update --init --recursive && \
+    cd tools && \
+    python3 get.py
 
     echo
-    echo "Download and install Arduino Classic IDE"
+    echo "Download and install Arduino IDE"
     echo 
 
-    cd $HOME/Arduino_tools
-    wget https://downloads.arduino.cc/${VERSION_CLASSIC}
-    tar xvf ${VERSION_CLASSIC} >> /dev/null 2>&1
-    rm -rf *.tar.xz
-    mv ${VERSION_CLASSIC_PART1} arduino
-    cd arduino
-    sh ./arduino-linux-setup.sh $USER
+    cd $HOME/Arduino
+    TARGET_VERSION=$(curl --silent https://github.com/arduino/arduino-ide/releases/latest | grep -oP '(?<=/tag\/)[^">]+')
 
     echo
-    echo "Download and install Arduino Pro IDE"
-    echo 
+    echo "TARGET_VERSION: ${TARGET_VERSION}"
+    echo
 
-    cd $HOME/Arduino_tools
-    wget https://downloads.arduino.cc/arduino-pro-ide/${VERSION_IDE}.zip
-    unzip -q ${VERSION_IDE}.zip 
-    mv ${VERSION_IDE} arduino-pro-ide
+    wget https://github.com/arduino/arduino-ide/releases/download/${TARGET_VERSION}/arduino-ide_${TARGET_VERSION}_Linux_64bit.zip
+    unzip arduino-ide_${TARGET_VERSION}_Linux_64bit.zip
+    mv arduino-ide_${TARGET_VERSION}_Linux_64bit arduino-ide
     rm -rf *.zip
 
     echo
@@ -86,12 +78,13 @@ then
 
     echo "" >> $HOME/.shrc
     echo "# For Arduino SDK" >> $HOME/.shrc
-    echo "PATH=\$PATH:\$HOME/Arduino_tools/arduino" >> $HOME/.shrc
-    echo "PATH=\$PATH:\$HOME/Arduino_tools/arduino-cli/bin" >> $HOME/.shrc
-    echo "PATH=\$PATH:\$HOME/Arduino_tools/arduino-pro-ide" >> $HOME/.shrc
+    echo "PATH=\$PATH:\$HOME/Arduino/arduino-ide" >> $HOME/.shrc
 
     echo 
     echo "Done."
-    echo "Please source .shrc"
+    echo "1. Please source .shrc"
+    echo "2. Add the line below to the board manager"
+    echo "  https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json"
+    echo "  https://dl.espressif.com/dl/package_esp32_index.json"
     echo
 fi
