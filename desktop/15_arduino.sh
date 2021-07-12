@@ -83,8 +83,9 @@ then
     echo 
     echo "Done."
     echo "1. Please source .shrc"
-    echo "2. Add the line below to the board manager"
-    echo "  https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json"
-    echo "  https://dl.espressif.com/dl/package_esp32_index.json"
+    echo "2. File > Preferences > Additional boards manager URLs"
+    echo "  Add the line below to the board manager"
+    echo "  https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json, https://dl.espressif.com/dl/package_esp32_index.json"
+    echo "3. Tools > Board > Boards manager > Search for ESP32 and install"
     echo
 fi
