@@ -30,6 +30,7 @@ then
     sudo apt install -y neovim
     sudo apt install -y fuse libfuse2 ack-grep 
     sudo apt install -y python3-pip
+    sudo apt install -y python-is-python3
 
     echo 
     echo "Clean up existing configuration"
