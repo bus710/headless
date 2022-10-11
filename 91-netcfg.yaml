@@ -1,0 +1,18 @@
+# ethernet device name can be enp2s0, enp3s0, or so
+# wifi device name can be wlp2s0, wlp3s0, or so
+
+network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: false
+      optional: false
+      addresses: [192.168.0.2/24]
+  wifis:
+    wlan0:
+      dhcp4: true
+      optional: true
+      gateway4: 192.168.1.1
+      access-points:
+        "ID":
+          password: "PW"

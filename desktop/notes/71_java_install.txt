@@ -1,0 +1,45 @@
+#!/bin/bash
+
+If JRE is required for Android development, please use the JRE in android studio.
+
+# =========================================
+# For oracle java 12
+# =========================================
+
+# https://www.linuxuprising.com/2019/03/how-to-install-oracle-java-12-jdk-12-in.html
+
+sudo add-apt-repository ppa:linuxuprising/java
+sudo apt update
+sudo apt install oracle-java12-installer
+sudo apt install oracle-java12-set-default
+
+# =========================================
+# For oracle java 8 - doesn't work anymore
+# =========================================
+
+#sudo add-apt-repository ppa:webupd8team/java 
+#sudo apt update
+#sudo apt install oracle-java8-installer
+
+# =========================================
+# For oracle java 8 - work but not good for android
+# =========================================
+
+#sudo apt install -y openjdk-8-jdk
+#sudo update-java-alternatives --set java-1.8.0-openjdk-amd64
+
+# =========================================
+# For oracle java 8 from Oracle
+# =========================================
+
+# Reference:
+# https://community.linuxmint.com/tutorial/view/1372
+
+# Download the package from Oracle: 
+# https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+tar -zxvf jdk-8u211
+sudo mkdir -p /opt/java
+sudo mv jdk1.8.0_211 /opt/java/
+sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_211/bin/java" 1
+sudo update-alternatives --set java /opt/java/jdk1.8.0_211/bin/java

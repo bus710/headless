@@ -1,0 +1,163 @@
+
+# Bash prompt color
+if [[ $(echo $0) =~ bash ]]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;34m\]@\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+fi
+
+# =============================
+# Path
+
+# Neovim
+#NVIM_0
+
+# Go
+#GO_0
+#GO_1
+#GO_2
+#GO_3
+
+# Flutter
+#FLUTTER_0
+#FLUTTER_1
+#FLUTTER_2
+#FLUTTER_3
+
+# Rust
+#RUST_0
+
+# AWS cli
+#AWS_0
+#AWS_1
+#AWS_2
+
+# Android SDK path
+#ANDROID_0
+#ANDROID_1
+#ANDROID_2
+#ANDROID_3
+#ANDROID_4
+#ANDROID_5
+
+# ASDF path
+#ASDF_0
+#ASDF_1
+#ASDF_2
+
+# Etc
+export PATH=$PATH:/snap/bin
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
+
+# =============================
+# Aliases
+
+alias update='sudo apt update && sudo apt list --upgradable'
+alias upgrade='sudo apt upgrade'
+alias re='cd ~/repo'
+alias rw='cd ~/repo-satellite'
+alias hw='cd ~/repo/headless'
+alias kw='cd ~/repo/headless/desktop'
+alias xw='cd ~/repo/headless/desktop/xfce4'
+alias sw='cd ~/repo/headless/desktop/sway'
+alias dw='cd ~/repo/docs'
+
+alias jw='cd ~/repo/jsws'
+alias ru='cd ~/repo/rustws'
+alias ew='cd ~/repo/elixirws'
+alias gw='cd ~/repo/gows'
+alias cs='cd ~/repo/csws'
+alias fw='cd ~/repo/fltws'
+alias pw='cd ~/repo/pyws'
+
+alias tw='cd ~/repo/tmp'
+alias bw='cd ~/repo/blog'
+alias cl='cd ~/repo/cloud'
+alias aw='cd ~/repo/algorithms'
+
+#alias tp='cat /sys/class/thermal/thermal_zone0/temp'
+alias tp='watch sensors'
+
+alias av1='avahi-resolve -n -4 rpi3.local'
+alias am='minicom -b 115200 -o -D /dev/ttyUSB0'
+alias an='minicom -b 9600 -o -D /dev/ttyACM0'
+
+alias disk620='sshfs bus710@disk620:/ ~/disk620'
+alias nv='nvim'
+alias rr='ranger'
+alias ll='ls -la'
+
+alias gp='git pull origin HEAD'
+alias gf='git fetch --dry-run -v'
+alias gprls="git ls-remote origin 'pull/*/head'"
+alias git-log-oneline-color-less="git log --oneline --color=always | less"
+alias git-log-pretty-color-less="git log --pretty --color=always | less"
+alias git-log-graph-color-less="git log --graph --color=always | less"
+alias git-pull-all-remote-branches="git-pull-all-remote-branches-function"
+alias git-show-current-hash='git show -s --format=%H'
+
+alias go-export="export GOPROXY=direct; export GOSUMDB=off; export GO111MODULE=on"
+# go mod tidy
+
+alias pulseaudio-restart="rm -rf ~/.config/pulse /tmp/pulse-*; systemctl --user restart pulseaudio.service"
+alias code="code ."
+alias insider="code-insiders ."
+alias el="elixir"
+
+alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp-01 --region us-central1 --project connect-qaus-k8s-e004"
+
+# eval $(keychain --eval --quite $PRIVATE_KEY)
+
+
+# =============================
+# Cheatsheets
+
+git-pull-all-remote-branches-function()
+{
+    git branch -r | grep -v '\->' | while read remote;
+    do git branch --track "${remote#origin/}" "$remote"; done
+    git fetch --all
+    git pull --all
+}
+
+git-fetch-reset-target()
+{
+    echo "git fetch --all"
+    echo "git reset --hard origin/main"
+}
+
+
+cmd-gcp () {
+    echo "gcloud-auth-qaus"
+    echo
+    echo "API_SERVER=\$(kubectl -n migration get pods | grep api | grep Running | awk -F \" \" '{print \$1}'); echo \$API_SERVER";
+    echo "kubectl -n migration get pods"
+    echo "kubectl -n migration logs -f \$API_SERVER | grep 'abc'";
+    echo "kubectl -n migration exec -it \$API_SERVER -- sh";
+    echo "kubectl -n migration describe pod \$API_SERVER";
+    echo "kubectl -n migration delete pod \$API_SERVER";
+    echo
+    echo "API_SERVER_DEV=\$(kubectl -n migration-dev get pods | grep api | grep Running | awk -F \" \" '{print \$1}'); echo \$API_SERVER_DEV";
+    echo "kubectl -n migration-dev get pods"
+    echo "kubectl -n migration-dev logs -f \$API_SERVER_DEV | grep 'abc'";
+    echo "kubectl -n migration-dev exec -it \$API_SERVER_DEV -- sh";
+    echo "kubectl -n migration-dev describe pod \$API_SERVER_DEV";
+    echo "kubectl -n migration-dev delete pod \$API_SERVER_DEV";
+}
+
+cmd-git () {
+    echo "git log --color=always --follow -p -- \$FILE or \$DIR"
+}
+
+cmd-phoenix () {
+    echo "Install Phoenix"
+    echo "- mix archive.install hex phx_new"
+    echo "Create & run a Phoenix app"
+    echo "- mix phx.new hello"
+    echo "- cd hello"
+    echo "- mix ecto.create # after editing config/dev.exs"
+    echo "- mix deps.get"
+    echo "- mix phx.server"
+}
+
+# For gotk4
+export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19

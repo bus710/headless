@@ -1,0 +1,8 @@
+below commands can be used to find avahi-enabled devices.
+
+# avahi-browse -a
+# avahi-resolve -n -4 rpi3.local
+
+also service files should be located in /etc/avahi/service.
+
+In using multiple network devices (eth0 + wlan0), write all the device names for allowed-interfaces in avahi-daemon.conf
