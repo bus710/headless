@@ -67,12 +67,20 @@ configure_sway (){
     term_color_red
     echo "Configure Sway"
     term_color_white
+
+    # TODO: sway config
+    # TODO: auto start config (zprofile)
+    # TODO: kitty config
+    # TODO: waybar config
+    # TODO: wofi config
 }
 
 configure_keyring (){
     term_color_red
     echo "Configure Gnome keyring manager"
     term_color_white
+
+    # TODO: gnome-keyring config
 }
 
 post (){
