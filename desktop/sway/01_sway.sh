@@ -49,8 +49,9 @@ install_packages(){
     sudo apt install -y \
          alsa-utils \
          pulseaudio \
-         pipewire-pulse \
+         pulseaudio-alsa \
          pulseaudio-utils \
+         pipewire-pulse \
          pavucontrol
 
     sudo apt install -y \
@@ -69,10 +70,12 @@ configure_sway (){
     term_color_white
 
     # TODO: sway config
+    # TODO: libinput and trackpad direction
     # TODO: auto start config (zprofile)
     # TODO: kitty config
     # TODO: waybar config
     # TODO: wofi config
+    # TODO: clip board management: https://blog.aktsbot.in/swaywm-on-debian-11.html
 }
 
 configure_keyring (){
