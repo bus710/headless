@@ -75,12 +75,6 @@ configure_keyring (){
     term_color_white
 }
 
-install_kime (){
-    term_color_red
-    echo "Install Kime"
-    term_color_white
-}
-
 post (){
     term_color_red
     echo "Done"
@@ -93,5 +87,5 @@ confirmation
 install_packages
 configure_sway
 configure_keyring
-install_kime
 post
+
