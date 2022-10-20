@@ -30,6 +30,10 @@ include /etc/sway/config-vars.d/*
 #output * bg ~/202545.png fill
 output * bg #202545 solid_color
 
+# To find the ID of display
+# $ swaymsg -t get_outputs
+#output eDP-1 scale 1.5
+
 #
 # Example configuration:
 #
@@ -53,7 +57,10 @@ output * bg #202545 solid_color
 ### Input configuration
 #
 # Example configuration:
-#
+
+# To find the ID of touchpad
+# $ sudo libinput list-devices | grep ELAN
+# $ swaymsg -rt get_inputs | grep _Touch
 input "1267:47:Elan_Touchpad" {
     dwt enabled
     tap enabled

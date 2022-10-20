@@ -104,7 +104,7 @@ configure_sway (){
     # kitty config
     rm -rf /home/$LOGNAME/.config/kitty
     mkdir /home/$LOGNAME/.config/kitty
-    cp dotfiles/20_kitty.conf /home/$LOGNAME/.config/kitty/kitty.config
+    cp dotfiles/20_kitty.conf /home/$LOGNAME/.config/kitty/kitty.conf
     # download the dracula.conf and diff.conf
     wget https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
     mv dracula.conf /home/$LOGNAME/.config/kitty/dracula.conf
