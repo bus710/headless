@@ -7,12 +7,20 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
-# Installing GUI applications required.
+if [[ ! $XDG_CURRENT_DESKTOP =~ "GNOME" ]]; then
+    term_color_red
+    echo
+    echo "Not Gnome"
+    echo
+    term_color_white
+
+    exit
+fi
 
 echo
 echo "Install"
 echo "- Vim-gnome"
-echo "- Gnome Tweak Tools"
+echo "- Pinta"
 echo "- Simple Screen Recorder"
 echo
 

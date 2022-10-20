@@ -7,6 +7,16 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
+if [[ ! $XDG_CURRENT_DESKTOP =~ "GNOME" ]]; then
+    term_color_red
+    echo
+    echo "Not Gnome"
+    echo
+    term_color_white
+
+    exit
+fi
+
 # Remove some packages.
 sudo apt remove -y \
     firefox \
@@ -20,14 +30,11 @@ sudo apt install -y \
     xserver-xorg-input-mouse \
     gnome-calculator \
     dconf-editor \
-    cheese \
-    sshfs \
-    xclip \
-    inxi \
-    gufw \
-    peek \
-    mpv
-    #glmark2
+    cheese
+
+# For Gnome Control Center (Settings)
+sudo apt install -y \
+    gnome-control-center
 
 # Install scrcpy
 # To access Android wirelessly:
@@ -51,9 +58,15 @@ sudo apt install -y \
     ristretto \
     evince
 
-# For Gnome Control Center (Settings)
+# Install some packages
 sudo apt install -y \
-    gnome-control-center
+    sshfs \
+    xclip \
+    inxi \
+    gufw \
+    peek \
+    mpv
+    #glmark2
 
 echo
 echo "Done"

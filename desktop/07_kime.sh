@@ -43,6 +43,7 @@ install_kime (){
     echo
     term_color_white
 
+    cd ~/Downloads
     TARGET_KIME_VERSION=$(curl -o- -s https://api.github.com/repos/Riey/kime/releases/latest | jq -r '.tag_name')
 
     if [[ $OS_TYPE =~ "Debian" ]]; then
