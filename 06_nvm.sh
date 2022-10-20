@@ -53,7 +53,7 @@ install_nvm(){
     term_color_white
 
     TARGET_NVM_VERSION=$(curl -o- -s https://api.github.com/repos/nvm-sh/nvm/releases/latest | jq -r '.tag_name')
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${TARGET_NVM_VERSION}/install.sh | zsh
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${TARGET_NVM_VERSION}/install.sh | bash
 
     term_color_red
     echo
