@@ -134,9 +134,6 @@ configure_keyring (){
 post (){
     term_color_red
     echo "Done"
-    echo "- Update the trackpad natural scrolling direction"
-    echo "  - sudo libinput list-devices"
-    echo "  - swaymsg -rt get_inputs"
     term_color_white
 }
 
