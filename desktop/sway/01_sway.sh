@@ -45,22 +45,22 @@ install_packages(){
          waybar \
          brightnessctl \
          fonts-font-awesome \
-         xorg-xwayland \
-         xorg-xlsclients \
-         qt5-wayland \
-         glfw-wayland \
          libinput-tools
+         #xorg-xwayland \
+         #xorg-xlsclients \
+         #qt5-wayland \
+         #glfw-wayland \
 
     # Audio
     sudo apt install -y \
          alsa-utils \
          pulseaudio \
-         pulseaudio-alsa \
          pulseaudio-utils \
          pipewire-pulse \
          pavucontrol
+         #pulseaudio-alsa \
 
-    sudo usermod -aG audio $USERNAME
+    sudo usermod -aG audio $LOGNAME
 
     # Clip board and screen capture/sharing
     sudo apt install -y \
@@ -83,35 +83,44 @@ configure_sway (){
     echo "Configure Sway"
     term_color_white
 
-    $HOME/Downloads
+    rm -rf /home/$LOGNAME/Downloads
+    mkdir /home/$LOGNAME/Downloads
 
     # sway config
-    rm -rf $HOME/$LOGNAME/.config/sway/config
-    cp dotfiles/10_sway_config $HOME/$LOGNAME/.config/sway/config
+    rm -rf /home/$LOGNAME/.config/sway
+    mkdir /home/$LOGNAME/.config/sway
+    cp dotfiles/10_sway_config /home/$LOGNAME/.config/sway/config
 
     # auto start config (zprofile)
-    SWAY_IN_ZPROFILE=$(cat $HOME/$LOGNAME/.zprofile | grep sway)
-    if [[ ! $SWAY_IN_ZPROFILE =~ "sway" ]]; then
-        cat dotfiles/15_sway_zprofile >> $HOME/$LOGNAME/.zprofile
+    if [[ -f /home/$LOGNAME/.zprofile ]]; then
+        SWAY_IN_ZPROFILE=$(cat /home/$LOGNAME/.zprofile | grep sway)
+        if [[ ! $SWAY_IN_ZPROFILE =~ "sway" ]]; then
+            cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
+        fi
+    else
+        cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
     fi
 
     # kitty config
-    rm -rf $HOME/$LOGNAME/.config/kitty/config
-    cp dotfiles/20_kitty.conf $HOME/$LOGNAME/.config/kitty/kitty.config
+    rm -rf /home/$LOGNAME/.config/kitty
+    mkdir /home/$LOGNAME/.config/kitty
+    cp dotfiles/20_kitty.conf /home/$LOGNAME/.config/kitty/kitty.config
     # download the dracula.conf and diff.conf
     wget https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
-    mv dracula.conf $HOME/$LOGNAME/.config/kitty/dracula.conf
+    mv dracula.conf /home/$LOGNAME/.config/kitty/dracula.conf
     wget https://raw.githubusercontent.com/dracula/kitty/master/diff.conf
-    mv diff.conf $HOME/$LOGNAME/.config/kitty/diff.conf
+    mv diff.conf /home/$LOGNAME/.config/kitty/diff.conf
 
     # waybar config
-    rm -rf $HOME/$LOGNAME/.config/waybar
-    cp dotfiles/30_waybar_config $HOME/$LOGNAME/.config/waybar/config
-    cp dotfiles/31_waybar_style.css $HOME/$LOGNAME/.config/waybar/style.css
+    rm -rf /home/$LOGNAME/.config/waybar
+    mkdir /home/$LOGNAME/.config/waybar
+    cp dotfiles/30_waybar_config /home/$LOGNAME/.config/waybar/config
+    cp dotfiles/31_waybar_style.css /home/$LOGNAME/.config/waybar/style.css
 
     # wofi config
-    rm -rf $HOME/$LOGNAME/.config/wofi
-    cp dotfiles/35_wofi_style.css $HOME/$LOGNAME/.config/wofi/style.css
+    rm -rf /home/$LOGNAME/.config/wofi
+    mkdir /home/$LOGNAME/.config/wofi
+    cp dotfiles/35_wofi_style.css /home/$LOGNAME/.config/wofi/style.css
 }
 
 configure_keyring (){
