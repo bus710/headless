@@ -7,9 +7,9 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
-CPU_TYPE=$(uname -p)
+CPU_TYPE=$(uname -a)
 
-if [[ "$CPU_TYPE" == "x86_64" ]]; then
+if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
     echo
     echo "Swap off"
     echo
@@ -39,4 +39,6 @@ if [[ "$CPU_TYPE" == "x86_64" ]]; then
     echo
     echo "Done"
     echo
-    fi
+else
+    echo "CPU type is ${CPU_TYPE}"
+fi
