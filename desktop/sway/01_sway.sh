@@ -76,6 +76,8 @@ install_packages(){
          qtwayland5 \
          ristretto \
          zathura \
+         inxi \
+         mpv \
          imv
 
     # Auth
