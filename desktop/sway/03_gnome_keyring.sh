@@ -43,6 +43,17 @@ configure_keyring (){
         /home/$LOGNAME/.config/systemd/user/
 
     sed -i 's/,secrets/,secrets,ssh/g' /home/$LOGNAME/.config/systemd/user/gnome-keyring-daemon.service
+
+    term_color_red
+    echo "Load Gnome keyring manager"
+    term_color_white
+
+    systemctl daemon-reload --user
+    systemctl enable --now --user gnome-keyring-daemon
+    systemctl status --user gnome-keyring-daemon --no-pager | grep -A2 CGroup
+
+    # The port can be 1000 or something else.
+    sed -i 's/#SSH_AUTH_SOCK/export\ SSH_AUTH_SOCK=/run/user/1000/keyring/ssh' 
 }
 
 post (){
