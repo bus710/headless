@@ -244,7 +244,7 @@ bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym $mod+Alt+l exec swaylock -c 000000
+bindsym $mod+Alt+l exec swaylock -c 112233
 
 # Take a screenshot with all output and save it into screenshots
 bindsym $mod+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
