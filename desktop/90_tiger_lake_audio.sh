@@ -30,21 +30,22 @@ term_color_white () {
     echo -e "\e[39m"
 }
 
-create_file_and_restart_service(){
+start_service(){
     term_color_red
-    echo "Create the pulseaudio file"
+    echo "Start pulseaudio service"
     term_color_white
 
-    sudo touch /usr/share/pipewire/media-session.d/with-pulseaudio
-    systemctl --user restart pipewire-session-manager
+    #sudo touch /usr/share/pipewire/media-session.d/with-pulseaudio
+    #systemctl --user restart pipewire-session-manager
+
+    systemctl --user start pulseaudio
+    pulseaudio --start
+    pavucontrol
 }
 
 trap term_color_white EXIT
-create_file_and_restart_service
+start_service
 
 echo
 echo "Done"
-echo "- Check audio"
-echo "- Rebooting can make things messed up. Just shutdown."
-echo "- Check if firmware-sof-signed is installed."
 echo
