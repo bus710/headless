@@ -79,7 +79,7 @@ configuration (){
 
     im-config -n kime
    
-    KIME_GLOBAL_CONFIGURED=$(cat /etc/environment | grep kime)
+    KIME_GLOBAL_CONFIGURED=$(cat /etc/environment)
     if [[ ! $KIME_GLOBAL_CONFIGURED =~ "kime" ]]; then
         term_color_red
         echo
