@@ -256,6 +256,6 @@ exec wl-paste -t text --watch clipman store
 
 bindsym $mod+i clipman pick
 
-#exec kime
+#KIME_0
 
 include /etc/sway/config.d/*

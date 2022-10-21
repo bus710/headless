@@ -77,6 +77,11 @@ install_packages(){
          ristretto \
          zathura \
          imv
+
+    # Auth
+    sudo apt install -y \
+        gnome-keyring \
+        sshfs
 }
 
 configure_sway (){

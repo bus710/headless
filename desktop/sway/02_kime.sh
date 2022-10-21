@@ -61,9 +61,7 @@ install_kime (){
 
 configuration (){
     term_color_red
-    echo
     echo "Set Kime configuration in \$HOME (for Ctrl+Space)"
-    echo
     term_color_white
 
     rm -rf /home/$LOGNAME/.config/kime
@@ -72,7 +70,7 @@ configuration (){
     sed -i '/Super-Space:/c\\ \ \ \ C-Space:' $HOME/.config/kime/config.yaml
 
     term_color_red
-    echo "Set Kime as IME of SwayWM"
+    echo "Configure IM module in /etc/environment"
     term_color_white
 
     KIME_GLOBAL_CONFIGURED=$(cat /etc/environment)
@@ -94,8 +92,7 @@ startup (){
     echo
     term_color_white
 
-    # TODO: add some lines for sway config
-    # #KIME_0 => exec kime
+    sed -i '/#KIME_0/c\exec kime' $HOME/.config/sway/config
 }
 
 post (){
