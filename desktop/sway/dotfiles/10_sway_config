@@ -237,8 +237,8 @@ gaps inner 2
 bindsym $mod+i workspace prev
 bindsym $mod+o workspace next
 
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set +10%
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
