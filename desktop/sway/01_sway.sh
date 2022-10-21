@@ -43,6 +43,7 @@ install_packages(){
          wofi \
          kitty \
          waybar \
+         swaylock \
          brightnessctl \
          fonts-font-awesome \
          libinput-tools
