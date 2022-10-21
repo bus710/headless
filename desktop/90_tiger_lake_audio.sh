@@ -20,8 +20,6 @@ echo
 echo "Configure TigerLake audio"
 echo
 
-sudo echo ""
-
 term_color_red () {
     echo -e "\e[91m"
 }
