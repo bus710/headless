@@ -21,11 +21,11 @@ confirmation (){
     echo "Install and configure SwayWM? (y/n)"
     echo ""
     term_color_white
-    
+
     echo
     read -n 1 ans
     echo
-    
+
     if [[ ! $ans == "y" ]]; then
         echo
         exit -1
@@ -135,8 +135,8 @@ configure_gtk_dark(){
     term_color_red
     echo "Configure Gtk dark theme"
     term_color_white
-    
-    mkdir -p /home/$LOGNAME/.config/gtk-3.0 
+
+    mkdir -p /home/$LOGNAME/.config/gtk-3.0
     rm -rf /home/$LOGNAME/.config/gtk-3.0/settings.ini
 
     echo "[Settings]" >> /home/$LOGNAME/.config/gtk-3.0/settings.ini
