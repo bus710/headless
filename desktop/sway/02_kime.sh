@@ -72,17 +72,13 @@ configuration (){
     sed -i '/Super-Space:/c\\ \ \ \ C-Space:' $HOME/.config/kime/config.yaml
 
     term_color_red
-    echo
-    echo "Set Kime as IME of Gnome"
-    echo
+    echo "Set Kime as IME of SwayWM"
     term_color_white
 
-    KIME_GLOBAL_CONFIGURED=$(cat /etc/environment | wc -l)
-    if [[ $KIME_GLOBAL_CONFIGURED =~ "0" ]]; then
+    KIME_GLOBAL_CONFIGURED=$(cat /etc/environment)
+    if [[ ! $KIME_GLOBAL_CONFIGURED =~ "kime" ]]; then
         term_color_red
-        echo
         echo "Set required Wayland global variables in /etc/environment"
-        echo
         term_color_white
 
         sudo bash -c 'echo "export GTK_IM_MODULE=kime" >> /etc/environment'
