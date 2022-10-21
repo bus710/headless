@@ -234,6 +234,9 @@ input "type:keyboard" {
 default_border pixel 2
 gaps inner 2
 
+bindsym $mod+i workspace prev
+bindsym $mod+o workspace next
+
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set +10%
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -258,7 +261,7 @@ exec mako --anchor botom-right
 # Clipboard daemon
 exec wl-paste -t text --watch clipman store
 
-bindsym $mod+i clipman pick
+bindsym $mod+p clipman pick
 
 exec kime
 
