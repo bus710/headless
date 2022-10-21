@@ -131,12 +131,16 @@ configure_sway (){
     cp dotfiles/35_wofi_style.css /home/$LOGNAME/.config/wofi/style.css
 }
 
-configure_keyring (){
+configure_gtk_dark(){
     term_color_red
-    echo "Configure Gnome keyring manager"
+    echo "Configure Gtk dark theme"
     term_color_white
+    
+    mkdir -p /home/$LOGNAME/.config/gtk-3.0 
+    rm -rf /home/$LOGNAME/.config/gtk-3.0/settings.ini
 
-    # TODO: gnome-keyring config
+    echo "[Settings]" >> /home/$LOGNAME/.config/gtk-3.0/settings.ini
+    echo "gtk-application-prefer-dark-theme=1" >> /home/$LOGNAME/.config/gtk-3.0/settings.ini
 }
 
 post (){
@@ -149,6 +153,6 @@ trap term_color_white EXIT
 confirmation
 install_packages
 configure_sway
-configure_keyring
+configure_gtk_dark
 post
 
