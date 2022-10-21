@@ -56,6 +56,7 @@ install_packages(){
          alsa-utils \
          pulseaudio \
          pulseaudio-utils \
+         pulseaudio-module-bluetooth \
          pipewire-pulse \
          pavucontrol
          #pulseaudio-alsa \
