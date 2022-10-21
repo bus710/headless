@@ -54,8 +54,9 @@ install_kime (){
         exit
     fi
 
+    cd $HOME/Downloads
     sudo dpkg -i kime.deb
-    rm kime.deb
+    rm -rf kime.deb
 }
 
 configuration (){
@@ -76,8 +77,8 @@ configuration (){
     echo
     term_color_white
 
-    KIME_GLOBAL_CONFIGURED=$(cat /etc/environment | grep kime)
-    if [[ ! $KIME_GLOBAL_CONFIGURED =~ "kime" ]]; then
+    KIME_GLOBAL_CONFIGURED=$(cat /etc/environment | wc -l)
+    if [[ $KIME_GLOBAL_CONFIGURED =~ "0" ]]; then
         term_color_red
         echo
         echo "Set required Wayland global variables in /etc/environment"
@@ -98,7 +99,7 @@ startup (){
     term_color_white
 
     # TODO: add some lines for sway config
-    # exec kime ?
+    # #KIME_0 => exec kime
 }
 
 post (){
@@ -108,6 +109,8 @@ post (){
     echo "- re-login and run kime-check"
     echo
     term_color_white
+
+    rm -rf kime.deb
 }
 
 

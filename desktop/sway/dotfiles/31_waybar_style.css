@@ -99,12 +99,15 @@ window#waybar.chromium {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: #bbbbbb;
+    color: #000000;
+    border-radius: 10px
 }
 
 #battery {
-    background-color: #ffffff;
+    background-color: #aaaaaa;
     color: #000000;
+    border-radius: 10px
 }
 
 #battery.charging, #battery.plugged {
@@ -134,24 +137,29 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: #545454;
+    color: #ffffff;
+    border-radius: 10px
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: #555555;
+    border-radius: 10px
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: #333333;
+    border-radius: 10px
 }
 
 #backlight {
-    background-color: #90b1b1;
+    background-color: #777777;
+    border-radius: 10px
 }
 
 #network {
     background-color: #2980b9;
+    border-radius: 10px
 }
 
 #network.disconnected {
@@ -161,6 +169,7 @@ label:focus {
 #pulseaudio {
     background-color: #f1c40f;
     color: #000000;
+    border-radius: 10px
 }
 
 #pulseaudio.muted {
@@ -183,15 +192,18 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: #666666;
+    border-radius: 10px
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background-color: #444444;
+    border-radius: 10px
 }
 
 #tray {
     background-color: #2980b9;
+    border-radius: 10px
 }
 
 #tray > .passive {
