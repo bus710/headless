@@ -77,6 +77,7 @@ install_packages(){
          qtwayland5 \
          ristretto \
          zathura \
+         thunar \
          inxi \
          mpv \
          imv

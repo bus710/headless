@@ -251,9 +251,8 @@ bindsym $mod+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 # Take a Screenshot with the region select
 bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 
-bindsym $mod+q exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland
-bindsym $mod+x exec insider --enable-features=UserOzonePlatform --ozone-platform=wayland
-bindsym $mod+c exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
+bindsym $mod+n exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland
+bindsym $mod+m exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
 
 # Notification
 exec mako --anchor botom-right
