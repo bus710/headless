@@ -32,7 +32,7 @@ output * bg #202545 solid_color
 
 # To find the ID of display
 # $ swaymsg -t get_outputs
-#output eDP-1 scale 1.5
+output eDP-1 scale 1.5
 
 #
 # Example configuration:
@@ -61,7 +61,7 @@ output * bg #202545 solid_color
 # To find the ID of touchpad
 # $ sudo libinput list-devices | grep ELAN
 # $ swaymsg -rt get_inputs | grep _Touch
-input "1267:47:Elan_Touchpad" {
+input "1267:12624:ELAN0670:00_04F3:3150_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
@@ -234,19 +234,25 @@ input "type:keyboard" {
 default_border pixel 2
 gaps inner 2
 
-bindsym --locked XF86MonBrightnessUp exec brightnessctl set +10%
-bindsym --locked XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym $mod+i workspace prev
+bindsym $mod+o workspace next
+
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym $mod+Alt+l exec swaylock -c 000000
+bindsym $mod+Alt+l exec swaylock -c 112233
 
 # Take a screenshot with all output and save it into screenshots
 bindsym $mod+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 # Take a Screenshot with the region select
 bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
+
+bindsym $mod+n exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland
+bindsym $mod+m exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
 
 # Notification
 exec mako --anchor botom-right
@@ -254,8 +260,8 @@ exec mako --anchor botom-right
 # Clipboard daemon
 exec wl-paste -t text --watch clipman store
 
-bindsym $mod+i clipman pick
+bindsym $mod+p clipman pick
 
-#KIME_0
+exec kime
 
 include /etc/sway/config.d/*
