@@ -4,8 +4,7 @@ set -e
 
 CPU_TYPE=$(uname -m)
 CPU_TARGET=""
-V="go1.19.1"
-VERSION=""
+FULL_VERSION=""
 
 if [[ "$EUID" == 0 ]]; 
     then echo "Please run as normal user (w/o sudo)"
@@ -28,20 +27,16 @@ check_architecture(){
     else
         exit
     fi
-    VERSION="${V}.linux-$CPU_TARGET.tar.gz"
+    V=$(curl -s -w '\n' https://go.dev/VERSION\?m\=text)
+    FULL_VERSION="${V}.linux-$CPU_TARGET.tar.gz"
 }
 
 confirmation(){
     term_color_red
-    echo
-    echo "Please check the website if there is a newer version"
-    echo "- https://golang.org/dl/"
+    echo "1. Remove /usr/local/go and ~/go"
+    echo "2. Install ${FULL_VERSION}"
     echo 
-    echo "$VERSION will be installed"
-    echo "/usr/local/go and ~/go will be deleted"
-    echo 
-    echo "Do you want to install? (y/n)"
-    echo
+    echo "Do you want to proceed? (y/n)"
     term_color_white
 
     echo
@@ -81,7 +76,7 @@ install_go(){
     rm -rf go*.tar.gz*
     echo
 
-    wget https://dl.google.com/go/$VERSION
+    wget https://dl.google.com/go/${FULL_VERSION}
 
     term_color_red
     echo
