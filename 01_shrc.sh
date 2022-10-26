@@ -118,6 +118,11 @@ configure_runcom(){
         sed -i '/#ASDF_1/c\fpath=($HOME\/.asdf\/completions $fpath)' /home/$LOGNAME/.shrc
         sed -i '/#ASDF_2/c\autoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
     fi
+
+    # Zig if exists
+    if [[ -f /home/$LOGNAME/zig/zig ]]; then 
+        sed -i '/#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
+    fi
 }
 
 post (){
