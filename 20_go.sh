@@ -2,6 +2,7 @@
 
 set -e
 
+URL=https://go.dev/VERSION\?m\=text
 CPU_TYPE=$(uname -m)
 CPU_TARGET=""
 FULL_VERSION=""
@@ -27,7 +28,7 @@ check_architecture(){
     else
         exit
     fi
-    V=$(curl -s -w '\n' https://go.dev/VERSION\?m\=text)
+    V=$(curl -s -w '\n' ${URL})
     FULL_VERSION="${V}.linux-$CPU_TARGET.tar.gz"
 }
 
