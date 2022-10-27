@@ -62,7 +62,7 @@ cleanup(){
 
 install(){
     term_color_red
-    echo "Download and install Zig SDK"
+    echo "Download and install Zig"
     term_color_white
 
     cd /home/${LOGNAME}
@@ -90,10 +90,27 @@ configure_runcom(){
     source /home/$LOGNAME/.shrc
 }
 
+install_zls(){
+    term_color_red
+    echo "Download and install Zls"
+    term_color_white
+
+    cd /home/${LOGNAME}/zig
+
+    rm -rf zls*
+    git clone --recurse-submodules https://github.com/zigtools/zls zlsRepo
+    cd /home/$LOGNAME/zig/zlsRepo
+    zig build -Drelease-safe
+    mv ./zig-out/bin/zls /home/$LOGNAME/zig
+    cd /home/$LOGNAME/zig
+    rm -rf /home/$LOGNAME/zig/zlsRepo
+}
+
 post(){
     echo 
     echo "Done"
     echo "- Restart terminal"
+    echo "- Run \"zls --config\", but choose NO for the system-wide option"
     echo
 }
 
@@ -103,4 +120,5 @@ confirmation
 cleanup
 install
 configure_runcom
+install_zls
 post
