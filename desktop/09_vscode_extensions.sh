@@ -40,6 +40,10 @@ then
         # C
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
+        # Zig
+        "webfreak.debug"
+        "tiehuis.zig"
+        "AugusteRame.zls-vscode"
         # Go
         "golang.Go"
         # Flutter

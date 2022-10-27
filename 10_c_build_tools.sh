@@ -46,6 +46,7 @@ install_packages (){
     sudo apt update
 
     sudo apt install -y \
+        gdb \
         make \
         cmake \
         meson \

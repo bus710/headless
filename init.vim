@@ -97,6 +97,8 @@ Plug 'stephpy/vim-yaml'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+" Zig
+Plug 'ziglang/zig.vim'
 call plug#end()
 
 " ==========================================================
