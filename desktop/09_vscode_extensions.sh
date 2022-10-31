@@ -46,9 +46,19 @@ then
         "AugusteRame.zls-vscode"
         # Go
         "golang.Go"
+
+        # Svelte
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
+        # HTML
+        "peakchen90.open-html-in-browser"
+        # Tailwind
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
+
         # Flutter
-        "Dart-Code.dart-code" 
-        "Dart-Code.flutter"
+        #"Dart-Code.dart-code" 
+        #"Dart-Code.flutter"
       
         # Rust
         #"rust-lang.rust-analyzer"
@@ -61,9 +71,6 @@ then
         # JS
         #"msjsdiag.debugger-for-chrome" # became built-in
         #"eg2.vscode-npm-script"
-        # Svelte
-        #"svelte.svelte-vscode"
-        #"ardenivanov.svelte-intellisense"
         # Embedded
         #"marus25.cortex-debug"
         #"vsciot-vscode.vscode-arduino"
@@ -77,10 +84,6 @@ then
         #"pantajoe.vscode-elixir-credo"
         #"phoenixframework.phoenix"
         #"Ritvyk.heex-html"
-        # HTML
-        #"peakchen90.open-html-in-browser"
-        # Tailwind
-        #"bradlc.vscode-tailwindcss"
         # AlpineJS
         #"adrianwilczynski.alpine-js-intellisense"
     )
