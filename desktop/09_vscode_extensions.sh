@@ -40,30 +40,30 @@ then
         # C
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
-        # Zig
-        "webfreak.debug"
-        "tiehuis.zig"
-        "AugusteRame.zls-vscode"
         # Go
         "golang.Go"
 
-        # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
-        # HTML
-        "peakchen90.open-html-in-browser"
-        # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        # Rust
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb" 
 
         # Flutter
-        #"Dart-Code.dart-code" 
-        #"Dart-Code.flutter"
+        "Dart-Code.dart-code" 
+        "Dart-Code.flutter"
       
-        # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb" 
+        # Zig
+        #"webfreak.debug"
+        #"tiehuis.zig"
+        #"AugusteRame.zls-vscode"
+        # Svelte
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
+        # HTML
+        #"peakchen90.open-html-in-browser"
+        # Tailwind
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Python
         #"ms-python.python"
