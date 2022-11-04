@@ -165,7 +165,7 @@ cmd-phoenix () {
 
 kitty-ssh-troubleshoot () {
     # https://sw.kovidgoyal.net/kitty/faq/#i-get-errors-about-the-terminal-being-unknown-or-opening-the-terminal-failing-when-sshing-into-a-different-computer
-    echo "kitty +kitten ssh ${SERVER}"
+    echo "kitty +kitten ssh \${SERVER}"
 }
 
 # For gotk4
