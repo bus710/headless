@@ -39,53 +39,51 @@ install_packages(){
 
     # Basic
     sudo apt install -y \
-         sway \
-         wofi \
-         kitty \
-         waybar \
-         swaylock \
-         brightnessctl \
-         fonts-font-awesome \
-         libinput-tools
-         #xorg-xwayland \
-         #xorg-xlsclients \
-         #qt5-wayland \
-         #glfw-wayland \
+        sway \
+        wofi \
+        kitty \
+        waybar \
+        swaylock \
+        brightnessctl \
+        fonts-font-awesome \
+        libinput-tools
 
     # Audio
     sudo apt install -y \
-         alsa-utils \
-         pulseaudio \
-         pulseaudio-utils \
-         pulseaudio-module-bluetooth \
-         pipewire-pulse \
-         pavucontrol
-         #pulseaudio-alsa \
+        alsa-utils \
+        pulseaudio \
+        pulseaudio-utils \
+        pulseaudio-module-bluetooth \
+        pipewire-pulse \
+        pavucontrol
 
     sudo usermod -aG audio $LOGNAME
 
     # Clip board and screen capture/sharing
     sudo apt install -y \
-         xdg-desktop-portal-wlr \
-         wl-clipboard \
-         clipman \
-         slurp \
-         grim
+        xdg-desktop-portal-wlr \
+        wl-clipboard \
+        clipman \
+        slurp \
+        grim
 
     # Extra apps and theming
     sudo apt install -y \
-         qtwayland5 \
-         ristretto \
-         zathura \
-         thunar \
-         inxi \
-         mpv \
-         imv
+        network-manager-gnome \
+        qtwayland5 \
+        ristretto \
+        zathura \
+        thunar \
+        inxi \
+        mpv \
+        imv
 
     # Auth
     sudo apt install -y \
         gnome-keyring \
         sshfs
+
+    # End of function for bash formatter
 }
 
 configure_sway (){
