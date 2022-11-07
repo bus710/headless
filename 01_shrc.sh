@@ -121,6 +121,7 @@ configure_runcom(){
 
     # Zig if exists
     if [[ -f /home/$LOGNAME/zig/zig ]]; then 
+        echo "Activate Zig"
         sed -i '/\#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
     fi
 }
