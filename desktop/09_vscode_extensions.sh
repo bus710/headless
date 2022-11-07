@@ -7,21 +7,39 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
-echo
-echo -e "\e[91m"
-echo "Make sure code and code-insiders are installed (y/n)"
-echo -e "\e[39m"
+term_color_red () {
+    echo -e "\e[91m"
+}
 
-echo
-read -n 1 ans 
-echo
+term_color_white () {
+    echo -e "\e[39m"
+}
 
-if [[ $ans == "y" ]]
-then 
+confirmation () {
+    term_color_red
+    echo "Make sure code and code-insiders are installed (y/n)"
+    term_color_white
+
+    echo
+    read -n 1 ans 
+    echo
+    if [[ ! $ans == "y" ]]; then
+        exit
+    fi
+}
+
+cleanup () {
+    rm -rf /home/$LOGNAME/.vscode/extensions
+    rm -rf /home/$LOGNAME/.vscode-insiders/extensions
+}
+
+install () {
     extensions=(
         # Git
         "eamodio.gitlens"
         "mhutchie.git-graph"
+        # Error
+        "usernamehw.errorlens"
         # Editor
         "vscodevim.vim"
         "dracula-theme.theme-dracula"
@@ -44,26 +62,27 @@ then
         "golang.Go"
 
         # Rust
-        "rust-lang.rust-analyzer"
-        "serayuzgur.crates"
-        "vadimcn.vscode-lldb" 
+        #"rust-lang.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb" 
 
         # Flutter
-        "Dart-Code.dart-code" 
-        "Dart-Code.flutter"
-      
+        #"Dart-Code.dart-code" 
+        #"Dart-Code.flutter"
+
         # Zig
-        #"webfreak.debug"
-        #"tiehuis.zig"
-        #"AugusteRame.zls-vscode"
+        "webfreak.debug"
+        "tiehuis.zig"
+        "AugusteRame.zls-vscode"
+
         # Svelte
-        #"svelte.svelte-vscode"
-        #"ardenivanov.svelte-intellisense"
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
         # HTML
-        #"peakchen90.open-html-in-browser"
+        "peakchen90.open-html-in-browser"
         # Tailwind
-        #"bradlc.vscode-tailwindcss"
-        #"austenc.tailwind-docs"
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
 
         # Python
         #"ms-python.python"
@@ -89,18 +108,27 @@ then
     )
 
     for e in ${extensions[@]}; do
-        echo
-        echo -e "\e[91m"
+        term_color_red
         echo Install $e
-        echo -e "\e[39m"
+        term_color_white
         code --install-extension $e
         code-insiders --install-extension $e
     done
 
     echo
-fi
+}
 
-echo "done"
+post () {
+    term_color_red
+    echo "done"
+    term_color_white
+}
+
+trap term_color_white
+confirmation
+cleanup
+install
+post
 
 # VSCODE global configuration
 # $HOME/.config/Code/User/settings.json
@@ -117,4 +145,6 @@ echo "done"
 #     "go.toolsManagement.autoUpdate": true,
 #     "terminal.integrated.fontSize": 16
 # }
+
+
 

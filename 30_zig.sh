@@ -84,7 +84,7 @@ configure_runcom(){
     term_color_white
 
     if [[ -f /home/$LOGNAME/zig/zig ]]; then
-        sed -i '/#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
+        sed -i '/\#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
     fi
 
     source /home/$LOGNAME/.shrc
