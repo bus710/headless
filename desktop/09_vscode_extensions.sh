@@ -29,11 +29,19 @@ confirmation () {
 }
 
 cleanup () {
+    term_color_red
+    echo "Cleanup"
+    term_color_white
+
     rm -rf /home/$LOGNAME/.vscode/extensions
     rm -rf /home/$LOGNAME/.vscode-insiders/extensions
 }
 
 install () {
+    term_color_red
+    echo "Install"
+    term_color_white
+
     extensions=(
         # Git
         "eamodio.gitlens"
@@ -111,8 +119,9 @@ install () {
         term_color_red
         echo Install $e
         term_color_white
-        code --install-extension $e
-        code-insiders --install-extension $e
+
+        code --install-extension $e 2> /dev/null
+        code-insiders --install-extension $e 2> /dev/null
     done
 
     echo
@@ -124,7 +133,7 @@ post () {
     term_color_white
 }
 
-trap term_color_white
+trap term_color_white EXIT
 confirmation
 cleanup
 install
