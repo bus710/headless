@@ -122,7 +122,7 @@ configure_runcom(){
     fi
 
     term_color_red
-    echo "Configure runcom"
+    echo "Configure the runcom"
     term_color_white
     
     if [[ -f /home/$LOGNAME/flutter/bin/flutter ]]; then
