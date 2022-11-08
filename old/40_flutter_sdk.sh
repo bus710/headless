@@ -2,11 +2,15 @@
 
 set -e
 
-# TODO: parse the response of this URL for VERSION
-# https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json
-
-URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/"
-VERSION="flutter_linux_3.0.5-stable.tar.xz"
+FILENAME="flutter.tar.xz"
+RELEASES="" # Entire response from the releases API
+SYSTEM=$(uname -s) # Linux or Darwin
+ARCH=$(uname -m) # x86_64 (for most Linux and Intel mac) or arm64 (for Linux SBCs and m1 mac)
+BASE_URL="https://storage.googleapis.com/flutter_infra_release/releases"
+CHANNEL="beta"
+OS=""               # will be assigned - linux or macos
+CURRENT_ARCHIVE=""  # will be assigned
+TARGET_ARCH=""      # will be assigned - x64 or arm64
 
 if [[ "$EUID" == 0 ]]; then
     echo "Please run as a normal user (w/o sudo)"
@@ -21,18 +25,47 @@ term_color_white () {
     echo -e "\e[39m"
 }
 
+find_version() {
+    # Check the system type
+    if [[ $SYSTEM == "Linux" ]]; then
+        RELEASES=$(curl -s $BASE_URL/releases_linux.json)
+        OS="linux"
+    elif [[ $SYSTEM == "Darwin" ]]; then 
+        RELEASES=$(curl -s $BASE_URL/releases_macos.json)
+        OS="macos"
+    else
+        echo "Some issues are found - exit"
+        exit -1
+    fi
+
+    # Decide the filter based on the architecture & system
+    if [[ $SYSTEM == "Darwin" ]] && [[ $ARCH == "x86_64" ]]; then
+        TARGET_ARCH="x64"
+    elif [[ $SYSTEM == "Darwin" ]] && [[ $ARCH == "arm64" ]]; then
+        TARGET_ARCH="arm64"
+    elif [[ $SYSTEM == "Linux" ]]; then
+        TARGET_ARCH="x64"
+    fi
+
+    # Filter out the keys
+    CURRENT_HASH=$(echo $RELEASES | jq --raw-output --slurp .[]."current_release".beta)
+    CURRENT_INFO=""
+
+    CURRENT_INFO=$(echo $RELEASES \
+        | jq --raw-output --slurp '.[].releases' \
+        | jq --raw-output --arg hash_value $CURRENT_HASH --arg arch_value $TARGET_ARCH \
+        '.[]|select((.hash==$hash_value) and (.dart_sdk_arch=$arch_value))')
+    CURRENT_ARCHIVE=$(echo $CURRENT_INFO | jq -r '.|.archive')
+}
+
 confirmation(){
     term_color_red
-    echo
-    echo "1. Please check the website if there is a newer version"
-    echo "  https://flutter.dev/docs/development/tools/sdk/releases?tab=linux"
-    echo "2. This will be installed but changed"
-    echo "  $VERSION"
-    echo "3. Existing SDK directory will be deleted"
-    echo "  rm $HOME/flutter"
-    echo
+    echo "Target version:"
+    echo "- $CURRENT_ARCHIVE"
+    term_color_white
+    
+    term_color_red
     echo "Do you want to install? (y/n)"
-    echo
     term_color_white
     
     echo
@@ -45,57 +78,51 @@ confirmation(){
     fi
 }
 
-check_architecture(){
-    CPU_TYPE=$(uname -m)
-    if [[ $CPU_TYPE != "x86_64" ]] && [[ $CPUTYPE != "aarch64" ]]; then
-        term_color_red
-        echo
-        echo "x86_64 or aarch64 can be used"
-        echo
-        term_color_white
-        exit -1
-    fi
-}
-
 install_packages(){
+    if [[ $SYSTEM != "Linux" ]]; then
+        term_color_red
+        echo "Not Linux - packages will not be installed"
+        term_color_white
+        return
+    fi
+
     term_color_red
-    echo
     echo "Config for USB debugging"
-    echo
     term_color_white
     
     sudo usermod -aG plugdev $LOGNAME
     sudo apt install -y \
-    android-sdk-platform-tools-common \
-    clang
+        android-sdk-platform-tools-common \
+        clang
 }
 
 install_flutter(){
     term_color_red
-    echo
     echo "Download and install flutter SDK"
-    echo
     term_color_white
-    
-    wget $URL$VERSION
+   
+    wget ${BASE_URL}/${CURRENT_ARCHIVE} -O $FILENAME
     
     term_color_red
-    echo
     echo "Wait for untar..."
-    echo
     term_color_white
     
-    tar xf $VERSION
+    tar xf $FILENAME
     rm -rf ~/flutter
     mv flutter ~/
-    rm $VERSION
+    rm $FILENAME
 }
 
 configure_runcom(){
+    if [[ $SYSTEM != "Linux" ]]; then
+        term_color_red
+        echo "Not Linux - runcom will not be configured"
+        term_color_white
+        return
+    fi
+
     term_color_red
-    echo
     echo "Configure runcom"
-    echo
     term_color_white
     
     if [[ -f /home/$LOGNAME/flutter/bin/flutter ]]; then
@@ -110,36 +137,28 @@ configure_runcom(){
 
 update_configuration(){
     term_color_red
-    echo
     echo "Config the SDK"
-    echo
     term_color_white
     
     flutter doctor
     flutter update-packages
     
-    #echo
     #echo "Change the channel"
-    #echo
     
     #flutter channel beta
     #flutter upgrade
     #flutter channel
     
-    #echo
     #echo "Install webdev"
-    #echo
     
     #flutter pub global activate webdev
     
     term_color_red
-    echo
     echo "Enable/disable targets"
-    echo
     term_color_white
     
     flutter config --no-enable-web
-    flutter config --enable-linux-desktop
+    flutter config --no-enable-linux-desktop
     #flutter config --no-enable-ios
     #flutter config --no-enable-android
     # flutter config --enable-macos-desktop
@@ -148,15 +167,13 @@ update_configuration(){
 
 post(){
     term_color_red
-    echo
     echo "Done"
-    echo
     term_color_white
 }
 
 trap term_color_white EXIT
+find_version
 confirmation
-check_architecture
 install_packages
 install_flutter
 configure_runcom
