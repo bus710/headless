@@ -75,8 +75,8 @@ install () {
         #"vadimcn.vscode-lldb" 
 
         # Flutter
-        #"Dart-Code.dart-code" 
-        #"Dart-Code.flutter"
+        "Dart-Code.dart-code" 
+        "Dart-Code.flutter"
 
         # Zig
         "webfreak.debug"
@@ -84,13 +84,13 @@ install () {
         "AugusteRame.zls-vscode"
 
         # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
         # HTML
-        "peakchen90.open-html-in-browser"
+        #"peakchen90.open-html-in-browser"
         # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Python
         #"ms-python.python"

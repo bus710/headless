@@ -17,15 +17,11 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo
     echo "Some dart tools will be installed."
     echo "Do you want to install? (y/n)"
-    echo
     term_color_white
 
-    echo
     read -n 1 ans
-    echo
 
     if [[ ! $ans == "y" ]]; then 
         echo
@@ -35,9 +31,7 @@ confirmation(){
 
 install_packages(){
     term_color_red
-    echo
     echo "Install FFIGen"
-    echo
     term_color_white
 
     dart pub global activate ffigen
@@ -45,9 +39,7 @@ install_packages(){
 
 post(){
     term_color_red
-    echo
     echo "Done"
-    echo
     term_color_white
 }
 

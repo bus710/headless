@@ -2,8 +2,12 @@
 
 set -e
 
-URL_STUDIO="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz"
-URL_SDK="https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip"
+URL_STUDIO=\
+    "https://redirector.gvt1.com/edgedl/android/studio/ide-zips/"+\
+    "2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz"
+URL_SDK=\
+    "https://dl.google.com/android/repository/"+\
+    "commandlinetools-linux-8512546_latest.zip"
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as a normal user (w/o sudo)"
@@ -20,7 +24,6 @@ term_color_white () {
 
 confirmation() {
     term_color_red
-    echo
     echo "1. Please check the website if there is a newer version"
     echo "  https://developer.android.com/studio#downloads"
     echo "2. Existing SDK directory will be deleted"
@@ -30,9 +33,7 @@ confirmation() {
     echo
     term_color_white
 
-    echo
     read -n 1 ans
-    echo
 
     if [[ ! $ans == "y" ]]; then 
         exit -1
@@ -41,9 +42,7 @@ confirmation() {
 
 install_ide_and_sdk(){
     term_color_red
-    echo 
     echo "Download IDE and SDK"
-    echo 
     term_color_white
 
     cd $HOME
@@ -67,18 +66,14 @@ install_ide_and_sdk(){
 
 prep_files(){
     term_color_red
-    echo
     echo "Prep directory"
-    echo 
     term_color_white
 
     rm -rf Android
     mkdir -p Android/cmdline-tools
 
     term_color_red
-    echo
     echo "Wait for untar..."
-    echo
     term_color_white
 
     ls android-studio-*.tar.gz | xargs tar xf >> /dev/null 2>&1
@@ -91,9 +86,7 @@ prep_files(){
 
 configure_java(){
     term_color_red
-    echo
     echo "Java config"
-    echo
     term_color_white
 
     sudo update-alternatives \
@@ -110,9 +103,7 @@ configure_java(){
         /home/$LOGNAME/Android/android-studio/jre/bin/java
 
     term_color_red
-    echo 
     echo "Java version"
-    echo
     term_color_white
 
     java -version
@@ -120,9 +111,7 @@ configure_java(){
 
 configure_usb_debugging(){
     term_color_red
-    echo 
     echo "Config for USB debugging"
-    echo
     term_color_white
 
     sudo usermod -aG plugdev $LOGNAME
@@ -132,9 +121,7 @@ configure_usb_debugging(){
 
 cleanup(){
     term_color_red
-    echo
     echo "Cleanup"
-    echo
     term_color_white
 
     rm android-studio-*.tar.gz
@@ -143,9 +130,7 @@ cleanup(){
 
 configure_runcom(){
     term_color_red
-    echo
     echo "Activate variables in ~/.shrc"
-    echo
     term_color_white
 
     sed -i '/#ANDROID_0/c\export JAVA_HOME=\$HOME\/Android\/android-studio\/jre' /home/$LOGNAME/.shrc
@@ -158,20 +143,18 @@ configure_runcom(){
 
 post(){
     term_color_red
-    echo
     echo "Please source ~/.shrc"
     echo
     echo "Done"
-    echo
     term_color_white
 }
 
 trap term_color_white EXIT
-# confirmation
-# install_ide_and_sdk
-# prep_files
-# configure_java
-# configure_usb_debugging
-# cleanup
+confirmation
+install_ide_and_sdk
+prep_files
+configure_java
+configure_usb_debugging
+cleanup
 configure_runcom
 post
