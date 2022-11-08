@@ -2,6 +2,9 @@
 
 set -e
 
+# TODO: parse the response of this URL for VERSION
+# https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json
+
 URL="https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/"
 VERSION="flutter_linux_3.0.5-stable.tar.xz"
 
