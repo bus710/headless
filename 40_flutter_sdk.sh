@@ -2,15 +2,10 @@
 
 set -e
 
-FILENAME="flutter.tar.xz"
-RELEASES="" # Entire response from the releases API
 SYSTEM=$(uname -s) # Linux or Darwin
 ARCH=$(uname -m) # x86_64 (for most Linux and Intel mac) or arm64 (for Linux SBCs and m1 mac)
 BASE_URL="https://storage.googleapis.com/flutter_infra_release/releases"
-CHANNEL="beta"
-OS=""               # will be assigned - linux or macos
 CURRENT_ARCHIVE=""  # will be assigned
-TARGET_ARCH=""      # will be assigned - x64 or arm64
 
 if [[ "$EUID" == 0 ]]; then
     echo "Please run as a normal user (w/o sudo)"
@@ -27,6 +22,8 @@ term_color_white () {
 
 find_version() {
     # Check the system type
+    OS="" # linux or macos
+    RELEASES="" # Store the entire response from the releases API
     if [[ $SYSTEM == "Linux" ]]; then
         RELEASES=$(curl -s $BASE_URL/releases_linux.json)
         OS="linux"
@@ -39,6 +36,7 @@ find_version() {
     fi
 
     # Decide the filter based on the architecture & system
+    TARGET_ARCH="" # x64 or arm64
     if [[ $SYSTEM == "Darwin" ]] && [[ $ARCH == "x86_64" ]]; then
         TARGET_ARCH="x64"
     elif [[ $SYSTEM == "Darwin" ]] && [[ $ARCH == "arm64" ]]; then
@@ -48,13 +46,14 @@ find_version() {
     fi
 
     # Filter out the keys
-    CURRENT_HASH=$(echo $RELEASES | jq --raw-output --slurp .[]."current_release".beta)
+    CURRENT_HASH=$(echo $RELEASES | \
+        jq --raw-output --slurp .[]."current_release".beta)
     CURRENT_INFO=""
 
     CURRENT_INFO=$(echo $RELEASES \
         | jq --raw-output --slurp '.[].releases' \
         | jq --raw-output --arg hash_value $CURRENT_HASH --arg arch_value $TARGET_ARCH \
-        '.[]|select((.hash==$hash_value) and (.dart_sdk_arch=$arch_value))')
+        '.[]|select((.hash==$hash_value) and (.dart_sdk_arch==$arch_value))')
     CURRENT_ARCHIVE=$(echo $CURRENT_INFO | jq -r '.|.archive')
 }
 
@@ -100,7 +99,9 @@ install_flutter(){
     term_color_red
     echo "Download and install flutter SDK"
     term_color_white
-   
+
+    FILENAME="flutter.tar.xz"
+
     wget ${BASE_URL}/${CURRENT_ARCHIVE} -O $FILENAME
     
     term_color_red
