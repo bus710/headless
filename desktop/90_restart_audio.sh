@@ -7,17 +7,11 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
-TIGER_LAKE=$(lspci | grep TigerLake | wc -l)
-
-if [[ ! $TIGER_LAKE =~ "1" ]]; then
-    echo
-    echo "Not TigerLake device"
-    echo
-    exit
-fi
+AUDIO_DEVICE=$(lspci | grep Audio)
 
 echo
-echo "Configure TigerLake audio"
+echo "Restart audio"
+echo "$AUDIO_DEVICE"
 echo
 
 term_color_red () {

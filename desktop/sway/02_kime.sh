@@ -45,6 +45,8 @@ install_kime (){
 
     TARGET_KIME_VERSION=$(curl -o- -s https://api.github.com/repos/Riey/kime/releases/latest | jq -r '.tag_name')
 
+    cd $HOME/Downloads
+
     if [[ $OS_TYPE =~ "Debian" ]]; then
         wget -O kime.deb https://github.com/Riey/kime/releases/download/${TARGET_KIME_VERSION}/kime_debian-buster_${TARGET_KIME_VERSION}_amd64.deb
     elif [[ $OS_TYPE =~ "Ubuntu" ]]; then
@@ -54,7 +56,6 @@ install_kime (){
         exit
     fi
 
-    cd $HOME/Downloads
     sudo dpkg -i kime.deb
     rm -rf kime.deb
 }

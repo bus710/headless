@@ -53,7 +53,7 @@ configure_keyring (){
     systemctl status --user gnome-keyring-daemon --no-pager | grep -A2 CGroup
 
     # The port can be 1000 or something else.
-    sed -i 's/#SSH_AUTH_SOCK/export\ SSH_AUTH_SOCK=/run/user/1000/keyring/ssh' 
+    sed -i 's/#SSH_AUTH_SOCK/export\ SSH_AUTH_SOCK=\/run\/user\/1000\/keyring\/ssh/g' /home/$LOGNAME/.shrc
 }
 
 post (){
