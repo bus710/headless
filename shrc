@@ -65,7 +65,7 @@ alias dw='cd ~/repo/docs'
 
 alias gw='cd ~/repo/gows'
 alias zw='cd ~/repo/zigws'
-alias vw='cd ~/repo/svtws'
+alias sv='cd ~/repo/svtws'
 alias jw='cd ~/repo/jsws'
 alias rw='cd ~/repo/rustws'
 
@@ -86,6 +86,7 @@ alias disk620='sshfs bus710@disk620:/ ~/disk620'
 alias nv='nvim'
 alias rr='ranger'
 alias ll='ls -la'
+alias nf='echo "neofetch" && neofetch'
 
 alias gp='git pull origin HEAD'
 alias gf='git fetch --dry-run -v'
