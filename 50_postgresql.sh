@@ -56,13 +56,17 @@ post_install(){
     echo "- # DROP DATABASE test ; (or \$DB_NAME)"
     echo 
     echo "- # \\l (list DBs)"
+    echo "- # \\c (change DB)"
+    echo "- # \\e (edit a query)"
     echo "- # \\dt (list tables)"
+    echo "- # \\d (see relation)"
+    echo "- # \\d+ (see relation with details)"
     echo "- # \\d \$TABLE_NAME (describe the table)"
     echo "- # \\dn (list all schemas)"
     echo "- # \\dv (list all views)"
     echo "- # \\du (list all users)"
     echo "- # \\df (list all functions)"
-    echo "- # \\c (change DB)"
+    echo "- # \\db (list all table space)"
     echo "- # \\q (quit)"
     echo
     echo "- To stop: sudo systemctl stop postgresql.service"
