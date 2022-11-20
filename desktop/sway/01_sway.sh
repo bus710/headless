@@ -46,6 +46,7 @@ install_packages(){
         swaylock \
         brightnessctl \
         fonts-font-awesome \
+        mako-notifier \
         libinput-tools
 
     # Audio
