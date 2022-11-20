@@ -52,8 +52,8 @@ post_install(){
     echo "- To start PSQL shell: sudo -u postgres psql"
     echo
     echo "- # \\password postgres (or \$ACCOUNT_NAME)"
-    echo "- # CREATE DATABASE test ; (or \$DB_NAME)"
-    echo "- # DROP DATABASE test ; (or \$DB_NAME)"
+    echo "- # CREATE DATABASE test; (or \$DB_NAME)"
+    echo "- # DROP DATABASE test; (or \$DB_NAME)"
     echo 
     echo "- # \\l (list DBs)"
     echo "- # \\c (change DB)"
