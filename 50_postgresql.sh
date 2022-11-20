@@ -49,7 +49,8 @@ post_install(){
 
     echo "- PSQL shell: sudo -u postgres psql"
     echo "- # \\password postgres (or \$ACCOUNT_NAME)"
-    echo "- # CREATE DATABASE pento_dev; (or \$DB_NAME)"
+    echo "- # CREATE DATABASE test ; (or \$DB_NAME)"
+    echo "- # DROP DATABASE test ; (or \$DB_NAME)"
     echo "- # \\l"
     echo "- # \\q"
     echo
