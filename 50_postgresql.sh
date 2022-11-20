@@ -47,12 +47,23 @@ post_install(){
     echo "Post install - some commands"
     term_color_white
 
-    echo "- PSQL shell: sudo -u postgres psql"
+    echo "- To check: sudo systemctl status postgresql"
+    echo
+    echo "- To start PSQL shell: sudo -u postgres psql"
+    echo
     echo "- # \\password postgres (or \$ACCOUNT_NAME)"
     echo "- # CREATE DATABASE test ; (or \$DB_NAME)"
     echo "- # DROP DATABASE test ; (or \$DB_NAME)"
-    echo "- # \\l"
-    echo "- # \\q"
+    echo 
+    echo "- # \\l (list DBs)"
+    echo "- # \\dt (list tables)"
+    echo "- # \\d \$TABLE_NAME (describe the table)"
+    echo "- # \\dn (list all schemas)"
+    echo "- # \\dv (list all views)"
+    echo "- # \\du (list all users)"
+    echo "- # \\df (list all functions)"
+    echo "- # \\c (change DB)"
+    echo "- # \\q (quit)"
     echo
     echo "- To stop: sudo systemctl stop postgresql.service"
 }
