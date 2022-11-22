@@ -38,7 +38,8 @@ if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
     grep SwapTotal /proc/meminfo
 
     echo
-    echo "Done"
+    echo "Done - add the line below to /etc/fatab"
+    echo "/swapfile    none    swap    sw    0    0"
     echo
 else
     echo "CPU type is ${CPU_TYPE}"
