@@ -21,15 +21,15 @@ if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
     echo "This takes ~30 seconds"
     echo
 
-    sudo dd if=/dev/zero of=/swapfile bs=1G count=16 
-    sudo mkswap /swapfile
-    sudo chmod 600 /swapfile
+    sudo dd if=/dev/zero of=/tmp/swapfile bs=1G count=16 
+    sudo mkswap /tmp/swapfile
+    sudo chmod 600 /tmp/swapfile
 
     echo
     echo "Swap on"
     echo
 
-    sudo swapon /swapfile
+    sudo swapon /tmp/swapfile
 
     echo
     echo "Swap status"
@@ -39,7 +39,7 @@ if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
 
     echo
     echo "Done - add the line below to /etc/fatab"
-    echo "/swapfile    none    swap    sw    0    0"
+    echo "/tmp/swapfile    none    swap    sw    0    0"
     echo
 else
     echo "CPU type is ${CPU_TYPE}"
