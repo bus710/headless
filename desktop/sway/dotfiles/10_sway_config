@@ -252,18 +252,20 @@ bindsym $mod+Alt+0 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Alt+9 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Alt+8 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-bindsym $mod+Alt+l exec swaylock -c 112233
+# Lock the screen with the given color and lower the backlight level to 10%
+bindsym $mod+Alt+l exec "brightnessctl set 10% && swaylock -c 112233"
 
 # Take a screenshot with all output and save it into screenshots
 bindsym $mod+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 # Take a Screenshot with the region select
 bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 
+# Shortcuts for browser and vscode
 bindsym $mod+n exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland
 bindsym $mod+m exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
 
 # Notification
-exec mako --anchor botom-right
+exec mako --anchor bottom-right
 
 # Clipboard daemon
 exec wl-paste -t text --watch clipman store
