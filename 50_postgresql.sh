@@ -53,6 +53,13 @@ post_install(){
     echo
     echo "- # \\password postgres (or \$ACCOUNT_NAME)"
     echo "- # CREATE DATABASE test; (or \$DB_NAME)"
+    echo "- # \\c test"
+    echo "- # CREATE TABLE IF NOT EXISTS users ("
+    echo "      id SERIAL PRIMARY KEY,"
+    echo "      age INT,"
+    echo "      first_name TEXT,"
+    echo "      last_name TEXT,"
+    echo "      email TEXT UNIQUE NOT NULL);"
     echo "- # DROP DATABASE test; (or \$DB_NAME)"
     echo 
     echo "- # \\l (list DBs)"
