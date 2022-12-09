@@ -270,9 +270,14 @@ exec mako --anchor bottom-right
 
 # Clipboard daemon
 exec wl-paste -t text --watch clipman store
-
 bindsym $mod+p clipman pick
 
+# Screen sharing
+# 1. check if XDG_CURRENT_DESKTOP is set in terminal (apart from the exec below)
+# 2. check if Chrome flag is enabled (chrome://flags/#enable-webrtc-pipewire-capturer)
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# IME
 exec kime
 
 include /etc/sway/config.d/*

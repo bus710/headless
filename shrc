@@ -174,3 +174,6 @@ export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 
 # For swaywm ssh socket
 #SSH_AUTH_SOCK
+
+# For swaywm screen sharing
+export XDG_CURRENT_DESKTOP=sway
