@@ -68,29 +68,26 @@ install () {
         "ms-vscode.makefile-tools"
         # Go
         "golang.Go"
+        # Erlang
+        "pgourlain.erlang"
 
-        # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb" 
+        # Zig
+        #"webfreak.debug"
+        #"tiehuis.zig"
+        #"AugusteRame.zls-vscode"
 
         # Flutter
         #"Dart-Code.dart-code" 
         #"Dart-Code.flutter"
 
-        # Zig
-        "webfreak.debug"
-        "tiehuis.zig"
-        "AugusteRame.zls-vscode"
-
         # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
         # HTML
-        "peakchen90.open-html-in-browser"
+        #"peakchen90.open-html-in-browser"
         # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Python
         #"ms-python.python"
@@ -113,6 +110,11 @@ install () {
         #"Ritvyk.heex-html"
         # AlpineJS
         #"adrianwilczynski.alpine-js-intellisense"
+
+        # Rust
+        #"rust-lang.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb" 
     )
 
     for e in ${extensions[@]}; do
