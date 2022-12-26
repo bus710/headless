@@ -70,13 +70,26 @@ install_packages(){
         libssl-dev
 }
 
-install_latest_versions(){
+install_erlang(){
     term_color_red
-    echo "Get the latest versions"
+    echo "install erlang"
     term_color_white
 
     asdf install erlang $ERLANG_VERSION
     asdf global erlang $ERLANG_VERSION 
+}
+
+install_rebar3(){
+    term_color_red
+    echo "Install rebar3 (pre-built)"
+    term_color_white
+
+    wget -P /home/$LOGNAME/Downloads https://s3.amazonaws.com/rebar3/rebar3
+    chmod +x /home/$LOGNAME/Downloads/rebar3
+
+    sudo mkdir -p /usr/local/bin
+    sudo rm -rf /usr/local/bin/rebar3
+    sudo mv /home/$LOGNAME/Downloads/rebar3 /usr/local/bin
 }
 
 check_installed_versions(){
@@ -85,13 +98,15 @@ check_installed_versions(){
     term_color_white
     
     asdf current
+    rebar3 --version
 }
 
 trap term_color_white EXIT
 register_repo
 confirmation
 install_packages
-install_latest_versions
+install_erlang
+install_rebar3
 check_installed_versions 
 
 echo
