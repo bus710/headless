@@ -24,9 +24,7 @@ term_color_white () {
 check_architecture(){
     if [[ $CPU_TYPE != "x86_64" ]] || [[ $CPU_TYPE != "aarch64" ]]; then
         term_color_red
-        echo
         echo "This is not x86_64 or aarch64."
-        echo
         term_color_white
 
         exit -1
@@ -35,9 +33,7 @@ check_architecture(){
 
 cleanup(){
     term_color_red
-    echo
     echo "Remove if exist"
-    echo
     term_color_white
 
     sudo rm -rf /usr/local/aws-cli
@@ -47,33 +43,25 @@ cleanup(){
 
 install_sdk(){
     term_color_red
-    echo
     echo "Get the package"
-    echo
     term_color_white
 
     curl $URL -o $FILE_NAME
 
     term_color_red
-    echo
     echo "Unzip..."
-    echo
     term_color_white
 
     unzip $FILE_NAME
 
     term_color_red
-    echo 
     echo "Install aws"
-    echo
     term_color_white
 
     sudo ./aws/install
 
     term_color_red
-    echo
     echo "Check the version"
-    echo
     term_color_white
 
     aws --version
@@ -81,9 +69,7 @@ install_sdk(){
 
 configure_runcom(){
     term_color_red
-    echo
     echo "Add completer to path"
-    echo 
     term_color_white
 
     if [[ -f /usr/local/bin/aws ]]; then
@@ -95,9 +81,7 @@ configure_runcom(){
 
 post(){
     term_color_red
-    echo
     echo "Done"
-    echo
     term_color_white
 }
 
