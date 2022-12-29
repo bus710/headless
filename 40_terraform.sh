@@ -85,7 +85,7 @@ verify_fingerprint(){
         --fingerprint
 
     term_color_red
-    echo "If the fingerprint matches to the line below?"
+    echo "If the fingerprint matches to the line below? (y/n)"
     echo "- E8A0 32E0 94D8 EB4E A189  D270 DA41 8C88 A321 9F7B"
     term_color_white
 
@@ -123,13 +123,19 @@ install_terraform(){
 
 configure_runcom(){
     term_color_red
-    echo "Add completer to path"
+    echo "Add autocompletion in zshrc"
+    echo "These lines will be added to /\$HOME/.zshrc"
+    echo "- autoload -U +X bashcompinit && bashcompinit"
+    echo "- complete -o nospace -C /usr/bin/terraform terraform"
     term_color_white
 
-    if [[ -f /usr/local/bin/aws ]]; then
-        sed -i '/#AWS_0/c\autoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_1/c\complete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_2/c\export PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
+    CHECK_RC=$(cat /home/$LOGNAME/.zshrc | grep /usr/bin/terraform)
+    if [[ $CHECK_RC =~ "/usr/bin/terraform" ]]; then
+        term_color_red
+        echo "There is a related line in the runcom already - skip."
+        term_color_white
+    else 
+        terraform -install-autocomplete
     fi
 }
 
@@ -148,5 +154,5 @@ install_gpg_key
 verify_fingerprint
 add_repo
 install_terraform
-
+configure_runcom
 post
