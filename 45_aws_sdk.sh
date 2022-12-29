@@ -46,6 +46,7 @@ install_sdk(){
     echo "Get the package"
     term_color_white
 
+    cd /home/$LOGNAME/Downloads
     curl $URL -o $FILE_NAME
 
     term_color_red
