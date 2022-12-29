@@ -22,7 +22,7 @@ term_color_white () {
 }
 
 check_architecture(){
-    if [[ $CPU_TYPE != "x86_64" ]] || [[ $CPU_TYPE != "aarch64" ]]; then
+    if [[ $CPU_TYPE != "x86_64" ]] && [[ $CPU_TYPE != "aarch64" ]]; then
         term_color_red
         echo "This is not x86_64 or aarch64."
         term_color_white

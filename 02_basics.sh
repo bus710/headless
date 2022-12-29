@@ -20,10 +20,8 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo
     echo "Install some basic packages"
     echo "Do you want to install? (y/n)"
-    echo
     term_color_white
 
     echo
@@ -37,9 +35,7 @@ confirmation(){
 
 install_basic_packages(){
     term_color_red
-    echo
     echo "Install basic packages"
-    echo
     term_color_white
 
     sudo apt update
@@ -71,9 +67,7 @@ install_basic_packages(){
 
 install_daemon_packages(){
     term_color_red
-    echo
     echo "Install some daemon packages"
-    echo
     term_color_white
 
     sudo apt install -y \
@@ -84,9 +78,7 @@ install_daemon_packages(){
 
 install_network_packages(){
     term_color_red
-    echo
     echo "Install network packages"
-    echo
     term_color_white
 
     sudo apt install -y \
@@ -101,9 +93,7 @@ install_network_packages(){
 
 install_nvim_base(){
     term_color_red
-    echo
     echo "Install Python for nvim"
-    echo
     term_color_white
 
     sudo apt install -y \
@@ -114,9 +104,7 @@ install_nvim_base(){
 
 install_bluetooth_packages(){
     term_color_red
-    echo
     echo "Install Bluetooth packages"
-    echo
     term_color_white
 
     sudo apt install -y \
@@ -131,9 +119,7 @@ install_bluetooth_packages(){
 
 install_platform_specific_packages(){
     term_color_red
-    echo
     echo "Install platform specific packages"
-    echo
     term_color_white
 
     if [[ $OS_TYPE =~ "Debian" ]]; then
@@ -144,9 +130,7 @@ install_platform_specific_packages(){
     if [[ $CPU_TYPE == "x86_64" ]]; then
         echo
     elif [[ $CPU_TYPE == "aarch64" ]]; then
-        echo
         echo "Install for Raspbian OS"
-        echo
 
         sudo apt install -y \
             file \
@@ -156,9 +140,7 @@ install_platform_specific_packages(){
 
 cleanup(){
     term_color_red
-    echo
     echo "Cleanup"
-    echo 
     term_color_white
 
     sudo apt autoremove -y
@@ -166,9 +148,7 @@ cleanup(){
 
 update_tmux(){
     term_color_red
-    echo
     echo "Update Tmux"
-    echo
     term_color_white
 
     # To apply ^a shortcut to the tmux config
@@ -178,9 +158,7 @@ update_tmux(){
 
 update_capslock(){
     term_color_red
-    echo
     echo "Update Capslock to nocaps"
-    echo
     term_color_white
 
     sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
@@ -189,9 +167,7 @@ update_capslock(){
 
 update_ssh_port(){
     term_color_red
-    echo
     echo "Update sshd port"
-    echo
     term_color_white
 
     # sudo sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
@@ -201,9 +177,7 @@ update_ssh_port(){
 
 update_timeout(){
     term_color_red
-    echo 
     echo "Update default timeout to stop from 90s to 7s"
-    echo
     term_color_white
 
     sudo bash -c "sed -i '/#DefaultTimeoutStopSec=90s/c\DefaultTimeoutStopSec=7s' /etc/systemd/system.conf"
@@ -211,7 +185,6 @@ update_timeout(){
 
 post(){
     term_color_red
-    echo
     echo "1. SSH port number is changed"
     echo "2. Source your .bashrc (source ~/.bashrc)"
     echo "3. Check your .tmux.conf"
@@ -219,7 +192,6 @@ post(){
     echo "5. Try neofetch"
     echo
     echo "Done"
-    echo
     term_color_white
 }
 
