@@ -111,6 +111,7 @@ install_rebar3(){
     sudo mkdir -p /usr/local/bin
     sudo rm -rf /usr/local/bin/rebar3
     sudo mv /home/$LOGNAME/Downloads/rebar3 /usr/local/bin
+    /usr/local/bin/rebar3 local install
 }
 
 check_installed_versions(){
