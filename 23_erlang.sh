@@ -56,19 +56,37 @@ install_packages(){
     term_color_white
 
     sudo apt install -y \
+        build-essential \
         automake \
         autoconf \
+        m4 \
         libncurses5-dev \
+        libncurses-dev \
+        erlang-jinterface \
+        libodbc2 \
+        inotify-tools \
+        libpng-dev \
+        libssh-dev \
+        unixodbc-dev \
         xsltproc \
         fop \
         libxml2-utils \
-        erlang-jinterface \
-        openjdk-11-jdk-headless \
-        libodbc2 \
-        unixodbc-dev \
-        inotify-tools \
-        libssl-dev
+        openjdk-11-jdk-headless
 }
+
+install_packages_for_wx_debugger(){
+    term_color_red
+    echo "Install packages for wx debugger"
+    term_color_white
+
+    sudo apt-get -y install \
+        libwxgtk-webview3.2-dev \
+        libwxgtk-webview3.0-gtk3-dev \
+        libwxgtk3.0-gtk3-dev \
+        libgl1-mesa-dev \
+        libglu1-mesa-dev
+}
+
 
 install_erlang(){
     term_color_red
@@ -105,6 +123,7 @@ trap term_color_white EXIT
 register_repo
 confirmation
 install_packages
+install_packages_for_wx_debugger
 install_erlang
 install_rebar3
 check_installed_versions 
