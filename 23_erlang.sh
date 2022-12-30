@@ -85,6 +85,9 @@ install_packages_for_wx_debugger(){
         libwxgtk3.0-gtk3-dev \
         libgl1-mesa-dev \
         libglu1-mesa-dev
+
+    # For Gnome4 or something newer
+    # libwebkit2gtk-4.0-dev
 }
 
 
