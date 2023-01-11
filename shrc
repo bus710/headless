@@ -167,6 +167,11 @@ kitty-ssh-troubleshoot () {
     echo "kitty +kitten ssh \${SERVER}"
 }
 
+keyring-start () {
+    systemctl enable --now --user gnome-keyring-daemon
+    systemctl status --user gnome-keyring-daemon --no-pager | grep -A2 CGroup
+}
+
 # For gotk4
 export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 
