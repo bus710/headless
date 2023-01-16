@@ -61,7 +61,7 @@ alias hw='cd ~/repo/headless'
 alias dw='cd ~/repo/headless/desktop'
 alias xw='cd ~/repo/headless/desktop/xfce4'
 alias sw='cd ~/repo/headless/desktop/sway'
-alias do='cd ~/repo/docs'
+alias ds='cd ~/repo/docs'
 
 alias gw='cd ~/repo/gows'
 alias ew='cd ~/repo/erlangws'
