@@ -41,7 +41,7 @@ fi
 #ANDROID_4
 #ANDROID_5
 
-# ASDF path
+# ASDF path for erlang
 #ASDF_0
 #ASDF_1
 #ASDF_2
