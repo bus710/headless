@@ -70,7 +70,7 @@ install () {
         "golang.Go"
 
         # Erlang
-        #"pgourlain.erlang"
+        "pgourlain.erlang"
 
         # Zig
         #"webfreak.debug"
@@ -113,9 +113,9 @@ install () {
         #"adrianwilczynski.alpine-js-intellisense"
 
         # Rust
-        "rust-lang.rust-analyzer"
-        "serayuzgur.crates"
-        "vadimcn.vscode-lldb" 
+        #"rust-lang.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb" 
     )
 
     for e in ${extensions[@]}; do
