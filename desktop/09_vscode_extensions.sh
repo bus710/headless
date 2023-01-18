@@ -70,7 +70,7 @@ install () {
         "golang.Go"
 
         # Erlang
-        "pgourlain.erlang"
+        "erlang-ls.erlang-ls"
 
         # Zig
         #"webfreak.debug"
