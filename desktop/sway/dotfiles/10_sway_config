@@ -259,6 +259,12 @@ bindsym $mod+Alt+8 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 # Lock the screen with the given color and lower the backlight level to 10%
 bindsym $mod+Alt+l exec "brightnessctl set 10% && swaylock -c 112233"
 
+# Open Zathura PDF viewer
+bindsym $mod+z exec zathura
+
+# Open Thunar file browser
+bindsym $mod+t exec thunar
+
 # Take a screenshot with all output and save it into screenshots
 bindsym $mod+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 # Take a Screenshot with the region select
