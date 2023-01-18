@@ -1,2 +1,5 @@
 *.deb
 **/*.deb
+
+rebar*
+sudo
