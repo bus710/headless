@@ -17,13 +17,11 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo
     echo "Please check the website if there is a newer version"
     echo "- https://github.com/rust-lang/rust/releases"
     echo "- https://www.rust-lang.org/tools/install"
     echo 
     echo "Do you want to install? (y/n)"
-    echo
     term_color_white
 
     echo
@@ -38,36 +36,28 @@ confirmation(){
 
 install_rustup_cargo(){
     term_color_red
-    echo
     echo "Install rustup"
-    echo
     term_color_white
 
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
     source $HOME/.cargo/env
 
     term_color_red
-    echo
     echo "See the version below"
-    echo
     term_color_white
 
     rustc --version
     cargo --version
 
     term_color_red
-    echo
     echo "Update Rust"
-    echo
     term_color_white
 
     rustup update
     rustup upgrade
 
     term_color_red
-    echo
     echo "Update Rust components"
-    echo
     term_color_white
 
     rustup component add rustfmt clippy rls rust-analysis rust-src
@@ -75,9 +65,7 @@ install_rustup_cargo(){
 
 configure_runcom(){
     term_color_red
-    echo
     echo "Configure runcom"
-    echo
     term_color_white
 
     if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
@@ -87,12 +75,10 @@ configure_runcom(){
 
 post(){
     term_color_red
-    echo
-    echo "Done"
-    echo
+    echo "Done - reload terminal"
     term_color_white
 
-    . /home/$LOGNAME/.shrc
+    #. /home/$LOGNAME/.shrc
 }
 
 trap term_color_white EXIT
