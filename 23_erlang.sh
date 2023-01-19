@@ -114,6 +114,16 @@ install_rebar3(){
     # /usr/local/bin/rebar3 local install
 }
 
+install_escript_symbol(){
+    term_color_red
+    echo "Install escript symbol"
+    term_color_white
+
+    # To help Erlang_LS vscode extention.
+    # In SwayWM, the "bindsym => exec" shortcut doesn't pass the PATH to VSCODE.
+    sudo ln -s /home/$LOGNAME/.asdf/shims/escript escript
+}
+
 check_installed_versions(){
     term_color_red
     echo "Check installed versions"
