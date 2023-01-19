@@ -140,6 +140,7 @@ install_packages
 install_packages_for_wx_debugger
 install_erlang
 install_rebar3
+install_escript_symbol
 check_installed_versions 
 
 echo
