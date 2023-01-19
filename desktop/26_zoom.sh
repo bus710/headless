@@ -14,7 +14,9 @@ sudo apt install -y \
     libegl1-mesa \
     libxcb-xtest0
 
-wget https://zoom.us/client/latest/$ZOOM_VER
+wget https://zoom.us/client/latest/$ZOOM_VER \
+    -O /home/$LOGNAME/Downloads/$ZOOM_VER
+cd /home/$LOGNAME/Downloads
 sudo dpkg -i $ZOOM_VER
 rm -rf $ZOOM_VER
 
