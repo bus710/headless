@@ -52,9 +52,7 @@ confirmation(){
 
 cleanup(){
     term_color_red
-    echo 
     echo "Existing Go directories will be deleted"
-    echo 
     term_color_white
 
     sudo bash -c "rm -rf /usr/local/go"
@@ -67,9 +65,7 @@ cleanup(){
 
 install_go(){
     term_color_red
-    echo
     echo "Download and install Go SDK"
-    echo 
     term_color_white
 
     # Remove if there is old tarballs
@@ -80,9 +76,7 @@ install_go(){
     wget https://dl.google.com/go/${FULL_VERSION}
 
     term_color_red
-    echo
     echo "Wait for untar..."
-    echo
     term_color_white
 
     sudo bash -c "tar -xf go*.tar.gz --strip-components=1 -C /usr/local/go"
@@ -91,9 +85,7 @@ install_go(){
 
 configure_runcom(){
     term_color_red
-    echo
     echo "Configure runcom"
-    echo
     term_color_white
 
     if [[ -f /usr/local/go/bin/go ]]; then

@@ -17,10 +17,8 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo
     echo "Docker and docker-compose will be installed"
     echo "Do you want to install? (y/n)"
-    echo
     term_color_white
 
     echo
@@ -34,9 +32,7 @@ confirmation(){
 
 install_docker_base(){
     term_color_red
-    echo
     echo "Install docker base packages"
-    echo
     term_color_white
 
     # For Docker
@@ -49,9 +45,7 @@ install_docker_base(){
 
 install_docker(){
     term_color_red
-    echo
     echo "Install docker & docker-compose"
-    echo
     term_color_white
 
     sudo apt update
@@ -64,9 +58,7 @@ install_docker(){
 
 configure_permission(){
     term_color_red
-    echo
     echo "Add permission of docker for the current user - ${LOGNAME}"
-    echo
     term_color_white
 
     sudo usermod -aG docker ${LOGNAME}
@@ -74,12 +66,10 @@ configure_permission(){
 
 post(){
     term_color_red
-    echo
     echo "Docker daemon is enabled/started"
     echo "(reboot to take effect)"
     echo
     echo "Done"
-    echo
     term_color_white
 }
 
