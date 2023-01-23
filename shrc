@@ -107,6 +107,7 @@ alias insider="code-insiders ."
 alias dk="docker"
 alias mk="minikube"
 alias kc="kubectl"
+alias skc="source <(kubectl completion zsh)"
 
 alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp-01 --region us-central1 --project connect-qaus-k8s-e004"
 
@@ -167,14 +168,15 @@ cmd-phoenix () {
 }
 
 cmd-kc () {
-    echo "minikube & kubectl"
+    echo "minikube(mk) & kubectl(kc)"
+    echo
     echo "mk start"
     echo "mk status"
     echo "mk stop"
     echo 
     echo "kc config use-context minikube"
     echo "kc get nodes"
-    echo
+    echo "skc => source <(kubectl completion zsh)"
 }
 
 
