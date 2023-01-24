@@ -106,8 +106,8 @@ alias insider="code-insiders ."
 
 alias dk="docker"
 alias mk="minikube"
-alias kc="kubectl"
-alias skc="source <(kubectl completion zsh)"
+alias kb="kubectl"
+alias skb="source <(kubectl completion zsh)"
 
 alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp-01 --region us-central1 --project connect-qaus-k8s-e004"
 
