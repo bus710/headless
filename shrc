@@ -168,15 +168,15 @@ cmd-phoenix () {
 }
 
 cmd-kc () {
-    echo "minikube(mk) & kubectl(kc)"
+    echo "minikube(mk) & kubectl(kb)"
     echo
     echo "mk start"
     echo "mk status"
     echo "mk stop"
     echo 
-    echo "kc config use-context minikube"
-    echo "kc get nodes"
-    echo "skc => source <(kubectl completion zsh)"
+    echo "kb config use-context minikube"
+    echo "kb get nodes"
+    echo "skb => source <(kubectl completion zsh)"
 }
 
 
