@@ -167,7 +167,7 @@ cmd-phoenix () {
     echo "- mix phx.server"
 }
 
-cmd-kc () {
+cmd-kubectl () {
     echo "minikube(mk) & kubectl(kb)"
     echo
     echo "mk start"
