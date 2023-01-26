@@ -24,6 +24,11 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType c ClangFormatAutoEnable
 
 " ==========================================================
+" Autocommand - gofmt at writing
+set rtp+=$GOROOT/misc/vim
+autocmd BufWritePost *.go :silent !gofmt -w %
+
+" ==========================================================
 " Options <interface>
 set number
 set laststatus=2
