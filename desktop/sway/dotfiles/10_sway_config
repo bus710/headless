@@ -256,8 +256,8 @@ bindsym $mod+Alt+0 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+Alt+9 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Alt+8 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
-# Lock the screen with the given color and lower the backlight level to 10%
-bindsym $mod+Alt+l exec "brightnessctl set 60% && swaylock -c 112233"
+# Lock the screen with the given color and lower the backlight level to 90%
+bindsym $mod+Alt+l exec "brightnessctl set 90% && swaylock -c 112233"
 
 # Open Zathura PDF viewer
 bindsym $mod+z exec zathura
