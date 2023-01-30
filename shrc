@@ -185,7 +185,21 @@ kitty-ssh-troubleshoot () {
     echo "kitty +kitten ssh \${SERVER}"
 }
 
+restart-restaring () {
+    echo -e "\e[91m"
+    echo "Restart networking daemon"
+    echo -e "\e[39m"
+    echo
+
+    sudo systemctl restart networking.service
+}
+
 restart-keyring () {
+    echo -e "\e[91m"
+    echo "Restart keyring daemon"
+    echo -e "\e[39m"
+    echo
+
     systemctl enable --now --user gnome-keyring-daemon
     systemctl status --user gnome-keyring-daemon --no-pager | grep -A2 CGroup
 }
