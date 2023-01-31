@@ -266,7 +266,7 @@ bindsym $mod+z exec zathura
 bindsym $mod+t exec thunar
 
 # Take a screenshot with all output and save it into screenshots
-bindsym $mod+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
+bindsym $mod+Shift+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 # Take a Screenshot with the region select
 bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 
