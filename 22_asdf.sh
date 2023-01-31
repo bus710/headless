@@ -48,12 +48,16 @@ configure_rc(){
     sed -i '/#ASDF_2/c\autoload -Uz compinit && compinit' $HOME/.shrc
 }
 
+post(){
+    term_color_red
+    echo "Done"
+    echo "- Restart terminal & try \"asdf --version\""
+    term_color_white
+}
+
 trap term_color_white EXIT
 remove_asdf
 install_asdf 
 configure_rc
+post
 
-echo
-echo "Done"
-echo "- Restart terminal & try \"asdf --version\""
-echo
