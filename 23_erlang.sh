@@ -78,12 +78,14 @@ install_packages_for_wx_debugger(){
     echo "Install packages for wx debugger"
     term_color_white
 
-    sudo apt-get -y install \
+    sudo apt install -y \
         libwxgtk-webview3.2-dev \
-        libwxgtk-webview3.0-gtk3-dev \
-        libwxgtk3.0-gtk3-dev \
         libgl1-mesa-dev \
         libglu1-mesa-dev
+
+    # sudo apt install -y \
+    #    libwxgtk-webview3.0-gtk3-dev \
+    #    libwxgtk3.0-gtk3-dev
 
     # For Gnome4 or something newer
     # libwebkit2gtk-4.0-dev
@@ -133,6 +135,12 @@ check_installed_versions(){
     rebar3 --version
 }
 
+post () {
+    term_color_red
+    echo "Done"
+    term_color_white
+}
+
 trap term_color_white EXIT
 register_repo
 confirmation
@@ -142,7 +150,5 @@ install_erlang
 install_rebar3
 install_escript_symbol
 check_installed_versions 
+post
 
-echo
-echo "Done"
-echo
