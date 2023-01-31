@@ -185,7 +185,7 @@ kitty-ssh-troubleshoot () {
     echo "kitty +kitten ssh \${SERVER}"
 }
 
-restart-restaring () {
+restart-networking () {
     echo -e "\e[91m"
     echo "Restart networking daemon"
     echo -e "\e[39m"
