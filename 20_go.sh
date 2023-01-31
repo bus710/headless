@@ -99,9 +99,9 @@ configure_runcom(){
 }
 
 post(){
-    echo 
+    term_color_red
     echo "Done"
-    echo
+    term_color_white
 }
 
 trap term_color_white EXIT
