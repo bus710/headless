@@ -48,9 +48,9 @@ install_kime (){
     cd $HOME/Downloads
 
     if [[ $OS_TYPE =~ "Debian" ]]; then
-        wget -O kime.deb https://github.com/Riey/kime/releases/download/${TARGET_KIME_VERSION}/kime_debian-buster_refs.tags.${TARGET_KIME_VERSION}_amd64.deb
+        wget -O kime.deb https://github.com/Riey/kime/releases/download/${TARGET_KIME_VERSION}/kime_debian-buster_${TARGET_KIME_VERSION}_amd64.deb
     elif [[ $OS_TYPE =~ "Ubuntu" ]]; then
-        wget -O kime.deb https://github.com/Riey/kime/releases/download/${TARGET_KIME_VERSION}/kime_ubuntu-20.10_refs.tags.${TARGET_KIME_VERSION}_amd64.deb
+        wget -O kime.deb https://github.com/Riey/kime/releases/download/${TARGET_KIME_VERSION}/kime_ubuntu-20.10_${TARGET_KIME_VERSION}_amd64.deb
     else
         echo "Not Debian or Ubuntu"
         exit
