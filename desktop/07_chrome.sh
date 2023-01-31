@@ -23,4 +23,5 @@ rm google-chrome-stable_current_amd64.deb
 
 echo
 echo "Done"
+echo "- Enable chrome://flags/#enable-webrtc-pipewire-capturer for Google Meet screen sharing in SwayWM"
 echo 
