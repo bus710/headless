@@ -70,7 +70,7 @@ install_packages(){
         xsltproc \
         fop \
         libxml2-utils \
-        openjdk-11-jdk-headless
+        openjdk-17-jdk-headless
 }
 
 install_packages_for_wx_debugger(){
