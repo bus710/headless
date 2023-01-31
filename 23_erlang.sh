@@ -22,8 +22,7 @@ register_repo(){
     echo "Register repo"
     term_color_white
 
-    FIND_ERLANG=$(asdf plugin list)
-    if [[ ! $FIND_ERLANG =~ 'erlang' ]]; then
+    if [[ ! -d /home/$LOGNAME/.asdf/plugins/erlang ]]; then
         asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
     fi
 
