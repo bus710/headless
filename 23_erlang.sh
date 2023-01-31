@@ -120,6 +120,7 @@ install_escript_symbol(){
 
     # To help Erlang_LS vscode extention.
     # In SwayWM, the "bindsym => exec" shortcut doesn't pass the PATH to VSCODE.
+    sudo rm -rf /usr/local/bin/escript
     sudo ln -s /home/$LOGNAME/.asdf/shims/escript /usr/local/bin/escript
 }
 
