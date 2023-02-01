@@ -64,7 +64,9 @@ output eDP-1 scale 1.5
 # To find the ID of touchpad
 # $ sudo libinput list-devices | grep ELAN
 # $ swaymsg -rt get_inputs | grep _Touch
-input "1267:12624:ELAN0670:00_04F3:3150_Touchpad" {
+# - x1: input "1267:12624:ELAN0670:00_04F3:3150_Touchpad" {
+# - t14s: input "1739:52839:SYNA8018:00_06CB:CE67_Touchpad" {
+input "1739:52839:SYNA8018:00_06CB:CE67_Touchpad" {
     dwt enabled
     tap enabled
     natural_scroll enabled
