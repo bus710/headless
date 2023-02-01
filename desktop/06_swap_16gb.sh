@@ -17,7 +17,7 @@ if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
     sudo swapoff -a
 
     echo
-    echo "Create a 16GB swapfile (/swapfile)"
+    echo "Create a 16GB swapfile (/tmp/swapfile)"
     echo "This takes ~30 seconds"
     echo
 
