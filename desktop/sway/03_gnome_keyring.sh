@@ -54,7 +54,7 @@ configure_keyring (){
 
     # The port can be 1000 or something else.
     # Or add "export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh" to .zshrc
-    sed -i '/#SSH_AUTH_SOCK/c\export SSH_AUTH_SOCK=\/run\/user\/1000\/keyring\/ssh/g' /home/$LOGNAME/.shrc
+    sed -i '/#SSH_AUTH_SOCK/c\export SSH_AUTH_SOCK=\/run\/user\/1000\/keyring\/ssh' /home/$LOGNAME/.shrc
 }
 
 post (){
