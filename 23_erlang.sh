@@ -138,7 +138,7 @@ check_installed_versions(){
 post () {
     term_color_red
     echo "Done"
-    echo "- If the debugger doesn't launch, adding i386 architecutre may help."
+    echo "- If the debugger doesn't launch, adding i386 architecture may help."
     term_color_white
 }
 

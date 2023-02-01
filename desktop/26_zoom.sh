@@ -22,5 +22,5 @@ rm -rf $ZOOM_VER
 
 echo
 echo "Done"
-echo "- if zoom doesn't work, add i386 repositories."
+echo "- if zoom doesn't work, adding i386 architecture may help."
 echo
