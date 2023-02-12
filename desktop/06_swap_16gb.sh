@@ -23,7 +23,7 @@ if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
 
     sudo dd if=/dev/zero of=/tmp/swapfile bs=1G count=16 
     sudo mkswap /tmp/swapfile
-    sudo chmod 600 /tmp/swapfile
+    sudo chmod 0600 /tmp/swapfile
 
     echo
     echo "Swap on"
