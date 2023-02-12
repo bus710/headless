@@ -47,14 +47,16 @@ install_packages(){
 
     sudo apt install -y \
         gnome-tweaks \
-        gnome-shell-extensions \
-        gnome-shell-extension-prefs \
-        gnome-shell-extension-ubuntu-dock \
-        gnome-shell-extension-appindicator
+        gnome-shell-extensions
+
+    #sudo apt install -y \
+    #    gnome-shell-extension-prefs \
+    #    gnome-shell-extension-ubuntu-dock \
+    #    gnome-shell-extension-appindicator \
+    #    gnome-shell-extension-desktop-icons-ng  
 
     sudo apt install -y \
-        xdg-desktop-portal-gnome \
-        gnome-shell-extension-desktop-icons-ng  
+        xdg-desktop-portal-gnome
 
     rm -rf ~/Music ~/Public ~/Videos ~/Documents ~/Templates 
 }
