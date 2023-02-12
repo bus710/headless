@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -32,4 +32,4 @@ sudo apt install -y \
 
 echo
 echo "Done"
-echo 
+echo

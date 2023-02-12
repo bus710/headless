@@ -4,7 +4,7 @@ set -e
 
 OS_TYPE=$(lsb_release -i)
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -23,7 +23,7 @@ install_packages (){
     term_color_red
     echo
     echo "Install language packs and fonts"
-    echo 
+    echo
     term_color_white
 
     #sudo apt install -y \
@@ -33,7 +33,7 @@ install_packages (){
     sudo apt install -y \
         fonts-nanum \
         fonts-nanum-coding \
-        fonts-noto-cjk 
+        fonts-noto-cjk
 }
 
 install_kime (){
@@ -78,7 +78,7 @@ configuration (){
     term_color_white
 
     im-config -n kime
-   
+
     KIME_GLOBAL_CONFIGURED=$(cat /etc/environment)
     if [[ ! $KIME_GLOBAL_CONFIGURED =~ "kime" ]]; then
         term_color_red
@@ -100,7 +100,7 @@ startup (){
     echo
     term_color_white
 
-    KIME_DESKTOP="/home/$LOGNAME/.config/autostart/kime.desktop" 
+    KIME_DESKTOP="/home/$LOGNAME/.config/autostart/kime.desktop"
     if [[ ! -d ~/.config/autostart ]]; then
         mkdir ~/.config/autostart -p
     fi

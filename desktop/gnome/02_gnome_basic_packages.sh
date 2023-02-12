@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -46,7 +46,7 @@ sudo apt install -y \
 sudo apt install -y \
     scrcpy
 
-# For flutter 
+# For flutter
 sudo apt install -y \
     libgtk-3-dev \
     mtp-tools \

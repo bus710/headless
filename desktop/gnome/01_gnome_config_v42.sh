@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -49,16 +49,16 @@ install_packages(){
         gnome-tweaks \
         gnome-shell-extensions
 
-    #sudo apt install -y \
-    #    gnome-shell-extension-prefs \
-    #    gnome-shell-extension-ubuntu-dock \
-    #    gnome-shell-extension-appindicator \
-    #    gnome-shell-extension-desktop-icons-ng  
+    sudo apt install -y \
+        gnome-shell-extension-prefs \
+        gnome-shell-extension-ubuntu-dock \
+        gnome-shell-extension-appindicator \
+        gnome-shell-extension-desktop-icons-ng
 
     sudo apt install -y \
         xdg-desktop-portal-gnome
 
-    rm -rf ~/Music ~/Public ~/Videos ~/Documents ~/Templates 
+    rm -rf ~/Music ~/Public ~/Videos ~/Documents ~/Templates
 }
 
 appearance () {
@@ -67,7 +67,7 @@ appearance () {
     term_color_white
 
     # apply dark theme
-    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' 
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-blue-dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Yaru-blue'
     # dock behavior (settings => appearance)
@@ -104,14 +104,14 @@ multitasking () {
     # General => Hot corner : false
     gsettings set org.gnome.desktop.interface enable-hot-corners false
     # General => Active Screen Edges : true
-    gsettings set org.gnome.mutter workspaces-only-on-primary false 
+    gsettings set org.gnome.mutter workspaces-only-on-primary false
     # Workspaces => Dynamic workspaces
     gsettings set org.gnome.mutter dynamic-workspaces true
     # Multi monitor => Workspaces on all displays
     gsettings set org.gnome.shell.app-switcher current-workspace-only true
     gsettings set org.gnome.shell.window-switcher current-workspace-only true
     gsettings set org.gnome.shell.extensions.window-list display-all-workspaces false
-    # App switching => Include apps from the current workspace only 
+    # App switching => Include apps from the current workspace only
     gsettings set org.gnome.shell.extensions.dash-to-dock isolate-monitors false
     # App switching => Include apps from all monitors
     gsettings set org.gnome.shell.extensions.dash-to-dock isolate-workspaces true
@@ -265,10 +265,10 @@ shortcuts_workspace () {
     term_color_white
 
     # move to workspace on the L/R
-    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>I']"   
+    gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Super>I']"
     gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Super>O']"
     # move the current window to L/R workspace
-    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Alt>I']"   
+    gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Super><Alt>I']"
     gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Super><Alt>O']"
 }
 
@@ -305,7 +305,7 @@ post (){
 
 trap term_color_white EXIT
 confirmation
-check_de
+#check_de
 install_packages
 accessibility
 multitasking

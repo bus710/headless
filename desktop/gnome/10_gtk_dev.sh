@@ -30,8 +30,8 @@ confirmation(){
     read -n 1 ans
     echo
 
-    if [[ ! $ans == "y" ]]; then 
-        echo "" 
+    if [[ ! $ans == "y" ]]; then
+        echo ""
         exit -1
     fi
 }
@@ -78,7 +78,7 @@ cleanup(){
     term_color_red
     echo
     echo "Cleanup"
-    echo 
+    echo
     term_color_white
 
     sudo apt autoremove -y
