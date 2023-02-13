@@ -211,15 +211,15 @@ shortcuts_custom () {
     $BEGINNING/custom1/ command "gnome-control-center"
     $BEGINNING/custom1/ binding "<Super>g"
 
-    echo "super+alt+n => chrome"
+    echo "super+y => chrome"
     $BEGINNING/custom2/ name "Google Chrome"
     $BEGINNING/custom2/ command "google-chrome"
-    $BEGINNING/custom2/ binding "<Super><Alt>n"
+    $BEGINNING/custom2/ binding "<Super>y"
 
-    echo "super+alt+m => code"
+    echo "super+u => code"
     $BEGINNING/custom3/ name "VS Code"
     $BEGINNING/custom3/ command "code"
-    $BEGINNING/custom3/ binding "<Super><Alt>m"
+    $BEGINNING/custom3/ binding "<Super>u"
 
     echo "super+t => nautilus"
     $BEGINNING/custom4/ name "Nautilus"
