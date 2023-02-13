@@ -21,9 +21,7 @@ term_color_white () {
 
 install_packages (){
     term_color_red
-    echo
     echo "Install language packs and fonts"
-    echo
     term_color_white
 
     #sudo apt install -y \
@@ -38,9 +36,7 @@ install_packages (){
 
 install_kime (){
     term_color_red
-    echo
     echo "Install Kime"
-    echo
     term_color_white
 
     cd ~/Downloads
@@ -61,9 +57,7 @@ install_kime (){
 
 configuration (){
     term_color_red
-    echo
     echo "Set Kime configuration in \$HOME (for Ctrl+Space)"
-    echo
     term_color_white
 
     rm -rf /home/$LOGNAME/.config/kime
@@ -72,9 +66,7 @@ configuration (){
     sed -i '/Super-Space:/c\\ \ \ \ C-Space:' $HOME/.config/kime/config.yaml
 
     term_color_red
-    echo
     echo "Set Kime as IME of Gnome"
-    echo
     term_color_white
 
     im-config -n kime
@@ -95,9 +87,7 @@ configuration (){
 
 startup (){
     term_color_red
-    echo
     echo "Add Kime as startup app"
-    echo
     term_color_white
 
     KIME_DESKTOP="/home/$LOGNAME/.config/autostart/kime.desktop"

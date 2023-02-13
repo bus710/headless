@@ -7,16 +7,6 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
-if [[ ! $XDG_CURRENT_DESKTOP =~ "GNOME" ]]; then
-    term_color_red
-    echo
-    echo "Not Gnome"
-    echo
-    term_color_white
-
-    exit
-fi
-
 # Remove some packages.
 sudo apt remove -y \
     firefox \

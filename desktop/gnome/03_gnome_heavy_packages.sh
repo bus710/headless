@@ -7,16 +7,6 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
-if [[ ! $XDG_CURRENT_DESKTOP =~ "GNOME" ]]; then
-    term_color_red
-    echo
-    echo "Not Gnome"
-    echo
-    term_color_white
-
-    exit
-fi
-
 echo
 echo "Install"
 echo "- Vim-gnome"
