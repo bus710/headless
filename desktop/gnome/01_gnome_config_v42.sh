@@ -199,7 +199,7 @@ shortcuts_custom () {
     KEY_PATH="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
     # register
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
-        "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/', '$KEY_PATH/custom6/', '$KEY_PATH/custom7/', '$KEY_PATH/custom8/', '$KEY_PATH/custom9/', '$KEY_PATH/custom10/']"
+        "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/', '$KEY_PATH/custom6/', '$KEY_PATH/custom7/', '$KEY_PATH/custom8/']"
 
     echo "super+e => terminal"
     $BEGINNING/custom0/ name "Terminal"
@@ -211,10 +211,15 @@ shortcuts_custom () {
     $BEGINNING/custom1/ command "gnome-control-center"
     $BEGINNING/custom1/ binding "<Super>g"
 
-    echo "super+n => chrome"
-    $BEGINNING/custom3/ name "Google Chrome"
-    $BEGINNING/custom3/ command "google-chrome"
-    $BEGINNING/custom3/ binding "<Super>n"
+    echo "super+u => chrome"
+    $BEGINNING/custom2/ name "Google Chrome"
+    $BEGINNING/custom2/ command "google-chrome"
+    $BEGINNING/custom2/ binding "<Super>u"
+
+    echo "super+p => code"
+    $BEGINNING/custom3/ name "VS Code"
+    $BEGINNING/custom3/ command "code"
+    $BEGINNING/custom3/ binding "<Super>p"
 
     echo "super+t => nautilus"
     $BEGINNING/custom4/ name "Nautilus"
@@ -226,30 +231,20 @@ shortcuts_custom () {
     $BEGINNING/custom5/ command "remmina"
     $BEGINNING/custom5/ binding "<Super>r"
 
-    echo "super+x => code-insiders"
-    $BEGINNING/custom6/ name "VS Code Insiders"
-    $BEGINNING/custom6/ command "code-insiders"
-    $BEGINNING/custom6/ binding "<Super>x"
-
-    echo "super+c => code"
-    $BEGINNING/custom7/ name "VS Code"
-    $BEGINNING/custom7/ command "code"
-    $BEGINNING/custom7/ binding "<Super>c"
-
     echo "super+alt+k => power off"
-    $BEGINNING/custom8/ name "Power off"
-    $BEGINNING/custom8/ command "gnome-session-quit --power-off"
-    $BEGINNING/custom8/ binding "<Super><Alt>k"
+    $BEGINNING/custom6/ name "Power off"
+    $BEGINNING/custom6/ command "gnome-session-quit --power-off"
+    $BEGINNING/custom6/ binding "<Super><Alt>k"
 
     echo "super+alt+d => show dock"
-    $BEGINNING/custom9/ name "Show dock"
-    $BEGINNING/custom9/ command "gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true"
-    $BEGINNING/custom9/ binding "<Super><Alt>d"
+    $BEGINNING/custom7/ name "Show dock"
+    $BEGINNING/custom7/ command "gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true"
+    $BEGINNING/custom7/ binding "<Super><Alt>d"
 
     echo "super+alt+h => hide dock"
-    $BEGINNING/custom10/ name "Show dock"
-    $BEGINNING/custom10/ command "gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false"
-    $BEGINNING/custom10/ binding "<Super><Alt>h"
+    $BEGINNING/custom8/ name "Show dock"
+    $BEGINNING/custom8/ command "gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false"
+    $BEGINNING/custom8/ binding "<Super><Alt>h"
 
     echo "super+alt+l => screen saver"
     gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver "['<Super><Alt>l']"
