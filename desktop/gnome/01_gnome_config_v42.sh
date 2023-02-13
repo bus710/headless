@@ -204,7 +204,7 @@ shortcuts_custom () {
     echo "super+e => terminal"
     $BEGINNING/custom0/ name "Terminal"
     $BEGINNING/custom0/ command "gnome-terminal"
-    $BEGINNING/custom0/ binding "<Super>e"
+    $BEGINNING/custom0/ binding "<Super>Return"
 
     echo "super+g => settings"
     $BEGINNING/custom1/ name "Gnome Control Center"
