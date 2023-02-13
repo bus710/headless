@@ -273,8 +273,8 @@ bindsym $mod+Shift+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 
 # Shortcuts for browser and vscode
-bindsym $mod+u exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland
-bindsym $mod+p exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
+bindsym $mod+Alt+n exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland
+bindsym $mod+Alt+m exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
 
 # Notification
 exec mako --anchor bottom-right
