@@ -28,10 +28,10 @@ confirmation(){
 check_de(){
     if [[ ! $XDG_CURRENT_DESKTOP =~ "GNOME" ]]; then
         term_color_red
-        echo "Not GNOME."
+        echo "Update \$XDG_CURRENT_DESKTOP in shrc."
         term_color_white
 
-        exit -1
+        sed -i '/DESKTOP=sway/c\DESKTOP=ubuntu:GNOME'
     fi
 }
 
@@ -201,7 +201,7 @@ shortcuts_custom () {
     gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings \
         "['$KEY_PATH/custom0/', '$KEY_PATH/custom1/', '$KEY_PATH/custom2/', '$KEY_PATH/custom3/', '$KEY_PATH/custom4/', '$KEY_PATH/custom5/', '$KEY_PATH/custom6/', '$KEY_PATH/custom7/', '$KEY_PATH/custom8/']"
 
-    echo "super+e => terminal"
+    echo "super+return => terminal"
     $BEGINNING/custom0/ name "Terminal"
     $BEGINNING/custom0/ command "gnome-terminal"
     $BEGINNING/custom0/ binding "<Super>Return"
