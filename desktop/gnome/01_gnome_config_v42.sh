@@ -17,9 +17,7 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo
     echo "Configure GDE"
-    echo
     term_color_white
 
     echo
@@ -30,9 +28,7 @@ confirmation(){
 check_de(){
     if [[ ! $XDG_CURRENT_DESKTOP =~ "GNOME" ]]; then
         term_color_red
-        echo
         echo "Not GNOME."
-        echo
         term_color_white
 
         exit -1
@@ -215,15 +211,15 @@ shortcuts_custom () {
     $BEGINNING/custom1/ command "gnome-control-center"
     $BEGINNING/custom1/ binding "<Super>g"
 
-    echo "super+w => chrome"
+    echo "super+n => chrome"
     $BEGINNING/custom3/ name "Google Chrome"
     $BEGINNING/custom3/ command "google-chrome"
-    $BEGINNING/custom3/ binding "<Super>w"
+    $BEGINNING/custom3/ binding "<Super>n"
 
-    echo "super+f => nautilus"
+    echo "super+t => nautilus"
     $BEGINNING/custom4/ name "Nautilus"
     $BEGINNING/custom4/ command "nautilus"
-    $BEGINNING/custom4/ binding "<Super>f"
+    $BEGINNING/custom4/ binding "<Super>t"
 
     echo "super+r => remmina"
     $BEGINNING/custom5/ name "Remmina"
@@ -305,7 +301,7 @@ post (){
 
 trap term_color_white EXIT
 confirmation
-#check_de
+check_de
 install_packages
 accessibility
 multitasking

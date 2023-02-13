@@ -274,7 +274,7 @@ bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S
 
 # Shortcuts for browser and vscode
 bindsym $mod+n exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland
-bindsym $mod+m exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
+bindsym $mod+c exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
 
 # Notification
 exec mako --anchor bottom-right
