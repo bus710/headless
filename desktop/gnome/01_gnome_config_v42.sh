@@ -26,12 +26,12 @@ confirmation(){
 }
 
 check_de(){
-    if [[ ! $XDG_CURRENT_DESKTOP =~ "GNOME" ]]; then
+    if [[ $XDG_CURRENT_DESKTOP =~ "sway" ]]; then
         term_color_red
         echo "Update \$XDG_CURRENT_DESKTOP in shrc."
         term_color_white
 
-        sed -i '/DESKTOP=sway/c\DESKTOP=ubuntu:GNOME'
+        sed -i 's/DESKTOP=sway/DESKTOP=ubuntu\:GNOME/g' /home/$LOGNAME/.shrc
     fi
 }
 
