@@ -17,9 +17,7 @@ term_color_white () {
 
 confirmation (){
     term_color_red
-    echo ""
     echo "Configure Gnome Keyring? (y/n)"
-    echo ""
     term_color_white
     
     echo
@@ -30,6 +28,15 @@ confirmation (){
         echo
         exit -1
     fi
+}
+
+install_packages (){
+    term_color_red
+    echo "Install packages"
+    term_color_white
+
+    sudo apt install -y \
+        seahorse
 }
 
 configure_keyring (){
@@ -65,6 +72,7 @@ post (){
 
 trap term_color_white EXIT
 confirmation
+install_packages
 configure_keyring
 post
 
