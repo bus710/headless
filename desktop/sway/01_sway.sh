@@ -74,10 +74,14 @@ install_packages(){
         qtwayland5 \
         ristretto \
         zathura \
-        thunar \
         inxi \
         mpv \
         imv
+
+    # For "Open terminal here", 
+    # > Edit > Configure Custom Action > kitty %f
+    sudo apt install -y \
+        thunar
 
     # Auth
     sudo apt install -y \
