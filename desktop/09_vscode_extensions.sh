@@ -69,8 +69,22 @@ install () {
         # Go
         "golang.Go"
 
+        # Rust
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb" 
+
+        # Svelte
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
+        # HTML
+        "peakchen90.open-html-in-browser"
+        # Tailwind
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
+
         # Erlang
-        "erlang-ls.erlang-ls"
+        #"erlang-ls.erlang-ls"
 
         # Zig
         #"webfreak.debug"
@@ -80,15 +94,6 @@ install () {
         # Flutter
         #"Dart-Code.dart-code" 
         #"Dart-Code.flutter"
-
-        # Svelte
-        #"svelte.svelte-vscode"
-        #"ardenivanov.svelte-intellisense"
-        # HTML
-        #"peakchen90.open-html-in-browser"
-        # Tailwind
-        #"bradlc.vscode-tailwindcss"
-        #"austenc.tailwind-docs"
 
         # Python
         #"ms-python.python"
@@ -111,11 +116,6 @@ install () {
         #"Ritvyk.heex-html"
         # AlpineJS
         #"adrianwilczynski.alpine-js-intellisense"
-
-        # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb" 
     )
 
     for e in ${extensions[@]}; do
@@ -135,7 +135,7 @@ install () {
 
 post () {
     term_color_red
-    echo "done"
+    echo "Done"
     term_color_white
 }
 

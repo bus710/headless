@@ -39,13 +39,13 @@ then
     sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
     echo
-    echo "Install Code and Code-insider"
+    echo "Install Vsode"
     echo
 
     sudo apt install -y apt-transport-https
     sudo apt update -y
     sudo apt install -y code 
-    sudo apt install -y code-insiders
+    #sudo apt install -y code-insiders
 
     rm -rf *.gpg
 fi

@@ -50,9 +50,7 @@ install_packages(){
 
 build_cargo_tools(){
     term_color_red
-    echo
     echo "Build some cargo tools"
-    echo
     term_color_white
 
     # https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands
@@ -64,17 +62,54 @@ build_cargo_tools(){
     #cargo install cbindgen
     #cargo install flutter_rust_bridge_codegen
     #cargo install bluer-tools
+
+}
+
+build_cargo_tools_2(){
+
+    term_color_red
+    echo "Build some cargo tools 2"
+    echo "Do you want to install? (y/n)"
+    term_color_white
+
+    echo
+    read -n 1 ans
+    echo
+
+    if [[ ! $ans == "y" ]]; then 
+        return
+    fi
+
+
+    # Tauri
+    # - https://tauri.app/v1/guides/getting-started/setup/
+    # - https://tauri.app/v1/guides/getting-started/prerequisites#setting-up-linux
+    cargo install create-tauri-app
+    sudo apt install -y \
+        libwebkit2gtk-4.0-dev \
+        build-essential \
+        curl \
+        wget \
+        libssl-dev \
+        libgtk-3-dev \
+        libayatana-appindicator3-dev \
+        librsvg2-dev
+
+    # Rustlings
+    # To start:
+    # $ cd ~/repo/rustlings
+    # $ rustlings watch
+    curl -L https://raw.githubusercontent.com/rust-lang/rustlings/main/install.sh | bash -s ~/repo/rustlings
 }
 
 post(){
     term_color_red
-    echo
     echo "Done"
-    echo
     term_color_white
 }
 
 trap term_color_white EXIT
 install_packages
 build_cargo_tools
+build_cargo_tools_2
 post

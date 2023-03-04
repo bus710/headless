@@ -20,9 +20,7 @@ term_color_white () {
 
 install_packages(){
     term_color_red
-    echo 
     echo "Install packages"
-    echo 
     term_color_white
 
     # usage
@@ -39,9 +37,7 @@ install_packages(){
 
 install_vim_go_plugins(){
     term_color_red
-    echo
     echo "Install vim-go plugins"
-    echo
     term_color_white
 
     nvim -c :GoInstallBinaries
@@ -49,9 +45,7 @@ install_vim_go_plugins(){
 
 post(){
     term_color_red
-    echo
     echo "Done"
-    echo
     term_color_white
 }
 

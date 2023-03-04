@@ -46,6 +46,9 @@ fi
 #ASDF_1
 #ASDF_2
 
+# ARDUINO V2 path
+#ARDUINO_V2_0
+
 # Etc
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin

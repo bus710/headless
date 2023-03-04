@@ -20,10 +20,8 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo
     echo "Start installing some basic packages for c"
     echo "Do you want to install? (y/n)"
-    echo
     term_color_white
 
     echo
@@ -38,9 +36,7 @@ confirmation(){
 
 install_packages (){
     term_color_red
-    echo
     echo "Install basics"
-    echo
     term_color_white
 
     sudo apt update
@@ -60,9 +56,7 @@ install_packages (){
     # Depends on the architecture 
     if [[ $CPU_TYPE == "x86_64" ]]; then
         term_color_red
-        echo
         echo "Install for Flutter SDK"
-        echo
         term_color_white
 
         sudo apt install -y lib32stdc++6
@@ -74,9 +68,7 @@ install_packages (){
 
 cleanup(){
     term_color_red
-    echo
     echo "Cleanup"
-    echo 
     term_color_white
 
     sudo apt autoremove -y
@@ -84,9 +76,7 @@ cleanup(){
 
 post(){
     term_color_red
-    echo
     echo "Done"
-    echo
     term_color_white
 }
 
