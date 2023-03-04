@@ -82,13 +82,26 @@ install_packages () {
     sed -i '/#ARDUINO_CLI_0/c\export PATH=$PATH:$HOME/Arduino/cli' /home/$LOGNAME/.shrc
 }
 
+install_pico_board () {
+    term_color_red
+    echo "Install pico board"
+    term_color_white
+
+    cd /home/$LOGNAME/Arduino/cli
+    ./arduino-cli config init --additional-urls \
+        https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+    ./arduino_cli core update-index
+}
+
 post () {
     term_color_red
     echo "Done"
+    echo "Please refresh the board index from Vscode."
     term_color_white
 }
 
 trap term_color_white EXIT
 confirmation
 install_packages
+install_pico_board
 post
