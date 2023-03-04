@@ -46,6 +46,8 @@ fi
 #ASDF_1
 #ASDF_2
 
+# ARDUINO_CLI path
+#ARDUINO_CLI_0
 # ARDUINO V2 path
 #ARDUINO_V2_0
 

@@ -2,73 +2,93 @@
 
 set -e
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
 
-CPU_TYPE=$(uname -p)
+term_color_red () {
+    echo -e "\e[91m"
+}
 
-if [[ $CPU_TYPE != "x86_64" ]]; then
+term_color_white () {
+    echo -e "\e[39m"
+}
+
+confirmation () {
+    CPU_TYPE=$(uname -m)
+    if [[ $CPU_TYPE != "x86_64" ]]; then
+        echo "Only x86_64 can be used."
+        exit
+    fi
+
+    term_color_red
+    echo "Please check these web sites:"
+    echo "- https://github.com/arduino/arduino-ide/releases/latest"
     echo
-    echo "Only x86_64 can be used."
+    echo "Do you want to install? (y/n)"
+    term_color_white
+
     echo
-    exit
-fi
+    read -n 1 ans
+    echo
 
-echo
-echo -e "\e[91m"
-echo "Please check these web sites:"
-echo "- https://github.com/arduino/arduino-ide/releases/latest"
-echo 
-echo "Do you want to install? (y/n)"
-echo -e "\e[39m"
-echo
+    if [[ ! $ans == "y" ]]; then
+        exit
+    fi
+}
 
-echo
-read -n 1 ans
-echo
+install_packages () {
+    term_color_red
+    echo "Install packages"
+    term_color_white
 
-if [[ $ans == "y" ]]; then
-    sudo apt install python-is-python3
+    sudo apt install -y python-is-python3
 
-    echo 
+    term_color_red
     echo "Existing Arduino directory will be deleted"
-    echo 
+    term_color_white
 
-    rm -rf $HOME/Arduino/arduino-ide*
-    cd $HOME/Arduino
+    rm -rf /home/$LOGNAME/Arduino/ide_v2
+    mkdir -p /home/$LOGNAME/Arduino/ide_v2
+    cd /home/$LOGNAME/Arduino/ide_v2
 
-    echo
+    term_color_red
     echo "Download and install Arduino IDE"
-    echo 
+    term_color_white
 
-    cd $HOME/Arduino
-    TARGET_VERSION=$(curl --silent https://github.com/arduino/arduino-ide/releases/latest | grep -oP '(?<=/tag\/)[^">]+')
+    cd /home/$LOGNAME/Arduino/ide_v2
+    TARGET_VERSION=$(curl -o- -s https://api.github.com/repos/arduino/arduino-ide/releases/latest | jq -r '.tag_name')
 
-    echo
+    term_color_red
     echo "TARGET_VERSION: ${TARGET_VERSION}"
-    echo
+    term_color_white
 
     wget https://github.com/arduino/arduino-ide/releases/download/${TARGET_VERSION}/arduino-ide_${TARGET_VERSION}_Linux_64bit.zip
     unzip arduino-ide_${TARGET_VERSION}_Linux_64bit.zip
     mv arduino-ide_${TARGET_VERSION}_Linux_64bit arduino-ide
     rm -rf *.zip
 
-    echo
-    echo "Add path"
-    echo 
+    term_color_red
+    echo "Add to path"
+    term_color_white
 
-    echo "" >> $HOME/.shrc
-    echo "# For Arduino SDK" >> $HOME/.shrc
-    echo "PATH=\$PATH:\$HOME/Arduino/arduino-ide" >> $HOME/.shrc
+    sed -i '/#ARDUINO_V2_0/c\export PATH=$PATH:$HOME/Arduino/ide_v2' /home/$LOGNAME/.shrc
+}
 
-    echo 
+post () {
+    term_color_red
     echo "Done."
     echo "1. Please source .shrc"
     echo "2. File > Preferences > Additional boards manager URLs"
-    echo "  Add the line below to the board manager"
-    echo "  https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json, https://dl.espressif.com/dl/package_esp32_index.json"
+    echo "  Add the lines below to the board manager (comma should be add between lines)"
+    echo "  https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_dev_index.json"
+    echo "  https://dl.espressif.com/dl/package_esp32_index.json"
     echo "3. Tools > Board > Boards manager > Search for ESP32 and install"
-    echo
-fi
+    term_color_white
+}
+
+trap term_color_white EXIT
+confirmation
+install_packages
+post
