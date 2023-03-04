@@ -61,7 +61,7 @@ install_packages () {
     cd /home/$LOGNAME/Arduino/cli
 
     term_color_red
-    echo "Download and install Arduino IDE"
+    echo "Download and install Arduino CLI"
     term_color_white
 
     cd /home/$LOGNAME/Arduino/cli
