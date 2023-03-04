@@ -97,6 +97,8 @@ post () {
     term_color_red
     echo "Done"
     echo "Please refresh the board index from Vscode."
+    # https://arduino.github.io/arduino-cli
+    # https://arduino-pico.readthedocs.io/en/latest/
     term_color_white
 }
 
