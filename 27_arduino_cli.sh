@@ -97,9 +97,14 @@ post () {
     term_color_red
     echo "Done"
     echo "Please refresh the board index from Vscode."
+    term_color_white
+
+    # Those links might be helpful
     # https://arduino.github.io/arduino-cli
     # https://arduino-pico.readthedocs.io/en/latest/
-    term_color_white
+
+    # For "output path is not specified" warning, 
+    # just add "output": "./" into the arduino.json file.
 }
 
 trap term_color_white EXIT
