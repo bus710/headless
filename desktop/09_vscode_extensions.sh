@@ -101,10 +101,12 @@ install () {
         # JS
         #"msjsdiag.debugger-for-chrome" # became built-in
         #"eg2.vscode-npm-script"
-        # Embedded
+
+        # Arduino/RPI-Pico/ESP32
+        "vsciot-vscode.vscode-arduino"
         #"marus25.cortex-debug"
-        #"vsciot-vscode.vscode-arduino"
         #"espressif.esp-idf-extension"
+
         # Elm
         #"Elmtooling.elm-ls-vscode"
 
