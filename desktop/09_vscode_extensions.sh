@@ -84,7 +84,7 @@ install () {
         "austenc.tailwind-docs"
 
         # Erlang
-        #"erlang-ls.erlang-ls"
+        "erlang-ls.erlang-ls"
 
         # Zig
         #"webfreak.debug"
