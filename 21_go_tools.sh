@@ -23,13 +23,27 @@ install_packages(){
     echo "Install packages"
     term_color_white
 
-    # usage
+    # Internal tools
+    go install -v golang.org/x/tools/cmd/goimports@latest
+    go install -v golang.org/x/tools/cmd/callgraph@latest
+    go install -v golang.org/x/tools/cmd/digragh@latest
+    go install -v golang.org/x/tools/cmd/stringer@latest
+    go install -v golang.org/x/tools/cmd/toolstash@latest
+
+    # Unit test
+    go install -v github.com/cweill/gotests/gotests@latest
+
+    # Debugger
+    go install -v github.com/go-delve/delve/cmd/dlv@latest
+
+    # Go exec (and its usage)
     # goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'
     go install -v github.com/shurcooL/goexec@latest 
 
-    #go install golang.org/x/tools/...
-    go install -v github.com/go-delve/delve/cmd/dlv@latest
+    # Bubble tea related
     go install -v github.com/maaslalani/slides@latest
+
+    # Nice to haves
     #go install github.com/hajimehoshi/wasmserve
     #go install github.com/swaggo/swag/cmd/swag
     #go install github.com/google/gops
