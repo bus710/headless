@@ -139,6 +139,7 @@ post () {
     term_color_red
     echo "Done"
     echo "- If the debugger doesn't launch, adding i386 architecture may help."
+    echo "- Make sure adding \"{plugins, [rebar3_hex]}.\" to ~/.config/rebar3/rebar.config."
     term_color_white
 }
 
