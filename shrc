@@ -80,6 +80,7 @@ alias tw='cd ~/repo/tmp'
 alias bw='cd ~/repo/blog'
 alias cl='cd ~/repo/cloud'
 alias aw='cd ~/repo/algorithms'
+alias lw='cd ~/repo/leetcode'
 
 #alias tp='cat /sys/class/thermal/thermal_zone0/temp'
 alias tp='watch sensors'
