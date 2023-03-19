@@ -113,6 +113,10 @@ install_rebar3(){
     sudo rm -rf /usr/local/bin/rebar3
     sudo mv /home/$LOGNAME/Downloads/rebar3 /usr/local/bin
     # /usr/local/bin/rebar3 local install
+
+    rm -rf /home/$LOGNAME/.config/rebar3/rebar.config
+    mkdir -p /home/$LOGNAME/.config/rebar3
+    echo "{plugins, [rebar3_hex]}." >> ~/.config/rebar3/rebar.config
 }
 
 install_escript_symbol(){
@@ -139,7 +143,7 @@ post () {
     term_color_red
     echo "Done"
     echo "- If the debugger doesn't launch, adding i386 architecture may help."
-    echo "- Make sure adding \"{plugins, [rebar3_hex]}.\" to ~/.config/rebar3/rebar.config."
+    echo "- Make sure ~/.config/rebar3/rebar.config exists."
     term_color_white
 }
 

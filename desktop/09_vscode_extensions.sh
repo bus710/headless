@@ -68,6 +68,8 @@ install () {
         "ms-vscode.makefile-tools"
         # Go
         "golang.Go"
+        # Erlang
+        "erlang-ls.erlang-ls"
 
         # Rust
         #"rust-lang.rust-analyzer"
@@ -75,16 +77,15 @@ install () {
         #"vadimcn.vscode-lldb" 
 
         # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
-        # HTML
-        "peakchen90.open-html-in-browser"
-        # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
 
-        # Erlang
-        "erlang-ls.erlang-ls"
+        # HTML
+        #"peakchen90.open-html-in-browser"
+
+        # Tailwind
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Zig
         #"webfreak.debug"
