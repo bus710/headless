@@ -85,11 +85,21 @@ install_dependencies(){
     term_color_white
 
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
-    pip3 install --user -U testresources
-    pip3 install --user -U wheel
-    pip3 install --user -U setuptools --no-warn-script-location
-    pip3 install --user -U neovim
-    pip3 install --user -U pynvim
+
+    # Got warning that says 
+    # externally managed python packages should be installed via apt
+    #pip3 install --user -U testresources
+    #pip3 install --user -U wheel
+    #pip3 install --user -U setuptools --no-warn-script-location
+    #pip3 install --user -U neovim
+    #pip3 install --user -U pynvim
+
+    sudo apt install -y \
+        python3-testresources \
+        python3-wheel \
+        setuptools \
+        neovim \
+        pynvim
     npm install -g neovim
 }
 

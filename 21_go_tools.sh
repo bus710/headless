@@ -26,7 +26,7 @@ install_packages(){
     # Internal tools
     go install -v golang.org/x/tools/cmd/goimports@latest
     go install -v golang.org/x/tools/cmd/callgraph@latest
-    go install -v golang.org/x/tools/cmd/digragh@latest
+    #go install -v golang.org/x/tools/cmd/digragh@latest
     go install -v golang.org/x/tools/cmd/stringer@latest
     go install -v golang.org/x/tools/cmd/toolstash@latest
 
