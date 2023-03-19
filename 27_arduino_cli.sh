@@ -57,6 +57,7 @@ install_packages () {
     term_color_white
 
     rm -rf /home/$LOGNAME/Arduino/cli
+    rm -rf /home/$LOGNAME/.arduino15
     mkdir -p /home/$LOGNAME/Arduino/cli
     cd /home/$LOGNAME/Arduino/cli
 
@@ -90,13 +91,13 @@ install_pico_board () {
     cd /home/$LOGNAME/Arduino/cli
     ./arduino-cli config init --additional-urls \
         https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
-    ./arduino_cli core update-index
+    ./arduino-cli core update-index
 }
 
 post () {
     term_color_red
     echo "Done"
-    echo "Please refresh the board index from Vscode."
+    echo "- please refresh the board index from Vscode."
     term_color_white
 
     # Those links might be helpful
