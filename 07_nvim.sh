@@ -86,8 +86,8 @@ install_dependencies(){
 
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
 
-    # Got warning that says 
-    # externally managed python packages should be installed via apt
+    # Got warning that says - externally managed environment
+    # system wide python packages should be installed via apt
     #pip3 install --user -U testresources
     #pip3 install --user -U wheel
     #pip3 install --user -U setuptools --no-warn-script-location
