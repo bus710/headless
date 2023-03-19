@@ -16,10 +16,13 @@ echo
 echo "Install Chrome Browser"
 echo 
 
+URL="https://dl.google.com/linux/direct/"
+PACKAGE_NAME="google-chrome-stable_current_amd64.deb"
+
 cd ~/Downloads
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo apt install ./google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
+wget ${URL}${PACKAGE_NAME}
+sudo dpkg -i ${PACKAGE_NAME}
+rm ${PACKAGE_NAME}
 
 echo
 echo "Done"
