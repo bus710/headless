@@ -99,6 +99,9 @@ install_erlang(){
 
     asdf install erlang $ERLANG_VERSION
     asdf global erlang $ERLANG_VERSION 
+
+    # To put some arguments for the erl shell.
+    sed -i '/#ERL_0/c\export ERL_AFLAGS=\"+pc unicode -kernel shell_history enabled\"' /home/$LOGNAME/.shrc
 }
 
 install_rebar3(){
