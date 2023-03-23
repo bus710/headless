@@ -72,9 +72,9 @@ install () {
         "erlang-ls.erlang-ls"
 
         # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb" 
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb" 
 
         # Svelte
         #"svelte.svelte-vscode"
