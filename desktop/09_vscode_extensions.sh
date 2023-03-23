@@ -69,7 +69,7 @@ install () {
         # Go
         "golang.Go"
         # Erlang
-        "erlang-ls.erlang-ls"
+        #"erlang-ls.erlang-ls"
 
         # Rust
         "rust-lang.rust-analyzer"
