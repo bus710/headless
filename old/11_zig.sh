@@ -7,7 +7,7 @@ RELEASES_URL=https://ziglang.org/download/index.json
 VERSION=""
 FILE_NAME=""
 
-if [[ "$EUID" == 0 ]]; 
+if [[ "$EUID" == 0 ]];
     then echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -38,7 +38,7 @@ confirmation(){
     term_color_red
     echo "1. Remove ~/zig"
     echo "2. Install $VERSION"
-    echo 
+    echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
 
@@ -107,7 +107,7 @@ install_zls(){
 }
 
 post(){
-    echo 
+    echo
     echo "Done"
     echo "- Restart terminal"
     echo "- Run \"zls --config\", but choose NO for the system-wide option"
