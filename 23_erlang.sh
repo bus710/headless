@@ -4,7 +4,7 @@ set -e
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
-  exit
+    exit
 fi
 
 ERLANG_VERSION=""
@@ -21,11 +21,11 @@ register_repo(){
     term_color_red
     echo "Register repo"
     term_color_white
-
+    
     if [[ ! -d /home/$LOGNAME/.asdf/plugins/erlang ]]; then
         asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
     fi
-
+    
     ERLANG_VERSION=$(asdf latest erlang)
     # github API equivalent
     # curl -o- -s https://api.github.com/repos/erlang/otp/releases/latest | jq -r '.tag_name'
@@ -37,11 +37,11 @@ confirmation(){
     echo "Do you want to install? (y/n)"
     echo "- Erlang: $ERLANG_VERSION"
     term_color_white
-
+    
     echo
     read -n 1 ANSWER
     echo
-
+    
     if [[ ! $ANSWER == "y" ]]; then
         exit -1
     fi
@@ -53,40 +53,40 @@ install_packages(){
     term_color_red
     echo "Install packages"
     term_color_white
-
+    
     sudo apt install -y \
-        build-essential \
-        automake \
-        autoconf \
-        m4 \
-        libncurses5-dev \
-        libncurses-dev \
-        erlang-jinterface \
-        libodbc2 \
-        inotify-tools \
-        libpng-dev \
-        libssh-dev \
-        unixodbc-dev \
-        xsltproc \
-        fop \
-        libxml2-utils \
-        openjdk-17-jdk-headless
+    build-essential \
+    automake \
+    autoconf \
+    m4 \
+    libncurses5-dev \
+    libncurses-dev \
+    erlang-jinterface \
+    libodbc2 \
+    inotify-tools \
+    libpng-dev \
+    libssh-dev \
+    unixodbc-dev \
+    xsltproc \
+    fop \
+    libxml2-utils \
+    openjdk-17-jdk-headless
 }
 
 install_packages_for_wx_debugger(){
     term_color_red
     echo "Install packages for wx debugger"
     term_color_white
-
+    
     sudo apt install -y \
-        libwxgtk-webview3.2-dev \
-        libgl1-mesa-dev \
-        libglu1-mesa-dev
-
+    libwxgtk-webview3.2-dev \
+    libgl1-mesa-dev \
+    libglu1-mesa-dev
+    
     # sudo apt install -y \
     #    libwxgtk-webview3.0-gtk3-dev \
     #    libwxgtk3.0-gtk3-dev
-
+    
     # For Gnome4 or something newer
     # libwebkit2gtk-4.0-dev
 }
@@ -96,10 +96,10 @@ install_erlang(){
     term_color_red
     echo "install erlang"
     term_color_white
-
+    
     asdf install erlang $ERLANG_VERSION
-    asdf global erlang $ERLANG_VERSION 
-
+    asdf global erlang $ERLANG_VERSION
+    
     # To put some arguments for the erl shell.
     sed -i '/#ERL_0/c\export ERL_AFLAGS=\"+pc unicode -kernel shell_history enabled\"' /home/$LOGNAME/.shrc
 }
@@ -108,15 +108,15 @@ install_rebar3(){
     term_color_red
     echo "Install rebar3 (pre-built)"
     term_color_white
-
+    
     wget -P /home/$LOGNAME/Downloads https://s3.amazonaws.com/rebar3/rebar3
     chmod +x /home/$LOGNAME/Downloads/rebar3
-
+    
     sudo mkdir -p /usr/local/bin
     sudo rm -rf /usr/local/bin/rebar3
     sudo mv /home/$LOGNAME/Downloads/rebar3 /usr/local/bin
     # /usr/local/bin/rebar3 local install
-
+    
     rm -rf /home/$LOGNAME/.config/rebar3/rebar.config
     mkdir -p /home/$LOGNAME/.config/rebar3
     echo "{plugins, [rebar3_hex]}." >> ~/.config/rebar3/rebar.config
@@ -126,7 +126,7 @@ install_escript_symbol(){
     term_color_red
     echo "Install escript symbol"
     term_color_white
-
+    
     # To help Erlang_LS vscode extention.
     # In SwayWM, the "bindsym => exec" shortcut doesn't pass the PATH to VSCODE.
     sudo rm -rf /usr/local/bin/escript
@@ -158,6 +158,6 @@ install_packages_for_wx_debugger
 install_erlang
 install_rebar3
 install_escript_symbol
-check_installed_versions 
+check_installed_versions
 post
 
