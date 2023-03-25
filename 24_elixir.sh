@@ -58,6 +58,14 @@ install_elixir(){
     asdf global elixir $ELIXIR_VERSION
 }
 
+install_hex(){
+    term_color_red
+    echo "install hex"
+    term_color_white
+
+    mix local.hex --version
+}
+
 check_installed_versions(){
     term_color_red
     echo "Check installed versions"
@@ -76,5 +84,6 @@ trap term_color_white EXIT
 register_repo
 confirmation
 install_elixir
+install_hex
 check_installed_versions
 post
