@@ -2,91 +2,79 @@
 
 set -e
 
-CPU_TYPE=$(uname -m)
-CPU_TARGET=""
-
-if [[ $CPU_TYPE == "x86_64" ]]; then
-    CPU_TARGET="amd64"
-    elif [[ $CPU_TYPE == "aarch64" ]]; then
-    CPU_TARGET="arm64"
-else
-    exit
-fi
-
-VERSION=$(curl --silent https://github.com/elixir-lang/elixir/releases/latest \
-| grep -oP '(?<=/v)[^">]+')
-
-echo $VERSION
-
 if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
     exit
 fi
 
-echo
-echo -e "\e[91m"
-echo "Please check the website if there is a newer version"
-echo "- https://github.com/elixir-lang/elixir/releases/latest"
-echo
-echo "1. /usr/local/elixir will be deleted"
-echo "2. Elixir v${VERSION} will be installed"
-echo
-echo "Do you want to install? (y/n)"
-echo -e "\e[39m"
-echo
+ELIXIR_VERSION=""
 
-echo
-read -n 1 ans
-echo
+term_color_red () {
+    echo -e "\e[91m"
+}
 
-if [[ $ans == "y" ]]
-then
-    echo
-    echo "Install Erlang"
-    echo
+term_color_white () {
+    echo -e "\e[39m"
+}
 
-    sudo apt install -y erlang
+register_repo(){
+    term_color_red
+    echo "Register repo"
+    term_color_white
 
-    echo
-    echo "Existing Elixir directory will be deleted"
-    echo
+    if [[ ! -d /home/$LOGNAME/.asdf/plugins/elixir ]]; then
+        asdf plugin add elixir https://github.com/asdf-vm/asdf-elixir.git
+    fi
 
-    sudo bash -c "rm -rf /usr/local/elixir"
+    ELIXIR_VERSION=$(asdf latest elixir)
+    # github API equivalent
+    # curl -o- -s https://api.github.com/repos/elixir-lang/elixir/releases/latest | jq -r '.tag_name'
+}
 
-    echo
-    echo "Download and install Elixir source"
-    echo
-
-    # Remove if there is any tarballs
-    echo
-    rm -rf v${VERSION}.tar.gz*
-    echo
-
-    wget https://github.com/elixir-lang/elixir/archive/refs/tags/v${VERSION}.tar.gz
+confirmation(){
+    term_color_red
+    echo "Install Elixir via ASDF"
+    echo "Do you want to install? (y/n)"
+    echo "- Elixir: $ELIXIR_VERSION"
+    term_color_white
 
     echo
-    echo "Wait for untar..."
+    read -n 1 ANSWER
     echo
 
-    tar -xf v${VERSION}.tar.gz
-    rm -rf v${VERSION}.tar.gz
+    if [[ ! $ANSWER == "y" ]]; then
+        exit -1
+    fi
+    echo ""
+    sudo echo ""
+}
 
-    echo
-    echo "Build..."
-    echo
+install_elixir(){
+    term_color_red
+    echo "install elixir"
+    term_color_white
 
-    mv elixir-${VERSION} elixir
-    cd elixir
-    make
-    cd ..
+    asdf install elixir $ELIXIR_VERSION
+    asdf global elixir $ELIXIR_VERSION
+}
 
-    echo
-    echo "Move the elixir directory to /usr/local"
-    echo
+check_installed_versions(){
+    term_color_red
+    echo "Check installed versions"
+    term_color_white
 
-    sudo bash -c "mv elixir /usr/local/"
+    asdf current
+}
 
-    echo
+post () {
+    term_color_red
     echo "Done"
-    echo
-fi
+    term_color_white
+}
+
+trap term_color_white EXIT
+register_repo
+confirmation
+install_elixir
+check_installed_versions
+post
