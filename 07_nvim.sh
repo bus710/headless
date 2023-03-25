@@ -97,9 +97,9 @@ install_dependencies(){
     sudo apt install -y \
         python3-testresources \
         python3-wheel \
-        setuptools \
-        neovim \
-        pynvim
+        python3-setuptools \
+        python3-neovim \
+        python3-pynvim
     npm install -g neovim
 }
 
@@ -162,7 +162,7 @@ post(){
     echo
 
     # Do this in case of error - no python3 provider found
-    # pip3 install pynvim
+    # apt install python3-pynvim
 }
 
 trap term_color_white EXIT
