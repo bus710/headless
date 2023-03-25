@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -21,7 +21,7 @@ confirmation () {
     term_color_white
 
     echo
-    read -n 1 ans 
+    read -n 1 ans
     echo
     if [[ ! $ans == "y" ]]; then
         exit
@@ -68,24 +68,32 @@ install () {
         "ms-vscode.makefile-tools"
         # Go
         "golang.Go"
+
         # Erlang
-        #"erlang-ls.erlang-ls"
+        "erlang-ls.erlang-ls"
+        # Elixir
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
+
+        # AlpineJS
+        "adrianwilczynski.alpine-js-intellisense"
+        # HTML
+        "peakchen90.open-html-in-browser"
+        # Tailwind
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
 
         # Rust
-        "rust-lang.rust-analyzer"
-        "serayuzgur.crates"
-        "vadimcn.vscode-lldb" 
+        #"rust-lang.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb"
 
         # Svelte
         #"svelte.svelte-vscode"
         #"ardenivanov.svelte-intellisense"
-
-        # HTML
-        #"peakchen90.open-html-in-browser"
-
-        # Tailwind
-        #"bradlc.vscode-tailwindcss"
-        #"austenc.tailwind-docs"
 
         # Zig
         #"webfreak.debug"
@@ -93,7 +101,7 @@ install () {
         #"AugusteRame.zls-vscode"
 
         # Flutter
-        #"Dart-Code.dart-code" 
+        #"Dart-Code.dart-code"
         #"Dart-Code.flutter"
 
         # Python
@@ -110,15 +118,6 @@ install () {
 
         # Elm
         #"Elmtooling.elm-ls-vscode"
-
-        # Elixir
-        #"JakeBecker.elixir-ls"
-        #"benvp.vscode-hex-pm-intellisense"
-        #"pantajoe.vscode-elixir-credo"
-        #"phoenixframework.phoenix"
-        #"Ritvyk.heex-html"
-        # AlpineJS
-        #"adrianwilczynski.alpine-js-intellisense"
     )
 
     for e in ${extensions[@]}; do
