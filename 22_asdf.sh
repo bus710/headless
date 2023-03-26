@@ -7,18 +7,28 @@ then echo "Please run as normal user (w/o sudo)"
     exit
 fi
 
-echo
-echo "ASDF clean install"
-echo
-
-sudo echo ""
-
 term_color_red () {
     echo -e "\e[91m"
 }
 
 term_color_white () {
     echo -e "\e[39m"
+}
+
+confirmation(){
+    term_color_red
+    echo "ASDF clean install"
+    echo "Do you want to proceed? (y/n)"
+    term_color_white
+
+    echo
+    read -n 1 ans
+    echo
+
+    if [[ ! $ans == "y" ]]; then
+        echo ""
+        exit -1
+    fi
 }
 
 remove_asdf(){
@@ -56,6 +66,7 @@ post(){
 }
 
 trap term_color_white EXIT
+confirmation
 remove_asdf
 install_asdf
 configure_rc
