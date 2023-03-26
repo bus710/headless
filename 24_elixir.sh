@@ -58,6 +58,7 @@ install_elixir(){
     asdf global elixir $ELIXIR_VERSION
 
     # To help Elixir_LS vscode extension.
+    # If error occurs, check the error from "Developer: Toggle Developer Tools"
     sudo rm -rf /usr/local/bin/elixir
     sudo ln -s /home/$LOGNAME/.asdf/shims/elixir /usr/local/bin/elixir
     sudo rm -rf /usr/local/bin/erl
