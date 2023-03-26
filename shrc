@@ -54,6 +54,10 @@ fi
 # ARDUINO V2 path
 #ARDUINO_V2_0
 
+# fly.io - flyctl
+#FLYCTL_0
+#FLYCTL_1
+
 # Etc
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin
