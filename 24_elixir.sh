@@ -56,6 +56,10 @@ install_elixir(){
 
     asdf install elixir $ELIXIR_VERSION
     asdf global elixir $ELIXIR_VERSION
+
+    # The inotify-tools package is installed
+    # by the erlang installation script.
+    # sudo apt install -y inotify-tools
 }
 
 install_hex(){
