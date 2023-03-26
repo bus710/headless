@@ -119,6 +119,19 @@ configure_runcom(){
         sed -i '/#ASDF_2/c\autoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
     fi
 
+    # ERL/erl args if exists
+    if [[ -d /home/$LOGNAME/.asdf/shims/erl ]]; then
+        echo "Activate ERL args"
+        sed -i '/#ERL_0/c\export ERL_AFLAGS=\"+pc unicode -kernel shell_history enabled\"' /home/$LOGNAME/.shrc
+    fi
+
+    # Flyctl if exists
+    if [[ -f /home/$LOGNAME/.fly/bin/flyctl ]]; then
+        echo "Activate flyctl"
+        sed -i '/#FLYCTL_0/c\export FLYCTL_INSTALL="\/home\/$LOGNAME\/.fly"' /home/$LOGNAME/.shrc
+        sed -i '/#FLYCTL_1/c\export PATH="$FLYCTL_INSTALL\/bin:$PATH"' /home/$LOGNAME/.shrc
+    fi
+
     # Zig if exists
     if [[ -f /home/$LOGNAME/zig/zig ]]; then 
         echo "Activate Zig"
