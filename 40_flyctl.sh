@@ -30,6 +30,8 @@ install_flyctl(){
 post(){
     term_color_red
     echo "Done"
+    echo "- the PATHs exist in shrc"
+    echo "- login with \'flyctl auth login\' with +flyio account"
     term_color_white
 }
 

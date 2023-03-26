@@ -131,6 +131,7 @@ post (){
     echo
     echo "Done"
     echo "- Restart terminal"
+    echo "- If SwayWM, run the gnome keyting script again"
     echo
     term_color_white
 }
