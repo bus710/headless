@@ -80,7 +80,7 @@ alias ds='cd ~/repo/docs'
 alias gw='cd ~/repo/gows'
 alias er='cd ~/repo/erlangws'
 alias el='cd ~/repo/elixirws'
-alias elx='elixir'
+alias lx='elixir'
 
 alias rw='cd ~/repo/rustws'
 alias zw='cd ~/repo/zigws'
