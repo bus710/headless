@@ -3,6 +3,7 @@
 set -e
 
 OS_TYPE=$(lsb_release -i)
+ARCH_TYPE=$(uname -m)
 
 if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
@@ -18,10 +19,8 @@ term_color_white () {
 }
 
 confirmation(){
-term_color_red
-    echo
+    term_color_red
     echo "This will delete nvim and your nvim config first"
-    echo 
     echo "Do you want to install? (y/n)"
     echo
     term_color_white
@@ -30,7 +29,7 @@ term_color_red
     read -n 1 ans
     echo
 
-    if [[ ! $ans == "y" ]]; then 
+    if [[ ! $ans == "y" ]]; then
         exit -1
     fi
 }
@@ -38,39 +37,56 @@ term_color_red
 install_neovim(){
     HOME="/home/$LOGNAME"
 
+    term_color_red
+    echo "Install neovim"
+    term_color_white
+
+    sudo apt remove -y \
+        neovim \
+        neovim-runtime
+
     if [[ $OS_TYPE =~ "Ubuntu" ]]; then
         term_color_red
-        echo 
         echo "Add the neovim PPA for unstable"
-        echo 
         term_color_white
 
         sudo add-apt-repository ppa:neovim-ppa/unstable
         sudo apt update
+    elif [[ $OS_TYPE =~ "Debian" && $ARCH_TYPE =~ "x86_64" ]]; then
+        term_color_red
+        echo "Download the nightly pre-built from Github"
+        term_color_white
+
+        cd /home/$LOGNAME/Downloads
+        rm -rf nvim-linux64.deb
+        wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb
+        sudo dpkg -i nvim-linux64.deb
+        rm -rf nvim-linux64.deb
+    else
+        term_color_red
+        echo "Just install from the OS repo"
+        term_color_white
+
+        sudo apt install -y neovim
     fi
 
+    cd -
+
     term_color_red
-    echo 
-    echo "Install neovim and required packages"
-    echo 
+    echo "Install required packages"
     term_color_white
 
-    sudo apt install -y neovim
-    sudo apt install -y fuse libfuse2 ack-grep 
+    sudo apt install -y fuse libfuse2 ack-grep
 
     term_color_red
-    echo 
     echo "Clean up existing configuration"
-    echo 
     term_color_white
 
     rm -rf /home/$LOGNAME/.config/nvim/*
     mkdir -p /home/$LOGNAME/.tools
 
     term_color_red
-    echo 
     echo "Create a symlink"
-    echo
     term_color_white
 
     sudo rm -rf /usr/bin/nv
@@ -79,9 +95,7 @@ install_neovim(){
 
 install_dependencies(){
     term_color_red
-    echo 
     echo "Install nvim dependencies"
-    echo 
     term_color_white
 
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.cache -R
@@ -105,9 +119,7 @@ install_dependencies(){
 
 update_configuration(){
     term_color_red
-    echo 
     echo "Copy the config files and run the post process"
-    echo 
     term_color_white
 
     mkdir -p /home/$LOGNAME/.config/nvim
@@ -120,15 +132,13 @@ update_configuration(){
     cp ./coc-settings.json /home/$LOGNAME/.config/nvim/coc-settings.json
 
     chown -R $LOGNAME:$LOGNAME /home/$LOGNAME/.config
-    chown -R $LOGNAME:$LOGNAME /home/$LOGNAME/.local 
+    chown -R $LOGNAME:$LOGNAME /home/$LOGNAME/.local
     chown -R $LOGNAME:$LOGNAME /home/$LOGNAME/.tools
 }
 
 check_version(){
     term_color_red
-    echo
     echo "Neovim version"
-    echo
     term_color_white
 
     nvim -v
@@ -136,9 +146,7 @@ check_version(){
 
 configure_runcom(){
     term_color_red
-    echo
     echo "Configure runcom"
-    echo
     term_color_white
 
     if [[ -f /usr/bin/nvim ]]; then
@@ -148,9 +156,7 @@ configure_runcom(){
 
 install_plugins(){
     term_color_red
-    echo
     echo "Install plugins"
-    echo
     term_color_white
 
     nvim -c :PlugInstall
