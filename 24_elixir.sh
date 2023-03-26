@@ -57,6 +57,10 @@ install_elixir(){
     asdf install elixir $ELIXIR_VERSION
     asdf global elixir $ELIXIR_VERSION
 
+    # To help Elixir_LS vscode extension.
+    sudo rm -rf /usr/local/bin/elixir
+    sudo ln -s /home/$LOGNAME/.asdf/shims/elixir /usr/local/bin/elixir
+
     # The inotify-tools package is installed
     # by the erlang installation script.
     # sudo apt install -y inotify-tools
