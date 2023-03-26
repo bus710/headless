@@ -60,6 +60,8 @@ install_elixir(){
     # To help Elixir_LS vscode extension.
     sudo rm -rf /usr/local/bin/elixir
     sudo ln -s /home/$LOGNAME/.asdf/shims/elixir /usr/local/bin/elixir
+    sudo rm -rf /usr/local/bin/erl
+    sudo ln -s /home/$LOGNAME/.asdf/shims/erl /usr/local/bin/erl
 
     # The inotify-tools package is installed
     # by the erlang installation script.
