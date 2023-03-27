@@ -108,6 +108,7 @@ alias nf='echo "neofetch" && neofetch'
 
 alias gp='git pull origin HEAD'
 alias gf='git fetch --dry-run -v'
+alias gfp='git fetch && git pull origin HEAD'
 alias gprls="git ls-remote origin 'pull/*/head'"
 alias git-log-oneline-color-less="git log --oneline --color=always | less"
 alias git-log-pretty-color-less="git log --pretty --color=always | less"
