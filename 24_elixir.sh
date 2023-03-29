@@ -61,6 +61,10 @@ install_elixir(){
     # If error occurs, check the error from "Developer: Toggle Developer Tools"
     sudo rm -rf /usr/local/bin/elixir
     sudo ln -s /home/$LOGNAME/.asdf/shims/elixir /usr/local/bin/elixir
+
+    sudo rm -rf /usr/local/bin/mix
+    sudo ln -s /home/$LOGNAME/.asdf/shims/mix /usr/local/bin/mix
+
     sudo rm -rf /usr/local/bin/erl
     sudo ln -s /home/$LOGNAME/.asdf/shims/erl /usr/local/bin/erl
 
