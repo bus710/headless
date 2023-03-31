@@ -79,6 +79,11 @@ install_hex(){
     term_color_white
 
     mix local.hex --version
+
+    # Install mix packages globaly
+    mix archive.install hex credo
+    mix archive.install hex bunt
+    mix archive.install hex phx_new
 }
 
 check_installed_versions(){
