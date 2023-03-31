@@ -83,6 +83,7 @@ install_hex(){
     # Install mix packages globaly
     mix archive.install hex credo
     mix archive.install hex bunt
+    mix archive.install hex jason
     mix archive.install hex phx_new
 }
 
