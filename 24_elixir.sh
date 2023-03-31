@@ -81,10 +81,10 @@ install_hex(){
     mix local.hex --version
 
     # Install mix packages globaly
-    mix archive.install hex credo
-    mix archive.install hex bunt
-    mix archive.install hex jason
-    mix archive.install hex phx_new
+    mix archive.install hex --force credo
+    mix archive.install hex --force bunt
+    mix archive.install hex --force jason
+    mix archive.install hex --force phx_new
 }
 
 check_installed_versions(){
