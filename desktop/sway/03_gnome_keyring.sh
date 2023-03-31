@@ -51,10 +51,13 @@ configure_keyring (){
 
     sed -i 's/,secrets/,secrets,ssh/g' /home/$LOGNAME/.config/systemd/user/gnome-keyring-daemon.service
 
+    sed -i 's/graphical-session-pre.target/default.target/g' /home/$LOGNAME/.config/systemd/user/gnome-keyring-daemon.service
+
     term_color_red
     echo "Load Gnome keyring manager"
     term_color_white
 
+    systemctl disable --user gnome-keyring-daemon
     systemctl daemon-reload --user
     systemctl enable --now --user gnome-keyring-daemon
     systemctl status --user gnome-keyring-daemon --no-pager | grep -A2 CGroup
