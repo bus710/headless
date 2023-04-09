@@ -69,6 +69,7 @@ export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 alias update='sudo apt update && sudo apt list --upgradable'
 alias upgrade='sudo apt upgrade'
 alias autoremove='sudo apt autoremove'
+alias poweroff='sudo poweroff'
 alias fix-broken='sudo apt --fix-broken install'
 alias re='cd ~/repo'
 alias hw='cd ~/repo/headless'
