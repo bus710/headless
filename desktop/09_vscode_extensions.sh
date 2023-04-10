@@ -87,13 +87,13 @@ install () {
         "austenc.tailwind-docs"
 
         # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb"
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
 
         # Svelte
-        #"svelte.svelte-vscode"
-        #"ardenivanov.svelte-intellisense"
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
 
         # Zig
         #"webfreak.debug"
