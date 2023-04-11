@@ -89,8 +89,8 @@ Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Rust
 "Plug 'rust-lang/rust.vim'
 " Dart/Flutter
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
+"Plug 'dart-lang/dart-vim-plugin'
+"Plug 'thosakwe/vim-flutter'
 " Markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim'

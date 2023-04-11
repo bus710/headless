@@ -79,12 +79,12 @@ install () {
         "Ritvyk.heex-html"
 
         # AlpineJS
-        #"adrianwilczynski.alpine-js-intellisense"
+        "adrianwilczynski.alpine-js-intellisense"
         # HTML
-        #"peakchen90.open-html-in-browser"
+        "peakchen90.open-html-in-browser"
         # Tailwind
-        #"bradlc.vscode-tailwindcss"
-        #"austenc.tailwind-docs"
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
 
         # Rust
         #"rust-lang.rust-analyzer"
@@ -101,8 +101,8 @@ install () {
         #"AugusteRame.zls-vscode"
 
         # Flutter
-        "Dart-Code.dart-code"
-        "Dart-Code.flutter"
+        #"Dart-Code.dart-code"
+        #"Dart-Code.flutter"
 
         # Python
         #"ms-python.python"
