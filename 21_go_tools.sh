@@ -43,6 +43,9 @@ install_packages(){
     # Bubble tea related
     go install -v github.com/maaslalani/slides@latest
 
+    # Wails
+    go install github.com/wailsapp/wails/v2/cmd/wails@latest
+
     # Nice to haves
     #go install github.com/hajimehoshi/wasmserve
     #go install github.com/swaggo/swag/cmd/swag
