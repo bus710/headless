@@ -131,7 +131,7 @@ alias pl="pulumi"
 
 alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp-01 --region us-central1 --project connect-qaus-k8s-e004"
 
-alias cp-zig-vscode="rm -rf .vscode && mkdir .vscode && cp -r /home/$LOGNAME/repo/headless/zig-vscode/* .vscode/"
+alias cp-zig-vscode="rm -rf .vscode && mkdir .vscode && cp -r /home/$LOGNAME/repo/headless/sdk/zig-vscode/* .vscode/"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
