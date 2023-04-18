@@ -55,22 +55,22 @@ install_packages(){
     term_color_white
 
     sudo apt install -y \
-    build-essential \
-    automake \
-    autoconf \
-    m4 \
-    libncurses5-dev \
-    libncurses-dev \
-    erlang-jinterface \
-    libodbc2 \
-    inotify-tools \
-    libpng-dev \
-    libssh-dev \
-    unixodbc-dev \
-    xsltproc \
-    fop \
-    libxml2-utils \
-    openjdk-17-jdk-headless
+        build-essential \
+        automake \
+        autoconf \
+        m4 \
+        libncurses5-dev \
+        libncurses-dev \
+        erlang-jinterface \
+        libodbc2 \
+        inotify-tools \
+        libpng-dev \
+        libssh-dev \
+        unixodbc-dev \
+        xsltproc \
+        fop \
+        libxml2-utils \
+        openjdk-17-jdk-headless
 }
 
 install_packages_for_wx_debugger(){
@@ -79,9 +79,9 @@ install_packages_for_wx_debugger(){
     term_color_white
 
     sudo apt install -y \
-    libwxgtk-webview3.2-dev \
-    libgl1-mesa-dev \
-    libglu1-mesa-dev
+        libwxgtk-webview3.2-dev \
+        libgl1-mesa-dev \
+        libglu1-mesa-dev
 
     # sudo apt install -y \
     #    libwxgtk-webview3.0-gtk3-dev \

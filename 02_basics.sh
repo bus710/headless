@@ -5,7 +5,7 @@ set -e
 CPU_TYPE=$(uname -m)
 OS_TYPE=$(lsb_release -i)
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -28,7 +28,7 @@ confirmation(){
     read -n 1 ans
     echo
 
-    if [[ ! $ans == "y" ]]; then 
+    if [[ ! $ans == "y" ]]; then
         exit -1
     fi
 }
@@ -41,7 +41,7 @@ install_basic_packages(){
     sudo apt update
 
     sudo apt install -y \
-    	zsh \
+        zsh \
         vim \
         git \
         ncdu \
@@ -88,7 +88,7 @@ install_network_packages(){
         sshfs \
         fail2ban \
         net-tools \
-        wireless-tools 
+        wireless-tools
 }
 
 install_nvim_base(){
@@ -99,7 +99,7 @@ install_nvim_base(){
     sudo apt install -y \
         python3-pip \
         python3-dev \
-        python-is-python3 
+        python-is-python3
 }
 
 install_bluetooth_packages(){
@@ -114,7 +114,7 @@ install_bluetooth_packages(){
 
     sudo systemctl enable bluetooth.service
     sudo systemctl start bluetooth.service
-    sudo usermod -aG bluetooth $USER 
+    sudo usermod -aG bluetooth $USER
 }
 
 install_platform_specific_packages(){
