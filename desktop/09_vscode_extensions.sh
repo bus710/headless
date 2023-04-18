@@ -68,12 +68,23 @@ install () {
         "ms-vscode.makefile-tools"
         # Go
         "golang.Go"
+        # Erlang
+        "erlang-ls.erlang-ls"
+        # Elixir
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
+        # Flutter
+        "Dart-Code.dart-code"
+        "Dart-Code.flutter"
 
         # HTML
-        "peakchen90.open-html-in-browser"
+        #"peakchen90.open-html-in-browser"
         # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Rust
         #"rust-lang.rust-analyzer"
@@ -81,42 +92,28 @@ install () {
         #"vadimcn.vscode-lldb"
 
         # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
 
         # Zig
         #"webfreak.debug"
         #"tiehuis.zig"
         #"AugusteRame.zls-vscode"
 
-        # Flutter
-        #"Dart-Code.dart-code"
-        #"Dart-Code.flutter"
-
         # Python
         #"ms-python.python"
 
         # JS
         #"msjsdiag.debugger-for-chrome" # became built-in
-        "eg2.vscode-npm-script"
+        #"eg2.vscode-npm-script"
 
         # Arduino/RPI-Pico/ESP32
         "vsciot-vscode.vscode-arduino"
         #"marus25.cortex-debug"
         #"espressif.esp-idf-extension"
 
-        # Erlang
-        #"erlang-ls.erlang-ls"
-        # Elixir
-        #"JakeBecker.elixir-ls"
-        #"benvp.vscode-hex-pm-intellisense"
-        #"pantajoe.vscode-elixir-credo"
-        #"phoenixframework.phoenix"
-        #"Ritvyk.heex-html"
-
         # AlpineJS
         #"adrianwilczynski.alpine-js-intellisense"
-        
 
         # Elm
         #"Elmtooling.elm-ls-vscode"
