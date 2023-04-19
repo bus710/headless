@@ -61,16 +61,18 @@ install_packages(){
         m4 \
         libncurses5-dev \
         libncurses-dev \
-        erlang-jinterface \
-        libodbc2 \
         inotify-tools \
         libpng-dev \
         libssh-dev \
         unixodbc-dev \
         xsltproc \
         fop \
-        libxml2-utils \
-        openjdk-17-jdk-headless
+        libxml2-utils
+
+    # Don't install these:
+    # openjdk-17-jdk-headless
+    # libodbc2
+    # erlang-jinterface \
 }
 
 install_packages_for_wx_debugger(){
@@ -80,12 +82,9 @@ install_packages_for_wx_debugger(){
 
     sudo apt install -y \
         libwxgtk-webview3.2-dev \
+        libwxgtk3.2-dev \
         libgl1-mesa-dev \
         libglu1-mesa-dev
-
-    # sudo apt install -y \
-    #    libwxgtk-webview3.0-gtk3-dev \
-    #    libwxgtk3.0-gtk3-dev
 
     # For Gnome4 or something newer
     # libwebkit2gtk-4.0-dev
@@ -94,11 +93,33 @@ install_packages_for_wx_debugger(){
 
 install_erlang(){
     term_color_red
-    echo "install erlang"
+    echo "Install erlang"
     term_color_white
 
-    # Use KERL_BUILD_DOCS here to install the EEP48 doc.
-    KERL_BUILD_DOCS=yes asdf install erlang $ERLANG_VERSION
+    # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building-and-installing-erlangotp
+    # https://github.com/asdf-vm/asdf-erlang/issues/203#issuecomment-846602541
+    export KERL_BUILD_DOCS=yes
+    export KERL_INSTALL_MANPAGES=yes
+    export EGREP=egrep
+    export CC=clang
+    export CPP="clang -E"
+    export KERL_USE_AUTOCONF=0
+
+    export KERL_CONFIGURE_OPTIONS="--disable-debug \
+        --disable-hipe \
+        --disable-sctp \
+        --disable-silent-rules \
+        --enable-dynamic-ssl-lib \
+        --enable-kernel-poll \
+        --enable-shared-zlib \
+        --enable-smp-support \
+        --enable-threads \
+        --enable-wx \
+        --with-wx-config=/usr/bin/wx-config \
+        --without-javac \
+        --without-jinterface \
+        --without-odbc"
+    asdf install erlang $ERLANG_VERSION
     asdf global erlang $ERLANG_VERSION
 
     # To put some arguments for the erl shell.
