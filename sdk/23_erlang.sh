@@ -62,7 +62,6 @@ install_packages(){
         libncurses5-dev \
         libncurses-dev \
         inotify-tools \
-        libpng-dev \
         libssh-dev \
         unixodbc-dev \
         xsltproc \
@@ -84,10 +83,9 @@ install_packages_for_wx_debugger(){
         libwxgtk-webview3.2-dev \
         libwxgtk3.2-dev \
         libgl1-mesa-dev \
-        libglu1-mesa-dev
-
-    # For Gnome4 or something newer
-    # libwebkit2gtk-4.0-dev
+        libglu1-mesa-dev \
+        libpng-dev \
+        libwebkit2gtk-4.0-dev
 }
 
 
@@ -96,6 +94,8 @@ install_erlang(){
     echo "Install erlang"
     term_color_white
 
+    # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building
+    # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#Advanced-configuration-and-build-of-ErlangOTP_Building_Building-with-wxErlang
     # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building-and-installing-erlangotp
     # https://github.com/asdf-vm/asdf-erlang/issues/203#issuecomment-846602541
     export KERL_BUILD_DOCS=yes
