@@ -136,15 +136,16 @@ check_installed_versions(){
     term_color_white
 
     cat /usr/lib/erlang/releases/RELEASES
+    echo
     rebar3 --version
-
+    echo
     elixir --version
+    echo
 }
 
 post () {
     term_color_red
     echo "Done"
-    echo "- If the debugger doesn't launch, adding i386 architecture may help."
     echo "- Make sure ~/.config/rebar3/rebar.config exists."
     term_color_white
 }
