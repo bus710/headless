@@ -76,12 +76,13 @@ install () {
 
         # Erlang
         "erlang-ls.erlang-ls"
+
         # Elixir
-        "JakeBecker.elixir-ls"
-        "benvp.vscode-hex-pm-intellisense"
-        "pantajoe.vscode-elixir-credo"
-        "phoenixframework.phoenix"
-        "Ritvyk.heex-html"
+        #"JakeBecker.elixir-ls"
+        #"benvp.vscode-hex-pm-intellisense"
+        #"pantajoe.vscode-elixir-credo"
+        #"phoenixframework.phoenix"
+        #"Ritvyk.heex-html"
 
         # Svelte
         "svelte.svelte-vscode"
