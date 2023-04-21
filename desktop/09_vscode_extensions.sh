@@ -66,8 +66,22 @@ install () {
         # C
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
+        # Rust
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
+
         # Go
         "golang.Go"
+
+        # Erlang
+        "erlang-ls.erlang-ls"
+        # Elixir
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
 
         # Svelte
         "svelte.svelte-vscode"
@@ -81,21 +95,6 @@ install () {
         # Flutter
         #"Dart-Code.dart-code"
         #"Dart-Code.flutter"
-        
-        # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb"
-
-        # Erlang
-        "erlang-ls.erlang-ls"
-
-        # Elixir
-        "JakeBecker.elixir-ls"
-        "benvp.vscode-hex-pm-intellisense"
-        "pantajoe.vscode-elixir-credo"
-        "phoenixframework.phoenix"
-        "Ritvyk.heex-html"
 
         # Zig
         #"webfreak.debug"

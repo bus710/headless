@@ -99,7 +99,7 @@ build_cargo_tools_2(){
     # To start:
     # $ cd ~/repo/rustlings
     # $ rustlings watch
-    curl -L https://raw.githubusercontent.com/rust-lang/rustlings/main/install.sh | bash -s ~/repo/rustlings
+    #curl -L https://raw.githubusercontent.com/rust-lang/rustlings/main/install.sh | bash -s ~/repo/rustlings
 }
 
 post(){
