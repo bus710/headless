@@ -39,9 +39,6 @@ confirmation(){
 }
 
 install_packages(){
-    # This function won't be called.
-    # Just left here as a future reference.
-
     term_color_red
     echo "Install packages"
     term_color_white
@@ -67,9 +64,6 @@ install_packages(){
 }
 
 install_packages_for_wx_debugger(){
-    # This function won't be called.
-    # Just left here as a future reference.
-
     term_color_red
     echo "Install packages for wx debugger"
     term_color_white
@@ -90,7 +84,7 @@ install_erlang(){
     term_color_white
 
     sudo apt install -y \
-        erlang \
+        erlang-"*" \
         rebar3 \
         elixir
 
@@ -98,18 +92,12 @@ install_erlang(){
     sed -i '/#ERL_0/c\export ERL_AFLAGS=\"+pc unicode -kernel shell_history enabled\"' /home/$LOGNAME/.shrc
 }
 
-install_rebar3(){
+config_rebar3(){
     term_color_red
-    echo "Install rebar3 (pre-built)"
+    echo "Config rebar3"
     term_color_white
 
-    wget -P /home/$LOGNAME/Downloads https://s3.amazonaws.com/rebar3/rebar3
-    chmod +x /home/$LOGNAME/Downloads/rebar3
-
-    sudo mkdir -p /usr/local/bin
-    sudo rm -rf /usr/local/bin/rebar3
-    sudo mv /home/$LOGNAME/Downloads/rebar3 /usr/local/bin
-    # /usr/local/bin/rebar3 local install
+    rebar3 local install
 
     rm -rf /home/$LOGNAME/.config/rebar3/rebar.config
     mkdir -p /home/$LOGNAME/.config/rebar3
@@ -121,7 +109,7 @@ install_hex(){
     echo "Install hex"
     term_color_white
 
-    mix local.hex --version
+    mix local.hex --force
 
     # Install mix packages globaly
     mix archive.install hex --force credo
@@ -152,9 +140,10 @@ post () {
 
 trap term_color_white EXIT
 confirmation
-#install_packages
-#install_packages_for_wx_debugger
+install_packages
+install_packages_for_wx_debugger
 install_erlang
+config_rebar3
 install_hex
 check_installed_versions
 post
