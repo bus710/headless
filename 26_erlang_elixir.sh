@@ -84,6 +84,9 @@ install_erlang(){
     term_color_white
 
     sudo apt install -y \
+        erlang-wx
+
+    sudo apt install -y \
         erlang-"*" \
         rebar3 \
         elixir
@@ -140,8 +143,8 @@ post () {
 
 trap term_color_white EXIT
 confirmation
-install_packages
-install_packages_for_wx_debugger
+#install_packages
+#install_packages_for_wx_debugger
 install_erlang
 config_rebar3
 install_hex
