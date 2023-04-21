@@ -21,7 +21,7 @@ confirmation(){
     term_color_white
 
     sudo apt-cache policy erlang
-    sudo apt-cache policy elixir
+    #sudo apt-cache policy elixir
 
     term_color_red
     echo "Do you want to install? (y/n)"
@@ -38,58 +38,20 @@ confirmation(){
     sudo echo ""
 }
 
-install_packages(){
-    term_color_red
-    echo "Install packages"
-    term_color_white
-
-    sudo apt install -y \
-        build-essential \
-        libncurses5-dev \
-        libncurses-dev \
-        inotify-tools \
-        libxml2-utils \
-        unixodbc-dev \
-        libssh-dev \
-        automake \
-        autoconf \
-        xsltproc \
-        fop \
-        m4
-
-    # Don't install these:
-    # openjdk-17-jdk-headless
-    # libodbc2
-    # erlang-jinterface \
-}
-
-install_packages_for_wx_debugger(){
-    term_color_red
-    echo "Install packages for wx debugger"
-    term_color_white
-
-    sudo apt install -y \
-        libwxgtk-webview3.2-dev \
-        libwebkit2gtk-4.0-dev \
-        libglu1-mesa-dev \
-        libgl1-mesa-dev \
-        libwxgtk3.2-dev \
-        libpng-dev
-}
-
-
 install_erlang(){
     term_color_red
-    echo "Install Erlang and Elixir"
+    echo "Install Erlang"
     term_color_white
 
     sudo apt install -y \
         erlang-wx
 
     sudo apt install -y \
-        erlang-"*" \
-        rebar3 \
-        elixir
+        erlang"*" \
+        rebar3
+
+    #sudo apt install -y \
+    #    elixir
 
     # To put some arguments for the erl shell.
     sed -i '/#ERL_0/c\export ERL_AFLAGS=\"+pc unicode -kernel shell_history enabled\"' /home/$LOGNAME/.shrc
@@ -143,11 +105,9 @@ post () {
 
 trap term_color_white EXIT
 confirmation
-#install_packages
-#install_packages_for_wx_debugger
 install_erlang
 config_rebar3
-install_hex
-check_installed_versions
+#install_hex
+#check_installed_versions
 post
 
