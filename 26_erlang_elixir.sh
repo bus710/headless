@@ -118,7 +118,7 @@ install_rebar3(){
 
 install_hex(){
     term_color_red
-    echo "install hex"
+    echo "Install hex"
     term_color_white
 
     mix local.hex --version
