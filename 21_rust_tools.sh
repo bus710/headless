@@ -76,7 +76,7 @@ build_cargo_tools_2(){
     read -n 1 ans
     echo
 
-    if [[ ! $ans == "y" ]]; then 
+    if [[ ! $ans == "y" ]]; then
         return
     fi
 

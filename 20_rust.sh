@@ -2,7 +2,7 @@
 
 set -e
 
-if [[ "$EUID" == 0 ]]; then 
+if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -20,7 +20,7 @@ confirmation(){
     echo "Please check the website if there is a newer version"
     echo "- https://github.com/rust-lang/rust/releases"
     echo "- https://www.rust-lang.org/tools/install"
-    echo 
+    echo
     echo "Do you want to install? (y/n)"
     term_color_white
 
