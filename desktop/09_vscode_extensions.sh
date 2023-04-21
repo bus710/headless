@@ -67,9 +67,9 @@ install () {
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
         # Rust
-        "rust-lang.rust-analyzer"
-        "serayuzgur.crates"
-        "vadimcn.vscode-lldb"
+        #"rust-lang.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb"
 
         # Go
         "golang.Go"
