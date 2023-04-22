@@ -17,7 +17,7 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo "Install Erlang and Elixir"
+    echo "Install Erlang"
     term_color_white
 
     sudo apt-cache policy erlang
