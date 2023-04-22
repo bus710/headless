@@ -67,15 +67,15 @@ install () {
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
         # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb"
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
 
         # Go
         "golang.Go"
 
         # Erlang
-        "erlang-ls.erlang-ls"
+        #"erlang-ls.erlang-ls"
 
         # Elixir
         #"JakeBecker.elixir-ls"

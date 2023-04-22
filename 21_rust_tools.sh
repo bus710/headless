@@ -68,7 +68,7 @@ build_cargo_tools(){
 build_cargo_tools_2(){
 
     term_color_red
-    echo "Build some cargo tools 2"
+    echo "Build some cargo tools for desktop"
     echo "Do you want to install? (y/n)"
     term_color_white
 
