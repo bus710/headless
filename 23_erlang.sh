@@ -195,4 +195,6 @@ install_escript_symbol
 check_installed_versions
 post
 
-
+# For future issues
+# https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=libwxgtk-webview
+# https://packages.ubuntu.com/search?keywords=libwxgtk-webview&searchon=names&suite=all&section=all
