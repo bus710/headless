@@ -113,6 +113,12 @@ install_wxwidgets(){
     export PATH=/usr/local/bin:$PATH
 
     sudo ldconfig
+
+    # To make sure if wx is installed well.
+    # sudo update-alternatives --config wx-config
+    # which wx-config && wx-config --version-full
+    # wx-config --list
+    # wx-config --libs all
 }
 
 install_erlang(){
