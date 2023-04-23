@@ -115,6 +115,8 @@ install_erlang(){
         --enable-smp-support \
         --enable-threads \
         --enable-wx \
+        --enable-webview \
+        --with-wx \
         --with-wx-config=/usr/bin/wx-config \
         --without-javac \
         --without-jinterface \
@@ -167,7 +169,6 @@ check_installed_versions(){
 post () {
     term_color_red
     echo "Done"
-    echo "- If the debugger doesn't launch, adding i386 architecture may help."
     echo "- Make sure ~/.config/rebar3/rebar.config exists."
     term_color_white
 }
