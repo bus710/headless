@@ -99,21 +99,8 @@ install_erlang(){
     # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building-and-installing-erlangotp
     # https://github.com/asdf-vm/asdf-erlang/issues/203#issuecomment-846602541
     export KERL_BUILD_DOCS=yes
-    export KERL_INSTALL_MANPAGES=yes
-    export EGREP=egrep
-    export CC=clang
-    export CPP="clang -E"
     export KERL_USE_AUTOCONF=0
-
     export KERL_CONFIGURE_OPTIONS="--disable-debug \
-        --disable-hipe \
-        --disable-sctp \
-        --disable-silent-rules \
-        --enable-dynamic-ssl-lib \
-        --enable-kernel-poll \
-        --enable-shared-zlib \
-        --enable-smp-support \
-        --enable-threads \
         --enable-wx \
         --with-wx \
         --enable-webview \
