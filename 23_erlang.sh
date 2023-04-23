@@ -88,6 +88,29 @@ install_packages_for_wx_debugger(){
         libpng-dev
 }
 
+install_wxwidgets(){
+    term_color_red
+    echo "Install wxwidgets"
+    term_color_white
+
+    cd /home/$LOGNAME/repo
+    git clone --branch WX_3_0_BRANCH git@github.com:wxWidgets/wxWidgets.git
+
+    cd wxWidgets
+    ./configure --prefix=/usr/local --enable-webview --enable-compat28 --with-gtk=3
+    git submodule update --init src/png
+    git submodule update --init src/jpeg
+
+    # git submodule update --init src/stc/scintilla
+    # git submodule update --init src/stc/lexilla
+    # git submodule update --init 3rdparty/catch
+    # git submodule update --init 3rdparty/nanosvg
+
+    make -j4 && sudo make install
+    export PATH=/usr/local/bin:$PATH
+
+    sudo ldconfig
+}
 
 install_erlang(){
     term_color_red
@@ -104,7 +127,7 @@ install_erlang(){
         --enable-wx \
         --with-wx \
         --enable-webview \
-        --with-wx-config=/usr/bin/wx-config \
+        --with-wx-config=/usr//bin/wx-config \
         --without-javac \
         --without-jinterface \
         --without-odbc"
@@ -170,4 +193,5 @@ install_rebar3
 install_escript_symbol
 check_installed_versions
 post
+
 
