@@ -89,6 +89,9 @@ install_packages_for_wx_debugger(){
 }
 
 install_wxwidgets(){
+    # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building
+    # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#Advanced-configuration-and-build-of-ErlangOTP_Building_Building-with-wxErlang
+
     term_color_red
     echo "Install wxwidgets"
     term_color_white
@@ -117,8 +120,6 @@ install_erlang(){
     echo "Install erlang"
     term_color_white
 
-    # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building
-    # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#Advanced-configuration-and-build-of-ErlangOTP_Building_Building-with-wxErlang
     # https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building-and-installing-erlangotp
     # https://github.com/asdf-vm/asdf-erlang/issues/203#issuecomment-846602541
     export KERL_BUILD_DOCS=yes
@@ -127,7 +128,7 @@ install_erlang(){
         --enable-wx \
         --with-wx \
         --enable-webview \
-        --with-wx-config=/usr//bin/wx-config \
+        --with-wx-config=/usr/local/bin/wx-config \
         --without-javac \
         --without-jinterface \
         --without-odbc"
