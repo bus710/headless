@@ -115,8 +115,8 @@ install_erlang(){
         --enable-smp-support \
         --enable-threads \
         --enable-wx \
-        --enable-webview \
         --with-wx \
+        --enable-webview \
         --with-wx-config=/usr/bin/wx-config \
         --without-javac \
         --without-jinterface \
