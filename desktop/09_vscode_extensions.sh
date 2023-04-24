@@ -67,22 +67,22 @@ install () {
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
         # Rust
-        "rust-lang.rust-analyzer"
-        "serayuzgur.crates"
-        "vadimcn.vscode-lldb"
+        #"rust-lang.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb"
 
         # Go
         "golang.Go"
 
         # Erlang
-        #"erlang-ls.erlang-ls"
+        "erlang-ls.erlang-ls"
 
         # Elixir
-        #"JakeBecker.elixir-ls"
-        #"benvp.vscode-hex-pm-intellisense"
-        #"pantajoe.vscode-elixir-credo"
-        #"phoenixframework.phoenix"
-        #"Ritvyk.heex-html"
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
 
         # Svelte
         "svelte.svelte-vscode"
