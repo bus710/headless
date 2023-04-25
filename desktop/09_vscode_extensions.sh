@@ -75,23 +75,23 @@ install () {
         "golang.Go"
 
         # Erlang
-        "erlang-ls.erlang-ls"
+        #"erlang-ls.erlang-ls"
 
         # Elixir
-        "JakeBecker.elixir-ls"
-        "benvp.vscode-hex-pm-intellisense"
-        "pantajoe.vscode-elixir-credo"
-        "phoenixframework.phoenix"
-        "Ritvyk.heex-html"
+        #"JakeBecker.elixir-ls"
+        #"benvp.vscode-hex-pm-intellisense"
+        #"pantajoe.vscode-elixir-credo"
+        #"phoenixframework.phoenix"
+        #"Ritvyk.heex-html"
 
         # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
         # HTML
-        "peakchen90.open-html-in-browser"
+        #"peakchen90.open-html-in-browser"
         # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Flutter
         #"Dart-Code.dart-code"
@@ -103,11 +103,11 @@ install () {
         #"AugusteRame.zls-vscode"
 
         # Python
-        #"ms-python.python"
+        "ms-python.python"
 
         # JS
         #"msjsdiag.debugger-for-chrome" # became built-in
-        "eg2.vscode-npm-script"
+        #"eg2.vscode-npm-script"
 
         # Arduino/RPI-Pico/ESP32
         "vsciot-vscode.vscode-arduino"
