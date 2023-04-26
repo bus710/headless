@@ -87,7 +87,7 @@ Plug 'w0rp/ale'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Rust
-"Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 " Dart/Flutter
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'thosakwe/vim-flutter'

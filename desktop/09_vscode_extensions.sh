@@ -67,12 +67,25 @@ install () {
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
         # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb"
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
 
         # Go
         "golang.Go"
+        # Python
+        "ms-python.python"
+
+        # JS
+        "eg2.vscode-npm-script"
+        # Svelte
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
+        # HTML
+        "peakchen90.open-html-in-browser"
+        # Tailwind
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
 
         # Erlang
         #"erlang-ls.erlang-ls"
@@ -84,15 +97,6 @@ install () {
         #"phoenixframework.phoenix"
         #"Ritvyk.heex-html"
 
-        # Svelte
-        #"svelte.svelte-vscode"
-        #"ardenivanov.svelte-intellisense"
-        # HTML
-        #"peakchen90.open-html-in-browser"
-        # Tailwind
-        #"bradlc.vscode-tailwindcss"
-        #"austenc.tailwind-docs"
-
         # Flutter
         #"Dart-Code.dart-code"
         #"Dart-Code.flutter"
@@ -102,16 +106,11 @@ install () {
         #"tiehuis.zig"
         #"AugusteRame.zls-vscode"
 
-        # Python
-        "ms-python.python"
-
-        # JS
-        #"msjsdiag.debugger-for-chrome" # became built-in
-        #"eg2.vscode-npm-script"
-
-        # Arduino/RPI-Pico/ESP32
+        # Arduino
         "vsciot-vscode.vscode-arduino"
+        # ARM
         #"marus25.cortex-debug"
+        # ESP32
         #"espressif.esp-idf-extension"
 
         # AlpineJS
