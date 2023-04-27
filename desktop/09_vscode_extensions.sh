@@ -70,6 +70,7 @@ install () {
         "rust-lang.rust-analyzer"
         "serayuzgur.crates"
         "vadimcn.vscode-lldb"
+        "tauri-apps.tauri-vscode"
 
         # Go
         "golang.Go"

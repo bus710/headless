@@ -85,6 +85,7 @@ build_cargo_tools_2(){
     # - https://tauri.app/v1/guides/getting-started/setup/
     # - https://tauri.app/v1/guides/getting-started/prerequisites#setting-up-linux
     cargo install create-tauri-app
+    cargo install tauri-cli
     sudo apt install -y \
         libwebkit2gtk-4.0-dev \
         build-essential \
