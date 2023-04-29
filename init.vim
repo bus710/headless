@@ -84,7 +84,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Linter
 Plug 'w0rp/ale'
 " Go
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go' ", { 'do': ':GoInstallBinaries' }
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Rust
 Plug 'rust-lang/rust.vim'
