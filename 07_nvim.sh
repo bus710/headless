@@ -58,11 +58,19 @@ install_neovim(){
         term_color_white
 
         cd /home/$LOGNAME/Downloads
-        rm -rf nvim-linux64.deb
-        #wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb
-	wget -q https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
-        sudo dpkg -i nvim-linux64.deb
-        rm -rf nvim-linux64.deb
+
+        #wget -q https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
+        #sudo dpkg -i nvim-linux64.deb
+        #rm -rf nvim-linux64.deb
+
+        wget -q \
+            https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
+            --output-document nvim
+        chmod +x nvim
+        sudo chown root:root nvim
+        sudo mv nvim /usr/bin
+
+        cd -
     else
         term_color_red
         echo "Just install from the OS repo"
@@ -70,8 +78,6 @@ install_neovim(){
 
         sudo apt install -y neovim
     fi
-
-    cd -
 
     term_color_red
     echo "Install required packages"
