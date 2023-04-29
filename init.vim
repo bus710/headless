@@ -111,6 +111,10 @@ Plug 'stephpy/vim-yaml'
 "Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 " Zig
 "Plug 'ziglang/zig.vim'
+" Svelte
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 
 " ==========================================================
