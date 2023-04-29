@@ -59,7 +59,8 @@ install_neovim(){
 
         cd /home/$LOGNAME/Downloads
         rm -rf nvim-linux64.deb
-        wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb
+        #wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb
+	wget -q https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
         sudo dpkg -i nvim-linux64.deb
         rm -rf nvim-linux64.deb
     else
