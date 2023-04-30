@@ -56,7 +56,6 @@ install () {
         "ms-vscode-remote.remote-ssh"
         "ms-vscode-remote.remote-ssh-edit"
         "ms-vscode-remote.remote-containers"
-        "Natizyskunk.sftp"
         # Config files
         "redhat.vscode-yaml"
         "be5invis.toml"
@@ -71,22 +70,21 @@ install () {
         "serayuzgur.crates"
         "vadimcn.vscode-lldb"
         "tauri-apps.tauri-vscode"
-
         # Go
         "golang.Go"
         # Python
         "ms-python.python"
 
-        # JS
-        "eg2.vscode-npm-script"
         # Svelte
         "svelte.svelte-vscode"
         "ardenivanov.svelte-intellisense"
-        # HTML
-        "peakchen90.open-html-in-browser"
         # Tailwind
         "bradlc.vscode-tailwindcss"
         "austenc.tailwind-docs"
+
+        # Flutter
+        #"Dart-Code.dart-code"
+        #"Dart-Code.flutter"
 
         # Erlang
         #"erlang-ls.erlang-ls"
@@ -97,10 +95,6 @@ install () {
         #"pantajoe.vscode-elixir-credo"
         #"phoenixframework.phoenix"
         #"Ritvyk.heex-html"
-
-        # Flutter
-        #"Dart-Code.dart-code"
-        #"Dart-Code.flutter"
 
         # Zig
         #"webfreak.debug"
@@ -114,11 +108,8 @@ install () {
         # ESP32
         #"espressif.esp-idf-extension"
 
-        # AlpineJS
-        #"adrianwilczynski.alpine-js-intellisense"
-
-        # Elm
-        #"Elmtooling.elm-ls-vscode"
+        # SFTP
+        #"Natizyskunk.sftp"
     )
 
     for e in ${extensions[@]}; do
