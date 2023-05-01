@@ -102,11 +102,11 @@ install () {
         #"AugusteRame.zls-vscode"
 
         # Arduino
-        "vsciot-vscode.vscode-arduino"
+        #"vsciot-vscode.vscode-arduino"
         # ARM
         #"marus25.cortex-debug"
         # ESP32
-        #"espressif.esp-idf-extension"
+        "espressif.esp-idf-extension"
 
         # SFTP
         #"Natizyskunk.sftp"
