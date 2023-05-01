@@ -133,7 +133,7 @@ alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp
 
 alias cp-zig-vscode="rm -rf .vscode && mkdir .vscode && cp -r /home/$LOGNAME/repo/headless/sdk/zig-vscode/* .vscode/"
 
-alias get_idf='. $HOME/esp32/esp-idf/export.sh'
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
 alias idf="idf.py"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
