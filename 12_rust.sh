@@ -53,6 +53,7 @@ install_rustup_cargo(){
     echo "Update Rust"
     term_color_white
 
+    rustup default nightly
     rustup update
     rustup upgrade
 
@@ -86,8 +87,3 @@ confirmation
 install_rustup_cargo
 configure_runcom
 post
-
-# rustup default nightly
-# rustup default nightly
-# rustup update
-
