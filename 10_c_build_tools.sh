@@ -28,8 +28,8 @@ confirmation(){
     read -n 1 ans
     echo
 
-    if [[ ! $ans == "y" ]]; then 
-        echo "" 
+    if [[ ! $ans == "y" ]]; then
+        echo ""
         exit -1
     fi
 }
@@ -51,9 +51,9 @@ install_packages (){
         minicom \
         ninja-build \
         build-essential \
-        exuberant-ctags 
+        exuberant-ctags
 
-    # Depends on the architecture 
+    # Depends on the architecture
     if [[ $CPU_TYPE == "x86_64" ]]; then
         term_color_red
         echo "Install for Flutter SDK"
