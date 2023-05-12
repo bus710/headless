@@ -62,7 +62,8 @@ install_basic_packages(){
         jq \
         fzf \
         ranger \
-        ripgrep
+        ripgrep \
+        xmlstarlet
 }
 
 install_daemon_packages(){
