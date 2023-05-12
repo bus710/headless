@@ -76,6 +76,7 @@ configure_lxqt(){
     # ~/.config/lxqt/lxqt.conf => font="Ubuntu,12,-1,5..."
 
     # Change Sweep up/down for desktop switching to nothing
+    # ~/.config/openbox/rx.xml
 
     # Enable trackpad tap to click
     # ~/.config/lxqt/session.conf => Touchpad\\tappingEnabled=1
@@ -90,7 +91,8 @@ configure_lxqt(){
     # ~/.config/lxqt/lxqt-powermanagement.conf => enableIdlenessWatcher=false
 
     # Open terminal: Meta+Return
-    # ~/.config/lxqt/lxqt-powermanagement.conf =>
+    # echo -e "[Meta%2BReturn]\nComment=Terminal\nEnabled=True\nExec=qterminal" >> \
+    # ~/.config/lxqt/lxqt-powermanagement.conf => 
 
     # Open LxQt Configuration Center: Meta+g
     # Open File browser: Meta+t
