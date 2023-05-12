@@ -66,16 +66,32 @@ configure_lxqt(){
     term_color_white
 
     # Change global screen scaling to factor 1.25
+    # ~/.config/lxqt/session.conf => GDK_SCALE=1.25
+    # ~/.config/lxqt/session.conf => QT_SCALE_FACTOR=1.25
+
+    # Change default browser to Chrome
+    # ~/.config/lxqt/session.conf => BROWSER=chrome
+
+    # Change global font size to 12
+    # ~/.config/lxqt/lxqt.conf => font="Ubuntu,12,-1,5..."
 
     # Change Sweep up/down for desktop switching to nothing
 
     # Enable trackpad tap to click
+    # ~/.config/lxqt/session.conf => Touchpad\\tappingEnabled=1
+
     # Enable trackpad natural scrolling
+    # ~/.config/lxqt/session.conf => Touchpad\\naturalScrollingEnabled=1
+
     # Enable trackpad tap and drag
+    # ~/.config/lxqt/session.conf => Touchpad\\tapToDragEnabled=1
 
     # Disable Idleness Watcher
+    # ~/.config/lxqt/lxqt-powermanagement.conf => enableIdlenessWatcher=false
 
     # Open terminal: Meta+Return
+    # ~/.config/lxqt/lxqt-powermanagement.conf =>
+
     # Open LxQt Configuration Center: Meta+g
     # Open File browser: Meta+t
     # Open Chrome: Meta+y
@@ -83,10 +99,10 @@ configure_lxqt(){
     # Open Zathura: Meta+z
     # Close the current window: Meta+Shift+q
 
-    # Switch to screen 1: Meta+1
-    # Switch to screen 2: Meta+2
-    # Switch to screen 3: Meta+3
-    # Switch to screen 4: Meta+4
+    # Switch to screen 1: Meta+Alt+1
+    # Switch to screen 2: Meta+Alt+2
+    # Switch to screen 3: Meta+Alt+3
+    # Switch to screen 4: Meta+Alt+4
     # Switch to left desktop: Meta+i
     # Switch to right desktop: Meta+o
     # Move the current window to left desktop: Meta+Alt+i
