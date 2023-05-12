@@ -76,7 +76,15 @@ configure_lxqt(){
     # ~/.config/lxqt/lxqt.conf => font="Ubuntu,12,-1,5..."
 
     # Change Sweep up/down for desktop switching to nothing
-    # ~/.config/openbox/rx.xml
+    # ~/.config/openbox/rc.xml
+    # xmlstarlet ed --inplace \
+    #   -N o="http://openbox.org/3.4/rc" \
+    #   -u '//o:openbox_config/o:mouse/o:context[@name="Desktop"]/o:mousebind[@button="Up" and @action="Click"]/o:action[@name="GoToDesktop"]/o:to' \
+    #   -v "" ~/.config/openbox/rc.xml
+    # xmlstarlet ed --inplace \
+    #   -N o="http://openbox.org/3.4/rc" \
+    #   -u '//o:openbox_config/o:mouse/o:context[@name="Desktop"]/o:mousebind[@button="Down" and @action="Click"]/o:action[@name="GoToDesktop"]/o:to' \
+    #   -v "" ~/.config/openbox/rc.xml
 
     # Enable trackpad tap to click
     # ~/.config/lxqt/session.conf => Touchpad\\tappingEnabled=1
@@ -92,7 +100,7 @@ configure_lxqt(){
 
     # Open terminal: Meta+Return
     # echo -e "[Meta%2BReturn]\nComment=Terminal\nEnabled=True\nExec=qterminal" >> \
-    # ~/.config/lxqt/lxqt-powermanagement.conf => 
+    #   ~/.config/lxqt/lxqt-powermanagement.conf
 
     # Open LxQt Configuration Center: Meta+g
     # Open File browser: Meta+t
@@ -110,16 +118,15 @@ configure_lxqt(){
     # Move the current window to left desktop: Meta+Alt+i
     # Move the current window to right desktop: Meta+Alt+o
 
-    # Lower screen brightness: Meta+Alt+1
-    # Higher screen brightness: Meta+Alt+2
-    # Lower volume: Meta+Alt+8
-    # Lower volume: Meta+Alt+9
+    # Decrease screen brightness: Meta+Alt+1
+    # Increase screen brightness: Meta+Alt+2
+    # Decrease volume: Meta+Alt+8
+    # Increase volume: Meta+Alt+9
     # Mute: Meta+Alt+0
     # Screen lock: Meta+Alt+l
     # Power off: Meta+Alt+k
 
     # Replace CapsLock to Ctrl
-    # Default Font for user interface => Point Size: 12
     # Wallpaper image file:
 }
 
