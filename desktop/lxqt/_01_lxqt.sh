@@ -80,8 +80,10 @@ configure_lxqt_session_and_appearance(){
 
     # To get the device name
     xinput --list | grep Touchpad | awk '{print $3}'
-
     # Use the found name + \%2520 + \\ $OPTIONS
+
+    # In case of Wayland
+    # sudo libinput list-devices | grep Touchpad
 
 Elan%2520Touchpad\naturalScrollingEnabled=1
 Elan%2520Touchpad\scrollingMethodEnabled=1
