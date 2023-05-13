@@ -7,7 +7,7 @@ CPU_TYPE=$(uname -m)
 CPU_TARGET=""
 FULL_VERSION=""
 
-if [[ "$EUID" == 0 ]]; 
+if [[ "$EUID" == 0 ]];
     then echo "Please run as normal user (w/o sudo)"
     exit
 fi
@@ -22,7 +22,7 @@ term_color_white () {
 
 check_architecture(){
     if [[ $CPU_TYPE == "x86_64" ]]; then
-        CPU_TARGET="amd64" 
+        CPU_TARGET="amd64"
     elif [[ $CPU_TYPE == "aarch64" ]]; then
         CPU_TARGET="arm64"
     else
@@ -36,7 +36,7 @@ confirmation(){
     term_color_red
     echo "1. Remove /usr/local/go and ~/go"
     echo "2. Install ${FULL_VERSION}"
-    echo 
+    echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
 
