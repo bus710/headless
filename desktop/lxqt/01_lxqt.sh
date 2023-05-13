@@ -46,23 +46,13 @@ install_packages(){
         mpv \
         imv
 
-    # Auth
     sudo apt install -y \
         sshfs
-
-    # End of function for bash formatter
 }
 
-configure_lxqt(){
+configure_lxqt_session_and_appearance(){
     term_color_red
-    echo "Configure LxQt"
-    term_color_white
-
-    rm -rf /home/$LOGNAME/Downloads
-    mkdir /home/$LOGNAME/Downloads
-
-    term_color_red
-    echo "Configure LxQt shortcuts"
+    echo "Configure LxQt session and appearance"
     term_color_white
 
     # Change global screen scaling to factor 1.25
@@ -98,6 +88,18 @@ configure_lxqt(){
     # Disable Idleness Watcher
     # ~/.config/lxqt/lxqt-powermanagement.conf => enableIdlenessWatcher=false
 
+    # Replace CapsLock to Ctrl (Done by another script)
+    # sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
+    # setupcon -k
+
+    # Wallpaper image file:
+}
+
+configure_lxqt_shortcuts(){
+    term_color_red
+    echo "Configure LxQt shortcuts"
+    term_color_white
+
     # Open terminal: Meta+Return
     # echo -e "[Meta%2BReturn]\nComment=Terminal\nEnabled=True\nExec=qterminal" >> \
     #   ~/.config/lxqt/lxqt-powermanagement.conf
@@ -125,9 +127,6 @@ configure_lxqt(){
     # Mute: Meta+Alt+0
     # Screen lock: Meta+Alt+l
     # Power off: Meta+Alt+k
-
-    # Replace CapsLock to Ctrl
-    # Wallpaper image file:
 }
 
 post (){
@@ -139,6 +138,7 @@ post (){
 trap term_color_white EXIT
 confirmation
 install_packages
-configure_lxqt
+configure_lxqt_session_and_appearance
+configure_lxqt_shortcuts
 post
 
