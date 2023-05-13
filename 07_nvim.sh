@@ -52,6 +52,8 @@ install_neovim(){
 
         sudo add-apt-repository ppa:neovim-ppa/unstable
         sudo apt update
+        sudo apt install -y neovim
+
     elif [[ $OS_TYPE =~ "Debian" && $ARCH_TYPE =~ "x86_64" ]]; then
         term_color_red
         echo "Download the nightly pre-built from Github"
