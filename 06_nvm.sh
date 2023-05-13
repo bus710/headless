@@ -2,8 +2,7 @@
 
 set -e
 
-CPU_TYPE=$(uname -m)
-CPU_TARGET=""
+OS_TYPE=$(lsb_release -i)
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
@@ -22,7 +21,7 @@ confirmation(){
     term_color_red
     echo "Please check the website if there is a new NVM version"
     echo "- https://github.com/nvm-sh/nvm/releases"
-    echo 
+    echo
     echo "Do you want to install? (y/n)"
     term_color_white
 
@@ -35,44 +34,33 @@ confirmation(){
     fi
 }
 
-check_architecture(){
-    if [[ $CPU_TYPE == "x86_64" ]]; then
-        CPU_TARGET="amd64" 
-    elif [[ $CPU_TYPE == "aarch64" ]]; then
-        CPU_TARGET="arm64"
-    else
-        exit
-    fi
-}
-
 install_nvm(){
     term_color_red
-    echo
     echo "Install nvm"
-    echo
     term_color_white
 
     TARGET_NVM_VERSION=$(curl -o- -s https://api.github.com/repos/nvm-sh/nvm/releases/latest | jq -r '.tag_name')
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/${TARGET_NVM_VERSION}/install.sh | bash
 
     term_color_red
-    echo
     echo "Get ENV"
-    echo
     term_color_white
 
-    export NVM_DIR="$HOME/.nvm"
+    if [[ $OS_TYPE =~ "Ubuntu" ]]; then
+        export NVM_DIR="$HOME/.config/nvm"
+    elif [[ $OS_TYPE =~ "Debian" ]]; then
+        export NVM_DIR="$HOME/.nvm"
+    fi
+
     # This loads nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
     # This loads nvm bash_completion
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  
 }
 
 install_node_lts(){
     term_color_red
-    echo
     echo "Install nodejs LTS"
-    echo
     term_color_white
 
     nvm install --lts
@@ -99,16 +87,13 @@ install_node_lts(){
 
 post(){
     term_color_red
-    echo
     echo "Done"
     echo "- restart terminal"
-    echo
     term_color_white
 }
 
 trap term_color_white EXIT
 confirmation
-check_architecture
 install_nvm
 install_node_lts
 post
