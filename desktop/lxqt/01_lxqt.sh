@@ -189,13 +189,13 @@ configure_lxqt_shortcuts(){
     sed -i 's/Control%2BF1/Control%2BMeta%2B1/' $GLOBALKEY
 
     # Switch to screen 2: Meta+Control+2
-    sed -i 's/Control%2BF1/Control%2BMeta%2B2/' $GLOBALKEY
+    sed -i 's/Control%2BF2/Control%2BMeta%2B2/' $GLOBALKEY
 
     # Switch to screen 3: Meta+Control+3
-    sed -i 's/Control%2BF1/Control%2BMeta%2B3/' $GLOBALKEY
+    sed -i 's/Control%2BF3/Control%2BMeta%2B3/' $GLOBALKEY
 
     # Switch to screen 4: Meta+Control+4
-    sed -i 's/Control%2BF1/Control%2BMeta%2B4/' $GLOBALKEY
+    sed -i 's/Control%2BF4/Control%2BMeta%2B4/' $GLOBALKEY
 
     # Decrease screen brightness: Meta+Alt+1
     echo -e "[Meta%2BAlt%2B1]\nComment=Brightness down\nEnabled=True\nlxqt-config-brightness, -d\n" >> \
@@ -206,16 +206,13 @@ configure_lxqt_shortcuts(){
         $GLOBALKEY
 
     # Decrease volume: Meta+Alt+8
-    echo -e "[Meta%2BAlt%2B8]\nComment=Decrease volume\nEnabled=True\npath=/panel/volume/down\n" >> \
-        $GLOBALKEY
+    sed -i 's/XF86AudioLowerVolume/Control%2BMeta%2B8/' $GLOBALKEY
 
     # Increase volume: Meta+Alt+9
-    echo -e "[Meta%2BAlt%2B9]\nComment=Increase volume\nEnabled=True\npath=/panel/volume/up\n" >> \
-        $GLOBALKEY
+    sed -i 's/XF86AudioRaiseVolume/Control%2BMeta%2B9/' $GLOBALKEY
 
     # Mute: Meta+Alt+0
-    echo -e "[Meta%2BAlt%2B0]\nComment=Mute volume\nEnabled=True\npath=/panel/volume/mute\n" >> \
-        $GLOBALKEY
+    sed -i 's/XF86AudioMute/Control%2BMeta%2B0/' $GLOBALKEY
 
     # Screen lock: Meta+Alt+l
     echo -e "[Meta%2BAlt%2BL]\nComment=Screen lock\nEnabled=True\nExec=lxqt-leave\n" >> \
