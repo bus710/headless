@@ -94,6 +94,9 @@ startup (){
     term_color_white
 
     sed -i '/#KIME_0/c\exec kime' $HOME/.config/sway/config
+    rm -rf /home/$LOGNAME/.config/autostart/Kime.desktop
+    echo -e '\[Desktop Entry\]\nExec=/usr/bin/kime\nName=Kime\nType=Application\nVersion=1.0\nX-LXQt-Need-Tray=true' \
+        >> /home/$LOGNAME/.config/autostart/Kime.desktop
 }
 
 post (){
