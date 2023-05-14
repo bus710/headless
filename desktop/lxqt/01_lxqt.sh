@@ -85,9 +85,9 @@ configure_lxqt_session_and_appearance(){
     # In case of Wayland
     # sudo libinput list-devices | grep Touchpad
     TOUCHPAD_NAME=$(xinput --list --name-only | grep Touchpad | sed 's/ /%2520/g' | sed 's/:/%253A/g')
-    echo $TOUCHPAD_NAME'\\tappingEnabled=1' >> $LXQT_DIR/session.conf
-    echo $TOUCHPAD_NAME'\\naturalScrollingEnabled=1' >> $LXQT_DIR/session.conf
-    echo $TOUCHPAD_NAME'\\tapToDragEnabled=1' >> $LXQT_DIR/session.conf
+    echo $TOUCHPAD_NAME'\tappingEnabled=1' >> $LXQT_DIR/session.conf
+    echo $TOUCHPAD_NAME'\naturalScrollingEnabled=1' >> $LXQT_DIR/session.conf
+    echo $TOUCHPAD_NAME'\tapToDragEnabled=1' >> $LXQT_DIR/session.conf
 
     # Replace CapsLock to Ctrl (Done by another script)
     # sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
@@ -147,6 +147,9 @@ configure_openbox(){
 
     # Toggle full screen
     sed -i 's/F11/W-Up/' $OB_DIR/rc.xml
+
+    # Close the current window
+    sed -i 's/A-F4/W-S-q/' $OB_DIR/rc.xml
 }
 
 
@@ -182,24 +185,20 @@ configure_lxqt_shortcuts(){
     echo -e "[Meta%2BZ]\nComment=Zathura\nEnabled=True\nExec=zathura\n" >> \
         $GLOBALKEY
 
-    # Close the current window: Meta+Shift+q
-    #echo -e "[Shift%2BMeta%2BQ]\nComment=Close\nEnabled=True\nExec=xdotool, getwindowfocus, windowkill\n" >> \
-    #    $GLOBALKEY
+    # Switch to screen 1: Meta+1
+    sed -i 's/Control%2BF1/Meta%2B1/' $GLOBALKEY
 
-    # Switch to screen 1: Meta+Control+1
-    sed -i 's/Control%2BF1/Control%2BMeta%2B1/' $GLOBALKEY
+    # Switch to screen 2: Meta+2
+    sed -i 's/Control%2BF2/Meta%2B2/' $GLOBALKEY
 
-    # Switch to screen 2: Meta+Control+2
-    sed -i 's/Control%2BF2/Control%2BMeta%2B2/' $GLOBALKEY
+    # Switch to screen 3: Meta+3
+    sed -i 's/Control%2BF3/Meta%2B3/' $GLOBALKEY
 
-    # Switch to screen 3: Meta+Control+3
-    sed -i 's/Control%2BF3/Control%2BMeta%2B3/' $GLOBALKEY
-
-    # Switch to screen 4: Meta+Control+4
-    sed -i 's/Control%2BF4/Control%2BMeta%2B4/' $GLOBALKEY
+    # Switch to screen 4: Meta+4
+    sed -i 's/Control%2BF4/Meta%2B4/' $GLOBALKEY
 
     # Control screen brightness: Meta+Alt+1
-    echo -e "[Meta%2BAlt%2B1]\nComment=Brightness\nEnabled=True\nExec=lxqt-config-brighness\n" >> \
+    echo -e "[Meta%2BAlt%2B1]\nComment=Open brightness control\nEnabled=True\nExec=lxqt-config-brighness\n" >> \
         $GLOBALKEY
 
     # Decrease volume: Meta+Alt+8
@@ -227,7 +226,7 @@ post (){
 trap term_color_white EXIT
 confirmation
 install_packages
-#configure_lxqt_session_and_appearance
+configure_lxqt_session_and_appearance
 configure_no_idle
 configure_openbox
 configure_lxqt_shortcuts
