@@ -214,12 +214,8 @@ configure_lxqt_shortcuts(){
     # Mute: Meta+Alt+0
     sed -i 's/XF86AudioMute/Alt%2BMeta%2B0/' $GLOBALKEY
 
-    # Screen lock: Meta+Alt+l
+    # LXQt leave: Meta+Alt+l
     echo -e "[Meta%2BAlt%2BL]\nComment=Screen lock\nEnabled=True\nExec=lxqt-leave\n" >> \
-        $GLOBALKEY
-
-    # Power off: Meta+Alt+k
-    echo -e "[Meta%2BAlt%2BK]\nComment=Screen lock\nEnabled=True\nExec=lxqt-leave\n" >> \
         $GLOBALKEY
 }
 
