@@ -110,11 +110,13 @@ configure_openbox(){
     echo "Update Openbox config"
     term_color_white
 
+    # Re-generate the rc.xml.
+    # This rc.xml is not the same with /etc/xdg/openbox/rc.xml.
     rm -rf $OB_DIR
     mkdir -p $OB_DIR
-    sudo cp /etc/xdg/openbox/rc.xml $OB_DIR
-    sudo chown $LOGNAME:$LOGNAME $OB_DIR/rc.xml
-    chmod 664 $OB_DIR/rc.xml
+    obconf-qt &
+    sleep 1
+    killall obconf-qt
 
     # Change Sweep up/down for desktop switching to nothing
     # (Be careful for the XML namespace when using xmlstarlet)
@@ -178,17 +180,17 @@ configure_lxqt_shortcuts(){
     echo -e "[Shift%2BMeta%2BQ]\nComment=Close\nEnabled=True\nExec=xdotool, getwindowfocus, windowkill\n" >> \
         $GLOBALKEY
 
-    # Switch to screen 1: Meta+1
-    sed -i 's/\/panel\/taskbar\/task_1/\/panel\/desktopswitch\/desktop_1/' $GLOBALKEY
+    # Switch to screen 1: Meta+Control+1
+    sed -i 's/Control%2BF1/Control%2BMeta%2B1/' $GLOBALKEY
 
-    # Switch to screen 2: Meta+2
-    sed -i 's/\/panel\/taskbar\/task_2/\/panel\/desktopswitch\/desktop_2/' $GLOBALKEY
+    # Switch to screen 2: Meta+Control+2
+    sed -i 's/Control%2BF1/Control%2BMeta%2B2/' $GLOBALKEY
 
-    # Switch to screen 3: Meta+3
-    sed -i 's/\/panel\/taskbar\/task_3/\/panel\/desktopswitch\/desktop_3/' $GLOBALKEY
+    # Switch to screen 3: Meta+Control+3
+    sed -i 's/Control%2BF1/Control%2BMeta%2B3/' $GLOBALKEY
 
-    # Switch to screen 4: Meta+4
-    sed -i 's/\/panel\/taskbar\/task_4/\/panel\/desktopswitch\/desktop_4/' $GLOBALKEY
+    # Switch to screen 4: Meta+Control+4
+    sed -i 's/Control%2BF1/Control%2BMeta%2B4/' $GLOBALKEY
 
     # Decrease screen brightness: Meta+Alt+1
     echo -e "[Meta%2BAlt%2B1]\nComment=Brightness down\nEnabled=True\nlxqt-config-brightness, -d\n" >> \
