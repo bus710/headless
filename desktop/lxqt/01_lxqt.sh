@@ -58,7 +58,7 @@ configure_lxqt_session_and_appearance(){
     echo "Configure LxQt session and appearance"
     term_color_white
 
-    # Just add a new line
+    # Add a new line
     echo '' >> $LXQT_DIR/session.conf
 
     # Change global screen scaling to factor 1.10
@@ -66,6 +66,8 @@ configure_lxqt_session_and_appearance(){
     term_color_red
     echo "Update the Global Screen Scaling value"
     term_color_white
+
+    echo -e '[Environment]' >> $LXQT_DIR/session.conf
 
     MY_GDK=$(cat $LXQT_DIR/session.conf | grep GDK_SCALE | wc -l)
     if [[ $MY_GDK == '0' ]]; then
@@ -77,6 +79,9 @@ configure_lxqt_session_and_appearance(){
         echo 'QT_SCALE_FACTOR=1.10' >> $LXQT_DIR/session.conf
     fi
 
+    # Add a new line
+    echo '' >> $LXQT_DIR/session.conf
+
     # Enable trackpad's
     # 1. Tap to click
     # 2. Natural scrolling
@@ -84,6 +89,8 @@ configure_lxqt_session_and_appearance(){
     term_color_red
     echo "Update the touchpad config"
     term_color_white
+
+    echo -e '[Touchpad]' >> $LXQT_DIR/session.conf
 
     # In case of Wayland
     # sudo libinput list-devices | grep Touchpad
