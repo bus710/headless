@@ -90,6 +90,15 @@ configure_lxqt_session_and_appearance(){
     echo $TOUCHPAD_NAME'\\naturalScrollingEnabled=1' >> $LXQT_DIR/session.conf
     echo $TOUCHPAD_NAME'\\tapToDragEnabled=1' >> $LXQT_DIR/session.conf
 
+    # Replace CapsLock to Ctrl (Done by another script)
+    # sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
+    # setupcon -k
+
+    # Wallpaper image file:
+    # WiP
+}
+
+configure_no_idle(){
     # Disable Idleness Watcher
     term_color_red
     echo "No idle watcher"
@@ -101,13 +110,6 @@ configure_lxqt_session_and_appearance(){
     else
         echo 'enableIdlenessWatcher=false' >> $LXQT_DIR/lxqt-powermanagement.conf
     fi
-
-    # Replace CapsLock to Ctrl (Done by another script)
-    # sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
-    # setupcon -k
-
-    # Wallpaper image file:
-    # WiP
 }
 
 configure_openbox(){
@@ -198,12 +200,12 @@ configure_lxqt_shortcuts(){
     sed -i 's/Control%2BF4/Control%2BMeta%2B4/' $GLOBALKEY
 
     # Decrease screen brightness: Meta+Alt+1
-    echo -e "[Alt%2BMeta%2b1]\nComment=Brightness down\nEnabled=True\nlxqt-backlight_backend, --dec\n" >> \
-        $GLOBALKEY
+    sed -i 's/Shift%2BControl%2BF6/Alt%2BMeta%2B1/' $GLOBALKEY
+    sed -i 's/config-brightness, -d/backlight_backend, --dec/g' $GLOBALKEY
 
     # Increase screen brightness: Meta+Alt+2
-    echo -e "[Alt%2Meta%2B2]\nComment=Brightness up\nEnabled=True\nlxqt-backlight_backend, --inc\n" >> \
-        $GLOBALKEY
+    sed -i 's/Shift%2BControl%2BF7/Alt%2BMeta%2B2/' $GLOBALKEY
+    sed -i 's/config-brightness, -i/backlight_backend, --inc/g' $GLOBALKEY
 
     sudo chmod u+s /usr/bin/lxqt-backlight_backend
 
@@ -224,13 +226,16 @@ configure_lxqt_shortcuts(){
 post (){
     term_color_red
     echo "Done"
+    echo "- Change Global Screen Scale"
+    echo "- Change Trackpad direction and tapping behavior"
     term_color_white
 }
 
 trap term_color_white EXIT
 confirmation
 install_packages
-configure_lxqt_session_and_appearance
+#configure_lxqt_session_and_appearance
+configure_no_idle
 configure_openbox
 configure_lxqt_shortcuts
 post
