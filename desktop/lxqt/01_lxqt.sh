@@ -111,6 +111,7 @@ configure_openbox(){
     term_color_white
 
     rm -rf $OB_DIR
+    mkdir -p $OB_DIR
     sudo cp /etc/xdg/openbox/rc.xml $OB_DIR
     sudo chown $LOGNAME:$LOGNAME $OB_DIR/rc.xml
     chmod 664 $OB_DIR/rc.xml
