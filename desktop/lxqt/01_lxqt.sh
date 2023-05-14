@@ -53,11 +53,7 @@ install_packages(){
         sshfs
 }
 
-configure_lxqt_session_and_appearance(){
-    term_color_red
-    echo "Configure LxQt session and appearance"
-    term_color_white
-
+configure_scale(){
     # Add a new line
     echo '' >> $LXQT_DIR/session.conf
 
@@ -78,9 +74,17 @@ configure_lxqt_session_and_appearance(){
     if [[ $MY_QT == '0' ]]; then
         echo 'QT_SCALE_FACTOR=1.10' >> $LXQT_DIR/session.conf
     fi
+}
 
+configure_trackpad(){
     # Add a new line
     echo '' >> $LXQT_DIR/session.conf
+
+    # Skip if there is no touchpad
+    TOUCHPAD_EXISTS=$(xinput --list --name-only | grep Touchpad)
+    if [[ TOUCHPAD_EXISTS == "0" ]]; then
+        return 0 # don't use other numbers...
+    fi
 
     # Enable trackpad's
     # 1. Tap to click
@@ -98,13 +102,6 @@ configure_lxqt_session_and_appearance(){
     echo $TOUCHPAD_NAME'\tappingEnabled=1' >> $LXQT_DIR/session.conf
     echo $TOUCHPAD_NAME'\naturalScrollingEnabled=1' >> $LXQT_DIR/session.conf
     echo $TOUCHPAD_NAME'\tapToDragEnabled=1' >> $LXQT_DIR/session.conf
-
-    # Replace CapsLock to Ctrl (Done by another script)
-    # sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
-    # setupcon -k
-
-    # Wallpaper image file:
-    # WiP
 }
 
 configure_no_idle(){
@@ -236,7 +233,8 @@ post (){
 trap term_color_white EXIT
 confirmation
 install_packages
-configure_lxqt_session_and_appearance
+configure_scale
+configure_trackpad
 configure_no_idle
 configure_openbox
 configure_lxqt_shortcuts
