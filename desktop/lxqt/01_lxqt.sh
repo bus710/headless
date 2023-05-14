@@ -199,15 +199,9 @@ configure_lxqt_shortcuts(){
     # Switch to screen 4: Meta+Control+4
     sed -i 's/Control%2BF4/Control%2BMeta%2B4/' $GLOBALKEY
 
-    # Decrease screen brightness: Meta+Alt+1
-    sed -i 's/Shift%2BControl%2BF6/Alt%2BMeta%2B1/' $GLOBALKEY
-    sed -i 's/config-brightness, -d/backlight_backend, --dec/g' $GLOBALKEY
-
-    # Increase screen brightness: Meta+Alt+2
-    sed -i 's/Shift%2BControl%2BF7/Alt%2BMeta%2B2/' $GLOBALKEY
-    sed -i 's/config-brightness, -i/backlight_backend, --inc/g' $GLOBALKEY
-
-    sudo chmod u+s /usr/bin/lxqt-backlight_backend
+    # Control screen brightness: Meta+Alt+1
+    echo -e "[Meta%2BAlt%2B1]\nComment=Brightness\nEnabled=True\nExec=lxqt-config-brighness\n" >> \
+        $GLOBALKEY
 
     # Decrease volume: Meta+Alt+8
     sed -i 's/XF86AudioLowerVolume/Alt%2BMeta%2B8/' $GLOBALKEY
