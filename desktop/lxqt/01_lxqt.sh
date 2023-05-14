@@ -95,7 +95,12 @@ configure_lxqt_session_and_appearance(){
     echo "No idle watcher"
     term_color_white
 
-    echo 'enableIdlenessWatcher=false' >> $LXQT_DIR/lxqt-powermanagement.conf
+    WATCHER_ENABLED=$(cat $LXQT_DIR/lxqt-powermanagement.conf | grep enableIdlenessWatcher | wc -l)
+    if [[ ! $WATCHER_ENABLED == "0" ]]; then
+        sed -i 's/enableIdlenessWatcher=true/enableIdlenessWatcher=false/' $LXQT_DIR/lxqt-powermanagement.conf
+    else
+        echo 'enableIdlenessWatcher=false' >> $LXQT_DIR/lxqt-powermanagement.conf
+    fi
 
     # Replace CapsLock to Ctrl (Done by another script)
     # sudo bash -c "echo 'XKBOPTIONS=ctrl:nocaps' >> /etc/default/keyboard"
