@@ -172,7 +172,7 @@ configure_lxqt_shortcuts(){
         $GLOBALKEY
 
     # Open Chrome: Meta+y
-    echo -e "[Meta%2BY]\nComment=Chrome\nEnabled=True\nExec=google-chrome-stable\n" >> \
+    echo -e "[Meta%2BY]\nComment=Chrome\nEnabled=True\nExec=google-chrome\n" >> \
         $GLOBALKEY
 
     # Open Code: Meta+u
