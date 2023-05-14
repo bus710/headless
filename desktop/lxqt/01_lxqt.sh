@@ -44,7 +44,6 @@ install_packages(){
     term_color_white
 
     sudo apt install -y \
-        xdotool \
         zathura \
         inxi \
         mpv \
@@ -184,8 +183,8 @@ configure_lxqt_shortcuts(){
         $GLOBALKEY
 
     # Close the current window: Meta+Shift+q
-    echo -e "[Shift%2BMeta%2BQ]\nComment=Close\nEnabled=True\nExec=xdotool, getwindowfocus, windowkill\n" >> \
-        $GLOBALKEY
+    #echo -e "[Shift%2BMeta%2BQ]\nComment=Close\nEnabled=True\nExec=xdotool, getwindowfocus, windowkill\n" >> \
+    #    $GLOBALKEY
 
     # Switch to screen 1: Meta+Control+1
     sed -i 's/Control%2BF1/Control%2BMeta%2B1/' $GLOBALKEY
