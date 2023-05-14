@@ -58,6 +58,9 @@ configure_lxqt_session_and_appearance(){
     echo "Configure LxQt session and appearance"
     term_color_white
 
+    # Just add a new line
+    echo '' >> $LXQT_DIR/session.conf
+
     # Change global screen scaling to factor 1.10
     # ~/.config/lxqt/session.conf => QT_SCALE_FACTOR=1.10
     term_color_red
