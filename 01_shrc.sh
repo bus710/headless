@@ -71,9 +71,9 @@ configure_runcom(){
     # Go  
     if [[ -f /usr/local/go/bin/go ]]; then
         echo "Activate Go"
-        sed -i '/#GO_0/c\export PATH=$PATH:\/usr\/local\/go\/bin:$HOME/go/bin' /home/$LOGNAME/.shrc
-        sed -i '/#GO_1/c\export GOROOT=\/usr\/local\/go' /home/$LOGNAME/.shrc
-        sed -i '/#GO_2/c\export GOPATH=\$HOME\/go' /home/$LOGNAME/.shrc
+        sed -i '/#GO_0/c\export GOROOT=\/usr\/local\/go' /home/$LOGNAME/.shrc
+        sed -i '/#GO_1/c\export GOPATH=\$HOME\/go' /home/$LOGNAME/.shrc
+        sed -i '/#GO_2/c\export PATH=$PATH:\$GOROOT/bin:\$GOPATH/bin' /home/$LOGNAME/.shrc
         sed -i '/#GO_3/c\export DELVE_EDITOR=nvim' /home/$LOGNAME/.shrc
     fi
 
