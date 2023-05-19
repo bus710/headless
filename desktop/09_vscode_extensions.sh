@@ -66,28 +66,29 @@ install () {
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
         # Rust
-        "rust-lang.rust-analyzer"
-        "serayuzgur.crates"
-        "vadimcn.vscode-lldb"
-        "tauri-apps.tauri-vscode"
+        #"rust-lang.rust-analyzer"
+        #"serayuzgur.crates"
+        #"vadimcn.vscode-lldb"
+        #"tauri-apps.tauri-vscode"
+
         # Go
         "golang.Go"
         # Python
         "ms-python.python"
 
         # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
         # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Flutter
-        #"Dart-Code.dart-code"
-        #"Dart-Code.flutter"
+        "Dart-Code.dart-code"
+        "Dart-Code.flutter"
 
         # Erlang
-        #"erlang-ls.erlang-ls"
+        "erlang-ls.erlang-ls"
 
         # Elixir
         #"JakeBecker.elixir-ls"
@@ -102,11 +103,11 @@ install () {
         #"AugusteRame.zls-vscode"
 
         # Arduino
-        #"vsciot-vscode.vscode-arduino"
+        "vsciot-vscode.vscode-arduino"
         # ARM
         #"marus25.cortex-debug"
         # ESP32
-        "espressif.esp-idf-extension"
+        #"espressif.esp-idf-extension"
 
         # SFTP
         #"Natizyskunk.sftp"

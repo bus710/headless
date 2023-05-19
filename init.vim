@@ -87,7 +87,7 @@ Plug 'w0rp/ale'
 Plug 'fatih/vim-go' ", { 'do': ':GoInstallBinaries' }
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Rust
-Plug 'rust-lang/rust.vim'
+"Plug 'rust-lang/rust.vim'
 " Dart/Flutter
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'thosakwe/vim-flutter'
@@ -102,10 +102,10 @@ Plug 'dracula/vim'
 "Plug 'vim-syntastic/syntastic' " This makes some delay on dart files
 Plug 'stephpy/vim-yaml'
 " Erlang
-"Plug 'vim-erlang/vim-erlang-runtime'
-"Plug 'vim-erlang/vim-erlang-compiler'
-"Plug 'vim-erlang/vim-erlang-omnicomplete'
-"Plug 'vim-erlang/vim-erlang-tags'
+Plug 'vim-erlang/vim-erlang-runtime'
+Plug 'vim-erlang/vim-erlang-compiler'
+Plug 'vim-erlang/vim-erlang-omnicomplete'
+Plug 'vim-erlang/vim-erlang-tags'
 " Elixir
 "Plug 'elixir-editors/vim-elixir'
 "Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
