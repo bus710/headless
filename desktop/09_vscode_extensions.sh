@@ -66,10 +66,10 @@ install () {
         "ms-vscode.cpptools"
         "ms-vscode.makefile-tools"
         # Rust
-        #"rust-lang.rust-analyzer"
-        #"serayuzgur.crates"
-        #"vadimcn.vscode-lldb"
-        #"tauri-apps.tauri-vscode"
+        "rust-lang.rust-analyzer"
+        "serayuzgur.crates"
+        "vadimcn.vscode-lldb"
+        "tauri-apps.tauri-vscode"
 
         # Go
         "golang.Go"
@@ -77,11 +77,11 @@ install () {
         "ms-python.python"
 
         # Svelte
-        #"svelte.svelte-vscode"
-        #"ardenivanov.svelte-intellisense"
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
         # Tailwind
-        #"bradlc.vscode-tailwindcss"
-        #"austenc.tailwind-docs"
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
 
         # Flutter
         "Dart-Code.dart-code"
