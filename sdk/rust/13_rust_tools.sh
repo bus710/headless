@@ -18,7 +18,7 @@ term_color_white () {
 
 install_packages(){
     term_color_red
-    echo "Some package for cargo tools"
+    echo "Some packages for cargo tools"
     term_color_white
 
     sudo apt install -y pkg-config libssl-dev
