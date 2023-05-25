@@ -136,7 +136,7 @@ alias cp-zig-vscode="rm -rf .vscode && mkdir .vscode && cp -r /home/$LOGNAME/rep
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias idf="idf.py"
 
-alias cargo-upgrade-incompatible="cargo upgrade --incompatible --verbose"
+alias cargo-upgrade-incompatible="cargo upgrade --incompatible"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
