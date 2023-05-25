@@ -59,6 +59,7 @@ install_neovim(){
         echo "Download the nightly pre-built from Github"
         term_color_white
 
+        mkdir -p /home/$LOGNAME/Downloads
         cd /home/$LOGNAME/Downloads
 
         #wget -q https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
@@ -134,6 +135,9 @@ update_configuration(){
     mkdir -p /home/$LOGNAME/.config/nvim
     mkdir -p /home/$LOGNAME/.config/nvim/autoload
     mkdir -p /home/$LOGNAME/.config/nvim/plugged
+
+    mkdir -p /home/$LOGNAME/.local
+    mkdir -p /home/$LOGNAME/.tools
 
     curl -fLo /home/$LOGNAME/.config/nvim/autoload/plug.vim \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
