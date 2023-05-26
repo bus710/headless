@@ -130,6 +130,7 @@ alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias idf="idf.py"
 
 alias cargo-upgrade-incompatible="cargo upgrade --incompatible"
+alias cargo-watch-x-run="cargo watch -x 'run'"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
