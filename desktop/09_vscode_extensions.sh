@@ -75,10 +75,23 @@ install () {
         "golang.Go"
         # Python
         "ms-python.python"
+        # JS/Node
+        "christian-kohler.npm-intellisense"
+        "dbaeumer.vscode-eslint"
+        "ms-vscode.vscode-typescript-next"
+        "ms-vscode.js-debug-nightly"
+        "dsznajder.es7-react-js-snippets"
 
         # Svelte
         "svelte.svelte-vscode"
         "ardenivanov.svelte-intellisense"
+
+        # React
+        "dsznajder.es7-react-js-snippets"
+        "planbcoding.vscode-react-refactor"
+        "jeremyrajan.react-component"
+        "msjsdiag.vscode-react-native"
+
         # Tailwind
         "bradlc.vscode-tailwindcss"
         "austenc.tailwind-docs"
