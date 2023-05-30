@@ -97,12 +97,12 @@ export default App;
     fi
 }
 
-remove_app_css(){
+empty_app_css(){
     term_color_red
     echo "Remove App.css"
     term_color_white
 
-    rm -rf ./src/App.css
+    > ./src/App.css
 }
 
 post(){
@@ -118,5 +118,5 @@ install_packages
 configure_template_paths
 add_tailwind_directives
 update_app_jsx
-remove_app_css
+empty_app_css
 post
