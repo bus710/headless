@@ -81,13 +81,17 @@ update_app_jsx(){
         > ./src/App.jsx
         echo -e \
         "import './App.css'
-export default function App() {
+
+function App() {
   return (
-    <h1 className=\"text-3xl font-bold underline\">
+    <h1 className=\"text-3xl font-bold\">
       Hello world!
     </h1>
   )
-}" >> ./src/App.jsx 
+}
+
+export default App;
+" >> ./src/App.jsx 
     else
         echo "No App.jsx is found"
     fi
