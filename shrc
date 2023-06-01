@@ -134,7 +134,9 @@ alias idf="idf.py"
 alias cargo-upgrade-incompatible="cargo upgrade --incompatible"
 alias cargo-watch-x-run="cargo watch -x 'run'"
 
-alias add-tailwind="/home/$LOGNAME/repo/headless/sdk/react/add_tailwindcss.sh"
+alias rj-add-tailwind="/home/$LOGNAME/repo/headless/sdk/react/rj-add-tailwindcss.sh"
+
+alias sv-add-tailwind="/home/$LOGNAME/repo/headless/sdk/svelte/sv-add-tailwindcss.sh"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
