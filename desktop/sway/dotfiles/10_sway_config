@@ -28,7 +28,7 @@ include /etc/sway/config-vars.d/*
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #output * bg ~/202545.png fill
-output * bg #202545 solid_color
+output * bg #202125 solid_color
 
 # To find the ID of display
 # $ swaymsg -t get_outputs
@@ -259,7 +259,7 @@ bindsym $mod+Alt+9 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Alt+8 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # Lock the screen with the given color and lower the backlight level to 90%
-bindsym $mod+Alt+l exec "brightnessctl set 90% && swaylock -c 112233"
+bindsym $mod+Alt+l exec "brightnessctl set 90% && swaylock -c 101010"
 
 # Open Zathura PDF viewer
 bindsym $mod+z exec zathura
