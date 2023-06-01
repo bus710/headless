@@ -31,11 +31,11 @@ confirmation(){
         exit -1
     fi
 
-    IS_REACT=$(cat package.json | grep react | wc -l)
+    IS_SVELTE=$(cat package.json | grep svelte | wc -l)
     if [[ $IS_REACT == "0" ]]; then
-        echo "Not a react project"
+        echo "Not a svelte project"
         echo "Please run:"
-        echo "- create vite@latest $APP_NAME -- --template react"
+        echo "- create vite@latest $APP_NAME -- --template svelte"
         exit -1
     fi
 }
@@ -45,8 +45,8 @@ install_packages(){
     echo "Install packages"
     term_color_white
 
-    npm install -D tailwindcss postcss autoprefixer
-    npx tailwindcss init -p
+    npm install -D tailwindcss postcss autoprefixer tinro
+    npx tailwindcss init tailwind.config.cjs -p
 }
 
 configure_template_paths(){
@@ -54,7 +54,7 @@ configure_template_paths(){
     echo "Configure template paths"
     term_color_white
 
-    sed -i 's/content: \[\],/content: \[".\/index.html", ".\/src\/**\/*{js,tx,jsx,tsx}"\],/' tailwind.config.js
+    sed -i 's/content: \[\],/content: \[".\/src\/**\/*{html,js,svelte,ts}"\],/' tailwind.config.cjs
 }
 
 add_tailwind_directives(){
@@ -62,47 +62,29 @@ add_tailwind_directives(){
     echo "Add tailwind directives"
     term_color_white
 
-    if [[ -f ./src/index.css ]]; then
-        > ./src/index.css
-        echo "@tailwind base;" >> ./src/index.css
-        echo "@tailwind components;" >> ./src/index.css
-        echo "@tailwind utilities;" >> ./src/index.css
+    if [[ -f ./src/app.css ]]; then
+        > ./src/app.css
+        echo "@tailwind base;" >> ./src/app.css
+        echo "@tailwind components;" >> ./src/app.css
+        echo "@tailwind utilities;" >> ./src/app.css
     else
-        echo "No index.css is found."
+        echo "No app.css is found."
     fi
 }
 
-update_app_jsx(){
+update_app_svelte(){
     term_color_red
-    echo "Update App.jsx"
+    echo "Update App.svelte"
     term_color_white
 
-    if [[ -f ./src/App.jsx ]]; then
-        > ./src/App.jsx
+    if [[ -f ./src/App.svelte ]]; then
+        > ./src/App.svelte
         echo -e \
-        "import './App.css'
-
-function App() {
-  return (
-    <h1 className=\"text-3xl font-bold\">
-      Hello world!
-    </h1>
-  )
-}
-
-export default App;
-" >> ./src/App.jsx 
+            "<h1 class='text-3xl font-bold underline'>Hello!</h1>" >> \
+            ./src/App.svelte
     else
-        echo "No App.jsx is found"
+        echo "No App.svelte is found"
     fi
-}
-
-empty_app_css(){
-    term_color_red
-    echo "Remove App.css"
-    term_color_white
-
-    > ./src/App.css
 }
 
 post(){
@@ -117,6 +99,5 @@ confirmation
 install_packages
 configure_template_paths
 add_tailwind_directives
-update_app_jsx
-empty_app_css
+update_app_svelte
 post
