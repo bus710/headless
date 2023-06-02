@@ -75,12 +75,16 @@ install () {
         # Erlang
         "erlang-ls.erlang-ls"
 
+        # Svelte
+        "svelte.svelte-vscode"
+        "ardenivanov.svelte-intellisense"
+
         # Flutter
-        "Dart-Code.dart-code"
-        "Dart-Code.flutter"
+        #"Dart-Code.dart-code"
+        #"Dart-Code.flutter"
 
         # Python
-        "ms-python.python"
+        #"ms-python.python"
 
         # JS/Node
         #"christian-kohler.npm-intellisense"
@@ -88,10 +92,6 @@ install () {
         #"ms-vscode.vscode-typescript-next"
         #"ms-vscode.js-debug-nightly"
         #"dsznajder.es7-react-js-snippets"
-
-        # Svelte
-        #"svelte.svelte-vscode"
-        #"ardenivanov.svelte-intellisense"
 
         # React
         #"dsznajder.es7-react-js-snippets"
