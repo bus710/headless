@@ -45,7 +45,20 @@ install_packages(){
     echo "Install packages"
     term_color_white
 
-    npm install -D tailwindcss postcss autoprefixer tinro
+    npm install -D \
+        tailwindcss \
+        postcss \
+        autoprefixer \
+        tinro \
+        flowbite \
+        flowbite-svelte \
+        classnames \
+        @popperjs/core
+
+    npm install -D \
+        prettier \
+        eslint
+
     npx tailwindcss init tailwind.config.cjs -p
 }
 
@@ -54,7 +67,32 @@ configure_template_paths(){
     echo "Configure template paths"
     term_color_white
 
-    sed -i 's/content: \[\],/content: \[".\/src\/**\/*{html,js,svelte,ts}"\],/' tailwind.config.cjs
+    # sed -i 's/content: \[\],/content: \[".\/src\/**\/*{html,js,svelte,ts}"\],/' tailwind.config.cjs
+    > tailwind.config.cjs
+
+    echo -e \
+"/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './src/**/*{html,js,svelte,ts}',
+    './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
+  ],
+
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#ebf5ff', 100: '#fff1ee', 200: '#ffe4de', 300: '#ffd5cc', 400: '#ffbcad', 500: '#fe795d', 600: '#ef562f', 700: '#eb4f27', 800: '#d3330a', 900: '#d3330a' },
+      },
+    },
+  },
+
+  plugins: [
+    require('flowbite/plugin')
+  ],
+
+  darkmode: 'class',
+}" >> ./tailwind.config.cjs
+
 }
 
 add_tailwind_directives(){

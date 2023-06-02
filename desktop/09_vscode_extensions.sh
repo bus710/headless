@@ -87,8 +87,9 @@ install () {
         #"ms-python.python"
 
         # JS/Node
-        #"christian-kohler.npm-intellisense"
-        #"dbaeumer.vscode-eslint"
+        "christian-kohler.npm-intellisense"
+        "dbaeumer.vscode-eslint"
+        "rvest.vs-code-prettier-eslint"
         #"ms-vscode.vscode-typescript-next"
         #"ms-vscode.js-debug-nightly"
         #"dsznajder.es7-react-js-snippets"
@@ -100,8 +101,8 @@ install () {
         #"msjsdiag.vscode-react-native"
 
         # Tailwind
-        #"bradlc.vscode-tailwindcss"
-        #"austenc.tailwind-docs"
+        "bradlc.vscode-tailwindcss"
+        "austenc.tailwind-docs"
 
         # Elixir
         #"JakeBecker.elixir-ls"
