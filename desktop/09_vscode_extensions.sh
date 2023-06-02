@@ -70,38 +70,38 @@ install () {
         "serayuzgur.crates"
         "vadimcn.vscode-lldb"
         "tauri-apps.tauri-vscode"
-
         # Go
         "golang.Go"
-        # Python
-        "ms-python.python"
-        # JS/Node
-        "christian-kohler.npm-intellisense"
-        "dbaeumer.vscode-eslint"
-        "ms-vscode.vscode-typescript-next"
-        "ms-vscode.js-debug-nightly"
-        "dsznajder.es7-react-js-snippets"
-
-        # Svelte
-        "svelte.svelte-vscode"
-        "ardenivanov.svelte-intellisense"
-
-        # React
-        "dsznajder.es7-react-js-snippets"
-        "planbcoding.vscode-react-refactor"
-        "jeremyrajan.react-component"
-        "msjsdiag.vscode-react-native"
-
-        # Tailwind
-        "bradlc.vscode-tailwindcss"
-        "austenc.tailwind-docs"
+        # Erlang
+        "erlang-ls.erlang-ls"
 
         # Flutter
         "Dart-Code.dart-code"
         "Dart-Code.flutter"
 
-        # Erlang
-        "erlang-ls.erlang-ls"
+        # Python
+        "ms-python.python"
+
+        # JS/Node
+        #"christian-kohler.npm-intellisense"
+        #"dbaeumer.vscode-eslint"
+        #"ms-vscode.vscode-typescript-next"
+        #"ms-vscode.js-debug-nightly"
+        #"dsznajder.es7-react-js-snippets"
+
+        # Svelte
+        #"svelte.svelte-vscode"
+        #"ardenivanov.svelte-intellisense"
+
+        # React
+        #"dsznajder.es7-react-js-snippets"
+        #"planbcoding.vscode-react-refactor"
+        #"jeremyrajan.react-component"
+        #"msjsdiag.vscode-react-native"
+
+        # Tailwind
+        #"bradlc.vscode-tailwindcss"
+        #"austenc.tailwind-docs"
 
         # Elixir
         #"JakeBecker.elixir-ls"
@@ -116,7 +116,7 @@ install () {
         #"AugusteRame.zls-vscode"
 
         # Arduino
-        "vsciot-vscode.vscode-arduino"
+        #"vsciot-vscode.vscode-arduino"
         # ARM
         #"marus25.cortex-debug"
         # ESP32
