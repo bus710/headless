@@ -89,12 +89,12 @@ install () {
         # JS/Node
         "christian-kohler.npm-intellisense"
         "dbaeumer.vscode-eslint"
+        "rvest.vs-code-prettier-eslint" 
         #"ms-vscode.vscode-typescript-next"
         #"ms-vscode.js-debug-nightly"
         #"dsznajder.es7-react-js-snippets"
 
         # React
-        #"rvest.vs-code-prettier-eslint" 
         #"dsznajder.es7-react-js-snippets"
         #"planbcoding.vscode-react-refactor"
         #"jeremyrajan.react-component"
