@@ -148,6 +148,24 @@ configure_gtk_dark(){
     echo "gtk-application-prefer-dark-theme=1" >> /home/$LOGNAME/.config/gtk-3.0/settings.ini
 }
 
+configure_touchpad(){
+    term_color_red
+    echo "Configure touchpad"
+    term_color_white
+
+    TOUCH=$(swaymsg -rt get_inputs | \
+        jq -r '.[] | select(.identifier | contains("Touch")) | .identifier')
+
+    TOUCH_LEN=$(echo $TOUCH | grep Touch | wc -l)
+
+    if [[ ! $TOUCH_LEN == 0 ]]; then
+        echo $TOUCH
+        sed -i 's/#TOUCH_ID/\"'"$TOUCH"'\"/' /home/$LOGNAME/.config/sway/config
+    else
+        echo "Touch device is not found."
+    fi
+}
+
 post (){
     term_color_red
     echo "Done"
@@ -159,5 +177,6 @@ confirmation
 install_packages
 configure_sway
 configure_gtk_dark
+configure_touchpad
 post
 
