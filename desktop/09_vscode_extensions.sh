@@ -79,7 +79,6 @@ install () {
         "christian-kohler.npm-intellisense"
         "dbaeumer.vscode-eslint"
         "rvest.vs-code-prettier-eslint" 
-        "ms-vscode.vscode-typescript-next"
 
         # Svelte
         "svelte.svelte-vscode"
