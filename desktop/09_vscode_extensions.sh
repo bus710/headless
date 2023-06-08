@@ -131,7 +131,8 @@ install () {
         echo Install $e
         term_color_white
 
-        code --install-extension $e 2> /dev/null
+        #code --install-extension $e 2> /dev/null
+        code --install-extension $e
 
         if [[ -f /usr/bin/code-insiders ]]; then
             code-insiders --install-extension $e 2> /dev/null
