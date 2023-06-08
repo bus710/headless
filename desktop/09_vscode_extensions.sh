@@ -63,8 +63,8 @@ install () {
         "yzhang.markdown-all-in-one"
         "yzane.markdown-pdf"
         # C
-        "ms-vscode.cpptools"
-        "ms-vscode.makefile-tools"
+        #"ms-vscode.cpptools"
+        #"ms-vscode.makefile-tools"
         # Rust
         "rust-lang.rust-analyzer"
         "serayuzgur.crates"
