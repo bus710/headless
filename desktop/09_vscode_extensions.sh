@@ -79,7 +79,6 @@ install () {
         "christian-kohler.npm-intellisense"
         "dbaeumer.vscode-eslint"
         "rvest.vs-code-prettier-eslint" 
-        "ms-vscode.js-debug"
         "ms-vscode.vscode-typescript-next"
 
         # Svelte
@@ -131,8 +130,7 @@ install () {
         echo Install $e
         term_color_white
 
-        #code --install-extension $e 2> /dev/null
-        code --install-extension $e
+        code --install-extension $e 2> /dev/null
 
         if [[ -f /usr/bin/code-insiders ]]; then
             code-insiders --install-extension $e 2> /dev/null
