@@ -116,10 +116,12 @@ import { Button } from 'flowbite-react';
 
 function App() {
   return (
-    <h1 className=\"text-3xl font-bold items-center\">
-      Hello world!
-      <Button>Click me</Button>
-    </h1>
+    <div className="flex flex-col items-center space-y-8">
+        <h1 className=\"text-3xl font-bold items-center\">
+          Hello world!
+        </h1>
+        <Button>Click me</Button>
+    </div>
   )
 }
 
