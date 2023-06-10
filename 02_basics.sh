@@ -52,6 +52,7 @@ install_basic_packages(){
         udev \
         iotop \
         unzip \
+        psmisc \
         autofs \
         keychain \
         neofetch \
