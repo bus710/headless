@@ -139,3 +139,6 @@ configure_template_paths
 add_tailwind_directives
 update_app_svelte
 post
+
+# Add aliases in vite.config.js
+# Add darkmode in index.html
