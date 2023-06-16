@@ -17,7 +17,8 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo "TailwindCSS will be added."
+    echo "React scaffolding:"
+    echo "- TailwindCSS will be added."
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white

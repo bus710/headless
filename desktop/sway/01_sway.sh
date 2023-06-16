@@ -71,12 +71,12 @@ install_packages(){
     # Extra apps and theming
     sudo apt install -y \
         network-manager-gnome \
-        qtwayland5 \
         ristretto \
         zathura \
         inxi \
         mpv \
         imv
+        #qtwayland5
 
     # For "Open terminal here", 
     # > Edit > Configure Custom Action > kitty %f

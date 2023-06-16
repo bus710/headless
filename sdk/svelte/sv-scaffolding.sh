@@ -17,7 +17,8 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo "TailwindCSS will be added."
+    echo "Svelte scaffolding:"
+    echo "- TailwindCSS will be added."
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
@@ -76,7 +77,13 @@ configure_vite(){
     #   $comp: path.resolve("./src/components"),
     #  },
     # },
-    sed -i '/plugins:/a resolve: {\n alias: {\n $lib: path.resolve(\"./src/lib\"),\n $comp: path.resolve(\"./src/components\"),\n },\n },' vite.config.js
+    sed -i '/plugins:/a \'\
+'resolve: {\n'\
+'alias: {\n'\
+'$lib: path.resolve(\"./src/lib\"),\n'\
+'$comp: path.resolve(\"./src/components\"),\n'\
+'},\n'\
+'},' vite.config.js
 }
 
 configure_template_paths(){

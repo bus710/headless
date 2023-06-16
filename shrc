@@ -136,6 +136,7 @@ alias cargo-watch-x-run="cargo watch -x 'run'"
 
 alias rj-scaffolding="/home/$LOGNAME/repo/headless/sdk/react/rj-scaffolding.sh"
 alias sv-scaffolding="/home/$LOGNAME/repo/headless/sdk/svelte/sv-scaffolding.sh"
+alias tauri-scaffolding="/home/$LOGNAME/repo/headless/sdk/tauri/tauri-scaffolding.sh"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
