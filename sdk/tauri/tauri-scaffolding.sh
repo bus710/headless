@@ -96,6 +96,7 @@ post(){
     term_color_red
     echo "Done"
     echo "Try \"cargo tauri dev\""
+    echo "Add more commands and events"
     term_color_white
 }
 
