@@ -62,6 +62,23 @@ install_packages(){
     npx tailwindcss init tailwind.config.cjs -p
 }
 
+configure_vite(){
+    term_color_red
+    echo "Configure vite"
+    term_color_white
+
+    # Add 'import path from "path";' in the beginnig
+    sed -i '1 i\import path from \"path\";' vite.config.js 
+    # Add these lines after "plugins:"
+    # resolve: {
+    #  alias: {
+    #   $lib: path.resolve("./src/lib"),
+    #   $comp: path.resolve("./src/components"),
+    #  },
+    # },
+    sed -i '/plugins:/a resolve: {\n alias: {\n $lib: path.resolve(\"./src/lib\"),\n $comp: path.resolve(\"./src/components\"),\n },\n },' vite.config.js
+}
+
 configure_template_paths(){
     term_color_red
     echo "Configure template paths"
@@ -125,6 +142,39 @@ update_app_svelte(){
     fi
 }
 
+update_index_html(){
+    term_color_red
+    echo "Update index.html for dark mode"
+    term_color_white
+
+    > index.html 
+
+    echo -e '<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SenseHAT x Tauri</title>
+    <script>
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>' > index.html
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -135,10 +185,11 @@ post(){
 trap term_color_white EXIT
 confirmation
 install_packages
+configure_vite
 configure_template_paths
 add_tailwind_directives
 update_app_svelte
+update_index_html
 post
 
-# Add aliases in vite.config.js
 # Add darkmode in index.html
