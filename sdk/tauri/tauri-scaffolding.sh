@@ -82,6 +82,7 @@ add_tauri(){
     term_color_white
 
     cargo tauri init
+    npm install @tauri-apps/api
 }
 
 configure_tauri(){
