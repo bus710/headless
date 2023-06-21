@@ -74,25 +74,29 @@ install () {
         "golang.Go"
         # Erlang
         "erlang-ls.erlang-ls"
-
+        # Elixir
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
         # JS/Node
         "christian-kohler.npm-intellisense"
         "dbaeumer.vscode-eslint"
-        "rvest.vs-code-prettier-eslint" 
+        "rvest.vs-code-prettier-eslint"
 
         # Svelte
         "svelte.svelte-vscode"
         "ardenivanov.svelte-intellisense"
-
-        # React
-        "dsznajder.es7-react-js-snippets"
-        "planbcoding.vscode-react-refactor"
-        "jeremyrajan.react-component"
-        "msjsdiag.vscode-react-native"
-
         # Tailwind
         "bradlc.vscode-tailwindcss"
         "austenc.tailwind-docs"
+
+        # React
+        #"dsznajder.es7-react-js-snippets"
+        #"planbcoding.vscode-react-refactor"
+        #"jeremyrajan.react-component"
+        #"msjsdiag.vscode-react-native"
 
         # Flutter
         #"Dart-Code.dart-code"
@@ -100,13 +104,6 @@ install () {
 
         # Python
         #"ms-python.python"
-        
-        # Elixir
-        #"JakeBecker.elixir-ls"
-        #"benvp.vscode-hex-pm-intellisense"
-        #"pantajoe.vscode-elixir-credo"
-        #"phoenixframework.phoenix"
-        #"Ritvyk.heex-html"
 
         # Zig
         #"webfreak.debug"
