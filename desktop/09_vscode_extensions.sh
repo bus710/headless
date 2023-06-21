@@ -63,8 +63,8 @@ install () {
         "yzhang.markdown-all-in-one"
         "yzane.markdown-pdf"
         # C
-        #"ms-vscode.cpptools"
-        #"ms-vscode.makefile-tools"
+        "ms-vscode.cpptools"
+        "ms-vscode.makefile-tools"
         # Rust
         "rust-lang.rust-analyzer"
         "serayuzgur.crates"
@@ -72,14 +72,6 @@ install () {
         "tauri-apps.tauri-vscode"
         # Go
         "golang.Go"
-        # Erlang
-        "erlang-ls.erlang-ls"
-        # Elixir
-        "JakeBecker.elixir-ls"
-        "benvp.vscode-hex-pm-intellisense"
-        "pantajoe.vscode-elixir-credo"
-        "phoenixframework.phoenix"
-        "Ritvyk.heex-html"
         # JS/Node
         "christian-kohler.npm-intellisense"
         "dbaeumer.vscode-eslint"
@@ -98,6 +90,15 @@ install () {
         #"jeremyrajan.react-component"
         #"msjsdiag.vscode-react-native"
 
+        # Erlang
+        #"erlang-ls.erlang-ls"
+
+        # Elixir
+        #"JakeBecker.elixir-ls"
+        #"benvp.vscode-hex-pm-intellisense"
+        #"pantajoe.vscode-elixir-credo"
+        #"phoenixframework.phoenix"
+        #"Ritvyk.heex-html"
         # Flutter
         #"Dart-Code.dart-code"
         #"Dart-Code.flutter"
@@ -111,7 +112,7 @@ install () {
         #"AugusteRame.zls-vscode"
 
         # Arduino
-        #"vsciot-vscode.vscode-arduino"
+        "vsciot-vscode.vscode-arduino"
         # ARM
         #"marus25.cortex-debug"
         # ESP32

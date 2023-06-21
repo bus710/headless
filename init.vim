@@ -76,9 +76,16 @@ Plug 'vim-airline/vim-airline' " for the nice status bar + @
 Plug 'tpope/vim-fugitive' " for git in nvim
 Plug 'airblade/vim-gitgutter' " To see if a file changed after the last commit
 Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g:ctrlp_custom_ignore
+" Color Theme
+Plug 'dracula/vim'
 " Snippet related
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+" YML
+Plug 'stephpy/vim-yaml'
+" Markdown
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim'
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Linter
@@ -88,34 +95,24 @@ Plug 'fatih/vim-go' ", { 'do': ':GoInstallBinaries' }
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Rust
 Plug 'rust-lang/rust.vim'
-" Dart/Flutter
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'thosakwe/vim-flutter'
-" Markdown
-Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim'
-" Color Themes
-Plug 'dracula/vim'
-"Plug 'tomasiser/vim-code-dark'
-"Plug 'sickill/vim-monokai'
-"Plug 'ayu-theme/ayu-vim'
-"Plug 'vim-syntastic/syntastic' " This makes some delay on dart files
-" YML
-Plug 'stephpy/vim-yaml'
-" Erlang
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'vim-erlang/vim-erlang-compiler'
-Plug 'vim-erlang/vim-erlang-omnicomplete'
-Plug 'vim-erlang/vim-erlang-tags'
-" Elixir
-Plug 'elixir-editors/vim-elixir'
-Plug 'elixir-lsp/coc-elixir' ", {'do': 'yarn install && yarn prepack'}
-" Zig
-"Plug 'ziglang/zig.vim'
 " Svelte
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+
+" Dart/Flutter
+"Plug 'dart-lang/dart-vim-plugin'
+"Plug 'thosakwe/vim-flutter'
+" Erlang
+"Plug 'vim-erlang/vim-erlang-runtime'
+"Plug 'vim-erlang/vim-erlang-compiler'
+"Plug 'vim-erlang/vim-erlang-omnicomplete'
+"Plug 'vim-erlang/vim-erlang-tags'
+" Elixir
+"Plug 'elixir-editors/vim-elixir'
+"Plug 'elixir-lsp/coc-elixir' ", {'do': 'yarn install && yarn prepack'}
+" Zig
+"Plug 'ziglang/zig.vim'
 call plug#end()
 
 " ==========================================================
