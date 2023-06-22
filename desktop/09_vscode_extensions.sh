@@ -84,27 +84,28 @@ install () {
         "bradlc.vscode-tailwindcss"
         "austenc.tailwind-docs"
 
-        # React
-        #"dsznajder.es7-react-js-snippets"
-        #"planbcoding.vscode-react-refactor"
-        #"jeremyrajan.react-component"
-        #"msjsdiag.vscode-react-native"
-
         # Erlang
-        #"erlang-ls.erlang-ls"
+        "erlang-ls.erlang-ls"
 
         # Elixir
-        #"JakeBecker.elixir-ls"
-        #"benvp.vscode-hex-pm-intellisense"
-        #"pantajoe.vscode-elixir-credo"
-        #"phoenixframework.phoenix"
-        #"Ritvyk.heex-html"
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
+
         # Flutter
         #"Dart-Code.dart-code"
         #"Dart-Code.flutter"
 
         # Python
         #"ms-python.python"
+
+        # React
+        #"dsznajder.es7-react-js-snippets"
+        #"planbcoding.vscode-react-refactor"
+        #"jeremyrajan.react-component"
+        #"msjsdiag.vscode-react-native"
 
         # Zig
         #"webfreak.debug"
