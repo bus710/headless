@@ -104,7 +104,7 @@ post () {
     # https://arduino.github.io/arduino-cli
     # https://arduino-pico.readthedocs.io/en/latest/
 
-    # For "output path is not specified" warning, 
+    # For "output path is not specified" warning,
     # just add "output": "./" into the arduino.json file.
 }
 
