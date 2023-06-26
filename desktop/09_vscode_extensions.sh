@@ -81,29 +81,38 @@ install () {
         # Svelte
         "svelte.svelte-vscode"
         "ardenivanov.svelte-intellisense"
+        # Alpine
+        "adrianwilczynski.alpine-js-intellisense"
         # Tailwind
         "bradlc.vscode-tailwindcss"
         "austenc.tailwind-docs"
 
         # Erlang
-        #"erlang-ls.erlang-ls"
+        "erlang-ls.erlang-ls"
 
         # Elixir
-        #"JakeBecker.elixir-ls"
-        #"benvp.vscode-hex-pm-intellisense"
-        #"pantajoe.vscode-elixir-credo"
-        #"phoenixframework.phoenix"
-        #"Ritvyk.heex-html"
-
-        # Flutter
-        #"Dart-Code.dart-code"
-        #"Dart-Code.flutter"
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
 
         # Python and MicroPython
         "ms-python.python"
         "visualstudioexptteam.vscodeintellicode"
         "ms-python.vscode-pylance"
         "paulober.pico-w-go"
+
+        # Arduino
+        "vsciot-vscode.vscode-arduino"
+        # ARM
+        #"marus25.cortex-debug"
+        # ESP32
+        #"espressif.esp-idf-extension"
+
+        # Flutter
+        #"Dart-Code.dart-code"
+        #"Dart-Code.flutter"
 
         # React
         #"dsznajder.es7-react-js-snippets"
@@ -115,13 +124,6 @@ install () {
         #"webfreak.debug"
         #"tiehuis.zig"
         #"AugusteRame.zls-vscode"
-
-        # Arduino
-        "vsciot-vscode.vscode-arduino"
-        # ARM
-        #"marus25.cortex-debug"
-        # ESP32
-        #"espressif.esp-idf-extension"
 
         # SFTP
         #"Natizyskunk.sftp"
