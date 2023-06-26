@@ -99,8 +99,11 @@ install () {
         #"Dart-Code.dart-code"
         #"Dart-Code.flutter"
 
-        # Python
-        #"ms-python.python"
+        # Python and MicroPython
+        "ms-python.python"
+        "visualstudioexptteam.vscodeintellicode"
+        "ms-python.vscode-pylance"
+        "paulober.pico-w-go"
 
         # React
         #"dsznajder.es7-react-js-snippets"
