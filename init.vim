@@ -101,13 +101,13 @@ Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 " Erlang
-Plug 'vim-erlang/vim-erlang-runtime'
-Plug 'vim-erlang/vim-erlang-compiler'
-Plug 'vim-erlang/vim-erlang-omnicomplete'
-Plug 'vim-erlang/vim-erlang-tags'
+"Plug 'vim-erlang/vim-erlang-runtime'
+"Plug 'vim-erlang/vim-erlang-compiler'
+"Plug 'vim-erlang/vim-erlang-omnicomplete'
+"Plug 'vim-erlang/vim-erlang-tags'
 " Elixir
-Plug 'elixir-editors/vim-elixir'
-Plug 'elixir-lsp/coc-elixir' ", {'do': 'yarn install && yarn prepack'}
+"Plug 'elixir-editors/vim-elixir'
+"Plug 'elixir-lsp/coc-elixir' ", {'do': 'yarn install && yarn prepack'}
 
 " Dart/Flutter
 "Plug 'dart-lang/dart-vim-plugin'

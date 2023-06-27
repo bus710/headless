@@ -81,21 +81,9 @@ install () {
         # Svelte
         "svelte.svelte-vscode"
         "ardenivanov.svelte-intellisense"
-        # Alpine
-        "adrianwilczynski.alpine-js-intellisense"
         # Tailwind
         "bradlc.vscode-tailwindcss"
         "austenc.tailwind-docs"
-
-        # Erlang
-        "erlang-ls.erlang-ls"
-
-        # Elixir
-        "JakeBecker.elixir-ls"
-        "benvp.vscode-hex-pm-intellisense"
-        "pantajoe.vscode-elixir-credo"
-        "phoenixframework.phoenix"
-        "Ritvyk.heex-html"
 
         # Python and MicroPython
         "ms-python.python"
@@ -124,6 +112,19 @@ install () {
         #"webfreak.debug"
         #"tiehuis.zig"
         #"AugusteRame.zls-vscode"
+
+        # Erlang
+        #"erlang-ls.erlang-ls"
+
+        # Elixir
+        #"JakeBecker.elixir-ls"
+        #"benvp.vscode-hex-pm-intellisense"
+        #"pantajoe.vscode-elixir-credo"
+        #"phoenixframework.phoenix"
+        #"Ritvyk.heex-html"
+        
+        # Alpine
+        #"adrianwilczynski.alpine-js-intellisense"
 
         # SFTP
         #"Natizyskunk.sftp"

@@ -33,7 +33,7 @@ confirmation(){
     fi
 
     IS_SVELTE=$(cat package.json | grep svelte | wc -l)
-    if [[ $IS_REACT == "0" ]]; then
+    if [[ $IS_SVELTE == "0" ]]; then
         echo "Not a svelte project"
         echo "Please run:"
         echo "- create vite@latest $APP_NAME -- --template svelte"
