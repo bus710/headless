@@ -54,7 +54,8 @@ install_packages(){
         flowbite \
         flowbite-svelte \
         classnames \
-        @popperjs/core
+        @popperjs/core \
+        @formkit/auto-animate
 
     npm install -D \
         prettier \
@@ -69,7 +70,7 @@ configure_vite(){
     term_color_white
 
     # Add 'import path from "path";' in the beginnig
-    sed -i '1 i\import path from \"path\";' vite.config.js 
+    sed -i '1 i\import path from \"path\";' vite.config.js
     # Add these lines after "plugins:"
     # resolve: {
     #  alias: {
@@ -154,7 +155,7 @@ update_index_html(){
     echo "Update index.html for dark mode"
     term_color_white
 
-    > index.html 
+    > index.html
 
     echo -e '<!DOCTYPE html>
 <html lang="en">
