@@ -97,6 +97,7 @@ alias am='minicom -b 115200 -o -D /dev/ttyUSB0'
 alias an='minicom -b 9600 -o -D /dev/ttyACM0'
 
 alias disk620='sshfs bus710@disk620:/ ~/disk620'
+alias rz57-disks='sshfs bus710@rz57:/home/bus710/disks ~/disks'
 alias nv='nvim'
 alias rr='ranger'
 alias ll='ls -la'
