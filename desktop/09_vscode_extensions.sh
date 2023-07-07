@@ -91,6 +91,19 @@ install () {
         "ms-python.vscode-pylance"
         "paulober.pico-w-go"
 
+        # Erlang
+        "erlang-ls.erlang-ls"
+
+        # Elixir
+        "JakeBecker.elixir-ls"
+        "benvp.vscode-hex-pm-intellisense"
+        "pantajoe.vscode-elixir-credo"
+        "phoenixframework.phoenix"
+        "Ritvyk.heex-html"
+
+        # Alpine
+        "adrianwilczynski.alpine-js-intellisense"
+
         # Arduino
         "vsciot-vscode.vscode-arduino"
         # ARM
@@ -112,19 +125,6 @@ install () {
         #"webfreak.debug"
         #"tiehuis.zig"
         #"AugusteRame.zls-vscode"
-
-        # Erlang
-        #"erlang-ls.erlang-ls"
-
-        # Elixir
-        #"JakeBecker.elixir-ls"
-        #"benvp.vscode-hex-pm-intellisense"
-        #"pantajoe.vscode-elixir-credo"
-        #"phoenixframework.phoenix"
-        #"Ritvyk.heex-html"
-        
-        # Alpine
-        #"adrianwilczynski.alpine-js-intellisense"
 
         # SFTP
         #"Natizyskunk.sftp"
