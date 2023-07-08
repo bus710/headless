@@ -67,8 +67,7 @@ install_ecto(){
     # It should be 4 digits. Typically 5501 or 5432.
     PORT_EXISTS=$(cat config/dev.exs| grep "port: \"....\"" | wc -l)
     if [[ $PORT_EXISTS == "0" ]]; then
-        echo "Ecto port is not specified in the config/dev.exs file."
-        exit
+        sed -i "/localhost/a\ port: \"5501\"," config/dev.exs
     fi
 
     mix ecto.create
@@ -94,24 +93,25 @@ install_alpinejs(){
     sed -i "/let csrfToken/c\ " js/app.js
     sed -i "/let liveSocket/c\ " js/app.js
 
-    sed -i "/import topbar from \"../vendor/topbar\"/a"\
-'import Alpine from "alpinejs"'\
-'window.Alpine = Alpine;'\
-'Alpine.start();'\
-'let hooks = {};'\
-'let csrfToken = document.querySelector("meta[name="csrf-token"]").getAttribute("content")'\
-'let liveSocket = new LiveSocket("/live", Socket, {'\
-'  params: { _csrf_token: csrfToken },'\
-'  hooks: hooks,'\
-'  dom: {'\
-'    onBeforeElUpdated(from, to) {'\
-'      if (from._x_dataStack) {'\
-'        window.Alpine.clone(from, to);'\
-'      }'\
-'    },'\
-'  },'\
-'});'\
+    sed -i "/vendor\/topbar\"/a\ "\
+'import Alpine from "alpinejs" \n'\
+'window.Alpine = Alpine; \n'\
+'Alpine.start(); \n'\
+'let hooks = {}; \n'\
+'let csrfToken = document.querySelector("meta[name="csrf-token"]").getAttribute("content") \n'\
+'let liveSocket = new LiveSocket("/live", Socket, { \n'\
+'  params: { _csrf_token: csrfToken }, \n'\
+'  hooks: hooks, \n'\
+'  dom: { \n'\
+'    onBeforeElUpdated(from, to) { \n'\
+'      if (from._x_dataStack) { \n'\
+'        window.Alpine.clone(from, to); \n'\
+'      } \n'\
+'    }, \n'\
+'  }, \n'\
+'}); \n' js/app.js
 
+    cd ..
 }
 
 post(){
