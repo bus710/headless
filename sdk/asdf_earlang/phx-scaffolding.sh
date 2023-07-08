@@ -98,7 +98,7 @@ install_alpinejs(){
 'window.Alpine = Alpine; \n'\
 'Alpine.start(); \n'\
 'let hooks = {}; \n'\
-'let csrfToken = document.querySelector("meta[name="csrf-token"]").getAttribute("content") \n'\
+'let csrfToken = document.querySelector("meta[name=$CSRF_TOKEN]").getAttribute("content") \n'\
 'let liveSocket = new LiveSocket("/live", Socket, { \n'\
 '  params: { _csrf_token: csrfToken }, \n'\
 '  hooks: hooks, \n'\
@@ -110,6 +110,8 @@ install_alpinejs(){
 '    }, \n'\
 '  }, \n'\
 '}); \n' js/app.js
+
+    sed -i "s/\$CSRF_TOKEN/'csrf-token'/" js/app.js
 
     cd ..
 }
