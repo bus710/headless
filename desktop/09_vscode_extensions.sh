@@ -95,20 +95,11 @@ install () {
         #"erlang-ls.erlang-ls"
 
         # Elixir
-<<<<<<< HEAD
         #"JakeBecker.elixir-ls"
         #"benvp.vscode-hex-pm-intellisense"
         #"pantajoe.vscode-elixir-credo"
         #"phoenixframework.phoenix"
         #"Ritvyk.heex-html"
-=======
-        "JakeBecker.elixir-ls"
-        "benvp.vscode-hex-pm-intellisense"
-        "pantajoe.vscode-elixir-credo"
-        "phoenixframework.phoenix"
-        "Ritvyk.heex-html"
-        "animus-coop.vscode-elixir-mix-formatter"
->>>>>>> 22f8f0bd877f77cd5a056255373b3c63632fc9b9
 
         # Alpine
         #"adrianwilczynski.alpine-js-intellisense"
