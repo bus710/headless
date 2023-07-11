@@ -100,6 +100,7 @@ install () {
         "pantajoe.vscode-elixir-credo"
         "phoenixframework.phoenix"
         "Ritvyk.heex-html"
+        "animus-coop.vscode-elixir-mix-formatter"
 
         # Alpine
         "adrianwilczynski.alpine-js-intellisense"
