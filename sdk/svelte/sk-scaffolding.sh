@@ -7,8 +7,6 @@ if [[ "$EUID" == 0 ]];
     exit
 fi
 
-PROJECT_NAME=""
-
 term_color_red () {
     echo -e "\e[91m"
 }
@@ -24,9 +22,8 @@ confirmation(){
     echo "- TailwindCSS"
     echo "- TailwindCSS Forms plugin"
     echo "- TailwindCSS Typography plugin"
-    echo "- DaisyUI"
-    echo "- Autoprefixer"
-    echo "- PostCSS"
+    echo "- TailwindCSS DaisyUI"
+    echo "- Autoprefixer & PostCSS"
     echo "- ESLint & Playwright & Prettier"
     echo "- No example code"
     echo
@@ -47,7 +44,8 @@ confirmation(){
     term_color_white
 
     echo
-    read $PROJECT_NAME
+    #read -r PROJECT_NAME
+    while IFS=$' \t\r\n' read -r PROJECT_NAME 
     echo
 
     LEN=$(echo $PROJECT_NAME | wc -l)
@@ -57,9 +55,7 @@ confirmation(){
         exit -1
     fi
 
-    npm create @svelte-add/kit@latest $PROJECT_NAME -- \
-        --with javascript+tailwindcss+eslint+prettier+tailwindcss-forms+tailwindcss-typography+daisyui+autoprefixer+playwright \
-        --demo no
+    npm create @svelte-add/kit@latest $PROJECT_NAME -- --with javescript+eslint+playwright+prettier+postcss+autoprefixer+tailwindcss --tailwindcss-forms --tailwindcss-typography --tailwindcss-daisyui
 }
 
 install_packages(){
