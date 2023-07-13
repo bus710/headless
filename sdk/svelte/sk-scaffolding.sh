@@ -44,8 +44,7 @@ confirmation(){
     term_color_white
 
     echo
-    #read -r PROJECT_NAME
-    while IFS=$' \t\r\n' read -r PROJECT_NAME 
+    read PROJECT_NAME
     echo
 
     LEN=$(echo $PROJECT_NAME | wc -l)
@@ -55,7 +54,15 @@ confirmation(){
         exit -1
     fi
 
-    npm create @svelte-add/kit@latest $PROJECT_NAME -- --with javescript+eslint+playwright+prettier+postcss+autoprefixer+tailwindcss --tailwindcss-forms --tailwindcss-typography --tailwindcss-daisyui
+    # Need to remove the newline at the end of the string
+    PROJECT_NAME2=$(echo $PROJECT_NAME | tr -d '\r')
+
+    npm create @svelte-add/kit@latest $PROJECT_NAME2 -- \
+        --with javescript+eslint+playwright+prettier+postcss+autoprefixer+tailwindcss \
+        --tailwindcss-forms \
+        --tailwindcss-typography \
+        --tailwindcss-daisyui
+
 }
 
 install_packages(){
