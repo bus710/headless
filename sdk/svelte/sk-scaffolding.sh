@@ -7,6 +7,8 @@ if [[ "$EUID" == 0 ]];
     exit
 fi
 
+PROJECT_NAME=""
+
 term_color_red () {
     echo -e "\e[91m"
 }
@@ -70,6 +72,8 @@ install_packages(){
     echo "Install packages"
     term_color_white
 
+    cd $PROJECT_NAME
+
     npm install -D \
         classnames \
         @popperjs/core \
@@ -82,9 +86,6 @@ post(){
     term_color_red
     echo "Done"
     term_color_white
-
-    rm -rf node_modules
-    rm -rf package*.json
 }
 
 trap term_color_white EXIT

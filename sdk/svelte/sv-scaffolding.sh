@@ -7,6 +7,8 @@ if [[ "$EUID" == 0 ]];
     exit
 fi
 
+PROJECT_NAME=""
+
 term_color_red () {
     echo -e "\e[91m"
 }
@@ -17,8 +19,15 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo "Svelte scaffolding:"
-    echo "- TailwindCSS will be added."
+    echo "Svelte scaffolding with:"
+    echo "- Javascript"
+    echo "- TailwindCSS"
+    echo "- TailwindCSS Forms plugin"
+    echo "- TailwindCSS Typography plugin"
+    echo "- TailwindCSS DaisyUI"
+    echo "- Autoprefixer & PostCSS"
+    echo "- ESLint & Playwright & Prettier"
+    echo "- No example code"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
@@ -32,13 +41,26 @@ confirmation(){
         exit -1
     fi
 
-    IS_SVELTE=$(cat package.json | grep svelte | wc -l)
-    if [[ $IS_SVELTE == "0" ]]; then
-        echo "Not a svelte project"
-        echo "Please run:"
-        echo "- npm create vite@latest $APP_NAME -- --template svelte"
+    term_color_red
+    echo "Project name?"
+    term_color_white
+
+    echo
+    read PROJECT_NAME
+    echo
+
+    LEN=$(echo $PROJECT_NAME | wc -l)
+
+    if [[ $LEN == "0" ]]; then
+        echo "Not a proper project name"
         exit -1
     fi
+
+    # Need to remove the newline at the end of the string
+    PROJECT_NAME2=$(echo $PROJECT_NAME | tr -d '\r')
+
+    npm create vite@latest $PROJECT_NAME2 -- \
+        --template svelte
 }
 
 install_packages(){
@@ -46,13 +68,15 @@ install_packages(){
     echo "Install packages"
     term_color_white
 
+    cd $PROJECT_NAME
+
     npm install -D \
         tailwindcss \
         postcss \
         autoprefixer \
         tinro \
-        flowbite \
-        flowbite-svelte \
+        @tailwindcss/forms \
+        daisyui \
         classnames \
         @popperjs/core \
         @formkit/auto-animate
@@ -60,6 +84,10 @@ install_packages(){
     npm install -D \
         prettier \
         eslint
+        #@playwright/test
+
+    npm install \
+        @tailwindcss/typography
 
     npx tailwindcss init tailwind.config.cjs -p
 }
@@ -100,22 +128,15 @@ configure_template_paths(){
 export default {
   content: [
     './src/**/*{html,js,svelte,ts}',
-    './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}',
   ],
 
   theme: {
-    extend: {
-      colors: {
-        primary: { 50: '#ebf5ff', 100: '#fff1ee', 200: '#ffe4de', 300: '#ffd5cc', 400: '#ffbcad', 500: '#fe795d', 600: '#ef562f', 700: '#eb4f27', 800: '#d3330a', 900: '#d3330a' },
-      },
-    },
+    extend: {},
   },
 
   plugins: [
-    require('flowbite/plugin')
+    require('daisyui')
   ],
-
-  darkmode: 'class',
 }" >> ./tailwind.config.cjs
 
 }
@@ -197,7 +218,7 @@ configure_vite
 configure_template_paths
 add_tailwind_directives
 update_app_svelte
-update_index_html
+#update_index_html
 post
 
 # Add darkmode in index.html
