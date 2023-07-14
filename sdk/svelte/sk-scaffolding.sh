@@ -83,6 +83,9 @@ post(){
     echo "Done"
     echo "Try \"npm run dev -- --open\""
     term_color_white
+
+    rm -rf node_modules
+    rm -rf package*.json
 }
 
 trap term_color_white EXIT
