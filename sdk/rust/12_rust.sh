@@ -74,6 +74,14 @@ configure_runcom(){
     fi
 }
 
+configure_vim(){
+    term_color_red
+    echo "Configure vim"
+    term_color_white
+
+    nvim -c ':CoCInstall coc-rust-analyzer'
+}
+
 post(){
     term_color_red
     echo "Done - reload terminal"
@@ -86,4 +94,5 @@ trap term_color_white EXIT
 confirmation
 install_rustup_cargo
 configure_runcom
+configure_vim
 post
