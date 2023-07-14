@@ -81,7 +81,6 @@ install_packages(){
 post(){
     term_color_red
     echo "Done"
-    echo "Try \"npm run dev -- --open\""
     term_color_white
 
     rm -rf node_modules
