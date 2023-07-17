@@ -82,6 +82,19 @@ install_tailwind(){
     mix tailwind.install
 }
 
+install_daisyui(){
+    term_color_red
+    echo "Install daisyui"
+    term_color_white
+
+    cd assets
+
+    npm i -D daisyui@latest
+    sed -i "/require(\"\@tailwindcss\/forms\"),/a\ require(\"daisyui\")," tailwind.config.js
+
+    cd ..
+}
+
 install_alpinejs(){
     term_color_red
     echo "Install alphinejs"
@@ -128,5 +141,6 @@ confirmation
 install_credo
 install_ecto
 install_tailwind
+install_daisyui
 install_alpinejs
 post
