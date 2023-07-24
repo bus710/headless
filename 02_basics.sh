@@ -149,16 +149,6 @@ cleanup(){
     sudo apt autoremove -y
 }
 
-update_tmux(){
-    term_color_red
-    echo "Update Tmux"
-    term_color_white
-
-    # To apply ^a shortcut to the tmux config
-    cat tmux.conf >> /home/$LOGNAME/.tmux.conf
-    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tmux.conf
-}
-
 update_capslock(){
     term_color_red
     echo "Update Capslock to nocaps"
@@ -207,7 +197,6 @@ install_nvim_base
 install_bluetooth_packages
 install_platform_specific_packages
 cleanup
-update_tmux
 update_capslock
 update_ssh_port
 update_timeout

@@ -76,6 +76,8 @@ Plug 'vim-airline/vim-airline' " for the nice status bar + @
 Plug 'tpope/vim-fugitive' " for git in nvim
 Plug 'airblade/vim-gitgutter' " To see if a file changed after the last commit
 Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g:ctrlp_custom_ignore
+" Tmux
+Plug 'christoomey/vim-tmux-navigator'
 " Color Theme
 Plug 'dracula/vim'
 " Snippet related
@@ -231,3 +233,30 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Rust CoC ends
+
+" Navigation shortcuts starts
+"" Shorter shortcut to navigate
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+""Open a new split panes to right and bottom.
+set splitbelow
+set splitright
+
+"" Cheatsheet
+"" Max out the height of the current split
+"" ctrl + w _
+"" Max out the width of the current split
+"" ctrl + w |
+"" Normalize all split sizes, which is very handy when resizing terminal
+"" ctrl + w =
+"" Swap top/bottom or left/right split
+"" Ctrl+W R
+"" Break out current window into a new tabview
+"" Ctrl+W T
+"" Close every window in the current tabview but the current one
+"" Ctrl+W o
+
+" Navigation shortcuts ends
