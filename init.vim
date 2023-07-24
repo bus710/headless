@@ -78,6 +78,7 @@ Plug 'airblade/vim-gitgutter' " To see if a file changed after the last commit
 Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g:ctrlp_custom_ignore
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'preservim/vimux'
 " Color Theme
 Plug 'dracula/vim'
 " Snippet related
@@ -235,11 +236,22 @@ nmap <silent> gr <Plug>(coc-references)
 " Rust CoC ends
 
 " Navigation shortcuts starts
+"" vv to generate new vertical split
+nnoremap <silent> vv <C-w>v
 "" Shorter shortcut to navigate
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+"" Prompt for a command to run (,vp => VimuxPromptCommand)
+map <Leader>vp :VimuxPromptCommand<CR>
+"" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+"" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+"" Zoom the tmux runner pane
+map <leader>vz :VimuxZoomRunner<CR>
 
 ""Open a new split panes to right and bottom.
 set splitbelow
@@ -260,3 +272,5 @@ set splitright
 "" Ctrl+W o
 
 " Navigation shortcuts ends
+
+
