@@ -133,7 +133,7 @@ colorscheme dracula
 " - https://tpaschalis.github.io/vim-go-setup/
 
 " Shortcuts
-let mapleader = ","
+let mapleader = "\\"
 nmap <C-t> :TagbarToggle<CR>
 nmap <C-n> :NERDTreeToggle<CR>
 
@@ -244,12 +244,12 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-"" Prompt for a command to run (,vp => VimuxPromptCommand)
-map <Leader>vp :VimuxPromptCommand<CR>
+"" Prompt for a command to run (ex: \ + vp => VimuxPromptCommand)
+map <leader>vp :VimuxPromptCommand<CR>
 "" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
+map <leader>vl :VimuxRunLastCommand<CR>
 "" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
+map <leader>vi :VimuxInspectRunner<CR>
 "" Zoom the tmux runner pane
 map <leader>vz :VimuxZoomRunner<CR>
 
