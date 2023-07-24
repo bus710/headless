@@ -47,6 +47,7 @@ install_basic_packages(){
         ncdu \
         htop \
         tmux \
+        tmuxp \
         curl \
         tree \
         udev \
