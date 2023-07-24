@@ -58,7 +58,7 @@ export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 
 # =============================
 # Aliases
-
+alias cl='clear'
 alias update='sudo apt update && sudo apt list --upgradable'
 alias upgrade='sudo apt upgrade'
 alias autoremove='sudo apt autoremove'
