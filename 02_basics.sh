@@ -46,8 +46,6 @@ install_basic_packages(){
         git \
         ncdu \
         htop \
-        tmux \
-        tmuxp \
         curl \
         tree \
         udev \
@@ -180,9 +178,8 @@ post(){
     term_color_red
     echo "1. SSH port number is changed"
     echo "2. Source your .bashrc (source ~/.bashrc)"
-    echo "3. Check your .tmux.conf"
-    echo "4. Capslock is disabled"
-    echo "5. Try neofetch"
+    echo "3. Capslock is disabled"
+    echo "4. Try neofetch"
     echo
     echo "Done"
     term_color_white

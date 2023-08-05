@@ -175,17 +175,6 @@ install_plugins(){
     nvim -c :PlugInstall
 }
 
-update_tmux(){
-    term_color_red
-    echo "Update Tmux"
-    term_color_white
-
-    # To apply ^a shortcut to the tmux config
-    > /home/$LOGNAME/.tmux.conf
-    cat tmux.conf >> /home/$LOGNAME/.tmux.conf
-    chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tmux.conf
-}
-
 post(){
     echo
     echo "Done"
@@ -202,6 +191,5 @@ install_dependencies
 update_configuration
 check_version
 configure_runcom
-update_tmux
 install_plugins
 post
