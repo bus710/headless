@@ -24,6 +24,12 @@ autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType c ClangFormatAutoEnable
 
 " ==========================================================
+" Autocommand - elixir highlighting
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir
+
+" ==========================================================
 " Autocommand - gofmt at writing
 set rtp+=$GOROOT/misc/vim
 autocmd BufWritePost *.go :silent !gofmt -w %
