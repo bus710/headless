@@ -123,7 +123,7 @@ post
 # Copy & paste within tmux
 # 1. Mouse 
 # - dragging text will copy it to tmux buffer
-# - ctrl + a, ] will past the selection
+# - ^a + ] will past the selection
 #
 # 2. Vi style
 # - ^a + [ to enter into copy mode
