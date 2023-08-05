@@ -201,7 +201,7 @@ post
 # ^a => Shift + s
 
 # Move the current pane into a new session
-# ^a, @
+# ^a => @
 
 # Tmux-resurrect
 # - Useful when pc restarts
