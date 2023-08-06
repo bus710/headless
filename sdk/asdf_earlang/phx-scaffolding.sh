@@ -68,10 +68,11 @@ install_ecto(){
     PORT_EXISTS=$(cat config/dev.exs| grep "port: \"....\"" | wc -l)
     if [[ $PORT_EXISTS == "0" ]]; then
         sed -i "/localhost/a\ port: \"5501\"," config/dev.exs
+
+        mix ecto.create
+        mix ecto.migrate
     fi
 
-    mix ecto.create
-    mix ecto.migrate
 }
 
 install_tailwind(){
