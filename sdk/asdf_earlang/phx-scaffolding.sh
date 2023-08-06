@@ -59,6 +59,12 @@ install_credo(){
 }
 
 install_ecto(){
+    # Check if this project uses ecto at all
+    ECTO_EXISTS=$(cat mix.exs| grep ":phoenix_ecto"| wc -l)
+    if [[ $ECTO_EXISTS == "0" ]]; then
+        return
+    fi
+
     term_color_red
     echo "Install ecto"
     term_color_white
@@ -68,11 +74,11 @@ install_ecto(){
     PORT_EXISTS=$(cat config/dev.exs| grep "port: \"....\"" | wc -l)
     if [[ $PORT_EXISTS == "0" ]]; then
         sed -i "/localhost/a\ port: \"5501\"," config/dev.exs
-
-        mix ecto.create
-        mix ecto.migrate
     fi
 
+
+    mix ecto.create
+    mix ecto.migrate
 }
 
 install_tailwind(){
