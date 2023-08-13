@@ -79,9 +79,11 @@ Plug 'ncm2/ncm2'        " use the ^n key combo to pick a candidate
 Plug 'Shougo/deol.nvim' " try :Deol in nvim (this replaces Shougo/vimshell.vim)
 Plug 'Shougo/vimproc.vim', { 'do': 'make' } " for async exec.
 Plug 'vim-airline/vim-airline' " for the nice status bar + @
-Plug 'tpope/vim-fugitive' " for git in nvim
-Plug 'airblade/vim-gitgutter' " To see if a file changed after the last commit
 Plug 'ctrlpvim/ctrlp.vim' " file finding: this can be helpful for the speed => g:ctrlp_custom_ignore
+" Git
+Plug 'tpope/vim-fugitive' " for git in nvim
+Plug 'junegunn/gv.vim' " for git shortcuts 
+Plug 'airblade/vim-gitgutter' " To see if a file changed after the last commit
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'preservim/vimux'
@@ -108,7 +110,6 @@ Plug 'rust-lang/rust.vim'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
-
 " Erlang
 Plug 'vim-erlang/vim-erlang-runtime'
 Plug 'vim-erlang/vim-erlang-compiler'
@@ -117,7 +118,6 @@ Plug 'vim-erlang/vim-erlang-tags'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 Plug 'elixir-lsp/coc-elixir' " => nvim -c 'CocInstall coc-elixir'
-
 " Dart/Flutter
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'thosakwe/vim-flutter'
