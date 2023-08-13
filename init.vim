@@ -100,7 +100,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Linter
 Plug 'w0rp/ale'
 " Go
-Plug 'fatih/vim-go' ", { 'do': ':GoInstallBinaries' }
+Plug 'fatih/vim-go' " => nvim -c ':GoInstallBinaries'
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -116,7 +116,7 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-tags'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
-Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+Plug 'elixir-lsp/coc-elixir' " => nvim -c 'CocInstall coc-elixir'
 
 " Dart/Flutter
 "Plug 'dart-lang/dart-vim-plugin'
