@@ -96,7 +96,6 @@ install_language_server() {
     echo "cleanup"
     term_color_white
 
-    rm -rf /home/$LOGNAME/Downloads/elixir-ls.zip
     rm -rf /home/$LOGNAME/.elixir-ls
     rm -rf /home/$LOGNAME/.config/nvim/plugged/coc-elixir/els-release
 
@@ -118,6 +117,8 @@ install_language_server() {
         -O elixir-ls.zip
 
     unzip elixir-ls.zip -d /home/$LOGNAME/.config/nvim/plugged/coc-elixir/els-release
+
+    rm -rf /home/$LOGNAME/Downloads/elixir-ls.zip
 }
 
 check_installed_versions(){
