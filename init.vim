@@ -116,7 +116,7 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-tags'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
-Plug 'elixir-lsp/coc-elixir' ", {'do': 'yarn install && yarn prepack'}
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
 
 " Dart/Flutter
 "Plug 'dart-lang/dart-vim-plugin'
