@@ -71,18 +71,18 @@ install_node_lts(){
 
     packages=(
         # npx comes with node/npm
+        #    "degit"
+        #    "typescript"
         "yarn" # need for vim-elixir-coc
     )
-    #    "degit"
-    #    "typescript"
 
-    #for p in ${packages[@]}; do
-    #    echo -e "\e[91m"
-    #    echo Install $p
-    #    echo -e "\e[39m"
+    for p in ${packages[@]}; do
+        term_color_red
+        echo Install $p
+        term_color_white
 
-    #    npm install -no-fund -g $p
-    #done
+        npm install -no-fund -g $p
+    done
 }
 
 post(){
