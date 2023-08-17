@@ -99,13 +99,14 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim'
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Linter
-Plug 'w0rp/ale'
+" Async linter
+Plug 'dense-analysis/ale'
 " Go
 Plug 'fatih/vim-go' " => nvim -c ':GoInstallBinaries'
 Plug 'sebdah/vim-delve' " a bridge between dlv and nvim
 " Rust
 Plug 'rust-lang/rust.vim'
+Plug 'fannheyward/coc-rust-analyzer' " => nvim -c ':CocInstall coc-rust-analyzer'
 " Svelte
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
