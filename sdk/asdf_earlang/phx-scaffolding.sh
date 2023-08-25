@@ -7,6 +7,8 @@ if [[ "$EUID" == 0 ]];
     exit
 fi
 
+BASENAME=$(basename $PWD)
+
 term_color_red () {
     echo -e "\e[91m"
 }
@@ -76,7 +78,6 @@ install_ecto(){
         sed -i "/localhost/a\ port: \"5501\"," config/dev.exs
     fi
 
-
     mix ecto.create
     mix ecto.migrate
 }
@@ -136,6 +137,52 @@ install_alpinejs(){
     cd ..
 }
 
+cleanup_theme(){
+    term_color_red
+    echo "Cleanup theme in those files:"
+    term_color_white
+    echo "- lib/${BASENAME}_web/components/layouts/root.html.heex"
+    echo "- lib/${BASENAME}_web/components/layouts/app.html.heex"
+    echo "- lib/${BASENAME}_web/controllers/page_html/home.html.heex"
+ 
+    > lib/${BASENAME}_web/components/layouts/root.html.heex
+    > lib/${BASENAME}_web/components/layouts/app.html.heex
+    > lib/${BASENAME}_web/controllers/page_html/home.html.heex
+
+echo -e \
+'<!DOCTYPE html>
+<html lang="en" class="[scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "Demo" %>
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+  </head>
+  <body class="bg-white antialiased">
+    <%= @inner_content %>
+  </body>
+</html>
+' >> lib/${BASENAME}_web/components/layouts/root.html.heex
+
+echo -e \
+'<header class="px-4 sm:px-6 lg:px-8">
+</header>
+<main class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-2xl">
+    <.flash_group flash={@flash} />
+    <%= @inner_content %>
+  </div>
+</main>' >> lib/${BASENAME}_web/components/layouts/app.html.heex
+
+echo -e \
+'<.flash_group flash={@flash} />' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -150,4 +197,5 @@ install_ecto
 install_tailwind
 install_daisyui
 install_alpinejs
+cleanup_theme
 post
