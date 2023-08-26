@@ -187,10 +187,10 @@ echo -e \
 
 config_gitignore(){
     term_color_red
-    echo "Config .gitignore not to commit the vendor directory"
+    echo "Config .gitignore not to commit the heroicons/optimized"
     term_color_white
 
-    echo "/assets/vendor/" >> .gitignore
+    echo "/assets/vendor/heroicons/optimized/" >> .gitignore
 }
 
 post(){
