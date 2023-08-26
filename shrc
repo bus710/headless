@@ -141,6 +141,7 @@ alias sv-scaffolding="/home/$LOGNAME/repo/headless/sdk/svelte/sv-scaffolding.sh"
 alias sk-scaffolding="/home/$LOGNAME/repo/headless/sdk/svelte/sk-scaffolding.sh"
 alias tauri-scaffolding="/home/$LOGNAME/repo/headless/sdk/tauri/tauri-scaffolding.sh"
 alias phx-scaffolding="/home/$LOGNAME/repo/headless/sdk/asdf_earlang/phx-scaffolding.sh"
+alias phx-restore="/home/$LOGNAME/repo/headless/sdk/asdf_earlang/phx-restore.sh"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
