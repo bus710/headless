@@ -20,7 +20,9 @@ term_color_white () {
 confirmation(){
     term_color_red
     echo "Phoenix scaffolding:"
-    echo "- TailwindCSS and AlpineJS will be added."
+    echo "- Credo and ecto will be added"
+    echo "- TailwindCSS, DaisyUI, and AlpineJS will be added"
+    echo "- Some theme will be cleaned up"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
