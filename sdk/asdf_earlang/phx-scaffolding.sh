@@ -139,13 +139,14 @@ install_alpinejs(){
     cd ..
 }
 
-cleanup_theme(){
+modify_theme(){
     term_color_red
-    echo "Cleanup theme in those files:"
+    echo "Cleanup/edit theme in those files:"
     term_color_white
     echo "- lib/${BASENAME}_web/components/layouts/root.html.heex"
     echo "- lib/${BASENAME}_web/components/layouts/app.html.heex"
     echo "- lib/${BASENAME}_web/controllers/page_html/home.html.heex"
+    echo "- assets/app.css"
  
     > lib/${BASENAME}_web/components/layouts/root.html.heex
     > lib/${BASENAME}_web/components/layouts/app.html.heex
@@ -183,6 +184,27 @@ echo -e \
 
 echo -e \
 '<.flash_group flash={@flash} />' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
+
+echo -e \
+'
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* Hide scrollbars */
+    overflow: hidden;
+}
+
+app {
+    margin: 0;
+    padding: 0;
+}' >> assets/app.css
 }
 
 config_gitignore(){
@@ -207,6 +229,6 @@ install_ecto
 install_tailwind
 install_daisyui
 install_alpinejs
-cleanup_theme
+modify_theme
 config_gitignore
 post
