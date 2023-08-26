@@ -185,6 +185,14 @@ echo -e \
 '<.flash_group flash={@flash} />' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
 }
 
+config_gitignore(){
+    term_color_red
+    echo "Config .gitignore not to commit the vendor directory"
+    term_color_white
+
+    echo "/assets/vendor/" >> .gitignore
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -200,4 +208,5 @@ install_tailwind
 install_daisyui
 install_alpinejs
 cleanup_theme
+config_gitignore
 post
