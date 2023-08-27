@@ -35,6 +35,10 @@ set rtp+=$GOROOT/misc/vim
 autocmd BufWritePost *.go :silent !gofmt -w %
 
 " ==========================================================
+" Autocommand - html 
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+" ==========================================================
 " Options <interface>
 set number
 set laststatus=2
