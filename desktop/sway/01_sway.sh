@@ -44,6 +44,7 @@ install_packages(){
         kitty \
         waybar \
         swaylock \
+        swayidle \
         brightnessctl \
         fonts-font-awesome \
         mako-notifier \
@@ -134,6 +135,10 @@ configure_sway (){
     rm -rf /home/$LOGNAME/.config/wofi
     mkdir /home/$LOGNAME/.config/wofi
     cp dotfiles/35_wofi_style.css /home/$LOGNAME/.config/wofi/style.css
+
+    # manual lock config
+    rm -rf /home/$LOGNAME/.config/sway/lockman.sh
+    cp dotfiles/11_lockman.sh /home/$LOGNAME/.config/sway/lockman.sh
 }
 
 configure_gtk_dark(){
