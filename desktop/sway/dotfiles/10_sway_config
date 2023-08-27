@@ -260,7 +260,9 @@ bindsym $mod+Alt+9 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+Alt+8 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 # Lock the screen with the given color and lower the backlight level to 75%
-bindsym $mod+Alt+l exec "brightnessctl set 75% && swaylock -c 101010"
+#bindsym $mod+Alt+l exec "brightnessctl set 75% && swaylock -c 101010"
+set $lockman exec bash ~/.config/sway/lockman.sh
+bindsym $mod+Alt+l exec "brightnessctl set 75% && $lockman"
 
 # Open Zathura PDF viewer
 bindsym $mod+z exec zathura
