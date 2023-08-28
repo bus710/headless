@@ -66,15 +66,9 @@ install_neovim(){
         #sudo dpkg -i nvim-linux64.deb
         #rm -rf nvim-linux64.deb
 
-        #wget -q \
-        #    https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
-        #    --output-document nvim
-
         wget -q \
-            https://github.com/neovim/neovim/releases/download/stable/nvim.appimage \
+            https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
             --output-document nvim
-
-
         chmod +x nvim
         sudo chown root:root nvim
         sudo mv nvim /usr/bin
