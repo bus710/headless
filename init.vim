@@ -122,7 +122,7 @@ Plug 'vim-erlang/vim-erlang-omnicomplete'
 Plug 'vim-erlang/vim-erlang-tags'
 " Elixir
 Plug 'elixir-editors/vim-elixir'
-Plug 'elixir-lsp/coc-elixir' " => nvim -c 'CocInstall coc-elixir'
+Plug 'elixir-lsp/coc-elixir' " => nvim -c ':CocInstall coc-elixir'
 " Dart/Flutter
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'thosakwe/vim-flutter'
