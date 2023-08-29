@@ -5,6 +5,7 @@ set -e
 OS_TYPE=$(lsb_release -i)
 ARCH_TREE_SITTER=""
 ARCH_LAZYGIT=""
+ARCH_BTM=""
 
 
 if [[ "$EUID" == 0 ]]; then
@@ -44,9 +45,11 @@ confirmation(){
     if [[ $CPU_TYPE == "x86_64" ]]; then
         ARCH_TREE_SITTER="x64"
         ARCH_LAZYGIT="x86_64"
+        ARCH_BTM="amd64"
     elif [[ $CPU_TYPE == "aarch64" ]]; then
         ARCH_TREE_SITTER="arm64"
         ARCH_LAZYGIT="arm64"
+        ARCH_BTM="arm64"
     else 
         term_color_red
         echo "Don't know what the arch is"
@@ -54,6 +57,16 @@ confirmation(){
 
         exit -1
     fi
+}
+
+install_utils(){
+    term_color_red
+    echo "Install utils"
+    term_color_white
+
+    sudo apt install -y \
+        ripgrep \
+        gdu
 }
 
 install_tree_sitter(){
@@ -74,6 +87,39 @@ install_tree_sitter(){
     gzip -d tree-sitter.gz
     chmod 550 tree-sitter
     sudo mv tree-sitter /usr/local/bin
+
+    cd -
+}
+
+install_lazygit(){
+    term_color_red
+    echo "Install lazygit"
+    term_color_white
+
+    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${ARCH_LAZYGIT}.tar.gz"
+
+    tar xf lazygit.tar.gz lazygit
+    sudo install lazygit /usr/local/bin
+}
+
+install_btm(){
+    term_color_red
+    echo "Install btm"
+    term_color_white
+
+    cd /home/$LOGNAME/Downloads
+    rm -rf bottom.deb
+    sudo rm -rf /usr/local/bin/btm
+
+    BTM_VERSION=$(curl -o- -s https://api.github.com/repos/ClementTsang/bottom/releases/latest | jq -r '.tag_name')
+    echo "$BTM_VERSION"
+
+    wget -O bottom.deb \
+        https://github.com/ClementTsang/bottom/releases/download/${BTM_VERSION}/bottom_${BTM_VERSION}_${ARCH_BTM}.deb
+
+    sudo dpkg -i bottom.deb
+    rm -rf bottom.deb
 
     cd -
 }
@@ -102,26 +148,6 @@ install_nerd_fonts(){
     ./install.sh
 
     cd -
-}
-
-install_ripgrep(){
-    term_color_red
-    echo "Install ripgrep"
-    term_color_white
-
-    sudo apt install -y ripgrep
-}
-
-install_lazy_git(){
-    term_color_red
-    echo "Install laygit"
-    term_color_white
-
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${ARCH_LAZYGIT}.tar.gz"
-
-    tar xf lazygit.tar.gz lazygit
-    sudo install lazygit /usr/local/bin
 }
 
 backup_previous_configuration(){
@@ -169,10 +195,11 @@ post(){
 
 trap term_color_white EXIT
 confirmation
-install_tree_sitter
-install_nerd_fonts
-install_ripgrep
-install_lazy_git
-backup_previous_configuration
-install_astro_nvim
+# install_utils
+# install_tree_sitter
+# install_lazygit
+install_btm
+# install_nerd_fonts
+# backup_previous_configuration
+# install_astro_nvim
 post
