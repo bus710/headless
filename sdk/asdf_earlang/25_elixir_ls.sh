@@ -45,11 +45,11 @@ install_language_server() {
     cd /home/$LOGNAME/.elixir-ls
     mix deps.get && mix compile && mix elixir_ls.release -o release
 
-    term_color_red
-    echo "activate coc-elixir"
-    term_color_white
-
-    nvim -c "CocInstall coc-elixir"
+    # term_color_red
+    # echo "activate coc-elixir"
+    # term_color_white
+    #
+    # nvim -c "CocInstall coc-elixir"
 }
 
 post () {

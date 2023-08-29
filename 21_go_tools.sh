@@ -68,5 +68,5 @@ post(){
 
 trap term_color_white EXIT
 install_packages
-install_vim_go_plugins
+#install_vim_go_plugins
 post

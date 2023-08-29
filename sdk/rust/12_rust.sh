@@ -94,5 +94,5 @@ trap term_color_white EXIT
 confirmation
 install_rustup_cargo
 configure_runcom
-configure_vim
+#configure_vim
 post
