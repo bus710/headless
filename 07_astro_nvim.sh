@@ -138,7 +138,19 @@ install_astro_nvim(){
     echo "Install AstroNvim"
     term_color_white
 
-    git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+    git clone --depth 1 https://github.com/AstroNvim/AstroNvim /home/$LOGNAME/.config/nvim
+}
+
+install_astro_nvim_config(){
+    term_color_red
+    echo "Install AstroNvim config"
+    term_color_white
+
+    if [[ ! -d /home/$LOGNAME/.config/nvim/lua ]]; then
+       mkdir -p /home/$LOGNAME/.config/nvim/lua
+    fi
+
+    git clone git@github.com:bus710/astronvim-config.git /home/$LOGNAME/.config/nvim/lua/user
 }
 
 post(){

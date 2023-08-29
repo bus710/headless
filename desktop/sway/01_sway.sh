@@ -71,6 +71,7 @@ install_packages(){
 
     # Extra apps and theming
     sudo apt install -y \
+        fonts-noto-color-emoji \
         network-manager-gnome \
         ristretto \
         zathura \
