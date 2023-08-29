@@ -3,8 +3,9 @@
 set -e
 
 OS_TYPE=$(lsb_release -i)
-ARCH=""
-ARCH2=""
+ARCH_TREE_SITTER=""
+ARCH_LAZYGIT=""
+
 
 if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
@@ -41,12 +42,17 @@ confirmation(){
     fi
 
     if [[ $CPU_TYPE == "x86_64" ]]; then
-        ARCH="x64"
-        ARCH2="amd64"
-    fi
-    if [[ $CPU_TYPE == "aarch64" ]]; then
-        ARCH="arm64"
-        ARCH2="aarch64"
+        ARCH_TREE_SITTER="x64"
+        ARCH_LAZYGIT="x86_64"
+    elif [[ $CPU_TYPE == "aarch64" ]]; then
+        ARCH_TREE_SITTER="arm64"
+        ARCH_LAZYGIT="arm64"
+    else 
+        term_color_red
+        echo "Don't know what the arch is"
+        term_color_white
+
+        exit -1
     fi
 }
 
@@ -63,7 +69,7 @@ install_tree_sitter(){
     echo "$TREE_SITTER_VERSION"
 
     wget -O tree-sitter.gz \
-        https://github.com/tree-sitter/tree-sitter/releases/download/${TREE_SITTER_VERSION}/tree-sitter-linux-${ARCH}.gz
+        https://github.com/tree-sitter/tree-sitter/releases/download/${TREE_SITTER_VERSION}/tree-sitter-linux-${ARCH_TREE_SITTER}.gz
 
     gzip -d tree-sitter.gz
     chmod 550 tree-sitter
@@ -112,7 +118,8 @@ install_lazy_git(){
     term_color_white
 
     LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_${ARCH_LAZYGIT}.tar.gz"
+
     tar xf lazygit.tar.gz lazygit
     sudo install lazygit /usr/local/bin
 }
@@ -131,7 +138,6 @@ backup_previous_configuration(){
         mv /home/$LOGNAME/.cache/nvim /home/$LOGNAME/.cache/nvim.bak
     fi
 }
-
 
 install_astro_nvim(){
     term_color_red
