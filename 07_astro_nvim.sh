@@ -153,7 +153,9 @@ install_astro_nvim_config(){
     term_color_white
 
     if [[ ! -d /home/$LOGNAME/.config/nvim/lua ]]; then
-       mkdir -p /home/$LOGNAME/.config/nvim/lua
+        mkdir -p /home/$LOGNAME/.config/nvim/lua
+    else 
+        rm -rf /home/$LOGNAME/.config/nvim/lua/user
     fi
 
     git clone git@github.com:bus710/astronvim-config.git /home/$LOGNAME/.config/nvim/lua/user
