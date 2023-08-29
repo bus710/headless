@@ -99,6 +99,7 @@ install_neovim(){
     term_color_white
 
     rm -rf /home/$LOGNAME/.config/nvim/*
+    mkdir -p /home/$LOGNAME/.config/nvim
     mkdir -p /home/$LOGNAME/.tools
 
     term_color_red
@@ -138,7 +139,6 @@ update_configuration(){
     echo "Copy the config files and run the post process"
     term_color_white
 
-    mkdir -p /home/$LOGNAME/.config/nvim
     mkdir -p /home/$LOGNAME/.config/nvim/autoload
     mkdir -p /home/$LOGNAME/.config/nvim/plugged
 
@@ -194,8 +194,8 @@ trap term_color_white EXIT
 confirmation
 install_neovim
 install_dependencies
-update_configuration
+#update_configuration
 check_version
 configure_runcom
-install_plugins
+#install_plugins
 post
