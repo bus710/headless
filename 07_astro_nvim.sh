@@ -97,7 +97,7 @@ install_lazygit() {
 
 	cd /home/$LOGNAME/Downloads
 	rm -rf lazygit*
-	sudo apt remove -y lazygit
+	# sudo apt remove -y lazygit
 	sudo rm -rf /usr/local/bin/lazygit
 
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
@@ -163,11 +163,11 @@ backup_previous_configuration() {
 
 	rm -rf /home/$LOGNAME/.config/nvim.bak/nvim
 
-	if [[-d /home/$LOGNAME/.config/nvim ]]; then
-		mv /home/$LOGNAME/.config/nvim /home/$LOGNAME/.config/nvim.bak￼
-		mv /home/$LOGNAME/.local/share/nvim /home/$LOGNAME/.local/share/nvim.bak
-		mv /home/$LOGNAME/.local/state/nvim /home/$LOGNAME/.local/state/nvim.bak
-		mv /home/$LOGNAME/.cache/nvim /home/$LOGNAME/.cache/nvim.bak
+	if [[ -d /home/$LOGNAME/.config/nvim ]]; then
+		rm -rf /home/$LOGNAME/.config/nvim 	#/home/$LOGNAME/.config/nvim.bak￼
+		rm -rf /home/$LOGNAME/.local/share/nvim #/home/$LOGNAME/.local/share/nvim.bak
+		rm -rf /home/$LOGNAME/.local/state/nvim #/home/$LOGNAME/.local/state/nvim.bak
+		rm -rf /home/$LOGNAME/.cache/nvim 	#/home/$LOGNAME/.cache/nvim.bak
 	fi
 }
 
@@ -201,11 +201,11 @@ post() {
 
 trap term_color_white EXIT
 confirmation
-# install_utils
-# install_tree_sitter
-# install_lazygit
+install_utils
+install_tree_sitter
+install_lazygit
 install_btm
-# install_nerd_fonts
-# backup_previous_configuration
-# install_astro_nvim
+install_nerd_fonts
+backup_previous_configuration
+install_astro_nvim
 post
