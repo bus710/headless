@@ -2,103 +2,103 @@
 
 set -e
 
-if [[ "$EUID" == 0 ]]
-then echo "Please run as normal user (w/o sudo)"
-    exit
+if [[ "$EUID" == 0 ]]; then
+	echo "Please run as normal user (w/o sudo)"
+	exit
 fi
 
 ELIXIR_VERSION=""
 
-term_color_red () {
-    echo -e "\e[91m"
+term_color_red() {
+	echo -e "\e[91m"
 }
 
-term_color_white () {
-    echo -e "\e[39m"
+term_color_white() {
+	echo -e "\e[39m"
 }
 
-register_repo(){
-    term_color_red
-    echo "Register repo"
-    term_color_white
+register_repo() {
+	term_color_red
+	echo "Register repo"
+	term_color_white
 
-    if [[ ! -d /home/$LOGNAME/.asdf/plugins/elixir ]]; then
-        asdf plugin add elixir https://github.com/asdf-vm/asdf-elixir.git
-    fi
+	if [[ ! -d /home/$LOGNAME/.asdf/plugins/elixir ]]; then
+		asdf plugin add elixir https://github.com/asdf-vm/asdf-elixir.git
+	fi
 
-    ELIXIR_VERSION=$(asdf latest elixir)
-    # github API equivalent
-    # curl -o- -s https://api.github.com/repos/elixir-lang/elixir/releases/latest | jq -r '.tag_name'
+	ELIXIR_VERSION=$(asdf latest elixir)
+	# github API equivalent
+	# curl -o- -s https://api.github.com/repos/elixir-lang/elixir/releases/latest | jq -r '.tag_name'
 }
 
-confirmation(){
-    term_color_red
-    echo "Install Elixir via ASDF"
-    echo "Do you want to install? (y/n)"
-    echo "- Elixir: $ELIXIR_VERSION"
-    term_color_white
+confirmation() {
+	term_color_red
+	echo "Install Elixir via ASDF"
+	echo "Do you want to install? (y/n)"
+	echo "- Elixir: $ELIXIR_VERSION"
+	term_color_white
 
-    echo
-    read -n 1 ANSWER
-    echo
+	echo
+	read -n 1 -r ANSWER
+	echo
 
-    if [[ ! $ANSWER == "y" ]]; then
-        exit -1
-    fi
-    echo ""
-    sudo echo ""
+	if [[ ! $ANSWER == "y" ]]; then
+		exit 1
+	fi
+	echo ""
+	sudo echo ""
 }
 
-install_elixir(){
-    term_color_red
-    echo "install elixir"
-    term_color_white
+install_elixir() {
+	term_color_red
+	echo "install elixir"
+	term_color_white
 
-    asdf install elixir $ELIXIR_VERSION
-    asdf global elixir $ELIXIR_VERSION
+	asdf install elixir "$ELIXIR_VERSION"
+	asdf global elixir "$ELIXIR_VERSION"
 
-    # To help Elixir_LS vscode extension.
-    # If error occurs, check the error from "Developer: Toggle Developer Tools"
-    sudo rm -rf /usr/local/bin/elixir
-    sudo ln -s /home/$LOGNAME/.asdf/shims/elixir /usr/local/bin/elixir
+	# To help Elixir_LS vscode extension.
+	# If error occurs, check the error from "Developer: Toggle Developer Tools"
+	sudo rm -rf /usr/local/bin/elixir
+	sudo ln -s /home/"$LOGNAME"/.asdf/shims/elixir /usr/local/bin/elixir
 
-    sudo rm -rf /usr/local/bin/mix
-    sudo ln -s /home/$LOGNAME/.asdf/shims/mix /usr/local/bin/mix
+	sudo rm -rf /usr/local/bin/mix
+	sudo ln -s /home/"$LOGNAME"/.asdf/shims/mix /usr/local/bin/mix
 
-    sudo rm -rf /usr/local/bin/erl
-    sudo ln -s /home/$LOGNAME/.asdf/shims/erl /usr/local/bin/erl
+	sudo rm -rf /usr/local/bin/erl
+	sudo ln -s /home/"$LOGNAME"/.asdf/shims/erl /usr/local/bin/erl
 
-    # The inotify-tools package is installed
-    # by the erlang installation script.
-    # sudo apt install -y inotify-tools
+	# The inotify-tools package is installed
+	# by the erlang installation script.
+	# sudo apt install -y inotify-tools
 }
 
-install_hex(){
-    term_color_red
-    echo "install hex"
-    term_color_white
+install_hex() {
+	term_color_red
+	echo "install hex"
+	term_color_white
 
-    mix local.hex --version
+	mix local.hex --version
 
-    # Install mix packages globaly
-    mix archive.install hex --force credo
-    mix archive.install hex --force bunt
-    mix archive.install hex --force jason
-    mix archive.install hex --force phx_new
+	# Install mix packages globaly
+	mix archive.install hex --force credo
+	mix archive.install hex --force bunt
+	mix archive.install hex --force jason
+	mix archive.install hex --force phx_new
 }
 
-check_installed_versions(){
-    term_color_red
-    echo "Check installed versions"
-    term_color_white
+check_installed_versions() {
+	term_color_red
+	echo "Check installed versions"
+	term_color_white
 
-    asdf current
+	asdf current
 }
 
-post () {
-    term_color_red
-    echo "Done"
-    term_color_white
+post() {
+	term_color_red
+	echo "Done"
+	term_color_white
 }
 
 trap term_color_white EXIT
