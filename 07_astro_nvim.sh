@@ -164,10 +164,10 @@ backup_previous_configuration() {
 	rm -rf /home/$LOGNAME/.config/nvim.bak/nvim
 
 	if [[ -d /home/$LOGNAME/.config/nvim ]]; then
-		rm -rf /home/$LOGNAME/.config/nvim 	#/home/$LOGNAME/.config/nvim.bak￼
+		rm -rf /home/$LOGNAME/.config/nvim      #/home/$LOGNAME/.config/nvim.bak￼
 		rm -rf /home/$LOGNAME/.local/share/nvim #/home/$LOGNAME/.local/share/nvim.bak
 		rm -rf /home/$LOGNAME/.local/state/nvim #/home/$LOGNAME/.local/state/nvim.bak
-		rm -rf /home/$LOGNAME/.cache/nvim 	#/home/$LOGNAME/.cache/nvim.bak
+		rm -rf /home/$LOGNAME/.cache/nvim       #/home/$LOGNAME/.cache/nvim.bak
 	fi
 }
 
@@ -208,4 +208,5 @@ install_btm
 install_nerd_fonts
 backup_previous_configuration
 install_astro_nvim
+install_astro_nvim_config
 post
