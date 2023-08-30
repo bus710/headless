@@ -191,6 +191,9 @@ install_astro_nvim_config() {
 	fi
 
 	git clone git@github.com:bus710/astronvim-config.git /home/$LOGNAME/.config/nvim/lua/user
+
+	nv --headless -c 'quitall'
+	nv -c ':TSInstall elixir' # Other languages have its own community packages that include tree-sitter enablement
 }
 
 post() {
