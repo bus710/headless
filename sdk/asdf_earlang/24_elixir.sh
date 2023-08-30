@@ -26,7 +26,11 @@ register_repo() {
 		asdf plugin add elixir https://github.com/asdf-vm/asdf-elixir.git
 	fi
 
-	ELIXIR_VERSION=$(asdf latest elixir)
+	# ELIXIR_VERSION=$(asdf latest elixir)
+
+	# Hardcode this value To avoid OTP26 and ElixirLS compatibility issue
+	ELIXIR_VERSION="1.15.5-otp-25"
+
 	# github API equivalent
 	# curl -o- -s https://api.github.com/repos/elixir-lang/elixir/releases/latest | jq -r '.tag_name'
 }

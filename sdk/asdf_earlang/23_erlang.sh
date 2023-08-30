@@ -65,7 +65,6 @@ install_packages() {
 
 	sudo apt install -y \
 		build-essential \
-		libncurses5-dev \
 		libncurses-dev \
 		inotify-tools \
 		libxml2-utils \
