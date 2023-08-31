@@ -97,7 +97,6 @@ install_lazygit() {
 
 	cd /home/$LOGNAME/Downloads
 	rm -rf lazygit*
-	# sudo apt remove -y lazygit
 	sudo rm -rf /usr/local/bin/lazygit
 
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
@@ -105,6 +104,7 @@ install_lazygit() {
 
 	tar xf lazygit.tar.gz lazygit
 	sudo install lazygit /usr/local/bin
+	rm -rf lazygit*
 
 	cd -
 }
