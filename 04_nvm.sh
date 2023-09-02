@@ -30,7 +30,7 @@ confirmation(){
     echo
 
     if [[ ! $ans == "y" ]]; then
-        exit -1
+        exit 1
     fi
 }
 
@@ -73,10 +73,12 @@ install_node_lts(){
         # npx comes with node/npm
         #    "degit"
         #    "typescript"
-        "yarn" # need for vim-elixir-coc
+        "yarn"
+        "@tailwindcss/language-server" # need for nvim tailwindcss cmp
+        "vscode-langservers-extracted" # need for nvim tailwindcss cmp
     )
 
-    for p in ${packages[@]}; do
+    for p in "${packages[@]}"; do
         term_color_red
         echo Install $p
         term_color_white
