@@ -200,11 +200,11 @@ install_astro_nvim_config() {
 
 	# Install plugins
 	nv --headless -c 'quitall'
-	nv -c ':TSInstall elixir' # Other languages have its own community packages that include tree-sitter enablement
-	nv -c ':TSInstall heex'
-	nv -c ':TSInstall eex'
-	nv -c ':LspInstall emmet-ls'
-	nv -c ':LspInstall tailwindcss-language-server'
+	nv -c ':TSInstall elixir' -c 'quitall' # Other languages have its own community packages that include tree-sitter enablement
+	nv -c ':TSInstall heex' -c 'quitall'
+	nv -c ':TSInstall eex' -c 'quitall'
+	nv -c ':LspInstall emmet-ls' -c 'quitall'
+	nv -c ':LspInstall tailwindcss-language-server' -c 'quitall'
 }
 
 post() {
