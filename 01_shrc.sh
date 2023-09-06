@@ -32,7 +32,7 @@ confirmation (){
     
     if [[ ! $ans == "y" ]]; then
         echo
-        exit -1
+        exit 1
     fi
 }
 
@@ -103,7 +103,7 @@ configure_runcom(){
     # Android if exists
     if [[ -d /home/$LOGNAME/Android ]]; then
         echo "Activate Android SDK"
-        sed -i '/#ANDROID_0/c\export JAVA_HOME=\$HOME\/Android\/android-studio\/jre' /home/$LOGNAME/.shrc
+        sed -i "/#ANDROID_0/c\export JAVA_HOME=\$HOME\/Android\/android-studio\/jre" "/home/$LOGNAME/.shrc"
         sed -i '/#ANDROID_1/c\export PATH=\$JAVA_HOME\/bin:\$PATH' /home/$LOGNAME/.shrc
         sed -i '/#ANDROID_2/c\export PATH=\$HOME\/Android\/android-studio\/bin:\$PATH' /home/$LOGNAME/.shrc
         sed -i '/#ANDROID_3/c\export ANDROID_SDK_ROOT=\$HOME\/Android' /home/$LOGNAME/.shrc
