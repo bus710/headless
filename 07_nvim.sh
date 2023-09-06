@@ -129,7 +129,8 @@ install_dependencies() {
 		python3-wheel \
 		python3-setuptools \
 		python3-neovim \
-		python3-pynvim
+		python3-pynvim \
+		python3.11-venv
 	npm install -g neovim
 }
 
