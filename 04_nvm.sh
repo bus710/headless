@@ -65,17 +65,16 @@ install_node_lts(){
 
     nvm install --lts
 
-    #echo -e "\e[91m"
-    #echo "Install packages"
-    #echo -e "\e[39m"
+    term_color_red
+    echo "Install packages"
+    term_color_white
 
     packages=(
-        # npx comes with node/npm
-        #    "degit"
-        #    "typescript"
         "yarn"
         "@tailwindcss/language-server" # need for nvim tailwindcss cmp
         "vscode-langservers-extracted" # need for nvim tailwindcss cmp
+        "typescript"                   # need for LSP
+        "typescript-language-server"   # need for LSP
     )
 
     for p in "${packages[@]}"; do
