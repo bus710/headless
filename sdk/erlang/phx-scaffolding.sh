@@ -204,7 +204,7 @@ body {
 app {
     margin: 0;
     padding: 0;
-}' >> assets/app.css
+}' >> assets/css/app.css
 }
 
 config_gitignore(){
