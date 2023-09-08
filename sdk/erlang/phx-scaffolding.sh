@@ -33,7 +33,7 @@ confirmation(){
 
     if [[ ! $ans == "y" ]]; then
         echo ""
-        exit -1
+        exit 1
     fi
 
     IS_PHOENIX=$(cat mix.exs | grep :phoenix | wc -l)
@@ -41,7 +41,7 @@ confirmation(){
         echo "Not a phoenix project"
         echo "Please run:"
         echo "- mix phx.new $PROJECT_NAME"
-        exit -1
+        exit 1
     fi
 }
 
@@ -166,7 +166,7 @@ echo -e \
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
   </head>
-  <body class="bg-white antialiased">
+  <body class="bg-slate-900 antialiased">
     <%= @inner_content %>
   </body>
 </html>
