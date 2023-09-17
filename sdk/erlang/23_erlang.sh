@@ -100,6 +100,11 @@ install_wxwidgets() {
 	# https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#building
 	# https://github.com/erlang/otp/blob/master/HOWTO/INSTALL.md#Advanced-configuration-and-build-of-ErlangOTP_Building_Building-with-wxErlang
 
+	# Don't execute this function if wxrc exists
+	if [[ -f /usr/local/bin/wxrc ]]; then
+		return
+	fi
+
 	term_color_red
 	echo "Install wxwidgets"
 	term_color_white
@@ -203,6 +208,7 @@ register_repo
 confirmation
 install_packages
 install_packages_for_wx_debugger
+install_wxwidgets
 install_erlang
 install_rebar3
 install_escript_symbol
