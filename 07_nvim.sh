@@ -182,9 +182,9 @@ install_plugins() {
 }
 
 post() {
-	echo
+	term_color_red
 	echo "Done"
-	echo
+	term_color_white
 
 	# Do this in case of error - no python3 provider found
 	# apt install python3-pynvim

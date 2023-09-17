@@ -66,11 +66,11 @@ install_tpm(){
 }
 
 post(){
-    echo
+    term_color_red
     echo "Done"
     echo "- The tmux leading key is ^a (not ^b)"
     echo "- To install tmux plugins, run tmux and ^a + I"
-    echo
+    term_color_white
 }
 
 trap term_color_white EXIT
