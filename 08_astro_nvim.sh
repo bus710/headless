@@ -204,7 +204,7 @@ install_astro_nvim_config() {
   	-c ':TSInstall heex' \
   	-c ':TSInstall eex' \
   	-c ':LspInstall emmet-ls' \
-  	-c ':LspInstall tailwindcss-language-server' \
+  	-c ':LspInstall tailwindcss' \
   	-c 'quitall'
 }
 
