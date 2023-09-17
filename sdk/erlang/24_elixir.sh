@@ -82,7 +82,7 @@ install_hex() {
 	echo "install hex"
 	term_color_white
 
-	mix local.hex --version
+	yes | mix local.hex --version
 
 	# Install mix packages globaly
 	mix archive.install hex --force credo
