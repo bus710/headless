@@ -45,6 +45,14 @@ confirmation(){
     fi
 }
 
+modify_endpoint_ip(){
+    term_color_red
+    echo "Change the endpoint ip to 0.0.0.0"
+    term_color_white
+
+    sed -i "s/{127, 0, 0, 1}/{0, 0, 0, 0}/" config/dev.exs
+}
+
 install_credo(){
     term_color_red
     echo "Install credo"
@@ -224,6 +232,7 @@ post(){
 
 trap term_color_white EXIT
 confirmation
+modify_endpoint_ip
 install_credo
 install_ecto
 install_tailwind
