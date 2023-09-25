@@ -130,8 +130,11 @@ install_dependencies() {
 		python3-setuptools \
 		python3-neovim \
 		python3-pynvim \
-		python3.11-venv
+		python3.11-venv \
+		luarocks
 	npm install -g neovim
+
+	sudo luarocks install luacheck
 }
 
 update_configuration() {
