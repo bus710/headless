@@ -193,7 +193,7 @@ echo -e \
 echo -e \
 '<.flash_group flash={@flash} />
 
-<div class="text-yellow-300 p-10>"
+<div class="text-yellow-300 p-10">
     <a href="/somewhere">Go to somewhere</a>
 </div>' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
 
