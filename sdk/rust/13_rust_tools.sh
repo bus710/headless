@@ -56,7 +56,7 @@ build_cargo_tools(){
     # https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands
     cargo install cargo-watch
     cargo install cargo-deb
-    cargo install cargo-edit
+    cargo install cargo-edit # cargo upgrade
     cargo install cargo-outdated
     cargo install cargo-make
     #cargo install cbindgen
