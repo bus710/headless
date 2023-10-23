@@ -32,7 +32,7 @@ find_version() {
         OS="macos"
     else
         echo "Some issues are found - exit"
-        exit -1
+        exit 1
     fi
 
     # Decide the filter based on the architecture & system
@@ -73,7 +73,7 @@ confirmation(){
     
     if [[ ! $ans == "y" ]]; then
         echo
-        exit -1
+        exit 1
     fi
 }
 
