@@ -184,7 +184,7 @@ modify_root_component(){
     echo "- lib/${BASENAME}_web/components/layouts/root.html.heex"
     term_color_white
 
-> lib/${BASENAME}_web/components/layouts/root.html.heex
+    > lib/${BASENAME}_web/components/layouts/root.html.heex
 
 echo -e \
 '<!DOCTYPE html>
@@ -291,10 +291,11 @@ run_phx_gen_auth(){
     echo
 
     if [[ ! $ans == "y" ]]; then
-        echo ""
-        exit 1
+        echo "No auth related codes are installed"
+        return
     fi
 
+    mix phx.gen.auth Accounts Users user
     mix deps.get
     mix ecto.migrate
 }
@@ -315,7 +316,7 @@ install_ecto
 install_tailwind
 install_daisyui
 install_alpinejs
-# modify_root_component
+modify_root_component
 modify_app_component
 modify_home_controller
 modify_css
