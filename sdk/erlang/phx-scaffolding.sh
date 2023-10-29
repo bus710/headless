@@ -28,7 +28,7 @@ confirmation(){
     term_color_white
 
     echo
-    read -n 1 ans
+    read -r 1 ans
     echo
 
     if [[ ! $ans == "y" ]]; then
@@ -250,23 +250,37 @@ config_gitignore(){
 run_phx_gen_auth(){
     term_color_red
     echo "Run \'mix phx.gen.auth Accounts Users user\'"
-    echo "- docker container \'phoenix-postgres\' will be reset" 
+    echo "- docker container 'phoenix-postgres' will be reset" 
+    echo "- mix deps.get & mix ecto.migrate will follow"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
 
+    echo
+    read -r 1 ans
+    echo
+
+    if [[ ! $ans == "y" ]]; then
+        echo ""
+        exit 1
+    fi
+
     if [[ -f /usr/bin/docker ]]; then
 
-        if [ $( docker ps -a | grep phoenix-postgres | wc -l ) -gt 0 ]; then
-            docker container stop phoenix-postgres
-            docker container rm phoenix-postgres
+        CONTAINER="phoenix-postgres"
+        if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then
+            docker container stop $CONTAINER
+            docker container rm $CONTAINER
 
             docker run \
-                --name phoenix-postgres \
+                --name $CONTAINER \
                 -e POSTGRES_USER=postgres \
                 -e POSTGRES_PASSWORD=postgres \
                 -p 5501:5432 -d postgres
         fi
+
+        mix deps.get
+        mix ecto.migrate
     fi
 
 
