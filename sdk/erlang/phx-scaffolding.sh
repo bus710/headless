@@ -147,18 +147,13 @@ install_alpinejs(){
     cd ..
 }
 
-modify_theme(){
+modify_root_component(){
     term_color_red
-    echo "Cleanup/edit theme in those files:"
-    term_color_white
+    echo "Modify:"
     echo "- lib/${BASENAME}_web/components/layouts/root.html.heex"
-    echo "- lib/${BASENAME}_web/components/layouts/app.html.heex"
-    echo "- lib/${BASENAME}_web/controllers/page_html/home.html.heex"
-    echo "- assets/app.css"
- 
-    > lib/${BASENAME}_web/components/layouts/root.html.heex
-    > lib/${BASENAME}_web/components/layouts/app.html.heex
-    > lib/${BASENAME}_web/controllers/page_html/home.html.heex
+    term_color_white
+
+> lib/${BASENAME}_web/components/layouts/root.html.heex
 
 echo -e \
 '<!DOCTYPE html>
@@ -179,6 +174,15 @@ echo -e \
   </body>
 </html>
 ' >> lib/${BASENAME}_web/components/layouts/root.html.heex
+}
+
+modify_all_component(){
+    term_color_red
+    echo "Modify:"
+    echo "- lib/${BASENAME}_web/components/layouts/app.html.heex"
+    term_color_white
+
+    > lib/${BASENAME}_web/components/layouts/app.html.heex
 
 echo -e \
 '<header class="px-4 sm:px-6 lg:px-8">
@@ -189,6 +193,15 @@ echo -e \
     <%= @inner_content %>
   </div>
 </main>' >> lib/${BASENAME}_web/components/layouts/app.html.heex
+}
+
+modify_all_component(){
+    term_color_red
+    echo "Modify:"
+    echo "- lib/${BASENAME}_web/controllers/page_html/home.html.heex"
+    term_color_white
+
+    > lib/${BASENAME}_web/controllers/page_html/home.html.heex
 
 echo -e \
 '<.flash_group flash={@flash} />
@@ -196,6 +209,13 @@ echo -e \
 <div class="text-yellow-300 p-10">
     <a href="/somewhere">Go to somewhere</a>
 </div>' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
+}
+
+modify_all_component(){
+    term_color_red
+    echo "Modify:"
+    echo "- assets/app.css"
+    term_color_white
 
 echo -e \
 '
@@ -242,6 +262,9 @@ install_ecto
 install_tailwind
 install_daisyui
 install_alpinejs
-modify_theme
+# modify_root_component
+modify_app_component
+modify_home_controller
+modify_css
 config_gitignore
 post
