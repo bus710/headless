@@ -249,8 +249,7 @@ config_gitignore(){
 
 run_phx_gen_auth(){
     term_color_red
-    echo "Run \'mix phx.gen.auth Accounts Users user\'"
-    echo "- docker container 'phoenix-postgres' will be reset" 
+    echo "Run 'mix phx.gen.auth Accounts Users user'"
     echo "- mix deps.get & mix ecto.migrate will follow"
     echo
     echo "Do you want to proceed? (y/n)"
@@ -265,6 +264,18 @@ run_phx_gen_auth(){
         exit 1
     fi
 
+    mix deps.get
+    mix ecto.migrate
+}
+
+reset_docker_container(){
+    term_color_red
+    echo "Reset the docker container"
+    echo "- docker container 'phoenix-postgres' will be reset" 
+    echo
+    echo "Do you want to proceed? (y/n)"
+    term_color_white
+
     if [[ -f /usr/bin/docker ]]; then
 
         CONTAINER="phoenix-postgres"
@@ -277,14 +288,11 @@ run_phx_gen_auth(){
                 -e POSTGRES_USER=postgres \
                 -e POSTGRES_PASSWORD=postgres \
                 -p 5501:5432 -d postgres
+        else
+            echo "Seems like there is no container $CONTAINER"
         fi
 
-        mix deps.get
-        mix ecto.migrate
     fi
-
-
-
 }
 
 post(){
@@ -296,6 +304,7 @@ post(){
 
 trap term_color_white EXIT
 confirmation
+reset_docker_container
 modify_endpoint_ip
 install_credo
 install_ecto
