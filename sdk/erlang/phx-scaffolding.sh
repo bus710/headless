@@ -316,7 +316,7 @@ install_ecto
 install_tailwind
 install_daisyui
 install_alpinejs
-modify_root_component
+# modify_root_component
 modify_app_component
 modify_home_controller
 modify_css
