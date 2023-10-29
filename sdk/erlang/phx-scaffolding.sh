@@ -28,7 +28,7 @@ confirmation(){
     term_color_white
 
     echo
-    read -r 1 ans
+    read -n 1 ans
     echo
 
     if [[ ! $ans == "y" ]]; then
@@ -257,7 +257,7 @@ run_phx_gen_auth(){
     term_color_white
 
     echo
-    read -r 1 ans
+    read -n 1 ans
     echo
 
     if [[ ! $ans == "y" ]]; then
