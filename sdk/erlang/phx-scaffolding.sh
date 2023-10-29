@@ -184,27 +184,8 @@ modify_root_component(){
     echo "- lib/${BASENAME}_web/components/layouts/root.html.heex"
     term_color_white
 
-    > lib/${BASENAME}_web/components/layouts/root.html.heex
-
-echo -e \
-'<!DOCTYPE html>
-<html lang="en" class="[scrollbar-gutter:stable]">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="csrf-token" content={get_csrf_token()} />
-    <.live_title suffix=" · Phoenix Framework">
-      <%= assigns[:page_title] || "Demo" %>
-    </.live_title>
-    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
-    </script>
-  </head>
-  <body class="bg-slate-900 antialiased">
-    <%= @inner_content %>
-  </body>
-</html>
-' >> lib/${BASENAME}_web/components/layouts/root.html.heex
+    sed -i "s/bg-white/bg-white/" \
+        lib/${BASENAME}_web/components/layouts/root.html.heex
 }
 
 modify_app_component(){
@@ -261,7 +242,7 @@ body {
     margin: 0;
     padding: 0;
     /* Hide scrollbars */
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 app {
@@ -316,7 +297,7 @@ install_ecto
 install_tailwind
 install_daisyui
 install_alpinejs
-# modify_root_component
+modify_root_component
 modify_app_component
 modify_home_controller
 modify_css
