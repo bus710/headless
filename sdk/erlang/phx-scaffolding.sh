@@ -218,8 +218,8 @@ modify_home_controller(){
 echo -e \
 '<.flash_group flash={@flash} />
 
-<div class="text-yellow-300 p-10">
-    <a href="/somewhere">Go to somewhere</a>
+<div class="text-blue-300 p-10">
+    <a href="/dev/dashboard">Dashboard</a>
 </div>' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
 }
 
