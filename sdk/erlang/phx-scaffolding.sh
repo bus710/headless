@@ -176,7 +176,7 @@ echo -e \
 ' >> lib/${BASENAME}_web/components/layouts/root.html.heex
 }
 
-modify_all_component(){
+modify_app_component(){
     term_color_red
     echo "Modify:"
     echo "- lib/${BASENAME}_web/components/layouts/app.html.heex"
@@ -195,7 +195,7 @@ echo -e \
 </main>' >> lib/${BASENAME}_web/components/layouts/app.html.heex
 }
 
-modify_all_component(){
+modify_home_controller(){
     term_color_red
     echo "Modify:"
     echo "- lib/${BASENAME}_web/controllers/page_html/home.html.heex"
@@ -211,7 +211,7 @@ echo -e \
 </div>' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
 }
 
-modify_all_component(){
+modify_css(){
     term_color_red
     echo "Modify:"
     echo "- assets/app.css"
@@ -247,6 +247,32 @@ config_gitignore(){
     echo "/assets/vendor/heroicons/optimized/" >> .gitignore
 }
 
+run_phx_gen_auth(){
+    term_color_red
+    echo "Run \'mix phx.gen.auth Accounts Users user\'"
+    echo "- docker container \'phoenix-postgres\' will be reset" 
+    echo
+    echo "Do you want to proceed? (y/n)"
+    term_color_white
+
+    if [[ -f /usr/bin/docker ]]; then
+
+        if [ $( docker ps -a | grep phoenix-postgres | wc -l ) -gt 0 ]; then
+            docker container stop phoenix-postgres
+            docker container rm phoenix-postgres
+
+            docker run \
+                --name phoenix-postgres \
+                -e POSTGRES_USER=postgres \
+                -e POSTGRES_PASSWORD=postgres \
+                -p 5501:5432 -d postgres
+        fi
+    fi
+
+
+
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -267,4 +293,5 @@ modify_app_component
 modify_home_controller
 modify_css
 config_gitignore
+run_phx_gen_auth
 post
