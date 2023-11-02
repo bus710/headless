@@ -33,7 +33,7 @@ confirmation(){
 
     if [[ ! $ans == "y" ]]; then
         echo ""
-        exit -1
+        exit 1
     fi
 
     IS_PHOENIX=$(cat mix.exs | grep :phoenix | wc -l)
@@ -41,7 +41,7 @@ confirmation(){
         echo "Not a phoenix project"
         echo "Please run:"
         echo "- mix phx.new $PROJECT_NAME"
-        exit -1
+        exit 1
     fi
 }
 
@@ -76,7 +76,11 @@ run-mix-setup(){
 post(){
     term_color_red
     echo "Done"
-    echo "Try \"mix phx.server --open\""
+    echo "- mix phx.server --open"
+    echo "- docker run --name phoenix-postgres \\"
+    echo "    -e POSTGRES_USER=postgres \\"
+    echo "    -e POSTGRES_PASSWORD=postgres \\"
+    echo "    -p 5501:5432 -d postgres"
     term_color_white
 }
 
