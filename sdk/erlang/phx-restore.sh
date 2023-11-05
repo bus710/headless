@@ -8,7 +8,7 @@ if [[ "$EUID" == 0 ]];
 fi
 
 BASENAME=$(basename $PWD)
-CONTAINER_NAME="phoenix-postgres"
+CONTAINER="phoenix-postgres"
 
 term_color_red () {
     echo -e "\e[91m"
@@ -80,21 +80,19 @@ reset_docker_container(){
 
     if [[ ! $ans == "y" ]]; then
         echo 
-        return
+        return 0
     fi
 
     # Check if DB is being used by this project
     POSTGRES_EXISTS=$(cat config/dev.exs| grep "postgres" | wc -l)
     if [[ $POSTGRES_EXISTS == "0" ]]; then
         echo
-        echo "No DB is being used - abort"
+        echo "DB is not being used - abort"
         echo
-        return
+        return 0
     fi
 
     if [[ -f /usr/bin/docker ]]; then
-
-        CONTAINER="phoenix-postgres"
 
         # If a postgres container is running, remove it.
         if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then

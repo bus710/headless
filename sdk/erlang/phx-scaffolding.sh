@@ -9,6 +9,7 @@ fi
 
 BASENAME=$(basename $PWD)
 DB_PORT="5501"
+CONTAINER="phoenix-postgres"
 
 term_color_red () {
     echo -e "\e[91m"
@@ -85,7 +86,7 @@ reset_docker_container(){
 
     if [[ ! $ans == "y" ]]; then
         echo 
-        return
+        return 0
     fi
 
     # Check if DB is being used by this project
@@ -94,13 +95,10 @@ reset_docker_container(){
         echo 
         echo "No DB is being used - abort"
         echo
-        return
+        return 0
     fi
 
     if [[ -f /usr/bin/docker ]]; then
-
-        CONTAINER="phoenix-postgres"
-
         # If a postgres container is running, remove it.
         if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then
             docker container stop $CONTAINER
