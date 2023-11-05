@@ -8,7 +8,7 @@ if [[ "$EUID" == 0 ]];
 fi
 
 BASENAME=$(basename $PWD)
-CONTAINER_NAME="phoenix_postgres"
+CONTAINER_NAME="phoenix-postgres"
 
 term_color_red () {
     echo -e "\e[91m"
