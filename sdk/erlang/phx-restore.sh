@@ -66,6 +66,58 @@ restore-npm(){
     cd -
 }
 
+reset_docker_container(){
+    term_color_red
+    echo "Reset the docker container"
+    echo "- docker container 'phoenix-postgres' will be reset" 
+    echo
+    echo "Do you want to proceed? (y/n)"
+    term_color_white
+
+    echo
+    read -n 1 ans
+    echo
+
+    if [[ ! $ans == "y" ]]; then
+        echo 
+        return
+    fi
+
+    # Check if DB is being used by this project
+    POSTGRES_EXISTS=$(cat config/dev.exs| grep "postgres" | wc -l)
+    if [[ $POSTGRES_EXISTS == "0" ]]; then
+        echo
+        echo "No DB is being used - abort"
+        echo
+        return
+    fi
+
+    if [[ -f /usr/bin/docker ]]; then
+
+        CONTAINER="phoenix-postgres"
+
+        # If a postgres container is running, remove it.
+        if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then
+            docker container stop $CONTAINER
+            docker container rm $CONTAINER
+        fi
+
+        docker run \
+            --name $CONTAINER \
+            --env POSTGRES_USER=postgres \
+            --env POSTGRES_PASSWORD=postgres \
+            --publish ${DB_PORT}:5432 \
+            --detach \
+            postgres
+
+        # To access to the DB in container:
+        # - docker exec -it ${CONTAINER_NAME} bash"
+        # - (from the container) psql -h localhost -U postgres"
+        # - (from the psql) CREATE DATABASE ${BASENAME}_dev"
+        # - (from the psql) \\l"
+    fi
+}
+
 run-mix-setup(){
     term_color_red
     echo "run mix setup"
@@ -77,15 +129,6 @@ run-mix-setup(){
 post(){
     term_color_red
     echo "Do these commands"
-    echo "- docker run --name ${CONTAINER_NAME} \\"
-    echo "    --env POSTGRES_USER=postgres \\"
-    echo "    --env POSTGRES_PASSWORD=postgres \\"
-    echo "    --port 5501:5432 \\"
-    echo "    --detach \\"
-    echo "    postgres"
-    echo "- docker exec -it ${CONTAINER_NAME} bash"
-    echo "- psql -h localhost -U postgres"
-    echo "- CREATE DATABASE ${BASENAME}_dev"
     echo "- mix ecto.migrate"
     echo "- mix phx.server --open"
     term_color_white
@@ -95,5 +138,6 @@ trap term_color_white EXIT
 confirmation
 restore-heroicons
 restore-npm
+reset_docker_container
 run-mix-setup
 post

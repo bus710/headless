@@ -91,7 +91,7 @@ reset_docker_container(){
     # Check if DB is being used by this project
     POSTGRES_EXISTS=$(cat config/dev.exs| grep "postgres" | wc -l)
     if [[ $POSTGRES_EXISTS == "0" ]]; then
-        echo
+        echo 
         echo "No DB is being used - abort"
         echo
         return
@@ -114,6 +114,12 @@ reset_docker_container(){
             --publish ${DB_PORT}:5432 \
             --detach \
             postgres
+
+        # To access to the DB in container:
+        # - docker exec -it ${CONTAINER_NAME} bash"
+        # - (from the container) psql -h localhost -U postgres"
+        # - (from the psql) CREATE DATABASE ${BASENAME}_dev"
+        # - (from the psql) \\l"
     fi
 }
 
