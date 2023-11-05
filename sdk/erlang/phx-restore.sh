@@ -82,7 +82,7 @@ post(){
     echo "    --env POSTGRES_PASSWORD=postgres \\"
     echo "    --port 5501:5432 \\"
     echo "    --detach \\"
-    echo "    ${BASENAME}_dev"
+    echo "    postgres"
     term_color_white
 }
 

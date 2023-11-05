@@ -70,29 +70,6 @@ install_credo(){
     mix credo gen.config
 }
 
-install_ecto(){
-    # Check if this project uses ecto at all
-    ECTO_EXISTS=$(cat mix.exs| grep ":phoenix_ecto"| wc -l)
-    if [[ $ECTO_EXISTS == "0" ]]; then
-        return
-    fi
-
-    term_color_red
-    echo "Install ecto"
-    term_color_white
-
-    # Find the port number of POSTGRES for development
-    # It should be 4 digits. Typically 5501 or 5432.
-    PORT_EXISTS=$(cat config/dev.exs| grep "port: \"....\"" | wc -l)
-    if [[ $PORT_EXISTS == "0" ]]; then
-        # Add 'port: "5501"' right below of localhost
-        sed -i "/localhost/a\  port: \"5501\"," config/dev.exs
-    fi
-
-    mix ecto.create
-    mix ecto.migrate
-}
-
 reset_docker_container(){
     term_color_red
     echo "Reset the docker container"
@@ -118,12 +95,35 @@ reset_docker_container(){
                 --env POSTGRES_PASSWORD=postgres \
                 --publish 5501:5432 \
                 --detach \
-                ${BASENAME}_dev
+                postgres
         else
             echo "Seems like there is no container $CONTAINER"
         fi
 
     fi
+}
+
+install_ecto(){
+    # Check if this project uses ecto at all
+    ECTO_EXISTS=$(cat mix.exs| grep ":phoenix_ecto"| wc -l)
+    if [[ $ECTO_EXISTS == "0" ]]; then
+        return
+    fi
+
+    term_color_red
+    echo "Install ecto"
+    term_color_white
+
+    # Find the port number of POSTGRES for development
+    # It should be 4 digits. Typically 5501 or 5432.
+    PORT_EXISTS=$(cat config/dev.exs| grep "port: \"....\"" | wc -l)
+    if [[ $PORT_EXISTS == "0" ]]; then
+        # Add 'port: "5501"' right below of localhost
+        sed -i "/localhost/a\  port: \"5501\"," config/dev.exs
+    fi
+
+    mix ecto.create
+    mix ecto.migrate
 }
 
 install_tailwind(){
@@ -295,8 +295,8 @@ trap term_color_white EXIT
 confirmation
 modify_endpoint_ip
 install_credo
-install_ecto
 reset_docker_container
+install_ecto
 install_tailwind
 install_daisyui
 install_alpinejs
