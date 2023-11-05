@@ -8,6 +8,7 @@ if [[ "$EUID" == 0 ]];
 fi
 
 BASENAME=$(basename $PWD)
+CONTAINER_NAME="phoenix_postgres"
 
 term_color_red () {
     echo -e "\e[91m"
@@ -75,14 +76,18 @@ run-mix-setup(){
 
 post(){
     term_color_red
-    echo "Done"
-    echo "- mix phx.server --open"
-    echo "- docker run --name phoenix-postgres \\"
+    echo "Do these commands"
+    echo "- docker run --name ${CONTAINER_NAME} \\"
     echo "    --env POSTGRES_USER=postgres \\"
     echo "    --env POSTGRES_PASSWORD=postgres \\"
     echo "    --port 5501:5432 \\"
     echo "    --detach \\"
     echo "    postgres"
+    echo "- docker exec -it ${CONTAINER_NAME} bash"
+    echo "- psql -h localhost -U postgres"
+    echo "- CREATE DATABASE ${BASENAME}_dev"
+    echo "- mix ecto.migrate"
+    echo "- mix phx.server --open"
     term_color_white
 }
 

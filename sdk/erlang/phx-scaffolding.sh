@@ -8,6 +8,7 @@ if [[ "$EUID" == 0 ]];
 fi
 
 BASENAME=$(basename $PWD)
+DB_PORT="5501"
 
 term_color_red () {
     echo -e "\e[91m"
@@ -82,24 +83,37 @@ reset_docker_container(){
     read -n 1 ans
     echo
 
+    if [[ ! $ans == "y" ]]; then
+        echo 
+        return
+    fi
+
+    # Check if DB is being used by this project
+    POSTGRES_EXISTS=$(cat config/dev.exs| grep "postgres" | wc -l)
+    if [[ $POSTGRES_EXISTS == "0" ]]; then
+        echo
+        echo "No DB is being used - abort"
+        echo
+        return
+    fi
+
     if [[ -f /usr/bin/docker ]]; then
 
         CONTAINER="phoenix-postgres"
+
+        # If a postgres container is running, remove it.
         if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then
             docker container stop $CONTAINER
             docker container rm $CONTAINER
-
-            docker run \
-                --name $CONTAINER \
-                --env POSTGRES_USER=postgres \
-                --env POSTGRES_PASSWORD=postgres \
-                --publish 5501:5432 \
-                --detach \
-                postgres
-        else
-            echo "Seems like there is no container $CONTAINER"
         fi
 
+        docker run \
+            --name $CONTAINER \
+            --env POSTGRES_USER=postgres \
+            --env POSTGRES_PASSWORD=postgres \
+            --publish ${DB_PORT}:5432 \
+            --detach \
+            postgres
     fi
 }
 
@@ -119,7 +133,7 @@ install_ecto(){
     PORT_EXISTS=$(cat config/dev.exs| grep "port: \"....\"" | wc -l)
     if [[ $PORT_EXISTS == "0" ]]; then
         # Add 'port: "5501"' right below of localhost
-        sed -i "/localhost/a\  port: \"5501\"," config/dev.exs
+        sed -i "/localhost/a\  port: \"${DB_PORT}\"," config/dev.exs
     fi
 
     mix ecto.create
