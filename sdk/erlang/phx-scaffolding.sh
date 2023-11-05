@@ -45,37 +45,6 @@ confirmation(){
     fi
 }
 
-reset_docker_container(){
-    term_color_red
-    echo "Reset the docker container"
-    echo "- docker container 'phoenix-postgres' will be reset" 
-    echo
-    echo "Do you want to proceed? (y/n)"
-    term_color_white
-
-    echo
-    read -n 1 ans
-    echo
-
-    if [[ -f /usr/bin/docker ]]; then
-
-        CONTAINER="phoenix-postgres"
-        if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then
-            docker container stop $CONTAINER
-            docker container rm $CONTAINER
-
-            docker run \
-                --name $CONTAINER \
-                -e POSTGRES_USER=postgres \
-                -e POSTGRES_PASSWORD=postgres \
-                -p 5501:5432 -d postgres
-        else
-            echo "Seems like there is no container $CONTAINER"
-        fi
-
-    fi
-}
-
 modify_endpoint_ip(){
     term_color_red
     echo "Change the endpoint ip to 0.0.0.0"
@@ -112,15 +81,48 @@ install_ecto(){
     echo "Install ecto"
     term_color_white
 
-    # Find the port number of POSTGRESQL for development
+    # Find the port number of POSTGRES for development
     # It should be 4 digits. Typically 5501 or 5432.
     PORT_EXISTS=$(cat config/dev.exs| grep "port: \"....\"" | wc -l)
     if [[ $PORT_EXISTS == "0" ]]; then
-        sed -i "/localhost/a\ port: \"5501\"," config/dev.exs
+        # Add 'port: "5501"' right below of localhost
+        sed -i "/localhost/a\  port: \"5501\"," config/dev.exs
     fi
 
     mix ecto.create
     mix ecto.migrate
+}
+
+reset_docker_container(){
+    term_color_red
+    echo "Reset the docker container"
+    echo "- docker container 'phoenix-postgres' will be reset" 
+    echo
+    echo "Do you want to proceed? (y/n)"
+    term_color_white
+
+    echo
+    read -n 1 ans
+    echo
+
+    if [[ -f /usr/bin/docker ]]; then
+
+        CONTAINER="phoenix-postgres"
+        if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then
+            docker container stop $CONTAINER
+            docker container rm $CONTAINER
+
+            docker run \
+                --name $CONTAINER \
+                --env POSTGRES_USER=postgres \
+                --env POSTGRES_PASSWORD=postgres \
+                --publish 5501:5432 --detach \
+                ${BASENAME}_dev
+        else
+            echo "Seems like there is no container $CONTAINER"
+        fi
+
+    fi
 }
 
 install_tailwind(){
@@ -290,10 +292,10 @@ post(){
 
 trap term_color_white EXIT
 confirmation
-reset_docker_container
 modify_endpoint_ip
 install_credo
 install_ecto
+reset_docker_container
 install_tailwind
 install_daisyui
 install_alpinejs

@@ -78,9 +78,10 @@ post(){
     echo "Done"
     echo "- mix phx.server --open"
     echo "- docker run --name phoenix-postgres \\"
-    echo "    -e POSTGRES_USER=postgres \\"
-    echo "    -e POSTGRES_PASSWORD=postgres \\"
-    echo "    -p 5501:5432 -d postgres"
+    echo "    --env POSTGRES_USER=postgres \\"
+    echo "    --env POSTGRES_PASSWORD=postgres \\"
+    echo "    --port 5501:5432 --detach \\"
+    echo "    ${BASENAME}_dev"
     term_color_white
 }
 
