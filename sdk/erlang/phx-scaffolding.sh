@@ -8,8 +8,8 @@ if [[ "$EUID" == 0 ]];
 fi
 
 BASENAME=$(basename $PWD)
-DB_PORT="5501"
 CONTAINER="phoenix-postgres"
+DB_PORT="5501"
 
 term_color_red () {
     echo -e "\e[91m"
@@ -118,6 +118,8 @@ reset_docker_container(){
         # - (from the container) psql -h localhost -U postgres"
         # - (from the psql) CREATE DATABASE ${BASENAME}_dev"
         # - (from the psql) \\l"
+        # - (to exit from psql)
+        # - (to exit from docker) ^p^q
     fi
 }
 
