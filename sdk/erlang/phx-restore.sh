@@ -80,7 +80,8 @@ post(){
     echo "- docker run --name phoenix-postgres \\"
     echo "    --env POSTGRES_USER=postgres \\"
     echo "    --env POSTGRES_PASSWORD=postgres \\"
-    echo "    --port 5501:5432 --detach \\"
+    echo "    --port 5501:5432 \\"
+    echo "    --detach \\"
     echo "    ${BASENAME}_dev"
     term_color_white
 }

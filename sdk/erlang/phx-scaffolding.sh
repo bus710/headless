@@ -116,7 +116,8 @@ reset_docker_container(){
                 --name $CONTAINER \
                 --env POSTGRES_USER=postgres \
                 --env POSTGRES_PASSWORD=postgres \
-                --publish 5501:5432 --detach \
+                --publish 5501:5432 \
+                --detach \
                 ${BASENAME}_dev
         else
             echo "Seems like there is no container $CONTAINER"
