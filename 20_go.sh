@@ -92,8 +92,9 @@ configure_runcom(){
         # For macOS, GOROOT might be /opt/homebrew/opt/go/libexec
         sed -i '/#GO_0/c\export GOROOT=\/usr\/local\/go' /home/$LOGNAME/.shrc
         sed -i '/#GO_1/c\export GOPATH=\$HOME\/go' /home/$LOGNAME/.shrc
-        sed -i '/#GO_2/c\export PATH=$PATH:\$GOROOT/bin:\$GOPATH/bin' /home/$LOGNAME/.shrc
-        sed -i '/#GO_3/c\export DELVE_EDITOR=nvim' /home/$LOGNAME/.shrc
+        sed -i '/#GO_2/c\export GOBIN=\$GOPATH/bin' /home/$LOGNAME/.shrc
+        sed -i '/#GO_3/c\export PATH=$PATH:\$GOROOT/bin:\$GOPATH/bin' /home/$LOGNAME/.shrc
+        sed -i '/#GO_4/c\export DELVE_EDITOR=nvim' /home/$LOGNAME/.shrc
     fi
 
     source /home/$LOGNAME/.shrc
