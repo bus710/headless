@@ -95,7 +95,7 @@ install_plugins(){
     echo "  - Enable theme (powerlevel10k)"
     term_color_white
 
-    sed -i 's/plugins=(git)/plugins=(git golang flutter zsh-autosuggestions)/g' /home/$LOGNAME/.zshrc
+    sed -i 's/plugins=(git)/plugins=(git golang flutter zsh-autosuggestions dotenv)/g' /home/$LOGNAME/.zshrc
     sed -i 's/ZSH_THEME=\"robbyrussell\"/ZSH_THEME=\"powerlevel10k\/powerlevel10k\"/g' /home/$LOGNAME/.zshrc
 }
 
