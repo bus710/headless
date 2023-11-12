@@ -106,7 +106,7 @@ reset_docker_container(){
         fi
 
         docker run \
-            --name $CONTAINER \
+            --name ${CONTAINER}_${BASENAME} \
             --env POSTGRES_USER=postgres \
             --env POSTGRES_PASSWORD=postgres \
             --publish ${DB_PORT}:5432 \
