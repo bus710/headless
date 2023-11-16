@@ -100,9 +100,9 @@ reset_docker_container(){
 
     if [[ -f /usr/bin/docker ]]; then
         # If a postgres container is running, remove it.
-        if [ $( docker ps -a | grep $CONTAINER | wc -l ) -gt 0 ]; then
-            docker container stop $CONTAINER
-            docker container rm $CONTAINER
+        if [ $( docker ps -a | grep ${CONTAINER}_${BASENAME} | wc -l ) -gt 0 ]; then
+            docker container stop ${CONTAINER}_${BASENAME}
+            docker container rm ${CONTAINER}_${BASENAME}
         fi
 
         docker run \
@@ -114,7 +114,7 @@ reset_docker_container(){
             postgres
 
         # To access to the DB in container:
-        # - docker exec -it ${CONTAINER_NAME} bash"
+        # - docker exec -it ${CONTAINER}_${BASENAME} bash"
         # - (from the container) psql -h localhost -U postgres"
         # - (from the psql) CREATE DATABASE ${BASENAME}_dev"
         # - (from the psql) \\l"
