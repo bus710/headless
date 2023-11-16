@@ -8,7 +8,7 @@ if [[ "$EUID" == 0 ]];
 fi
 
 BASENAME=$(basename $PWD)
-CONTAINER="phoenix-postgres"
+CONTAINER="phoenix_postgres"
 DB_PORT=$(grep 'port: \"....\"' < config/dev.exs | cut -d'"' -f 2)
 
 term_color_red () {
@@ -75,7 +75,7 @@ install_credo(){
 reset_docker_container(){
     term_color_red
     echo "Reset the docker container"
-    echo "- docker container 'phoenix-postgres' will be reset" 
+    echo "- docker container ${CONTAINER}_${BASENAME} will be reset" 
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
