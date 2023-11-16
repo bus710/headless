@@ -9,7 +9,7 @@ fi
 
 BASENAME=$(basename $PWD)
 CONTAINER="phoenix-postgres"
-DB_PORT="5501"
+DB_PORT=$(grep 'port: \"....\"' < config/dev.exs | cut -d'"' -f 2)
 
 term_color_red () {
     echo -e "\e[91m"
@@ -85,7 +85,7 @@ reset_docker_container(){
     fi
 
     # Check if DB is being used by this project
-    POSTGRES_EXISTS=$(cat config/dev.exs| grep "postgres" | wc -l)
+    POSTGRES_EXISTS=$(grep -c "postgres" < config/dev.exs)
     if [[ $POSTGRES_EXISTS == "0" ]]; then
         echo
         echo "DB is not being used - abort"
@@ -102,7 +102,7 @@ reset_docker_container(){
         fi
 
         docker run \
-            --name ${CONTAINER}_${$BASENAME} \
+            --name ${CONTAINER}_${BASENAME} \
             --env POSTGRES_USER=postgres \
             --env POSTGRES_PASSWORD=postgres \
             --publish ${DB_PORT}:5432 \
