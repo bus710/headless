@@ -51,8 +51,7 @@ then
 
     # https://github.com/microsoft/vscode/issues/181533#issuecomment-1597187136
     if [[ -f ~/.config/Code/User/settings.json ]]; then
-        jq --arg custom custom '. + {"window.titleBarStyle": $custom}' \
-            ~/.config/Code/User/settings.json \
-            > ~/.config/Code/User/settings.json
+        SETTINGS=$(jq --arg custom custom '. + {"window.titleBarStyle": $custom}' ~/.config/Code/User/settings.json)
+        echo $SETTINGS >  ~/.config/Code/User/settings.json
     fi
 fi
