@@ -86,20 +86,21 @@ prep_files(){
 configure_java(){
     term_color_red
     echo "Java config"
+    echo "- make sure 'openjdk-NN-jdk-headless' is installed."
     term_color_white
 
     sudo update-alternatives \
         --install \
         "/usr/bin/java" \
         "java" \
-        "/home/$LOGNAME/Android/android-studio/jre/bin/java" \
+        "/home/$LOGNAME/Android/android-studio/jbr/bin/java" \
         1
 
     echo
     sudo update-alternatives \
         --set \
         java \
-        /home/$LOGNAME/Android/android-studio/jre/bin/java
+        /home/$LOGNAME/Android/android-studio/jbr/bin/java
 
     term_color_red
     echo "Java version"
@@ -132,7 +133,7 @@ configure_runcom(){
     echo "Activate variables in ~/.shrc"
     term_color_white
 
-    sed -i '/#ANDROID_0/c\export JAVA_HOME=\$HOME\/Android\/android-studio\/jre' /home/$LOGNAME/.shrc
+    sed -i '/#ANDROID_0/c\export JAVA_HOME=\$HOME\/Android\/android-studio\/jbr' /home/$LOGNAME/.shrc
     sed -i '/#ANDROID_1/c\export PATH=\$JAVA_HOME\/bin:\$PATH' /home/$LOGNAME/.shrc
     sed -i '/#ANDROID_2/c\export PATH=\$HOME\/Android\/android-studio\/bin:\$PATH' /home/$LOGNAME/.shrc
     sed -i '/#ANDROID_3/c\export ANDROID_SDK_ROOT=\$HOME\/Android' /home/$LOGNAME/.shrc
