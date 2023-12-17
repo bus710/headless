@@ -3,9 +3,10 @@
 set -e
 
 URL_STUDIO="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/"
-URL_STUDIO+="2021.2.1.15/android-studio-2021.2.1.15-linux.tar.gz"
+URL_STUDIO+="2022.3.1.21/android-studio-2022.3.1.21-linux.tar.gz"
+
 URL_SDK="https://dl.google.com/android/repository/"
-URL_SDK+="commandlinetools-linux-8512546_latest.zip"
+URL_SDK+="commandlinetools-linux-10406996_latest.zip"
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as a normal user (w/o sudo)"
@@ -34,7 +35,7 @@ confirmation() {
     read -n 1 ans
 
     if [[ ! $ans == "y" ]]; then 
-        exit -1
+        exit 1
     fi
 }
 
