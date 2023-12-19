@@ -38,9 +38,9 @@ install_rn_tools() {
   term_color_white
 
   npm root -g
-  npm install -g react-native@latest
-  npm install -g react-native-cli@latest
-  npm install -g react-devtools@latest
+  npm install -g --force react-native@latest
+  npm install -g --force react-native-cli@latest
+  npm install -g --force react-devtools@latest
 }
 
 install_watchman() {
@@ -66,6 +66,9 @@ install_watchman() {
  	sudo rm -rf /usr/local/bin/watchmanctl
  	sudo rm -rf /usr/local/var/run/watchman
 
+	# To find this URL:
+	# - go to https://www.debian.org/distrib/packages#view
+	# - search for 'libssl' with the old stable option
 	wget -O libssl.deb http://ftp.us.debian.org/debian/pool/main/o/openssl/libssl1.1_1.1.1w-0+deb11u1_amd64.deb
 	sudo dpkg -i libssl.deb
 	sudo rm -rf libssl.deb
