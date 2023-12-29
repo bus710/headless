@@ -9,7 +9,8 @@ fi
 
 BASENAME=$(basename $PWD)
 CONTAINER="phoenix_postgres"
-DB_PORT=$(grep 'port: \"....\"' < config/dev.exs | cut -d'"' -f 2)
+# DB_PORT=$(grep 'port: \"....\"' < config/dev.exs | cut -d'"' -f 2)
+DB_PORT="5501"
 
 term_color_red () {
     echo -e "\e[91m"
@@ -53,6 +54,23 @@ modify_endpoint_ip(){
     term_color_white
 
     sed -i "s/{127, 0, 0, 1}/{0, 0, 0, 0}/" config/dev.exs
+}
+
+config_db_port(){
+    term_color_red
+    echo "Config DB Port"
+    echo "The default port is 5501 - change? (y/n)"
+    term_color_white
+
+    echo
+    read -n 1 ans
+    echo
+
+    if [[ $ans == "y" ]]; then
+        echo "Please put 4 digits numbers"
+        read -n 4 port
+        DB_PORT=$port
+    fi
 }
 
 install_credo(){
@@ -314,6 +332,7 @@ post(){
 trap term_color_white EXIT
 confirmation
 modify_endpoint_ip
+config_db_port
 install_credo
 reset_docker_container
 install_ecto
