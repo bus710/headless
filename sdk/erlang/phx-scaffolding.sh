@@ -38,7 +38,7 @@ confirmation(){
         exit 1
     fi
 
-    IS_PHOENIX=$(grep :phoenix < mix.exs)
+    IS_PHOENIX=$(grep :phoenix < mix.exs | wc -l)
     if [[ $IS_PHOENIX == "0" ]]; then
         echo "Not a phoenix project"
         echo "Please run:"
@@ -61,7 +61,7 @@ install_credo(){
     term_color_white
 
     # Add credo after phoenix in the dependencies.
-    CREDO_EXISTS=$(grep -c credo < mix.exs)
+    CREDO_EXISTS=$(grep credo < mix.exs | wc -l)
     if [[ $CREDO_EXISTS == "0" ]]; then
         # (The output of below might be {:credo,"~> 1.7"},)
         CREDO_VERSION=$(mix hex.info credo | grep Config | awk '{print $2 " " $3 " " $4 ","}')
@@ -90,7 +90,7 @@ reset_docker_container(){
     fi
 
     # Check if DB is being used by this project
-    POSTGRES_EXISTS=$(grep -c "postgres" < config/dev.exs)
+    POSTGRES_EXISTS=$(grep "postgres" < config/dev.exs | wc -l)
     if [[ $POSTGRES_EXISTS == "0" ]]; then
         echo 
         echo "No DB is being used - abort"
@@ -125,7 +125,7 @@ reset_docker_container(){
 
 install_ecto(){
     # Check if this project uses ecto at all
-    ECTO_EXISTS=$(grep -c ":phoenix_ecto" < mix.exs)
+    ECTO_EXISTS=$(grep ":phoenix_ecto" < mix.exs | wc -l)
     if [[ $ECTO_EXISTS == "0" ]]; then
         return
     fi
@@ -136,7 +136,7 @@ install_ecto(){
 
     # Find the port number of POSTGRES for development
     # It should be 4 digits. Typically 5501 or 5432.
-    PORT_EXISTS=$(grep -c "port: \"....\"" < config/dev.exs)
+    PORT_EXISTS=$(grep "port: \"....\"" < config/dev.exs | wc -l)
     if [[ $PORT_EXISTS == "0" ]]; then
         # Add 'port: "5501"' right below of localhost
         sed -i "/localhost/a\  port: \"${DB_PORT}\"," config/dev.exs
