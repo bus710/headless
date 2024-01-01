@@ -240,8 +240,8 @@ modify_app_component(){
 echo -e \
 '<header class="px-4 sm:px-6 lg:px-8">
 </header>
-<main class="px-4 py-20 sm:px-6 lg:px-8">
-  <div class="mx-auto max-w-2xl">
+<main class="px-2 py-8 bg-white">
+  <div class="">
     <.flash_group flash={@flash} />
     <%= @inner_content %>
   </div>
@@ -259,6 +259,10 @@ modify_home_controller(){
 echo -e \
 '<.flash_group flash={@flash} />
 
+<div class="text-black p-10">
+    <p class="text-lg">Home</p>
+</div>
+
 <div class="text-blue-300 p-10">
     <a href="/dev/dashboard">Dashboard</a>
 </div>' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
@@ -273,15 +277,18 @@ modify_css(){
 echo -e \
 '
 html {
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
+
     /* Hide scrollbars */
     /* overflow: hidden; */
 }
