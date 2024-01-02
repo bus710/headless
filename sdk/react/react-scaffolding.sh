@@ -141,7 +141,7 @@ function App() {
       <h1 className=\"text-3xl font-bold items-center\">
         Hello world!
       </h1>
-      <button className=\"btn-primary\" onClick={() => setCount((count) => count + 1)}>
+      <button className=\"btn btn-primary\" onClick={() => setCount((count) => count + 1)}>
         Click me - {count}
       </button>
     </div>
