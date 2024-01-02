@@ -29,15 +29,15 @@ confirmation(){
 
     if [[ ! $ans == "y" ]]; then
         echo ""
-        exit -1
+        exit 1
     fi
 
     IS_REACT=$(cat package.json | grep react | wc -l)
     if [[ $IS_REACT == "0" ]]; then
         echo "Not a react project"
         echo "Please run:"
-        echo "- create vite@latest $APP_NAME -- --template react"
-        exit -1
+        echo "- npm create vite@latest $APP_NAME -- --template react|react-ts"
+        exit 1
     fi
 }
 
@@ -50,8 +50,7 @@ install_packages(){
         tailwindcss \
         postcss \
         autoprefixer \
-        flowbite \
-        flowbite-react
+        daisyui@latest
 
     npm install -D \
         prettier \
@@ -73,7 +72,6 @@ configure_template_paths(){
 export default {
   content: [
     './index.html', './src/**/*{js,tx,jsx,tsx}',
-    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     extend: {
@@ -83,7 +81,7 @@ export default {
     },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('daisyui')
   ],
 }" >> tailwind.config.js
 
@@ -104,7 +102,7 @@ add_tailwind_directives(){
     fi
 }
 
-update_app_jsx(){
+update_app_jsx_tsx(){
     term_color_red
     echo "Update App.jsx"
     term_color_white
@@ -112,7 +110,8 @@ update_app_jsx(){
     if [[ -f ./src/App.jsx ]]; then
         > ./src/App.jsx
         echo -e \
-        "import './App.css'
+        "
+import './App.css'
 import { Button } from 'flowbite-react';
 
 function App() {
@@ -128,6 +127,28 @@ function App() {
 
 export default App;
 " >> ./src/App.jsx 
+    elif [[ -f ./src/App.tsx ]]; then
+        > ./src/App.tsx
+        echo -e \
+        "
+import { useState } from 'react'
+import './App.css'
+
+function App() {
+  const [count, setCount] = useState(0)
+  return (
+    <div className=\"flex flex-col items-center space-y-8\">
+      <h1 className=\"text-3xl font-bold items-center\">
+        Hello world!
+      </h1>
+      <button className=\"btn-primary\" onClick={() => setCount((count) => count + 1)}>
+        Click me - {count}
+      </button>
+    </div>
+  )
+}
+export default App
+" >> ./src/App.tsx 
     else
         echo "No App.jsx is found"
     fi
@@ -161,6 +182,6 @@ confirmation
 install_packages
 configure_template_paths
 add_tailwind_directives
-update_app_jsx
+update_app_jsx_tsx
 update_app_css
 post
