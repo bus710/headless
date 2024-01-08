@@ -29,7 +29,7 @@ confirmation(){
     echo
 
     if [[ ! $ans == "y" ]]; then
-        exit -1
+        exit 1
     fi
 }
 

@@ -26,7 +26,7 @@ confirmation(){
     echo
 
     if [[ ! $ANSWER == "y" ]]; then
-        exit -1
+        exit 1
     fi
     sudo echo ""
 }
@@ -40,6 +40,20 @@ install_postgresql(){
         postgresql \
         postgresql-contrib \
         postgresql-client 
+}
+
+install_harlequin(){
+    term_color_red
+    echo "Install Harlequin"
+    term_color_white
+
+    # https://harlequin.sh/docs/getting-started
+    
+    sudo apt install -y \
+        pipx
+
+    pipx install harlequin
+    pipx inject harlequin harlequin-postgres
 }
 
 post_install(){
@@ -83,6 +97,7 @@ post_install(){
 trap term_color_white EXIT
 confirmation
 install_postgresql
+install_harlequin
 post_install
 
 echo
