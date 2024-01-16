@@ -111,7 +111,8 @@ post(){
     echo
     echo "Done"
     echo "- Restart terminal"
-    echo "- Run \"zls --config\", but choose NO for the system-wide option"
+    echo "- Run \"zls --config-path \$SOMEWHERE\" to specify the location of zls.json"
+    echo "- Run \"cp-zig-vscode\" to copy VSCODE configurations into the current path"
     echo
 }
 
