@@ -111,6 +111,7 @@ post(){
     echo
     echo "Done"
     echo "- Restart terminal"
+    echo "- Run \"mkdir hello-world && cd hello-world && zig init\" to start a new Zig project"
     echo "- Run \"zls --config-path \$SOMEWHERE\" to specify the location of zls.json"
     echo "- Run \"cp-zig-vscode\" to copy VSCODE configurations into the current path"
     echo
