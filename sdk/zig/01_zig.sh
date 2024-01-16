@@ -36,8 +36,9 @@ check_architecture_and_version(){
 
 confirmation(){
     term_color_red
-    echo "1. Remove ~/zig"
-    echo "2. Install $VERSION"
+    echo "What will happen:"
+    echo "- Remove ~/zig"
+    echo "- Install $VERSION"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
@@ -46,7 +47,7 @@ confirmation(){
     echo
 
     if [[ ! $ans == "y" ]]; then
-        exit -1
+        exit 1
     fi
 }
 
@@ -92,7 +93,7 @@ configure_runcom(){
 
 install_zls(){
     term_color_red
-    echo "Download and install Zls"
+    echo "Download and install Zig Language Server"
     term_color_white
 
     cd /home/${LOGNAME}/zig
@@ -100,7 +101,7 @@ install_zls(){
     rm -rf zls*
     git clone --recurse-submodules https://github.com/zigtools/zls zlsRepo
     cd /home/$LOGNAME/zig/zlsRepo
-    zig build -Drelease-safe
+    zig build -Doptimize=ReleaseSafe
     mv ./zig-out/bin/zls /home/$LOGNAME/zig
     cd /home/$LOGNAME/zig
     rm -rf /home/$LOGNAME/zig/zlsRepo
