@@ -123,7 +123,7 @@ post(){
     echo "- Run \"zls --config-path \$SOMEWHERE\" to specify the location of zls.json"
     echo "- Run \"cp-zig-vscode\" to copy VSCODE configurations into the current path"
     echo "- Press \"<Space>d-c\" to start a debugging session in AstroNvim" 
-    echo "  (will be asked the path to the executable. Then zig-out/bin/$NAME)"
+    echo "  (will be asked the path to the executable. Then zig-out/bin/\$BASENAME)"
     echo
 }
 
