@@ -107,6 +107,14 @@ install_zls(){
     rm -rf /home/$LOGNAME/zig/zlsRepo
 }
 
+install_llvm(){
+    term_color_red
+    echo "Install LLVM and LLDB"
+    term_color_white
+
+    sudo apt install -y llvm lldb
+}
+
 post(){
     echo
     echo "Done"
@@ -126,4 +134,5 @@ cleanup
 install
 configure_runcom
 install_zls
+install_llvm
 post
