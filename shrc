@@ -98,6 +98,8 @@ alias av1='avahi-resolve -n -4 rpi3.local'
 alias am='minicom -b 115200 -o -D /dev/ttyUSB0'
 alias an='minicom -b 9600 -o -D /dev/ttyACM0'
 
+alias eval-ssh-agent='eval "$(ssh-agent -s)"'
+
 alias disk620='sshfs bus710@disk620:/ ~/disk620'
 alias disk57='sshfs bus710@rz57:/home/bus710/disks ~/disk57'
 alias nv='nvim'
