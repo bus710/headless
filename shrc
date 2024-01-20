@@ -80,6 +80,7 @@ alias lx='elixir'
 
 alias rw='cd ~/repo/rustws'
 alias zl='cd ~/repo/zigws'
+alias zb='zig build'
 
 alias rj='cd ~/repo/reactws'
 alias sv='cd ~/repo/svtws'
