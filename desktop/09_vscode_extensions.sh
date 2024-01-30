@@ -66,41 +66,49 @@ install() {
 		"ms-vscode.cpptools"
 		"ms-vscode.cpptools-extension-pack"
 		"ms-vscode.makefile-tools"
-		# Rust
-		"rust-lang.rust-analyzer"
-		"serayuzgur.crates"
-		"vadimcn.vscode-lldb"
-		"tauri-apps.tauri-vscode"
+		# Zig
+		"webfreak.debug"
+		"tiehuis.zig"
+		"AugusteRame.zls-vscode"
 		# Go
 		"golang.Go"
-		# JS/Node
-		"christian-kohler.npm-intellisense"
-		"dbaeumer.vscode-eslint"
-		"rvest.vs-code-prettier-eslint"
 
 		# Flutter
 		"Dart-Code.dart-code"
 		"Dart-Code.flutter"
 
+		# Rust
+		# "rust-lang.rust-analyzer"
+		# "serayuzgur.crates"
+		# "vadimcn.vscode-lldb"
+		# "tauri-apps.tauri-vscode"
+
+		# JS/Node
+		# "christian-kohler.npm-intellisense"
+		# "dbaeumer.vscode-eslint"
+		# "rvest.vs-code-prettier-eslint"
+
+
+
 		# React
-		"dsznajder.es7-react-js-snippets"
-		"planbcoding.vscode-react-refactor"
-		"jeremyrajan.react-component"
-		"msjsdiag.vscode-react-native"	
+		# "dsznajder.es7-react-js-snippets"
+		# "planbcoding.vscode-react-refactor"
+		# "jeremyrajan.react-component"
+		# "msjsdiag.vscode-react-native"	
 
 		# Svelte
 		#"svelte.svelte-vscode"
 		#"ardenivanov.svelte-intellisense"
 		
 		# Tailwind
-		"bradlc.vscode-tailwindcss"
-		"austenc.tailwind-docs"
+		# "bradlc.vscode-tailwindcss"
+		# "austenc.tailwind-docs"
 
 		# Python and MicroPython
-		#"ms-python.python"
-		#"visualstudioexptteam.vscodeintellicode"
-		#"ms-python.vscode-pylance"
-		#"paulober.pico-w-go"
+		"ms-python.python"
+		"visualstudioexptteam.vscodeintellicode"
+		"ms-python.vscode-pylance"
+		"paulober.pico-w-go"
 
 		# Erlang
 		#"erlang-ls.erlang-ls"
@@ -122,11 +130,6 @@ install() {
 		#"marus25.cortex-debug"
 		# ESP32
 		#"espressif.esp-idf-extension"
-
-		# Zig
-		#"webfreak.debug"
-		#"tiehuis.zig"
-		#"AugusteRame.zls-vscode"
 
 		# SFTP
 		#"Natizyskunk.sftp"
