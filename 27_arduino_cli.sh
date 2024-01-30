@@ -66,7 +66,7 @@ install_packages () {
     term_color_white
 
     cd /home/$LOGNAME/Arduino/cli
-    TARGET_VERSION=$(curl -o- -s https://api.github.com/repos/arduino/arduino-cli/releases/latest | jq -r '.tag_name')
+    TARGET_VERSION=$(curl -o- -s https://api.github.com/repos/arduino/arduino-cli/releases/latest | jq -r '.tag_name' | sed 's/[^0-9.]*//g')
 
     term_color_red
     echo "TARGET_VERSION: ${TARGET_VERSION}"
