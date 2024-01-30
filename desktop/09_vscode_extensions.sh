@@ -68,8 +68,7 @@ install() {
 		"ms-vscode.makefile-tools"
 		# Zig
 		"webfreak.debug"
-		"tiehuis.zig"
-		"AugusteRame.zls-vscode"
+		"ziglang.vscode-zig"
 		# Go
 		"golang.Go"
 
