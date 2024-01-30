@@ -66,14 +66,15 @@ install_packages () {
     term_color_white
 
     cd /home/$LOGNAME/Arduino/cli
-    TARGET_VERSION=$(curl -o- -s https://api.github.com/repos/arduino/arduino-cli/releases/latest | jq -r '.tag_name' | sed 's/[^0-9.]*//g')
+    TARGET_VERSION=$(curl -o- -s https://api.github.com/repos/arduino/arduino-cli/releases/latest | jq -r '.tag_name')
+    TARGET_VERSION_WITHOUT_V=$(echo $TARGET_VERSION | sed 's/[^0-9.]*//g')
 
     term_color_red
     echo "TARGET_VERSION: ${TARGET_VERSION}"
     term_color_white
 
-    wget https://github.com/arduino/arduino-cli/releases/download/${TARGET_VERSION}/arduino-cli_${TARGET_VERSION}_Linux_${ARCH}.tar.gz
-    tar xf arduino-cli_${TARGET_VERSION}_Linux_${ARCH}.tar.gz
+    wget https://github.com/arduino/arduino-cli/releases/download/${TARGET_VERSION}/arduino-cli_${TARGET_VERSION_WITHOUT_V}_Linux_${ARCH}.tar.gz
+    tar xf arduino-cli_${TARGET_VERSION_WITHOUT_V}_Linux_${ARCH}.tar.gz
     rm -rf *.gz
 
     term_color_red
