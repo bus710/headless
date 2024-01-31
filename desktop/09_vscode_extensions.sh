@@ -17,14 +17,21 @@ term_color_white() {
 
 confirmation() {
 	term_color_red
-	echo "Make sure code and code-insiders are installed (y/n)"
+	echo "The code and code-insiders should be installed (y/c/n)"
+	echo "- y: install if not installed"
+	echo "- c: clear the extension directory"
+	echo "- n: cancel this script"
 	term_color_white
 
 	echo
 	read -n 1 -r ans
 	echo
-	if [[ ! $ans == "y" ]]; then
+	if [[ ! $ans == "y" ]] && [[ ! $ans == "c" ]]; then
 		exit
+	fi
+
+	if [[ $ans == "c" ]]; then
+		cleanup
 	fi
 }
 
@@ -87,8 +94,6 @@ install() {
 		# "dbaeumer.vscode-eslint"
 		# "rvest.vs-code-prettier-eslint"
 
-
-
 		# React
 		# "dsznajder.es7-react-js-snippets"
 		# "planbcoding.vscode-react-refactor"
@@ -134,20 +139,22 @@ install() {
 		#"Natizyskunk.sftp"
 	)
 
+	term_color_red
+	echo "Prep the params"
+	term_color_white
+
+	PARAM=""
 	for e in "${extensions[@]}"; do
-		term_color_red
-		echo Install "$e"
-		term_color_white
-
-		if [[ -f /usr/bin/code ]]; then
-			code --install-extension "$e" 2>/dev/null
-		fi
-
-		if [[ -f /usr/bin/code-insiders ]]; then
-			code-insiders --install-extension "$e" 2>/dev/null
-		fi
+		PARAM+=" --install-extension "$e
 	done
 
+	if [[ -f /usr/bin/code ]]; then
+		code $PARAM 2>/dev/null
+	fi
+
+	if [[ -f /usr/bin/code-insiders ]]; then
+		code-insiders $PARAM "$e" 2>/dev/null
+	fi
 	echo
 }
 
@@ -159,7 +166,7 @@ post() {
 
 trap term_color_white EXIT
 confirmation
-cleanup
+# cleanup
 install
 post
 
