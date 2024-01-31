@@ -162,8 +162,9 @@ update_configuration(){
     flutter config --no-enable-linux-desktop
     #flutter config --no-enable-ios
     #flutter config --no-enable-android
-    # flutter config --enable-macos-desktop
-    flutter devices
+    #flutter config --enable-macos-desktop
+
+    #flutter devices
 }
 
 post(){
