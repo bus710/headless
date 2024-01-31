@@ -51,11 +51,11 @@ install() {
 		# Editor
 		"vscodevim.vim"
 		"dracula-theme.theme-dracula"
-		# remote/docker
-		"ms-azuretools.vscode-docker"
+		# ssh/docker
 		"ms-vscode-remote.remote-ssh"
 		"ms-vscode-remote.remote-ssh-edit"
 		"ms-vscode-remote.remote-containers"
+		"ms-azuretools.vscode-docker"
 		# Config files
 		"redhat.vscode-yaml"
 		"be5invis.toml"
