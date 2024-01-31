@@ -44,8 +44,8 @@ then
 
     sudo apt install -y apt-transport-https
     sudo apt update -y
-    sudo apt install -y code 
-    #sudo apt install -y code-insiders
+    # sudo apt install -y code 
+    sudo apt install -y code-insiders
 
     rm -rf *.gpg
 
