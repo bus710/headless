@@ -57,6 +57,8 @@ export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 
+export PICO_SDK_PATH=$HOME/pico/pico-sdk
+
 # =============================
 # Aliases
 alias c='clear'
