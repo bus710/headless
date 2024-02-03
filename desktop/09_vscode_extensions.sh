@@ -72,6 +72,7 @@ install() {
 		# C
 		"ms-vscode.cpptools"
 		"ms-vscode.cpptools-extension-pack"
+		"ms-vscode.cmake-tools"
 		"ms-vscode.makefile-tools"
 		# Zig
 		"webfreak.debug"
@@ -131,7 +132,7 @@ install() {
 		# Arduino
 		"vsciot-vscode.vscode-arduino"
 		# ARM
-		#"marus25.cortex-debug"
+		"marus25.cortex-debug"
 		# ESP32
 		#"espressif.esp-idf-extension"
 
