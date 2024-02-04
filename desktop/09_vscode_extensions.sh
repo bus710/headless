@@ -69,6 +69,7 @@ install() {
 		# PDF and markdown files
 		"yzhang.markdown-all-in-one"
 		"yzane.markdown-pdf"
+		"tomoki1207.pdf"
 		# C
 		"ms-vscode.cpptools"
 		"ms-vscode.cpptools-extension-pack"
