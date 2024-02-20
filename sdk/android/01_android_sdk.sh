@@ -115,8 +115,6 @@ configure_usb_debugging(){
     term_color_white
 
     sudo usermod -aG plugdev $LOGNAME
-    sudo apt install -y \
-        android-sdk-platform-tools-common
 }
 
 cleanup(){
