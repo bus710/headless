@@ -51,7 +51,7 @@ install() {
 
 	extensions=(
 		# Git
-		"eamodio.gitlens"
+		# "eamodio.gitlens"
 		"mhutchie.git-graph"
 		# Error
 		"usernamehw.errorlens"
@@ -112,9 +112,9 @@ install() {
 
 		# Python and MicroPython
 		"ms-python.python"
-		"visualstudioexptteam.vscodeintellicode"
 		"ms-python.vscode-pylance"
-		"paulober.pico-w-go"
+		# "paulober.pico-w-go"
+		# "visualstudioexptteam.vscodeintellicode"
 
 		# Erlang
 		#"erlang-ls.erlang-ls"
@@ -131,7 +131,7 @@ install() {
 		# "adrianwilczynski.alpine-js-intellisense"
 
 		# Arduino
-		"vsciot-vscode.vscode-arduino"
+		# "vsciot-vscode.vscode-arduino"
 		# ARM
 		"marus25.cortex-debug"
 		# ESP32
