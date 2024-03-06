@@ -100,6 +100,17 @@ configure_runcom(){
     source /home/$LOGNAME/.shrc
 }
 
+install_protobuf(){
+    term_color_red
+    echo "Install protobuf"
+    term_color_white
+
+    sudo apt install -y protobuf-compiler
+
+    go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -112,4 +123,5 @@ confirmation
 cleanup
 install_go
 configure_runcom
+install_protobuf
 post
