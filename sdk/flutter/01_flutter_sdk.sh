@@ -130,7 +130,7 @@ configure_runcom(){
         sed -i '/#FLUTTER_1/c\export PATH=\$PATH:\$HOME\/flutter\/bin\/cache\/dart-sdk\/bin' /home/$LOGNAME/.shrc
         sed -i '/#FLUTTER_2/c\export PATH=\$PATH:\$HOME\/flutter\/.pub-cache\/bin' /home/$LOGNAME/.shrc
         sed -i '/#FLUTTER_3/c\export PATH=\$PATH:\$HOME\/repo\/flutter\/bin' /home/$LOGNAME/.shrc # embedded 
-        
+        sed -i '/#FLUTTER_4/c\export PATH=\$PATH:\$HOME\/.pub-cache\/bin' /home/$LOGNAME/.shrc # embedded 
         source /home/$LOGNAME/.shrc
     fi
 }

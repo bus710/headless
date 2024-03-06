@@ -25,16 +25,17 @@ confirmation(){
 
     if [[ ! $ans == "y" ]]; then 
         echo
-        exit -1
+        exit 1
     fi
 }
 
 install_packages(){
     term_color_red
-    echo "Install FFIGen"
+    echo "Install global packages"
     term_color_white
 
     dart pub global activate ffigen
+    dart pub global activate protoc_plugin
 }
 
 post(){
