@@ -28,7 +28,7 @@ check_architecture(){
     else
         exit
     fi
-    V=$(curl -s -w '\n' ${URL})
+    V=$(curl -s -w '\n' ${URL} | head -n 1)
     FULL_VERSION="${V}.linux-$CPU_TARGET.tar.gz"
 }
 
@@ -46,7 +46,7 @@ confirmation(){
 
     if [[ ! $ans == "y" ]]; then
         echo ""
-        exit -1
+        exit 1
     fi
 }
 
