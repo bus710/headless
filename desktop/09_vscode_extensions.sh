@@ -131,7 +131,7 @@ install() {
 		# "adrianwilczynski.alpine-js-intellisense"
 
 		# Arduino
-		# "vsciot-vscode.vscode-arduino"
+		"vsciot-vscode.vscode-arduino"
 		# ARM
 		"marus25.cortex-debug"
 		# ESP32
