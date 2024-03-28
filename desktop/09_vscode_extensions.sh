@@ -65,7 +65,7 @@ install() {
 		"ms-azuretools.vscode-docker"
 		# Config files
 		"redhat.vscode-yaml"
-		"be5invis.toml"
+		"tamasfe.even-better-toml"
 		# PDF and markdown files
 		"yzhang.markdown-all-in-one"
 		"yzane.markdown-pdf"
