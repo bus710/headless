@@ -31,9 +31,10 @@ install_packages (){
     #    language-pack-gnome-en
 
     sudo apt install -y \
-    fcitx5 \
-    fcitx5-config-qt \
-    fcitx5-hangul
+        qt5ct \
+        fcitx5 \
+        fcitx5-config-qt \
+        fcitx5-hangul
 
     sudo apt install -y \
         fonts-nanum \
@@ -58,15 +59,16 @@ configuration (){
         sudo bash -c 'echo "export GLFW_IM_MODULE=ibus" >> /etc/environment'
         sudo bash -c 'echo "export SDL_IM_MODULE=fcitx" >> /etc/environment'
 
-        sudo bash -c 'echo "export QT_SCALE_FACTOR=2" >> /etc/environment'
-
+        sudo bash -c 'echo "export QT_SCALE_FACTOR=1.75" >> /etc/environment'
+        sudo bash -c 'echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment'  
     fi
 }
 
 post (){
     term_color_red
     echo "Done!"
-    echo "- install the korean support in the Fcitx config"
+    echo "- configure the korean support in the Fcitx config"
+    echo "- configure the qt5ct value for darker theme"
     echo "- reboot and run fcitx5-config-qt"
     echo "- update a Chrome flag - preffered ozone platform"
     echo
