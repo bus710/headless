@@ -280,7 +280,7 @@ bindsym $mod+y exec google-chrome-stable --enable-features=UserOzonePlatform --o
 bindsym $mod+u exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
 
 # Notification
-exec mako --anchor bottom-right
+exec mako --anchor bottom-right --font=monospace 24 --width=480 --height=320
 
 # Clipboard daemon
 exec wl-paste -t text --watch clipman store
