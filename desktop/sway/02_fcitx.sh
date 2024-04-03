@@ -52,7 +52,7 @@ configuration (){
         echo "Set required Wayland global variables in /etc/environment"
         term_color_white
 
-        sudo bash -c 'echo "export GTK_IM_MODULE=fcitx" >> /etc/environment'
+        #sudo bash -c 'echo "export GTK_IM_MODULE=fcitx" >> /etc/environment'
         sudo bash -c 'echo "export QT_IM_MODULE=fcitx" >> /etc/environment'
         sudo bash -c 'echo "export XMODIFIERS=@im=fcitx" >> /etc/environment'
         sudo bash -c 'echo "export GLFW_IM_MODULE=ibus" >> /etc/environment'
