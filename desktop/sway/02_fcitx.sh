@@ -57,6 +57,9 @@ configuration (){
         sudo bash -c 'echo "export XMODIFIERS=@im=fcitx" >> /etc/environment'
         sudo bash -c 'echo "export GLFW_IM_MODULE=ibus" >> /etc/environment'
         sudo bash -c 'echo "export SDL_IM_MODULE=fcitx" >> /etc/environment'
+
+        sudo bash -c 'echo "export QT_SCALE_FACTOR=2" >> /etc/environment'
+
     fi
 }
 
