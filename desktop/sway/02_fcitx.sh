@@ -59,7 +59,7 @@ configuration (){
         sudo bash -c 'echo "export GLFW_IM_MODULE=ibus" >> /etc/environment'
         sudo bash -c 'echo "export SDL_IM_MODULE=fcitx" >> /etc/environment'
 
-        sudo bash -c 'echo "export QT_SCALE_FACTOR=1.75" >> /etc/environment'
+        sudo bash -c 'echo "export QT_SCALE_FACTOR=1.5" >> /etc/environment'
         sudo bash -c 'echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> /etc/environment'  
     fi
 }
