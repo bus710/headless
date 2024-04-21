@@ -55,6 +55,8 @@ global_config(){
 
     git config --global \
         includeIf.gitdir:~/repo/.path ~/repo/.gitconfig   
+    git config --global \
+        includeIf.gitdir:~/.config/nvim/.path ~/repo/.gitconfig   
     # git config --global \
     #    url."git@github.com-bus710:bus710".insteadOf "git@github.com:bus710"
 

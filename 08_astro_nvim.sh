@@ -225,6 +225,7 @@ config_astro_nvim_v4() {
 	# Config the user email
 	NAME="bus710"
 	git config user.email "$NAME@gmail.com"
+	git remote add upstream git@github.com:$NAME/astronvim-template-v4
 	cd -
 
 	# Install plugins - TSInstall with ! enforces the installation without question
