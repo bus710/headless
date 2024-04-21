@@ -228,11 +228,11 @@ config_astro_nvim_v4() {
 	cd -
 
 	# Install plugins - TSInstall with ! enforces the installation without question
- 	nv --headless -c ':TSInstall! elixir' -c 'quitall'
-  nv --headless -c ':TSInstall! heex' -c 'quitall'
-  nv --headless -c ':TSInstall! eex' -c 'quitall'
-  nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
-  nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+ 	# nv --headless -c ':TSInstall! elixir' -c 'quitall'
+  # nv --headless -c ':TSInstall! heex' -c 'quitall'
+  # nv --headless -c ':TSInstall! eex' -c 'quitall'
+  # nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
+  # nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
 }
 
 post() {
