@@ -87,6 +87,7 @@ alias zb='zig build'
 alias zrm='zig run src/main.zig'
 alias ztm='zig test src/main.zig'
 
+alias fw='cd ~/repo/fltws'
 alias rj='cd ~/repo/reactws'
 alias sv='cd ~/repo/svtws'
 
