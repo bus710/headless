@@ -176,7 +176,9 @@ install_astro_nvim() {
 	echo "Install AstroNvim"
 	term_color_white
 
-	git clone --depth 1 https://github.com/AstroNvim/AstroNvim /home/$LOGNAME/.config/nvim
+	#git clone --depth 1 https://github.com/AstroNvim/AstroNvim /home/$LOGNAME/.config/nvim
+	git clone --depth 1 https://github.com/AstroNvim/template /home/$LOGNAME/.config/nvim
+	rm -rf /home/$LOGNAME/config/nvim/.git
 }
 
 install_astro_nvim_config() {
