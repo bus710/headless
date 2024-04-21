@@ -215,7 +215,7 @@ install_astro_nvim_v4() {
 	term_color_white
 
 	git clone --depth 1 \
-		https://github.com/bus710/astronvim-template-v4
+		https://github.com/bus710/astronvim-template-v4 \
 		/home/$LOGNAME/.config/nvim
 
 	cd /home/$LOGNAME/.config/nvim
