@@ -171,9 +171,9 @@ backup_previous_configuration() {
 	fi
 }
 
-install_astro_nvim() {
+install_astro_nvim_v3() {
 	term_color_red
-	echo "Install AstroNvim"
+	echo "Install AstroNvim (~v3)"
 	term_color_white
 
 	#git clone --depth 1 https://github.com/AstroNvim/AstroNvim /home/$LOGNAME/.config/nvim
@@ -181,9 +181,9 @@ install_astro_nvim() {
 	rm -rf /home/$LOGNAME/config/nvim/.git
 }
 
-install_astro_nvim_config() {
+install_astro_nvim_config_v3() {
 	term_color_red
-	echo "Install AstroNvim config"
+	echo "Install AstroNvim config (~v3)"
 	term_color_white
 
 	if [[ ! -d /home/$LOGNAME/.config/nvim/lua ]]; then
@@ -194,8 +194,35 @@ install_astro_nvim_config() {
 
 	git clone git@github.com:bus710/astronvim-config.git /home/$LOGNAME/.config/nvim/lua/user
 
-	# Config the user email
 	cd /home/$LOGNAME/.config/nvim/lua/user
+
+	# Config the user email
+	NAME="bus710"
+	git config user.email "$NAME@gmail.com"
+	cd -
+
+	# Install plugins - TSInstall with ! enforces the installation without question
+ 	nv --headless -c ':TSInstall! elixir' -c 'quitall'
+  nv --headless -c ':TSInstall! heex' -c 'quitall'
+  nv --headless -c ':TSInstall! eex' -c 'quitall'
+  nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
+  nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+}
+
+install_astro_nvim_v4() {
+	term_color_red
+	echo "Install AstroNvim (v4+)"
+	term_color_white
+
+	git clone --depth 1 \
+		https://github.com/bus710/astronvim-template-v4
+		/home/$LOGNAME/.config/nvim
+
+	cd /home/$LOGNAME/.config/nvim
+}
+
+config_astro_nvim_v4() {
+	# Config the user email
 	NAME="bus710"
 	git config user.email "$NAME@gmail.com"
 	cd -
@@ -222,6 +249,8 @@ install_lazygit
 install_btm
 install_nerd_fonts
 backup_previous_configuration
-install_astro_nvim
-install_astro_nvim_config
+# install_astro_nvim_v3
+# install_astro_nvim_config_v3
+install_astro_nvim_v4
+config_astro_nvim_v4
 post
