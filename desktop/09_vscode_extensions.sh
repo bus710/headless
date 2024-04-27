@@ -75,9 +75,6 @@ install() {
 		"ms-vscode.cpptools-extension-pack"
 		"ms-vscode.cmake-tools"
 		"ms-vscode.makefile-tools"
-		# Zig
-		"webfreak.debug"
-		"ziglang.vscode-zig"
 		# Go
 		"golang.Go"
 
@@ -86,10 +83,14 @@ install() {
 		"Dart-Code.flutter"
 
 		# Rust
-		# "rust-lang.rust-analyzer"
-		# "serayuzgur.crates"
-		# "vadimcn.vscode-lldb"
-		# "tauri-apps.tauri-vscode"
+		"rust-lang.rust-analyzer"
+		"serayuzgur.crates"
+		"vadimcn.vscode-lldb"
+		"tauri-apps.tauri-vscode"
+
+		# Zig
+		# "webfreak.debug"
+		# "ziglang.vscode-zig"
 
 		# JS/Node
 		# "christian-kohler.npm-intellisense"
