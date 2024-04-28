@@ -66,6 +66,7 @@ install() {
 		# Config files
 		"redhat.vscode-yaml"
 		"tamasfe.even-better-toml"
+		"zxh404.vscode-proto3"
 		# PDF and markdown files
 		"yzhang.markdown-all-in-one"
 		"yzane.markdown-pdf"
