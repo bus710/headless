@@ -78,11 +78,6 @@ install() {
 		"ms-vscode.makefile-tools"
 		# Go
 		"golang.Go"
-
-		# Flutter
-		"Dart-Code.dart-code"
-		"Dart-Code.flutter"
-
 		# Rust
 		"rust-lang.rust-analyzer"
 		"serayuzgur.crates"
@@ -93,24 +88,28 @@ install() {
 		# "webfreak.debug"
 		# "ziglang.vscode-zig"
 
+		# Flutter
+		# "Dart-Code.dart-code"
+		# "Dart-Code.flutter"
+
 		# JS/Node
-		# "christian-kohler.npm-intellisense"
-		# "dbaeumer.vscode-eslint"
-		# "rvest.vs-code-prettier-eslint"
+		"christian-kohler.npm-intellisense"
+		"dbaeumer.vscode-eslint"
+		"rvest.vs-code-prettier-eslint"
+
+		# Svelte
+		"svelte.svelte-vscode"
+		"ardenivanov.svelte-intellisense"
+		
+		# Tailwind
+		"bradlc.vscode-tailwindcss"
+		"austenc.tailwind-docs"
 
 		# React
 		# "dsznajder.es7-react-js-snippets"
 		# "planbcoding.vscode-react-refactor"
 		# "jeremyrajan.react-component"
 		# "msjsdiag.vscode-react-native"	
-
-		# Svelte
-		#"svelte.svelte-vscode"
-		#"ardenivanov.svelte-intellisense"
-		
-		# Tailwind
-		# "bradlc.vscode-tailwindcss"
-		# "austenc.tailwind-docs"
 
 		# Python and MicroPython
 		"ms-python.python"
