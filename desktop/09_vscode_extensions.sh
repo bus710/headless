@@ -84,32 +84,18 @@ install() {
 		"vadimcn.vscode-lldb"
 		"tauri-apps.tauri-vscode"
 
-		# Zig
-		# "webfreak.debug"
-		# "ziglang.vscode-zig"
-
-		# Flutter
-		"Dart-Code.dart-code"
-		"Dart-Code.flutter"
-
 		# JS/Node
 		"christian-kohler.npm-intellisense"
 		"dbaeumer.vscode-eslint"
 		"rvest.vs-code-prettier-eslint"
 
 		# Svelte
-		# "svelte.svelte-vscode"
-		# "ardenivanov.svelte-intellisense"
+		"svelte.svelte-vscode"
+		"ardenivanov.svelte-intellisense"
 		
 		# Tailwind
-		# "bradlc.vscode-tailwindcss"
-		# "austenc.tailwind-docs"
-
-		# React
-		# "dsznajder.es7-react-js-snippets"
-		# "planbcoding.vscode-react-refactor"
-		# "jeremyrajan.react-component"
-		# "msjsdiag.vscode-react-native"	
+		"bradlc.vscode-tailwindcss"
+		"austenc.tailwind-docs"
 
 		# Python and MicroPython
 		"ms-python.python"
@@ -128,18 +114,34 @@ install() {
 		# "Ritvyk.heex-html"
 		# "animus-coop.vscode-elixir-mix-formatter"
 
-		# Alpine
-		# "adrianwilczynski.alpine-js-intellisense"
-
 		# Arduino
 		"vsciot-vscode.vscode-arduino"
 		# ARM
 		"marus25.cortex-debug"
 		# ESP32
-		#"espressif.esp-idf-extension"
+		# "espressif.esp-idf-extension"
+
+		# =====================================
 
 		# SFTP
-		#"Natizyskunk.sftp"
+		# "Natizyskunk.sftp"
+		
+		# Zig
+		# "webfreak.debug"
+		# "ziglang.vscode-zig"
+
+		# Flutter
+		# "Dart-Code.dart-code"
+		# "Dart-Code.flutter"
+
+		# React
+		# "dsznajder.es7-react-js-snippets"
+		# "planbcoding.vscode-react-refactor"
+		# "jeremyrajan.react-component"
+		# "msjsdiag.vscode-react-native"	
+
+		# Alpine
+		# "adrianwilczynski.alpine-js-intellisense"
 	)
 
 	term_color_red
