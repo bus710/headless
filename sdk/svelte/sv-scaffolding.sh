@@ -38,7 +38,7 @@ confirmation(){
 
     if [[ ! $ans == "y" ]]; then
         echo ""
-        exit -1
+        exit 1
     fi
 
     term_color_red
@@ -53,7 +53,7 @@ confirmation(){
 
     if [[ $LEN == "0" ]]; then
         echo "Not a proper project name"
-        exit -1
+        exit 1
     fi
 
     # Need to remove the newline at the end of the string
