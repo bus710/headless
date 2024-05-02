@@ -89,8 +89,8 @@ install() {
 		# "ziglang.vscode-zig"
 
 		# Flutter
-		# "Dart-Code.dart-code"
-		# "Dart-Code.flutter"
+		"Dart-Code.dart-code"
+		"Dart-Code.flutter"
 
 		# JS/Node
 		"christian-kohler.npm-intellisense"
@@ -98,12 +98,12 @@ install() {
 		"rvest.vs-code-prettier-eslint"
 
 		# Svelte
-		"svelte.svelte-vscode"
-		"ardenivanov.svelte-intellisense"
+		# "svelte.svelte-vscode"
+		# "ardenivanov.svelte-intellisense"
 		
 		# Tailwind
-		"bradlc.vscode-tailwindcss"
-		"austenc.tailwind-docs"
+		# "bradlc.vscode-tailwindcss"
+		# "austenc.tailwind-docs"
 
 		# React
 		# "dsznajder.es7-react-js-snippets"
