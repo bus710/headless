@@ -25,7 +25,7 @@ check_architecture(){
         echo "This is not x86_64 or aarch64."
         term_color_white
 
-        exit -1
+        exit 1
     fi
 }
 
@@ -40,7 +40,7 @@ confirmation(){
     echo
 
     if [[ ! $ans == "y" ]]; then 
-        exit -1
+        exit 1
     fi
 
     sudo echo
@@ -85,8 +85,10 @@ verify_fingerprint(){
         --fingerprint
 
     term_color_red
-    echo "If the fingerprint matches to the line below? (y/n)"
-    echo "- E8A0 32E0 94D8 EB4E A189  D270 DA41 8C88 A321 9F7B"
+    echo "Check if the finger print matches to the line below? (y/n)"
+    echo "- 798A EC65 4E5C 1542 8C8E 42EE AA16 FCBC A621 E701"
+    echo "- E8A0 32E0 94D8 EB4E A189 D270 DA41 8C88 A321 9F7B"
+    echo "- or Google it with \"Terraform Linux package checksum verification\""
     term_color_white
 
     echo
@@ -96,7 +98,7 @@ verify_fingerprint(){
     if [[ ! $ans == "y" ]]; then 
         sudo rm -rf $GPG_KEY_PATH
         sudo rm -rf $REPO_PATH
-        exit -1
+        exit 1
     fi
 }
 
