@@ -28,7 +28,7 @@ confirmation (){
 
     if [[ ! $ans == "y" ]]; then
         echo
-        exit -1
+        exit 1
     fi
 }
 
