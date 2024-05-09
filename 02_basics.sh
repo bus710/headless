@@ -63,7 +63,8 @@ install_basic_packages(){
         fzf \
         ranger \
         ripgrep \
-        xmlstarlet
+        xmlstarlet \
+        aptitude
 }
 
 install_daemon_packages(){

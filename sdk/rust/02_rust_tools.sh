@@ -87,7 +87,7 @@ build_cargo_tools_2(){
     cargo install create-tauri-app
     cargo install tauri-cli
     sudo apt install -y \
-        libwebkit2gtk-4.0-dev \
+        libwebkit2gtk-4."*"-dev \
         build-essential \
         curl \
         wget \
