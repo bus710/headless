@@ -137,6 +137,13 @@ configure_runcom(){
         echo "Activate Zig"
         sed -i '/\#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
     fi
+
+    # Terraform if exists
+    if [[ -f /usr/local/bin/terraform ]]; then
+        echo "Activate Terraform auto-completion"
+        sed -i '/#TERRAFORM_0/c\autoload -U +X bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
+        sed -i '/#TERRAFORM_1/c\complete -o nospace -C \/usr\/local\/bin\/terraform terraform' /home/$LOGNAME/.shrc
+    fi
 }
 
 post (){

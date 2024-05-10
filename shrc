@@ -53,6 +53,10 @@
 #FLYCTL_0
 #FLYCTL_1
 
+# Terraform
+#TERRAFORM_0
+#TERRAFORM_1
+
 # Etc
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin
