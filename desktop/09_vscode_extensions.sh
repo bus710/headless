@@ -63,6 +63,9 @@ install() {
 		"ms-vscode-remote.remote-ssh-edit"
 		"ms-vscode-remote.remote-containers"
 		"ms-azuretools.vscode-docker"
+		# Terraform
+		"HashiCorp.terraform"
+		"4ops.terraform"
 		# Config files
 		"redhat.vscode-yaml"
 		"tamasfe.even-better-toml"
@@ -115,9 +118,9 @@ install() {
 		# "animus-coop.vscode-elixir-mix-formatter"
 
 		# Arduino
-		"vsciot-vscode.vscode-arduino"
+		#"vsciot-vscode.vscode-arduino"
 		# ARM
-		"marus25.cortex-debug"
+		#"marus25.cortex-debug"
 		# ESP32
 		# "espressif.esp-idf-extension"
 
