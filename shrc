@@ -164,7 +164,7 @@ alias phx-scaffolding="/home/$LOGNAME/repo/headless/sdk/erlang/phx-scaffolding.s
 alias phx-restore="/home/$LOGNAME/repo/headless/sdk/erlang/phx-restore.sh"
 
 alias ac="arduino-cli"
-alias tf="terraform"
+alias tr="terraform"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
