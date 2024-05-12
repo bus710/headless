@@ -89,7 +89,7 @@ install_packages_for_wx_debugger() {
 
 	sudo apt install -y \
 		libwxgtk-webview3.2-dev \
-		libwebkit2gtk-4.0-dev \
+		libwebkit2gtk-4."*"-dev \
 		libglu1-mesa-dev \
 		libgl1-mesa-dev \
 		libwxgtk3.2-dev \
