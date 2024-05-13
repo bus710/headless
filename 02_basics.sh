@@ -52,7 +52,6 @@ install_basic_packages(){
         iotop \
         unzip \
         psmisc \
-        autofs \
         keychain \
         neofetch \
         powerline \
@@ -65,6 +64,8 @@ install_basic_packages(){
         ripgrep \
         xmlstarlet \
         aptitude
+
+        # autofs \
 }
 
 install_daemon_packages(){

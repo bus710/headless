@@ -40,8 +40,8 @@ install_tmux(){
     term_color_white
 
     sudo apt install -y \
-        tmux \
-        tmuxp
+        tmux
+        # tmuxp
 
     term_color_red
     echo "Update tmux configuration"
