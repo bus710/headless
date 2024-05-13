@@ -27,4 +27,6 @@ rm ${PACKAGE_NAME}
 echo
 echo "Done"
 echo "- Enable chrome://flags/#enable-webrtc-pipewire-capturer for Google Meet screen sharing in SwayWM"
+echo "- Enable chrome://flags/#ozone-platform-hint as wayland for Google Meet screen sharing in SwayWM"
+echo "- Run sudo apt --fix-broken intall"
 echo 
