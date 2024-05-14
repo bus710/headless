@@ -163,9 +163,10 @@ update_ssh_port(){
     echo "Update sshd port"
     term_color_white
 
-    # sudo sed -i 's/Port 22/Port 2222/g' /etc/ssh/sshd_config
+    # Port update
     sudo bash -c "sed -i '/#Port 22/c\Port 2222' /etc/ssh/sshd_config"
-    # Also, "UseDNS no" can be uncommented if sshd is too slow
+    # No DNS for better performance
+    sudo bash -c "sed -i '/#UseDNS no/c\UseDNS no' /etc/ssh/sshd_config"
 }
 
 update_timeout(){
