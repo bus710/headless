@@ -293,6 +293,6 @@ exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DE
 
 # IME
 # exec kime
-exec --no-startup-id fcitx5 -d
+# exec --no-startup-id fcitx5 -d
 
 include /etc/sway/config.d/*
