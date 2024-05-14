@@ -2,6 +2,10 @@
 
 set -e
 
+URL="https://dl.google.com/linux/direct/"
+PACKAGE_NAME="google-chrome-stable_current_amd64.deb"
+
+
 if [[ "$EUID" == 0 ]]; then 
     echo "Please run as normal user (w/o sudo)"
     exit
@@ -17,16 +21,13 @@ function install(){
     echo "Install Chrome Browser"
     echo 
 
-    URL="https://dl.google.com/linux/direct/"
-    PACKAGE_NAME="google-chrome-stable_current_amd64.deb"
-
     cd ~/Downloads
     wget ${URL}${PACKAGE_NAME}
     sudo dpkg -i ${PACKAGE_NAME}
-    rm ${PACKAGE_NAME}
 }
 
 function post(){
+    rm ${PACKAGE_NAME}
     echo
     echo "Done"
     echo "- Enable chrome://flags/#enable-webrtc-pipewire-capturer for Google Meet screen sharing in SwayWM"
