@@ -53,6 +53,12 @@ configuration (){
         echo "Set required Wayland global variables in /etc/environment"
         term_color_white
 
+        sudo bash -c 'echo "export LANG=en_US.UTF-8" >> /etc/environment'
+        sudo bash -c 'echo "export LC_MESSAGES=C" >> /etc/environment'
+        sudo bash -c 'echo "export LC_ALL=en_US.UTF-8" >> /etc/environment'
+
+        sudo bash -c 'echo "" >> /etc/environment'
+
         sudo bash -c 'echo "export GTK_IM_MODULE=fcitx" >> /etc/environment'
         sudo bash -c 'echo "export QT_IM_MODULE=fcitx" >> /etc/environment'
         sudo bash -c 'echo "export XMODIFIERS=@im=fcitx" >> /etc/environment'
