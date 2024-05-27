@@ -32,7 +32,7 @@ confirmation() {
 	echo
 
 	if [[ ! $ans == "y" ]]; then
-		exit -1
+		exit 1
 	fi
 
 	CPU_TYPE=$(uname -m)
@@ -54,7 +54,7 @@ confirmation() {
 		echo "Don't know what the arch is"
 		term_color_white
 
-		exit -1
+		exit 1
 	fi
 }
 
