@@ -24,7 +24,7 @@ confirmation(){
     term_color_red
     echo "Phoenix scaffolding:"
     echo "- Credo and ecto will be added"
-    echo "- TailwindCSS, DaisyUI, and AlpineJS will be added"
+    echo "- DaisyUI and AlpineJS will be added"
     echo "- Some theme will be cleaned up"
     echo
     echo "Do you want to proceed? (y/n)"
@@ -59,7 +59,10 @@ modify_endpoint_ip(){
 config_db_port(){
     term_color_red
     echo "Config DB Port"
-    echo "The default port is 5501 - change? (y/n)"
+    echo "- Check with netstat -tuln or ss -tuln"
+    echo "- Docker Postgresql container might be using the 5501 port, then don't change"
+    echo
+    echo "The default port is 5501 - change? (y/N)"
     term_color_white
 
     echo
@@ -333,6 +336,7 @@ post(){
     term_color_red
     echo "Done"
     echo "Try \"mix phx.server --open\""
+    echo "Or  \"iex -S mix phx.server\" (for better interactivity)"
     term_color_white
 }
 
@@ -343,7 +347,7 @@ config_db_port
 install_credo
 reset_docker_container
 install_ecto
-install_tailwind
+#install_tailwind
 install_daisyui
 install_alpinejs
 modify_root_component
