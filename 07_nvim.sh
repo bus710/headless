@@ -98,6 +98,7 @@ install_neovim() {
 	term_color_white
 
 	rm -rf /home/$LOGNAME/.config/nvim/*
+	rm -rf /home/$LOGNAME/.cache/nvim
 	mkdir -p /home/$LOGNAME/.config/nvim
 	mkdir -p /home/$LOGNAME/.tools
 
