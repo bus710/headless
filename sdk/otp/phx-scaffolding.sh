@@ -195,41 +195,9 @@ install_alpinejs(){
 
     cd assets
     npm i alpinejs
-
-    sed -i "/let csrfToken/c\ " js/app.js
-    sed -i "/let liveSocket/c\ " js/app.js
-
-    sed -i "/vendor\/topbar\"/a\ "\
-'import Alpine from "alpinejs" \n'\
-'window.Alpine = Alpine; \n'\
-'Alpine.start(); \n'\
-'let hooks = {}; \n'\
-'let csrfToken = document.querySelector("meta[name=$CSRF_TOKEN]").getAttribute("content") \n'\
-'let liveSocket = new LiveSocket("/live", Socket, { \n'\
-'  params: { _csrf_token: csrfToken }, \n'\
-'  hooks: hooks, \n'\
-'  dom: { \n'\
-'    onBeforeElUpdated(from, to) { \n'\
-'      if (from._x_dataStack) { \n'\
-'        window.Alpine.clone(from, to); \n'\
-'      } \n'\
-'    }, \n'\
-'  }, \n'\
-'}); \n' js/app.js
-
-    sed -i "s/\$CSRF_TOKEN/'csrf-token'/" js/app.js
-
+    > js/app.js
+    cat /home/$LOGNAME/repo/headless/sdk/otp/99_app.js >> js/app.js
     cd ..
-}
-
-modify_root_component(){
-    term_color_red
-    echo "Modify:"
-    echo "- lib/${BASENAME}_web/components/layouts/root.html.heex"
-    term_color_white
-
-    sed -i "s/bg-white/bg-white/" \
-        lib/${BASENAME}_web/components/layouts/root.html.heex
 }
 
 modify_app_component(){
@@ -239,16 +207,7 @@ modify_app_component(){
     term_color_white
 
     > lib/${BASENAME}_web/components/layouts/app.html.heex
-
-echo -e \
-'<header class="px-4 sm:px-6 lg:px-8">
-</header>
-<main class="px-2 py-8 bg-white">
-  <div class="">
-    <.flash_group flash={@flash} />
-    <%= @inner_content %>
-  </div>
-</main>' >> lib/${BASENAME}_web/components/layouts/app.html.heex
+    cat /home/$LOGNAME/repo/headless/sdk/otp/99_app.html.heex >> lib/${BASENAME}_web/components/layouts/app.html.heex
 }
 
 modify_home_controller(){
@@ -258,17 +217,7 @@ modify_home_controller(){
     term_color_white
 
     > lib/${BASENAME}_web/controllers/page_html/home.html.heex
-
-echo -e \
-'<.flash_group flash={@flash} />
-
-<div class="text-black p-10">
-    <p class="text-lg">Home</p>
-</div>
-
-<div class="text-blue-300 p-10">
-    <a href="/dev/dashboard">Dashboard</a>
-</div>' >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
+    cat /home/$LOGNAME/repo/headless/sdk/otp/99_home.html.heex >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
 }
 
 modify_css(){
@@ -277,29 +226,10 @@ modify_css(){
     echo "- assets/app.css"
     term_color_white
 
-echo -e \
-'
-html {
-    height: 100vh;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    height: 100vh;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-
-    /* Hide scrollbars */
-    /* overflow: hidden; */
-}
-
-app {
-    margin: 0;
-    padding: 0;
-}' >> assets/css/app.css
+    cd assets
+    > css/app.css
+    cat /home/$LOGNAME/repo/headless/sdk/otp/99_app.css >> css/app.css
+    cd ..
 }
 
 config_gitignore(){
@@ -347,13 +277,11 @@ config_db_port
 install_credo
 reset_docker_container
 install_ecto
-#install_tailwind
 install_daisyui
-#install_alpinejs
-modify_root_component
-modify_app_component
-modify_home_controller
-modify_css
+install_alpinejs
+# modify_app_component    # If want to cleanup
+# modify_home_controller  # If want to cleanup
+# modify_css              # If want to cleanup
 config_gitignore
 run_phx_gen_auth
 post
