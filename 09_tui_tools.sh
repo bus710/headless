@@ -83,10 +83,14 @@ install_harlequin(){
     # https://harlequin.sh/docs/getting-started
     #
     # How to connect to a DB
+    # - If Postgresql is running in localhost
+    # - The DB name is demo_dev
+    # - The port is 5501 (the default is 5432)
+    # - The ID/PW are postgres/postgres
     #
-    # 1. With schema
+    # 1. With Postgres DSN
     # harlequin -a postgres \
-    #           "postgres://my-user:my-pass@localhost:5432/my-database"
+    #           "postgres://${USER-ID}:${PASSWORD}@localhost:5501/${DB-NAME}"
     #
     # 2. With params
     # harlequin -a postgres \
