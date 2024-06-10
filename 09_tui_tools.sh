@@ -22,9 +22,10 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo "Do you want to install LazyGit and SuperFile? (y/n)"
+    echo "Do you want to install few TUI tools? (y/n)"
     echo "- https://github.com/jesseduffield/lazygit"
     echo "- https://github.com/yorukot/superfile"
+    echo "- https://github.com/tconbeer/harlequin"
     term_color_white
 
     echo
@@ -68,6 +69,38 @@ install_superfile(){
     bash -c "$(wget -qO- https://raw.githubusercontent.com/yorukot/superfile/main/install.sh)"
 }
 
+install_harlequin(){
+    term_color_red
+    echo "Install Harlequin"
+    term_color_white
+
+    sudo apt install -y \
+        pipx
+
+    pipx install harlequin
+    pipx inject harlequin harlequin-postgres
+
+    # https://harlequin.sh/docs/getting-started
+    #
+    # How to connect to a DB
+    #
+    # 1. With schema
+    # harlequin -a postgres \
+    #           "postgres://my-user:my-pass@localhost:5432/my-database"
+    #
+    # 2. With params
+    # harlequin -a postgres \
+    #           -h localhost \
+    #           -p 5501 \
+    #           -U postgres \
+    #           --password postgres \
+    #           -d demo_dev
+    #
+    # How to read a table "user" in the demo_dev DB
+    # select * from public.user;
+
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -79,4 +112,5 @@ confirmation
 cleanup
 install_lazygit
 install_superfile
+install_harlequin
 post

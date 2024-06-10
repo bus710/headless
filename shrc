@@ -168,6 +168,7 @@ alias phx-restore="/home/$LOGNAME/repo/headless/sdk/otp/phx-restore.sh"
 
 alias ac="arduino-cli"
 alias tr="terraform"
+alias hq="harlequin"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
