@@ -69,6 +69,18 @@ install_superfile(){
     bash -c "$(wget -qO- https://raw.githubusercontent.com/yorukot/superfile/main/install.sh)"
 }
 
+install_ducker(){
+    term_color_red
+    echo "Install Harlequin"
+    term_color_white
+
+    if [[ -f $HOME/$LOGNAME/.cargo/bin/cargo ]]; then
+        cargo install --git https://github.com/robertpsoane/ducker
+    else
+        echo "No cargo found"
+    fi
+}
+
 install_harlequin(){
     term_color_red
     echo "Install Harlequin"
@@ -117,4 +129,5 @@ cleanup
 install_lazygit
 install_superfile
 install_harlequin
+install_ducker
 post
