@@ -192,12 +192,12 @@ label:focus {
 }
 
 #temperature {
-    background-color: #666666;
+    background-color: #4444dd;
     border-radius: 10px
 }
 
 #temperature.critical {
-    background-color: #444444;
+    background-color: #ff4444;
     border-radius: 10px
 }
 
