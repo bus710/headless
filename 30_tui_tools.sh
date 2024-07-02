@@ -26,6 +26,7 @@ confirmation(){
     echo "- https://github.com/jesseduffield/lazygit"
     echo "- https://github.com/yorukot/superfile"
     echo "- https://github.com/tconbeer/harlequin"
+    echo "- https://github.com/robertpsoane/ducker"
     term_color_white
 
     echo
@@ -74,7 +75,7 @@ install_ducker(){
     echo "Install Harlequin"
     term_color_white
 
-    if [[ -f $HOME/$LOGNAME/.cargo/bin/cargo ]]; then
+    if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
         cargo install --git https://github.com/robertpsoane/ducker
     else
         echo "No cargo found"
