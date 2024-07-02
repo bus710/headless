@@ -55,7 +55,6 @@ install_basic_packages(){
         keychain \
         neofetch \
         powerline \
-        lm-sensors \
         bash-completion \
         command-not-found \
         jq \
@@ -64,8 +63,13 @@ install_basic_packages(){
         ripgrep \
         xmlstarlet \
         aptitude
-
         # autofs \
+
+    # https://manpages.debian.org/stretch/lm-sensors/sensors-detect.8.en.html
+    # https://wiki.archlinux.org/title/lm_sensors
+    # Please run `sudo sensors-detect --auto` to create the config file automatically
+    sudo apt install -y \
+        lm-sensors 
 }
 
 install_daemon_packages(){
