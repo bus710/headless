@@ -175,6 +175,9 @@ alias cool="sudo bash -c \"echo level 0 > /proc/acpi/ibm/fan \""
 alias cpu-options="grep . /sys/devices/system/cpu/cpu0/cpufreq/*"
 alias cpu-low="echo 3000000 | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq"
 alias cpu-check="grep . /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq"
+alias fan0="sudo bash -c \"echo level 0 > /proc/acpi/ibm/fan\""
+alias fan1="sudo bash -c \"echo level 1 > /proc/acpi/ibm/fan\""
+alias fan-check="cat /proc/acpi/ibm/fan"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
