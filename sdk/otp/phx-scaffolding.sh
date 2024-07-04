@@ -238,6 +238,7 @@ config_gitignore(){
     term_color_white
 
     echo "/assets/vendor/heroicons/optimized/" >> .gitignore
+    echo ".elixir-tools" >> .gitignore
 }
 
 run_phx_gen_auth(){
