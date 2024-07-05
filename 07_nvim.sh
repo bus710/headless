@@ -56,22 +56,23 @@ install_neovim() {
 
 	elif [[ $OS_TYPE =~ "Debian" && $ARCH_TYPE =~ "x86_64" ]]; then
 		term_color_red
-		echo "Download the nightly pre-built from Github"
+		echo "Download the stable pre-built from Github"
 		term_color_white
 
 		mkdir -p /home/$LOGNAME/Downloads
 		cd /home/$LOGNAME/Downloads
 
-		#wget -q https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb
-		#sudo dpkg -i nvim-linux64.deb
-		#rm -rf nvim-linux64.deb
 
-		#wget -q \
-		#    https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage \
-		#    --output-document nvim
+		# It is better to use the one lower version than the stable version of NeoVim.
+		# Please check the releases list.
+		# https://github.com/neovim/neovim/releases
+
+		# wget -q \
+		# 	https://github.com/neovim/neovim/releases/download/stable/nvim.appimage \
+		# 	--output-document nvim
 
 		wget -q \
-			https://github.com/neovim/neovim/releases/download/stable/nvim.appimage \
+			https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage \
 			--output-document nvim
 
 		chmod +x nvim
