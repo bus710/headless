@@ -158,10 +158,11 @@ install_nerd_fonts() {
 
 backup_previous_configuration() {
 	term_color_red
-	echo "Backup previous configuration"
+	echo "Remove previous configuration"
 	term_color_white
 
 	rm -rf /home/$LOGNAME/.config/nvim.bak/nvim
+	rm -rf /home/$LOGNAME/.config/nvim.bak
 
 	if [[ -d /home/$LOGNAME/.config/nvim ]]; then
 		rm -rf /home/$LOGNAME/.config/nvim      #/home/$LOGNAME/.config/nvim.bak￼
