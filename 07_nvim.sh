@@ -63,17 +63,17 @@ install_neovim() {
 		cd /home/$LOGNAME/Downloads
 
 
-		# It is better to use the one lower version than the stable version of NeoVim.
+		# Sometimes it is better to use the one lower version than the stable version of NeoVim if there is any issue.
 		# Please check the releases list.
 		# https://github.com/neovim/neovim/releases
 
-		# wget -q \
-		# 	https://github.com/neovim/neovim/releases/download/stable/nvim.appimage \
-		# 	--output-document nvim
-
 		wget -q \
-			https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage \
+			https://github.com/neovim/neovim/releases/download/stable/nvim.appimage \
 			--output-document nvim
+
+		# wget -q \
+		# 	https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage \
+		# 	--output-document nvim
 
 		chmod +x nvim
 		sudo chown root:root nvim
