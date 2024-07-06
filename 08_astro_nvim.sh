@@ -188,10 +188,18 @@ install_astro_nvim_config_v3() {
 
 	# Install plugins - TSInstall with ! enforces the installation without question
  	nv --headless -c ':TSInstall! elixir' -c 'quitall'
-  nv --headless -c ':TSInstall! heex' -c 'quitall'
-  nv --headless -c ':TSInstall! eex' -c 'quitall'
-  nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
-  nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+  	nv --headless -c ':TSInstall! heex' -c 'quitall'
+  	nv --headless -c ':TSInstall! eex' -c 'quitall'
+  	nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
+  	nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+}
+
+remove_previous_installation() {
+	term_color_red
+	echo "Remove previous installation"
+	term_color_white
+
+	rm -rf /home/$LOGNAME/.config/nvim      #/home/$LOGNAME/.config/nvim.bak￼
 }
 
 install_astro_nvim_v4() {
@@ -216,9 +224,9 @@ config_astro_nvim_v4() {
 	# Install plugins - TSInstall with ! enforces the installation without question
 	# nv --headless -c ':TSInstall! elixir' -c 'quitall'
 	# nv --headless -c ':TSInstall! heex' -c 'quitall'
-	nv --headless -c ':TSInstall! eex' -c 'quitall'
-	nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
-	nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+	# nv --headless -c ':TSInstall! eex' -c 'quitall'
+	# nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
+	# nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
 }
 
 post() {
@@ -236,6 +244,7 @@ install_btm
 install_nerd_fonts
 # install_astro_nvim_v3
 # install_astro_nvim_config_v3
+remove_previous_installation
 install_astro_nvim_v4
 config_astro_nvim_v4
 post
