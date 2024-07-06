@@ -34,6 +34,22 @@ confirmation() {
 	fi
 }
 
+remove_previous_configuration() {
+	term_color_red
+	echo "Remove previous configuration"
+	term_color_white
+
+	rm -rf /home/$LOGNAME/.config/nvim.bak/nvim
+	rm -rf /home/$LOGNAME/.config/nvim.bak
+
+	# if [[ -d /home/$LOGNAME/.config/nvim ]]; then
+	rm -rf /home/$LOGNAME/.config/nvim      #/home/$LOGNAME/.config/nvim.bak￼
+	rm -rf /home/$LOGNAME/.local/share/nvim #/home/$LOGNAME/.local/share/nvim.bak
+	rm -rf /home/$LOGNAME/.local/state/nvim #/home/$LOGNAME/.local/state/nvim.bak
+	rm -rf /home/$LOGNAME/.cache/nvim       #/home/$LOGNAME/.cache/nvim.bak
+	# fi
+}
+
 install_neovim() {
 	HOME="/home/$LOGNAME"
 
@@ -197,6 +213,7 @@ post() {
 
 trap term_color_white EXIT
 confirmation
+remove_previous_configuration
 install_neovim
 install_dependencies
 #update_configuration

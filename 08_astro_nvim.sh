@@ -156,22 +156,6 @@ install_nerd_fonts() {
 	cd -
 }
 
-backup_previous_configuration() {
-	term_color_red
-	echo "Remove previous configuration"
-	term_color_white
-
-	rm -rf /home/$LOGNAME/.config/nvim.bak/nvim
-	rm -rf /home/$LOGNAME/.config/nvim.bak
-
-	if [[ -d /home/$LOGNAME/.config/nvim ]]; then
-		rm -rf /home/$LOGNAME/.config/nvim      #/home/$LOGNAME/.config/nvim.bak￼
-		rm -rf /home/$LOGNAME/.local/share/nvim #/home/$LOGNAME/.local/share/nvim.bak
-		rm -rf /home/$LOGNAME/.local/state/nvim #/home/$LOGNAME/.local/state/nvim.bak
-		rm -rf /home/$LOGNAME/.cache/nvim       #/home/$LOGNAME/.cache/nvim.bak
-	fi
-}
-
 install_astro_nvim_v3() {
 	term_color_red
 	echo "Install AstroNvim (~v3)"
@@ -250,7 +234,6 @@ install_tree_sitter
 install_lazygit
 install_btm
 install_nerd_fonts
-backup_previous_configuration
 # install_astro_nvim_v3
 # install_astro_nvim_config_v3
 install_astro_nvim_v4
