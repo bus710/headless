@@ -67,6 +67,7 @@ output eDP-1 scale 1.1
 # $ swaymsg -rt get_inputs | jq -r '.[] | select(.identifier | contains("Touch")) | .identifier'
 # - x1: input "1267:12624:ELAN0670:00_04F3:3150_Touchpad" {
 # - t14s: input "1739:52839:SYNA8018:00_06CB:CE67_Touchpad" {
+# - t490s: input "1267:47:Elan_Touchpad" {
 input #TOUCH_ID {
     dwt enabled
     tap enabled
