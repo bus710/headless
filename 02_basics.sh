@@ -53,7 +53,7 @@ install_basic_packages(){
         unzip \
         psmisc \
         keychain \
-        neofetch \
+        fastfetch \
         powerline \
         bash-completion \
         command-not-found \

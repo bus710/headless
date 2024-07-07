@@ -124,6 +124,7 @@ alias nvc='cd ~/.config/nvim && pwd'
 alias rr='ranger'
 alias ll='ls -la'
 alias nf='echo "neofetch" && neofetch'
+alias ff='echo "fastfatch" && fastfetch'
 alias sp='spf'
 alias lg='lazygit'
 
