@@ -83,7 +83,8 @@ install_packages(){
 
     npm install -D \
         prettier \
-        eslint
+        eslint \
+        svelte-hero-icons
         #@playwright/test
 
     npm install \

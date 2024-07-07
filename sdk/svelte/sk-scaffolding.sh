@@ -77,7 +77,8 @@ install_packages(){
     npm install -D \
         classnames \
         @popperjs/core \
-        @formkit/auto-animate
+        @formkit/auto-animate \
+        svelte-hero-icons
 
     #npx tailwindcss init tailwind.config.cjs -p
 }
