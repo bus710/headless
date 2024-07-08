@@ -227,6 +227,8 @@ config_astro_nvim_v4() {
 	nv --headless -c ':TSInstall! eex' -c 'quitall'
 	nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
 	nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+
+	# npm install -g @tailwindcss/language-server # Done by another script
 }
 
 post() {
