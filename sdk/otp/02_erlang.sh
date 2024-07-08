@@ -30,11 +30,11 @@ register_repo() {
 	# https://asdf-vm.com/manage/versions.html
 	# Try "asdf list all erlang" for example
 
-	# This was the original but the current latest OTP 26 has some issues with ElixirLS
-	# So I need to use the latest of v25
-	# ERLANG_VERSION=$(asdf latest erlang)
+	# Please check the Elixir LS release note to make sure the compatibility
+	# https://github.com/elixir-lsp/elixir-ls/releases
 
-	ERLANG_VERSION=$(asdf list all erlang 25 | tail -n1)
+	# ERLANG_VERSION=$(asdf latest erlang)
+	ERLANG_VERSION=$(asdf list all erlang 27 | tail -n1)
 
 	# github API equivalent
 	# curl -o- -s https://api.github.com/repos/erlang/otp/releases/latest | jq -r '.tag_name'

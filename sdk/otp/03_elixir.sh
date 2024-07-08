@@ -28,8 +28,11 @@ register_repo() {
 
 	# ELIXIR_VERSION=$(asdf latest elixir)
 
-	# Hardcode this value To avoid OTP26 and ElixirLS compatibility issue
-	ELIXIR_VERSION="1.15.5-otp-25"
+	# Hardcode this value To avoid OTP and ElixirLS compatibility issue
+	# https://github.com/elixir-lang/elixir/tags
+	
+	# ELIXIR_VERSION="1.15.5-otp-25"
+	ELIXIR_VERSION="1.17.0-otp-27"
 
 	# github API equivalent
 	# curl -o- -s https://api.github.com/repos/elixir-lang/elixir/releases/latest | jq -r '.tag_name'

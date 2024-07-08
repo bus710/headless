@@ -91,6 +91,10 @@ install_neovim() {
 		# 	https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage \
 		# 	--output-document nvim
 
+		# wget -q \
+		# 	https://github.com/neovim/neovim/releases/download/v0.9.2/nvim.appimage \
+		# 	--output-document nvim
+
 		chmod +x nvim
 		sudo chown root:root nvim
 		sudo mv nvim /usr/bin
