@@ -83,13 +83,13 @@ install_neovim() {
 		# Please check the releases list.
 		# https://github.com/neovim/neovim/releases
 
-		# wget -q \
-		# 	https://github.com/neovim/neovim/releases/download/stable/nvim.appimage \
-		# 	--output-document nvim
-
 		wget -q \
-			https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage \
+			https://github.com/neovim/neovim/releases/download/stable/nvim.appimage \
 			--output-document nvim
+
+		# wget -q \
+		# 	https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage \
+		# 	--output-document nvim
 
 		# wget -q \
 		# 	https://github.com/neovim/neovim/releases/download/v0.9.2/nvim.appimage \
