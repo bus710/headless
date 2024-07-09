@@ -240,6 +240,7 @@ config_astro_nvim_v4() {
 
 post() {
 	term_color_red
+	echo
 	echo "Done"
 	term_color_white
 }
