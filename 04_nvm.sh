@@ -83,6 +83,7 @@ install_node_lts(){
         term_color_white
 
         npm install -no-fund -g $p
+        echo 
     done
 }
 
