@@ -17,19 +17,19 @@ if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
     sudo swapoff -a
 
     echo
-    echo "Create a 16GB swapfile (/tmp/swapfile)"
+    echo "Create a 16GB swapfile (/opt/swapfile)"
     echo "This takes ~30 seconds"
     echo
 
-    sudo dd if=/dev/zero of=/tmp/swapfile bs=1G count=16 
-    sudo mkswap /tmp/swapfile
-    sudo chmod 0600 /tmp/swapfile
+    sudo dd if=/dev/zero of=/opt/swapfile bs=1G count=16 
+    sudo mkswap /opt/swapfile
+    sudo chmod 0600 /opt/swapfile
 
     echo
     echo "Swap on"
     echo
 
-    sudo swapon /tmp/swapfile
+    sudo swapon /opt/swapfile
 
     echo
     echo "Swap status"
@@ -39,7 +39,7 @@ if [[ "$CPU_TYPE" =~ "x86_64" ]]; then
 
     echo
     echo "Done - add the line below to /etc/fatab"
-    echo "/tmp/swapfile    none    swap    sw    0    0"
+    echo "/opt/swapfile    none    swap    sw    0    0"
     echo
 else
     echo "CPU type is ${CPU_TYPE}"
