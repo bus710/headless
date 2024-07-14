@@ -62,7 +62,8 @@ install_basic_packages(){
         ranger \
         ripgrep \
         xmlstarlet \
-        aptitude
+        aptitude \
+        pipewire-audio
         # autofs \
 
     # https://manpages.debian.org/stretch/lm-sensors/sensors-detect.8.en.html
