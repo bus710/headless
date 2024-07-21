@@ -19,6 +19,7 @@ term_color_white () {
 
 confirmation(){
     term_color_red
+    echo "It should be a SvelteKit project directoy created by 'npx svelte-add/latest'"
     echo "Check if there is a package.json"
     term_color_white
 
