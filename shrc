@@ -141,6 +141,8 @@ alias git-show-current-hash='git show -s --format=%H'
 alias go-export="export GOPROXY=direct; export GOSUMDB=off; export GO111MODULE=on"
 # go mod tidy
 
+alias gommand-web="echo \"waiting at 8080\" && gommand 'http.Handle(\"/\", http.FileServer(http.Dir(\".\"))); fmt.Println(http.ListenAndServe(\":8080\", nil))'"
+
 alias code="code --enable-features=UserOzonePlatform --ozone-platform=wayland . 2> /dev/null"
 alias insider="code-insiders ."
 

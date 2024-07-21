@@ -40,6 +40,10 @@ install_packages(){
     # goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'
     go install -v github.com/shurcooL/goexec@latest 
 
+    go install github.com/sno6/gommand@latest
+    # gommand 'http.Handle("/", http.FileServer(http.Dir("."))); \
+    #   fmt.Println(http.ListenAndServe(":8080", nil))'
+
     # Bubble tea related
     go install -v github.com/maaslalani/slides@latest
 
