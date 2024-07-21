@@ -122,7 +122,7 @@ export default {
 
 	plugins: [
 		require('@tailwindcss/typography'),
-		require('@tailwindcss/forms'),
+		require('@tailwindcss/forms')({strategy: 'class'}),
 		require('daisyui'),
 	]
 };" >> tailwind.config.js
