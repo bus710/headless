@@ -182,6 +182,7 @@ alias fan0="sudo bash -c \"echo level 0 > /proc/acpi/ibm/fan\""
 alias fan1="sudo bash -c \"echo level 1 > /proc/acpi/ibm/fan\""
 alias fan-auto="sudo bash -c \"echo level auto > /proc/acpi/ibm/fan\""
 alias fan-check="cat /proc/acpi/ibm/fan"
+alias cal="ncal -b -A2"
 
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 

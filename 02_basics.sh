@@ -44,6 +44,7 @@ install_basic_packages(){
         zsh \
         vim \
         git \
+        ncal \
         ncdu \
         htop \
         curl \
