@@ -52,6 +52,7 @@ restore-heroicons(){
     echo "restore heroicons"
     term_color_white
 
+    mkdir assets/vendor/heroicons
     cd assets/vendor/heroicons
     sed -n 4,10p UPGRADE.md | bash -
     cd -
