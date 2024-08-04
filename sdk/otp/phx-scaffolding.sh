@@ -56,6 +56,16 @@ modify_endpoint_ip(){
     sed -i "s/{127, 0, 0, 1}/{0, 0, 0, 0}/" config/dev.exs
 }
 
+config_http_port(){
+    term_color_red
+    echo "Config http Port"
+    echo "- Check with netstat -tuln or ss -tuln"
+    echo
+    term_color_white
+
+    sed -i "s/http: [ip: {0, 0, 0, 0}, port: 4000],/http: [ip: {0, 0, 0, 0}, port: 4002],/" config/dev.exs
+}
+
 config_db_port(){
     term_color_red
     echo "Config DB Port"
