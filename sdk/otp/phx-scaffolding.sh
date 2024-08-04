@@ -58,17 +58,17 @@ modify_endpoint_ip(){
 
 config_http_port(){
     term_color_red
-    echo "Config http Port"
+    echo "Config the http port to 4002"
     echo "- Check with netstat -tuln or ss -tuln"
     echo
     term_color_white
 
-    sed -i "s/http: [ip: {0, 0, 0, 0}, port: 4000],/http: [ip: {0, 0, 0, 0}, port: 4002],/" config/dev.exs
+    sed -i "s/port: 4000/port: 4002/" config/dev.exs
 }
 
 config_db_port(){
     term_color_red
-    echo "Config DB Port"
+    echo "Config the DB port to 5501 or something else"
     echo "- Check with netstat -tuln or ss -tuln"
     echo "- Docker Postgresql container might be using the 5501 port, then don't change"
     echo
@@ -81,8 +81,15 @@ config_db_port(){
 
     if [[ $ans == "y" ]]; then
         echo "Please put 4 digits numbers"
-        read -n 4 port
-        DB_PORT=$port
+        read -n 4 port 
+
+        if [[ ! $port == "" ]]; then
+            DB_PORT=$port
+        fi
+
+        echo 
+        echo "The given port is $DB_PORT"
+        echo 
     fi
 }
 
@@ -284,6 +291,7 @@ post(){
 trap term_color_white EXIT
 confirmation
 modify_endpoint_ip
+config_http_port
 config_db_port
 install_credo
 reset_docker_container
