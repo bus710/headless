@@ -52,9 +52,10 @@ restore-heroicons(){
     echo "restore heroicons"
     term_color_white
 
+    rm -rf assets/vendor/heroicons
     mkdir assets/vendor/heroicons
     cd assets/vendor/heroicons
-    sed -n 4,10p UPGRADE.md | bash -
+    # sed -n 4,10p UPGRADE.md | bash -
     cd -
 }
 
