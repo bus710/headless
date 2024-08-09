@@ -27,7 +27,7 @@ check_architecture(){
         echo "This is not x86_64 or aarch64."
         term_color_white
 
-        exit -1
+        exit 1
     fi
 }
 
@@ -74,9 +74,10 @@ configure_runcom(){
     term_color_white
 
     if [[ -f /usr/local/bin/aws ]]; then
-        sed -i '/#AWS_0/c\autoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_1/c\complete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_2/c\export PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_0/c\export PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_1/c\autoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_2/c\autoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_3/c\complete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
     fi
 }
 

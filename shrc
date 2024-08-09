@@ -29,6 +29,7 @@ if [[ -f /usr/local/bin/aws ]] then;
     #AWS_0
     #AWS_1
     #AWS_2
+    #AWS_3
     
     # AWS creds
     export AWS_USER=terraform
