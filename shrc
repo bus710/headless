@@ -178,8 +178,10 @@ alias tauri-scaffolding="/home/$LOGNAME/repo/headless/sdk/tauri/tauri-scaffoldin
 alias phx-scaffolding="/home/$LOGNAME/repo/headless/sdk/otp/phx-scaffolding.sh"
 alias phx-restore="/home/$LOGNAME/repo/headless/sdk/otp/phx-restore.sh"
 
-alias ac="arduino-cli"
 alias tr="terraform"
+alias tr-scaffolding="cat /home/$LOGNAME/repo/headless/infra/main.tf >> main.tf"
+
+alias ac="arduino-cli"
 alias hq="harlequin"
 
 alias cool="sudo bash -c \"echo level 0 > /proc/acpi/ibm/fan > /dev/null \""
