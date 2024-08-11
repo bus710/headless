@@ -105,7 +105,7 @@ alias fw='cd ~/repo/fltws'
 alias rj='cd ~/repo/reactws'
 alias sv='cd ~/repo/svtws'
 
-alias tw='cd ~/repo/tmp'
+alias tw='cd ~/repo/terraform-workspace'
 alias bw='cd ~/repo/blog'
 alias cl='cd ~/repo/cloud'
 alias aw='cd ~/repo/algorithms'
