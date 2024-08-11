@@ -39,6 +39,9 @@ cleanup(){
     sudo rm -rf /usr/local/aws-cli
     sudo rm -rf /usr/local/bin/aws
     sudo rm -rf /usr/local/bin/aws_completer
+
+    rm -rf /home/$LOGNAME/Downloads/aws
+    rm -rf /home/$LOGNAME/Downloads/awscliv2.zip
 }
 
 install_sdk(){
@@ -77,10 +80,10 @@ configure_runcom(){
     term_color_white
 
     if [[ -f /usr/local/bin/aws ]]; then
-        sed -i '/#AWS_0/c\export PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_1/c\autoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_2/c\autoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_3/c\complete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_0/c\\texport PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_1/c\\tautoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_2/c\\tautoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_3/c\\tcomplete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
     fi
 }
 

@@ -95,9 +95,10 @@ configure_runcom(){
     # AWS cli
     if [[ -f /usr/local/bin/aws ]]; then
         echo "Activate AWS CLI"
-        sed -i '/#AWS_0/c\autoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_1/c\complete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_2/c\export PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_0/c\\texport PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_1/c\\tautoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_2/c\\tautoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_3/c\\tcomplete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
     fi
     
     # Android if exists
