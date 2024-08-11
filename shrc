@@ -294,7 +294,6 @@ stop-keyring () {
     systemctl status --user gnome-keyring-daemon --no-pager | grep -A2 CGroup
 }
 
-
 restart-audio () {
     AUDIO_DEVICE=$(lspci | grep Audio)
     echo -e "\e[91m"
