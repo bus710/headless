@@ -24,7 +24,7 @@
 #RUST_0
 
 # AWS
-if [[ -f /usr/local/bin/aws ]] then;
+if [[ -f /usr/local/bin/aws && ~/.aws/config ]]; then
     # AWS cli
     #AWS_0
     #AWS_1
