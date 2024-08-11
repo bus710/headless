@@ -66,6 +66,9 @@ install_sdk(){
     term_color_white
 
     aws --version
+
+    rm -rf /home/$LOGNAME/Downloads/aws
+    rm -rf /home/$LOGNAME/Downloads/awscliv2.zip
 }
 
 configure_runcom(){
