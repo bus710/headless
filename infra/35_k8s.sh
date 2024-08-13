@@ -6,6 +6,7 @@ set -e
 
 CPU_TYPE=$(uname -m)
 CPU_TARGET=""
+VERSION=""
 
 if [[ "$EUID" == 0 ]]; then 
     echo "Please run as super user (w/o sudo)"
@@ -34,6 +35,14 @@ check_architecture(){
 
 confirmation(){
     term_color_red
+    echo "Check the stable version"
+    term_color_white
+
+    # VERSION=$(curl -L -s -w '\n' https://dl.k8s.io/release/stable.txt)
+    VERSION=$(curl -o- -s  https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r '.tag_name')
+    echo $VERSION
+
+    term_color_red
     echo "Kubectl, Minikube, and Kubeadm will be installed"
     echo "Do you want to install? (y/n)"
     term_color_white
@@ -54,23 +63,17 @@ install_kubectl(){
     fi
 
     term_color_red
-    echo "Check the stable version for Kubectl"
-    term_color_white
-
-    V=$(curl -L -s -w '\n' https://dl.k8s.io/release/stable.txt)
-    echo $V
-
-    term_color_red
     echo "Install Kubectl"
+    echo "- https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/"
     term_color_white
 
-    curl -LO "https://dl.k8s.io/release/${V}/bin/linux/${CPU_TARGET}/kubectl"
+    curl -LO "https://dl.k8s.io/release/${VERSION}/bin/linux/${CPU_TARGET}/kubectl"
 
     term_color_red
     echo "Validate Kubectl"
     term_color_white
 
-    curl -LO "https://dl.k8s.io/${V}/bin/linux/amd64/kubectl.sha256"
+    curl -LO "https://dl.k8s.io/${VERSION}/bin/linux/${CPU_TARGET}/kubectl.sha256"
     RES=$(echo "$(cat kubectl.sha256) kubectl" | sha256sum --check)
     rm -rf kubectl.sha256
     
@@ -113,16 +116,23 @@ install_minikube(){
 install_kubeadm(){
     term_color_red
     echo "Install Kubeadm"
+    echo "- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/"
     term_color_white
 
-    # Get the key
-    sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg \
-        https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    VERSION2="v1.30"
 
-    # Add the repo list
-    A="[signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg]"
-    B="https://apt.kubernetes.io/ kubernetes-xenial main"
-    echo "deb $A $B" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    # Cleanup
+    sudo rm -rf /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    sudo rm -rf /etc/apt/sources.list.d/kubernetes.list
+
+    # Get the key
+    sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/${VERSION2}/deb/Release.key | \
+        sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    
+    # Config the source list
+    A="[signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg]"
+    B="https://pkgs.k8s.io/core:/stable:/${VERSION2}/deb/"
+    echo "deb $A $B /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
     # Install Kubeadm
     sudo apt-get update
