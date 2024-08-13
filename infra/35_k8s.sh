@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # https://kubernetes.io/docs/tasks/tools/
+# https://www.downloadkubernetes.com/
 
 set -e
 
