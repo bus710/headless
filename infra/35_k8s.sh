@@ -7,6 +7,7 @@ set -e
 CPU_TYPE=$(uname -m)
 CPU_TARGET=""
 VERSION=""
+VERSION2=""
 
 if [[ "$EUID" == 0 ]]; then 
     echo "Please run as super user (w/o sudo)"
@@ -40,7 +41,11 @@ confirmation(){
 
     # VERSION=$(curl -L -s -w '\n' https://dl.k8s.io/release/stable.txt)
     VERSION=$(curl -o- -s  https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r '.tag_name')
-    echo $VERSION
+    VERSION_TMP=$(echo $VERSION | grep -Eo '.*\.')
+    VERSION2=${VERSION_TMP::-1}
+
+    echo "kubectl - " $VERSION
+    echo "kubeadm - " $VERSION2
 
     term_color_red
     echo "Kubectl, Minikube, and Kubeadm will be installed"
@@ -118,8 +123,6 @@ install_kubeadm(){
     echo "Install Kubeadm"
     echo "- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/"
     term_color_white
-
-    VERSION2="v1.30"
 
     # Cleanup
     sudo rm -rf /etc/apt/keyrings/kubernetes-apt-keyring.gpg
