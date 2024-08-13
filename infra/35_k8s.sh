@@ -100,24 +100,6 @@ install_kubectl(){
     sudo rm -rf kubectl
 }
 
-install_minikube(){
-    # Remove if there is an old one
-    if [[ -f /usr/local/bin/minikube ]]; then
-        sudo rm -rf /usr/local/bin/minikube
-    fi
-
-    term_color_red
-    echo "Install Minikube"
-    term_color_white
-
-    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-${CPU_TARGET}
-
-    sudo install \
-        -o $LOGNAME -g root -m 0755 \
-        minikube-linux-${CPU_TARGET} /usr/local/bin/minikube
-    sudo rm -rf minikube
-}
-
 install_kubeadm(){
     term_color_red
     echo "Install Kubeadm"
@@ -143,6 +125,36 @@ install_kubeadm(){
     sudo apt-mark hold kubelet kubeadm
 }
 
+install_minikube(){
+    # Remove if there is an old one
+    sudo rm -rf /usr/local/bin/minikube
+
+    term_color_red
+    echo "Install Minikube"
+    term_color_white
+
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-${CPU_TARGET}
+
+    sudo install \
+        -o $LOGNAME -g root -m 0755 \
+        minikube-linux-${CPU_TARGET} /usr/local/bin/minikube
+    sudo rm -rf minikube
+}
+
+install_k3s(){
+    # Remote if there is an old one
+    if [[ -f /usr/local/bin/k3s-uninstall.sh ]]; then
+        sudo /usr/local/bin/k3s-uninstall.sh
+    fi
+
+    term_color_red
+    echo "Install k3s"
+    term_color_white
+
+    curl -sfL https://get.k3s.io | \
+        INSTALL_K3S_EXEC="server" sh -s - --flannel-backend none --token 12345
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -153,6 +165,7 @@ trap term_color_white EXIT
 check_architecture
 confirmation
 install_kubectl
-install_minikube
 install_kubeadm
+install_k3s
+# install_minikube
 post
