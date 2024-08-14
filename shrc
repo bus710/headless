@@ -73,6 +73,10 @@ export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 
 export PICO_SDK_PATH=$HOME/pico/pico-sdk
 
+if [[ -f /usr/local/bin/kubectl ]]; then
+    source <(kubectl completion zsh)
+fi
+
 # =============================
 # Aliases
 alias c='clear'
