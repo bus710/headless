@@ -123,7 +123,7 @@ install_kubeadm(){
     # Install Kubeadm
     sudo apt-get update
     sudo apt-get install -y kubelet kubeadm
-    sudo apt-mark hold kubelet kubeadm
+    # sudo apt-mark hold kubelet kubeadm
 }
 
 install_minikube(){
@@ -181,7 +181,7 @@ install_helm(){
     sudo cp linux-${CPU_TARGET}/helm /usr/local/bin/helm
 
     rm -rf helm-${HELM_VERSION}-linux-${CPU_TARGET}.tar.gz
-    rm -rf linux-${HELM_VERSION}
+    rm -rf linux-${CPU_TARGET}
     cd -
 }
 
