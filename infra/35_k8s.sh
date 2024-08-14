@@ -194,18 +194,25 @@ install_helm(){
 post(){
     term_color_red
     echo "Done"
+    echo
     echo "- kubectl get nodes"
     echo "- kubectl top node $NODE"
     echo "- kubectl describe nodes $NODE"
+    echo
     echo "- kubectl apply -f $POD_FILE"
     echo "- kubectl apply -f $DEPLOYMENT_FILE"
     echo "- kubectl get pods --all-namespaces"
     echo "- kubectl delete pods --all"
     echo "- kubectl delete pods $POD"
+    echo
     echo "- kubectl exec -it $POD sh" # Log-in POD shell
     echo "- kubectl logs --tail=2 $POD"
     echo "- kubectl exec $POD -- sh -c '$COMMAND'" # Run a command inside of pod
     echo "- kubectl cp $POD:$TARGET_FILE $LOCAL_FILE" # Copy file from pod to local
+    echo
+    echo "- kubectl delete deploy --all" # Delete all controllers
+    echo 
+    echo "- kubectl get all"
     echo 
     echo "- sudo journalctl -u kubelet"
     echo "- sudo systemctl status k3s"
