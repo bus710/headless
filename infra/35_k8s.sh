@@ -178,10 +178,10 @@ install_helm(){
     cd $HOME/Downloads
     wget https://get.helm.sh/helm-${HELM_VERSION}-linux-${CPU_TARGET}.tar.gz
     tar xf helm-${HELM_VERSION}-linux-${CPU_TARGET}.tar.gz
-    rm -rf *.gz
-
     sudo cp linux-${CPU_TARGET}/helm /usr/local/bin/helm
 
+    rm -rf helm-${HELM_VERSION}-linux-${CPU_TARGET}.tar.gz
+    rm -rf linux-${HELM_VERSION}
     cd -
 }
 
