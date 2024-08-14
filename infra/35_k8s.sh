@@ -153,7 +153,7 @@ install_k3s(){
     term_color_white
 
     curl -sfL https://get.k3s.io | \
-        INSTALL_K3S_EXEC="server" sh -s - --flannel-backend none --token 12345
+        INSTALL_K3S_EXEC="server" sh -s - --token 12345
 
     # There are 3 ways to refer the config
     # 1. sudo kubectl --kubeconfig=/etc/rancher/k3s/k3s.yaml get nodes
