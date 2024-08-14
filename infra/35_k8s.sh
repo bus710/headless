@@ -195,10 +195,9 @@ post(){
 
 trap term_color_white EXIT
 check_architecture
-# confirmation
-# install_kubectl
-# install_kubeadm
-# install_k3s
+confirmation
+install_kubectl
+install_kubeadm
+install_k3s
 install_helm
-# install_minikube
 post
