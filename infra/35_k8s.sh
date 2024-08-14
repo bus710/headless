@@ -189,10 +189,17 @@ post(){
     term_color_red
     echo "Done"
     echo "- kubectl get nodes"
+    echo "- kubectl top node $NODE"
+    echo "- kubectl describe nodes $NODE"
+    echo "- kubectl apply -f $POD_FILE"
+    echo "- kubectl apply -f $DEPLOYMENT_FILE"
     echo "- kubectl get pods --all-namespaces"
-    echo "- kubectl top node $NODE_NAME"
-    echo "- kubectl describe nodes $NODE_NAME"
-    echo "- kubectl delete pods $POD_NAME"
+    echo "- kubectl delete pods $POD"
+    echo "- kubectl exec -it $POD sh" # Log-in POD shell
+    echo "- kubectl logs --tail=2 $POD"
+    echo "- kubectl exec $POD -- sh -c '$COMMAND'" # Run a command inside of pod
+    echo "- kubectl cp $POD:$TARGET_FILE $LOCAL_FILE" # Copy file from pod to local
+    echo 
     echo "- sudo journalctl -u kubelet"
     echo "- sudo systemctl status k3s"
     echo "- sudo systemctl status kubelet"
