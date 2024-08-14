@@ -200,6 +200,7 @@ post(){
     echo "- kubectl apply -f $POD_FILE"
     echo "- kubectl apply -f $DEPLOYMENT_FILE"
     echo "- kubectl get pods --all-namespaces"
+    echo "- kubectl delete pods --all"
     echo "- kubectl delete pods $POD"
     echo "- kubectl exec -it $POD sh" # Log-in POD shell
     echo "- kubectl logs --tail=2 $POD"
