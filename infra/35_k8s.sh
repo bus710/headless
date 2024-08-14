@@ -190,6 +190,12 @@ post(){
     echo "Done"
     echo "- kubectl get nodes"
     echo "- kubectl get pods --all-namespaces"
+    echo "- kubectl top node $NODE_NAME"
+    echo "- kubectl describe nodes $NODE_NAME"
+    echo "- kubectl delete pods $POD_NAME"
+    echo "- sudo journalctl -u kubelet"
+    echo "- sudo systemctl status k3s"
+    echo "- sudo systemctl status kubelet"
     term_color_white
 }
 
