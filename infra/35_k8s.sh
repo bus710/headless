@@ -166,18 +166,39 @@ install_k3s(){
     sudo chown $LOGNAME:$LOGNAME $HOME/.kube/config
 }
 
+install_helm(){
+    term_color_red
+    echo "Install helm"
+    term_color_white
+
+    sudo rm -rf /usr/local/bin/helm
+
+    HELM_VERSION=$(curl -o- -s  https://api.github.com/repos/helm/helm/releases/latest | jq -r '.tag_name')                  
+
+    cd $HOME/Downloads
+    wget https://get.helm.sh/helm-${HELM_VERSION}-linux-${CPU_TARGET}.tar.gz
+    tar xf helm-${HELM_VERSION}-linux-${CPU_TARGET}.tar.gz
+    rm -rf *.gz
+
+    sudo cp linux-${CPU_TARGET}/helm /usr/local/bin/helm
+
+    cd -
+}
+
 post(){
     term_color_red
     echo "Done"
     echo "- kubectl get nodes"
+    echo "- kubectl get pods --all-namespaces"
     term_color_white
 }
 
 trap term_color_white EXIT
 check_architecture
-confirmation
-install_kubectl
-install_kubeadm
-install_k3s
+# confirmation
+# install_kubectl
+# install_kubeadm
+# install_k3s
+install_helm
 # install_minikube
 post

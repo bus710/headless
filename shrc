@@ -158,6 +158,7 @@ alias insider="code-insiders ."
 alias dk="docker"
 alias mink="minikube"
 alias kl="kubectl"
+alias hl="helm"
 alias skl="source <(kubectl completion zsh)"
 alias pl="pulumi"
 
