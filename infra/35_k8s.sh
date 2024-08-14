@@ -142,12 +142,18 @@ install_minikube(){
     sudo rm -rf minikube
 }
 
-install_k3s(){
-    # Remote if there is an old one
+cleanup_k3s(){
+    # Remove if there is an old one
     if [[ -f /usr/local/bin/k3s-uninstall.sh ]]; then
+        term_color_red
+        echo "Clean up previously installed k3s"
+        term_color_white
+
         sudo /usr/local/bin/k3s-uninstall.sh
     fi
+}
 
+install_k3s(){
     term_color_red
     echo "Install k3s"
     term_color_white
@@ -211,6 +217,7 @@ check_architecture
 confirmation
 install_kubectl
 install_kubeadm
+cleanup_k3s
 install_k3s
 install_helm
 post
