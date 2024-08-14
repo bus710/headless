@@ -156,9 +156,9 @@ alias code="code --enable-features=UserOzonePlatform --ozone-platform=wayland . 
 alias insider="code-insiders ."
 
 alias dk="docker"
-alias mk="minikube"
-alias kb="kubectl"
-alias skb="source <(kubectl completion zsh)"
+alias mink="minikube"
+alias kl="kubectl"
+alias skl="source <(kubectl completion zsh)"
 alias pl="pulumi"
 
 alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp-01 --region us-central1 --project connect-qaus-k8s-e004"
@@ -250,15 +250,15 @@ cmd-phoenix () {
 }
 
 cmd-kubectl () {
-    echo "minikube(mk) & kubectl(kb)"
+    echo "k3s, minikube(mink), kubectl(kl)"
     echo
-    echo "mk start"
-    echo "mk status"
-    echo "mk stop"
+    echo "k3s (or mink) start"
+    echo "k3s (or mink) status"
+    echo "k3s (or mink) stop"
     echo
-    echo "kb config use-context minikube"
-    echo "kb get nodes"
-    echo "skb => source <(kubectl completion zsh)"
+    echo "kl config use-context k3s (ok minikube)"
+    echo "kl get nodes"
+    echo "skl => source <(kubectl completion zsh)"
 }
 
 

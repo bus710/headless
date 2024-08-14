@@ -154,11 +154,22 @@ install_k3s(){
 
     curl -sfL https://get.k3s.io | \
         INSTALL_K3S_EXEC="server" sh -s - --flannel-backend none --token 12345
+
+    # There are 3 ways to refer the config
+    # 1. sudo kubectl --kubeconfig=/etc/rancher/k3s/k3s.yaml get nodes
+    # 2. export KUBECONFIG=/etc/rancher/k3s/k3s.yaml && sudo kubectl get nodes
+    # 3. or below
+
+    rm -rf $HOME/.kube
+    mkdir $HOME/.kube
+    sudo cp /etc/rancher/k3s/k3s.yaml $HOME/.kube/config
+    sudo chown $LOGNAME:$LOGNAME $HOME/.kube/config
 }
 
 post(){
     term_color_red
     echo "Done"
+    echo "- kubectl get nodes"
     term_color_white
 }
 
