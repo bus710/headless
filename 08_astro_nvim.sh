@@ -138,22 +138,31 @@ install_nerd_fonts() {
 	cd /home/$LOGNAME/repo
 
 	if [[ -d nerd-fonts ]]; then
-		echo
-		echo "A nerd-fonts directory exists"
-		echo
-		return
+		rm -rf nerd-fonts
 	fi
 
-	term_color_red
-	echo "Cloning might take some time"
-	term_color_white
-
-	git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
+	git clone --filter=blob:none --sparse \
+		https://github.com/ryanoasis/nerd-fonts.git
 
 	cd nerd-fonts
-	./install.sh
 
-	cd -
+	TARGET_FONTS=(
+		"JetBrainsMono"
+		"FiraMono"
+		"FiraCode"
+	)
+
+	for F in "${TARGET_FONTS[@]}"; do
+		term_color_red
+		echo "Install ${F}"
+		term_color_white
+
+		git sparse-checkout add patched-fonts/${F} 2>&1 > /dev/null
+		./install.sh ${F} 2>&1 > /dev/null
+	done
+
+	cd /home/$LOGNAME/repo/headless
+	rm -rf nerd-fonts
 }
 
 remove_previous_installation() {
