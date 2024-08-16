@@ -39,7 +39,7 @@ confirmation(){
     term_color_red
     echo "What will happen:"
     echo "- Remove ~/zig"
-    echo "- Install $ZIG_RELEASE and $ZLS_RELEASE"
+    echo "- Install zig $ZIG_RELEASE and zls $ZLS_RELEASE"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
@@ -75,7 +75,6 @@ install(){
     term_color_white
 
     tar xf zig-linux-*.tar.xz
-    echo "??"
     rm -rf zig*.tar.xz
     mv zig-linux-* zig
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/zig
