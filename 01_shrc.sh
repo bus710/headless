@@ -89,13 +89,13 @@ configure_runcom(){
     # Rust
     if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
         echo "Activate Rust"
-        sed -i '/#RUST_0/c\export PATH=$HOME/.cargo/bin:$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#RUST_0/c\export PATH=\$PATH:$HOME/.cargo/bin' /home/$LOGNAME/.shrc
     fi
 
     # AWS cli
     if [[ -f /usr/local/bin/aws ]]; then
         echo "Activate AWS CLI"
-        sed -i '/#AWS_0/c\\texport PATH=\/usr\/local\/bin\/aws_completer:\$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#AWS_0/c\\texport PATH=\$PATH:\/usr\/local\/bin\/aws_completer' /home/$LOGNAME/.shrc
         sed -i '/#AWS_1/c\\tautoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
         sed -i '/#AWS_2/c\\tautoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
         sed -i '/#AWS_3/c\\tcomplete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc

@@ -70,7 +70,7 @@ configure_runcom(){
     term_color_white
 
     if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
-        sed -i '/#RUST_0/c\export PATH=$HOME/.cargo/bin:$PATH' /home/$LOGNAME/.shrc
+        sed -i '/#RUST_0/c\export PATH=\$PATH:$HOME/.cargo/bin' /home/$LOGNAME/.shrc
     fi
 }
 
