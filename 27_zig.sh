@@ -113,14 +113,6 @@ install_zls(){
     rm -rf zlsRepo
 
     cd /home/$LOGNAME/repo/headless
-
-    # git clone --recurse-submodules --branch $ZLS_RELEASE \
-    #     https://github.com/zigtools/zls zlsRepo
-    # cd /home/$LOGNAME/zig/zlsRepo
-    # /home/$LOGNAME/zig/zig build -Doptimize=ReleaseSafe
-    # mv ./zig-out/bin/zls /home/$LOGNAME/zig
-    # cd /home/$LOGNAME/zig
-    # rm -rf /home/$LOGNAME/zig/zlsRepo
 }
 
 install_llvm(){
@@ -146,9 +138,9 @@ post(){
 trap term_color_white EXIT
 check_architecture_and_version
 confirmation
+install_llvm
 cleanup
 install
 configure_runcom
 install_zls
-install_llvm
 post
