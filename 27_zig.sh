@@ -123,6 +123,14 @@ configure_runcom(){
     fi
 }
 
+configure_zls_config(){
+    term_color_red
+    echo "Configure zls"
+    term_color_white
+
+    cp /home/$LOGNAME/repo/headless/sdk/zig/zls.json /home/$LOGNAME/.config/zls.json
+}
+
 post(){
     term_color_red
     echo "Done"
