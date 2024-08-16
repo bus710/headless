@@ -83,7 +83,7 @@ install() {
 		"golang.Go"
 		# Rust
 		"rust-lang.rust-analyzer"
-		"serayuzgur.crates"
+		"fill-labs.dependi"		# "serayuzgur.crates"
 		"vadimcn.vscode-lldb"
 		"tauri-apps.tauri-vscode"
 
