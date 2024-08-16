@@ -98,15 +98,29 @@ install_zls(){
     term_color_white
 
     cd /home/${LOGNAME}/zig
-
     rm -rf zls*
-    git clone --recurse-submodules --branch $ZLS_RELEASE \
-        https://github.com/zigtools/zls zlsRepo
-    cd /home/$LOGNAME/zig/zlsRepo
-    /home/$LOGNAME/zig/zig build -Doptimize=ReleaseSafe
-    mv ./zig-out/bin/zls /home/$LOGNAME/zig
-    cd /home/$LOGNAME/zig
-    rm -rf /home/$LOGNAME/zig/zlsRepo
+    wget ${ZLS_FILE_NAME}
+    mkdir zlsRepo
+
+    term_color_red
+    echo "Wait for untar..."
+    term_color_white
+
+    tar xf zls-${CPU_TARGET}-linux.tar.xz -C zlsRepo
+
+    mv zlsRepo/zls .
+    rm -rf zls-*
+    rm -rf zlsRepo
+
+    cd /home/$LOGNAME/repo/headless
+
+    # git clone --recurse-submodules --branch $ZLS_RELEASE \
+    #     https://github.com/zigtools/zls zlsRepo
+    # cd /home/$LOGNAME/zig/zlsRepo
+    # /home/$LOGNAME/zig/zig build -Doptimize=ReleaseSafe
+    # mv ./zig-out/bin/zls /home/$LOGNAME/zig
+    # cd /home/$LOGNAME/zig
+    # rm -rf /home/$LOGNAME/zig/zlsRepo
 }
 
 install_llvm(){
