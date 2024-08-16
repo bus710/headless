@@ -39,7 +39,9 @@ confirmation(){
     term_color_red
     echo "What will happen:"
     echo "- Remove ~/zig"
-    echo "- Install zig $ZIG_RELEASE and zls $ZLS_RELEASE"
+    echo "- Install llvm and lldb"
+    echo "- Install zig $ZIG_RELEASE"
+    echo "- Install zls $ZLS_RELEASE"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
@@ -62,9 +64,17 @@ cleanup(){
     rm -rf /home/$LOGNAME/zig
 }
 
-install(){
+install_llvm(){
     term_color_red
-    echo "Download and install Zig"
+    echo "Install LLVM and LLDB"
+    term_color_white
+
+    sudo apt install -y llvm lldb
+}
+
+install_zig(){
+    term_color_red
+    echo "Install Zig"
     term_color_white
 
     cd /home/${LOGNAME}
@@ -78,18 +88,6 @@ install(){
     rm -rf zig*.tar.xz
     mv zig-linux-* zig
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/zig
-}
-
-configure_runcom(){
-    term_color_red
-    echo "Configure runcom"
-    term_color_white
-
-    if [[ -f /home/$LOGNAME/zig/zig ]]; then
-        sed -i '/\#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
-    fi
-
-    # source /home/$LOGNAME/.shrc
 }
 
 install_zls(){
@@ -115,12 +113,14 @@ install_zls(){
     cd /home/$LOGNAME/repo/headless
 }
 
-install_llvm(){
+configure_runcom(){
     term_color_red
-    echo "Install LLVM and LLDB"
+    echo "Configure runcom"
     term_color_white
 
-    sudo apt install -y llvm lldb
+    if [[ -f /home/$LOGNAME/zig/zig ]]; then
+        sed -i '/\#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
+    fi
 }
 
 post(){
@@ -138,9 +138,9 @@ post(){
 trap term_color_white EXIT
 check_architecture_and_version
 confirmation
-install_llvm
 cleanup
-install
+install_llvm
+install_zig
 configure_runcom
 install_zls
 post
