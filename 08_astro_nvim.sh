@@ -122,7 +122,7 @@ install_btm() {
 	echo "$BTM_VERSION"
 
 	wget -O bottom.deb \
-		https://github.com/ClementTsang/bottom/releases/download/${BTM_VERSION}/bottom_${BTM_VERSION}_${ARCH_BTM}.deb
+		https://github.com/ClementTsang/bottom/releases/download/${BTM_VERSION}/bottom_${BTM_VERSION}-1_${ARCH_BTM}.deb
 
 	sudo dpkg -i bottom.deb
 	rm -rf bottom.deb
