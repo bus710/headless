@@ -88,7 +88,7 @@ configure_runcom(){
         sed -i '/\#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
     fi
 
-    source /home/$LOGNAME/.shrc
+    # source /home/$LOGNAME/.shrc
 }
 
 install_zls(){
@@ -101,7 +101,7 @@ install_zls(){
     rm -rf zls*
     git clone --recurse-submodules https://github.com/zigtools/zls zlsRepo
     cd /home/$LOGNAME/zig/zlsRepo
-    zig build -Doptimize=ReleaseSafe
+    /home/$LOGNAME/zig/zig build -Doptimize=ReleaseSafe
     mv ./zig-out/bin/zls /home/$LOGNAME/zig
     cd /home/$LOGNAME/zig
     rm -rf /home/$LOGNAME/zig/zlsRepo
@@ -116,7 +116,7 @@ install_llvm(){
 }
 
 post(){
-    echo
+    term_color_red
     echo "Done"
     echo "- Restart terminal"
     echo "- Run \"mkdir hello-world && cd hello-world && zig init\" to start a new Zig project"
@@ -124,7 +124,7 @@ post(){
     echo "- Run \"cp-zig-vscode\" to copy VSCODE configurations into the current path"
     echo "- Press \"<Space>d-c\" to start a debugging session in AstroNvim" 
     echo "  (will be asked the path to the executable. Then zig-out/bin/\$BASENAME)"
-    echo
+    term_color_white
 }
 
 trap term_color_white EXIT
