@@ -3,9 +3,12 @@
 set -e
 
 CPU_TARGET=""
-RELEASES_URL=https://ziglang.org/download/index.json
-VERSION=""
-FILE_NAME=""
+ZIG_RELEASE_URL=https://api.github.com/repos/ziglang/zig/releases/latest
+ZIG_RELEASE=""
+ZLS_RELEASE_URL=https://api.github.com/repos/zigtools/zls/releases/latest
+ZLS_RELEASE=""
+ZIG_FILE_NAME=""
+ZLS_FILE_NAME=""
 
 if [[ "$EUID" == 0 ]];
     then echo "Please run as normal user (w/o sudo)"
@@ -22,23 +25,21 @@ term_color_white () {
 
 check_architecture_and_version(){
     CPU_TARGET=$(uname -m)
-    FILTER=""
-    if [[ $CPU_TARGET =~ "x86_64" ]]; then
-        FILTER='.[].master."x86_64-linux".tarball'
-    elif [[ $CPU_TARGET =~ "aarch64" ]]; then
-        FILTER='.[].master."aarch64-linux".tarball'
-    else
+    if [[ $CPU_TARGET != "x86_64" && $CPU_TARGET != "aarch64" ]]; then
         exit
     fi
-    FILE_NAME=$(curl -s ${RELEASES_URL} | \
-        jq --raw-output --slurp $FILTER)
+
+    ZIG_RELEASE=$(curl -o- -s $ZIG_RELEASE_URL | jq -r '.tag_name')
+    ZLS_RELEASE=$(curl -o- -s $ZLS_RELEASE_URL | jq -r '.tag_name')
+    ZIG_FILE_NAME=https://ziglang.org/download/${ZIG_RELEASE}/zig-linux-${CPU_TARGET}-${ZIG_RELEASE}.tar.xz
+    ZLS_FILE_NAME=https://github.com/zigtools/zls/releases/download/${ZLS_RELEASE}/zls-${CPU_TARGET}-linux.tar.xz
 }
 
 confirmation(){
     term_color_red
     echo "What will happen:"
     echo "- Remove ~/zig"
-    echo "- Install $VERSION"
+    echo "- Install $ZIG_RELEASE and $ZLS_RELEASE"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
@@ -67,13 +68,14 @@ install(){
     term_color_white
 
     cd /home/${LOGNAME}
-    wget ${FILE_NAME}
+    wget ${ZIG_FILE_NAME}
 
     term_color_red
     echo "Wait for untar..."
     term_color_white
 
     tar xf zig-linux-*.tar.xz
+    echo "??"
     rm -rf zig*.tar.xz
     mv zig-linux-* zig
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/zig
@@ -99,7 +101,8 @@ install_zls(){
     cd /home/${LOGNAME}/zig
 
     rm -rf zls*
-    git clone --recurse-submodules https://github.com/zigtools/zls zlsRepo
+    git clone --recurse-submodules --branch $ZLS_RELEASE \
+        https://github.com/zigtools/zls zlsRepo
     cd /home/$LOGNAME/zig/zlsRepo
     /home/$LOGNAME/zig/zig build -Doptimize=ReleaseSafe
     mv ./zig-out/bin/zls /home/$LOGNAME/zig
