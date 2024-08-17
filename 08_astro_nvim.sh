@@ -157,12 +157,12 @@ install_nerd_fonts() {
 		echo "Install ${F}"
 		term_color_white
 
-		git sparse-checkout add patched-fonts/${F} 2>&1 > /dev/null
-		./install.sh ${F} 2>&1 > /dev/null
+		git sparse-checkout add patched-fonts/${F} > /dev/null 2>&1 
+		./install.sh ${F} > /dev/null 2>&1
 	done
 
 	cd /home/$LOGNAME/repo/headless
-	rm -rf nerd-fonts
+	rm -rf /home/$LOGNAME/repo/nerd-fonts
 }
 
 remove_previous_installation() {
