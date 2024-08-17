@@ -121,6 +121,7 @@ install() {
 		#"vsciot-vscode.vscode-arduino"
 		# ARM
 		#"marus25.cortex-debug"
+		#"webfreak.debug"
 		# ESP32
 		# "espressif.esp-idf-extension"
 
@@ -130,8 +131,8 @@ install() {
 		# "Natizyskunk.sftp"
 		
 		# Zig
-		# "webfreak.debug"
-		# "ziglang.vscode-zig"
+		"ziglang.vscode-zig"
+		"bwork.zig-tools"
 
 		# Flutter
 		# "Dart-Code.dart-code"
