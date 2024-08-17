@@ -126,6 +126,7 @@ configure_runcom(){
 configure_zls_config(){
     term_color_red
     echo "Configure zls"
+    echo "- Options: https://github.com/zigtools/zls/wiki/Configuration"
     term_color_white
 
     cp /home/$LOGNAME/repo/headless/sdk/zig/zls.json /home/$LOGNAME/.config/zls.json
