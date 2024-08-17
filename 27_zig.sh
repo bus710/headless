@@ -151,5 +151,6 @@ cleanup
 install_llvm
 install_zig
 configure_runcom
+configure_zls_config
 install_zls
 post
