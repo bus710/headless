@@ -4,6 +4,7 @@ set -e
 
 OS_TYPE=$(lsb_release -i)
 ARCH_TYPE=$(uname -m)
+NVIM_VERSION=""
 
 if [[ "$EUID" == 0 ]]; then
 	echo "Please run as normal user (w/o sudo)"
@@ -112,7 +113,7 @@ install_neovim() {
 	echo "Install required packages"
 	term_color_white
 
-	sudo apt install -y fuse libfuse2 ack-grep
+	sudo apt install -y fuse3 libfuse2 ack-grep
 
 	term_color_red
 	echo "Clean up existing configuration"
