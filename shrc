@@ -24,18 +24,20 @@
 #RUST_0
 
 # AWS
-if [[ -f /usr/local/bin/aws && -f ~/.aws/config ]]; then
-    # AWS cli
-    #AWS_0
-    #AWS_1
-    #AWS_2
-    #AWS_3
-    
-    # AWS creds
-    export AWS_USER=terraform
-    export AWS_ACCESS_KEY_ID=$(aws configure export-credentials --profile $AWS_USER | jq -r .AccessKeyId)
-    export AWS_SECRET_ACCESS_KEY=$(aws configure export-credentials --profile $AWS_USER | jq -r .SecretAccessKey)
-fi
+function activate_aws(){
+    if [[ -f /usr/local/bin/aws && -f ~/.aws/config ]]; then
+        # AWS cli
+        #AWS_0
+        #AWS_1
+        #AWS_2
+        #AWS_3
+
+        # AWS creds
+        export AWS_USER=terraform
+        export AWS_ACCESS_KEY_ID=$(aws configure export-credentials --profile $AWS_USER | jq -r .AccessKeyId)
+        export AWS_SECRET_ACCESS_KEY=$(aws configure export-credentials --profile $AWS_USER | jq -r .SecretAccessKey)
+    fi
+}
 
 # Android SDK path
 #ANDROID_0
@@ -199,7 +201,7 @@ alias fan1="sudo bash -c \"echo level 1 > /proc/acpi/ibm/fan > /dev/null\""
 alias fan-auto="sudo bash -c \"echo level auto > /proc/acpi/ibm/fan /dev/null\""
 alias fan-check="cat /proc/acpi/ibm/fan"
 alias cal="ncal -b -A2"
-
+alias aaw=activate_aws
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
 
