@@ -47,6 +47,7 @@ install_basic_packages(){
         ncal \
         ncdu \
         htop \
+        bpytop \
         curl \
         tree \
         udev \
