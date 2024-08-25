@@ -50,6 +50,11 @@ global_config(){
     # this turns off pager config that works like the less command
     git config --global pager.branch false 
 
+    # this applies vimdiff for the mergetool
+    git config --global merge.tool vimdiff
+    git config --global merge.conflictstyle diff3
+    git config --global mergetool.prompt false
+
     # to include the config files conditionally
     # if there is no matching entry in ~/.ssh/config, 
 
