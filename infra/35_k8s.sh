@@ -229,3 +229,8 @@ cleanup_k3s
 install_k3s
 install_helm
 post
+
+# Also consider:
+# - https://github.com/ahmetb/kubectx?tab=readme-ov-file#apt-debian
+# - https://github.com/johanhaleby/kubetail
+# - https://github.com/kubernetes-sigs/krew?tab=readme-ov-file
