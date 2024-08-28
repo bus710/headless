@@ -83,6 +83,8 @@ fi
 # Aliases
 alias c='clear'
 alias cl='clear'
+alias up='sudo apt update && sudo apt list --upgradable'
+alias ug='sudo apt upgrade'
 alias update='sudo apt update && sudo apt list --upgradable'
 alias upgrade='sudo apt upgrade'
 alias autoremove='sudo apt autoremove'
