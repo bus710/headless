@@ -191,6 +191,15 @@ install_helm(){
     cd -
 }
 
+config_editor(){
+    term_color_red
+    echo "Config the KUBE_EDITOR env variable in runcom"
+    term_color_white
+
+    # use sed to replace a line to this:
+    # export KUBE_EDITOR=nv
+}
+
 post(){
     term_color_red
     echo "Done"
@@ -228,6 +237,7 @@ install_kubeadm
 cleanup_k3s
 install_k3s
 install_helm
+config_editor
 post
 
 # Also consider:
