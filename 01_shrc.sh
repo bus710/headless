@@ -145,6 +145,12 @@ configure_runcom(){
         sed -i '/#TERRAFORM_0/c\autoload -U +X bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
         sed -i '/#TERRAFORM_1/c\complete -o nospace -C \/usr\/local\/bin\/terraform terraform' /home/$LOGNAME/.shrc
     fi
+
+    # k8s if exists
+    if [[ -f /usr/local/bin/kubectl ]]; then
+        echo "Reconfigure kube_editor"
+        sed -i '/#KUBE_EDITOR/c\export KUBE_EDITOR=nv' /home/$LOGNAME/.shrc
+    fi
 }
 
 post (){
