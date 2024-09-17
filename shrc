@@ -68,6 +68,9 @@ function activate_aws(){
 #TERRAFORM_0
 #TERRAFORM_1
 
+# k8s
+#KUBE_EDITOR
+
 # Etc
 export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin

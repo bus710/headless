@@ -193,11 +193,10 @@ install_helm(){
 
 config_editor(){
     term_color_red
-    echo "Config the KUBE_EDITOR env variable in runcom"
+    echo "Config to use nvim as the default editor for kubectl-edit"
     term_color_white
 
-    # use sed to replace a line to this:
-    # export KUBE_EDITOR=nv
+    sed -i '/#KUBE_EDITOR/c\export KUBE_EDITOR=nv' /home/$LOGNAME/.shrc
 }
 
 post(){
