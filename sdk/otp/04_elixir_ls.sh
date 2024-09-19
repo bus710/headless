@@ -28,7 +28,7 @@ install_language_server() {
 	# rm -rf /home/$LOGNAME/Downloads/elixir-ls.zip
 
 	term_color_red
-	echo "install and build elixir-ls for vscode"
+	echo "install and build elixir-ls for editors"
 	term_color_white
 
 	rm -rf /home/"$LOGNAME"/.elixir-ls
@@ -36,11 +36,8 @@ install_language_server() {
 	cd /home/"$LOGNAME"/.elixir-ls
 	mix deps.get && mix compile && mix elixir_ls.release -o release
 
-	# term_color_red
-	# echo "activate coc-elixir"
-	# term_color_white
-	#
-	# nvim -c "CocInstall coc-elixir"
+	cp VERSION scripts/
+	./scripts/launch.sh
 }
 
 post() {
