@@ -71,6 +71,12 @@ post
 # General info
 # https://gitlab.winehq.org/wine/wine/-/wikis/Debian-Ubuntu
 
+# To install an Windows app:
+# $ wine RidibooksSetup.exe
+
+# Once install, it can be found:
+# $ wine ~/.wine/drive_c/Program\ Files/RIDI/Ridibooks/Ridibooks.exe
+
 # Must reboot once install. Otherwise you will see this error:
 # nodrv_CreateWindow Application tried to create a window, but no driver could be loaded.
 
