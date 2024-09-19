@@ -83,4 +83,6 @@ post
 # If fonts are broken, install winetricks (from contrib repo), and do this:
 # winetricks corefonts
 
-
+# To remove all i385 if needed
+# $ sudo dpkg --remove-architecture i386
+# $ sudo apt purge "*:i386" --allow-remove-essential
