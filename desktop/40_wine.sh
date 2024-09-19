@@ -68,5 +68,13 @@ confirmation
 install
 post
 
+# General info
+# https://gitlab.winehq.org/wine/wine/-/wikis/Debian-Ubuntu
+
 # Must reboot once install. Otherwise you will see this error:
 # nodrv_CreateWindow Application tried to create a window, but no driver could be loaded.
+
+# If fonts are broken, install winetricks (from contrib repo), and do this:
+# winetricks corefonts
+
+
