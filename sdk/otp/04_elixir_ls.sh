@@ -32,12 +32,17 @@ install_language_server() {
 	term_color_white
 
 	rm -rf /home/"$LOGNAME"/.elixir-ls
-	git clone https://github.com/elixir-lsp/elixir-ls.git /home/"$LOGNAME"/.elixir-ls
-	cd /home/"$LOGNAME"/.elixir-ls
-	mix deps.get && mix compile && mix elixir_ls.release -o release
+	rm -rf /home/"$LOGNAME"/Downloads/elixir-ls
 
-	cp VERSION scripts/
-	./scripts/launch.sh
+	git clone https://github.com/elixir-lsp/elixir-ls.git /home/"$LOGNAME"/Downloads/elixir-ls
+	cd /home/"$LOGNAME"/Downloads/elixir-ls
+	mix deps.get
+	MIX_ENV=prod mix compile
+	MIX_ENV=prod mix elixir_ls.release2 -o /home/"$LOGNAME"/.elixir-ls
+
+	cd /home/"$LOGNAME"/.elixir-ls
+
+	rm -rf /home/"$LOGNAME"/Downloads/elixir-ls
 }
 
 post() {
