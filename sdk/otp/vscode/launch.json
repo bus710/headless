@@ -1,0 +1,45 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "mix_task",
+            "name": "mix (Default task)",
+            "request": "launch",
+            "projectDir": "${workspaceFolder}"
+        },
+        {
+            "type": "mix_task",
+            "name": "mix test",
+            "request": "launch",
+            "task": "test",
+            "taskArgs": [
+                "--trace"
+            ],
+            "startApps": true,
+            "projectDir": "${workspaceFolder}",
+            "requireFiles": [
+                "test/**/test_helper.exs",
+                "test/**/*_test.exs"
+            ]
+        },
+        {
+            "type": "mix_task",
+            "name": "phx.server",
+            "request": "launch",
+            "task": "phx.server",
+            "projectDir": "${workspaceFolder}"
+        },
+        {
+            "type": "mix_task",
+            "name": "attach",
+            "request": "attach",
+            "projectDir": "${workspaceFolder}",
+            "remoteNode": "some@host",
+            "debugAutoInterpretAllModules": false,
+            "debugInterpretModulesPatterns": ["MyApp.*"],
+            "env": {
+                "ELS_ELIXIR_OPTS": "--sname elixir_ls_dap --cookie mysecret"
+            }
+        }
+    ]
+}

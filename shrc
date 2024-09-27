@@ -329,6 +329,10 @@ restart-container(){
     docker container inspect $1 | grep Status
 }
 
+get-elixir-vscode-launch-json(){
+    cp -r ~/repo/headless/sdk/otp/vscode ./.vscode
+}
+
 # For gotk4
 export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 
