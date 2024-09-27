@@ -330,6 +330,7 @@ restart-container(){
 }
 
 get-elixir-vscode-launch-json(){
+    rm -rf ./.vscode
     cp -r ~/repo/headless/sdk/otp/vscode ./.vscode
 }
 
