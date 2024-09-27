@@ -3,13 +3,13 @@
     "configurations": [
         {
             "type": "mix_task",
-            "name": "mix (Default task)",
+            "name": "mix launch (vscode)",
             "request": "launch",
             "projectDir": "${workspaceFolder}"
         },
         {
             "type": "mix_task",
-            "name": "mix test",
+            "name": "mix test (vscode)",
             "request": "launch",
             "task": "test",
             "taskArgs": [
@@ -24,14 +24,14 @@
         },
         {
             "type": "mix_task",
-            "name": "phx.server",
+            "name": "phx.server (vscode)",
             "request": "launch",
             "task": "phx.server",
             "projectDir": "${workspaceFolder}"
         },
         {
             "type": "mix_task",
-            "name": "attach",
+            "name": "attach (vscode)",
             "request": "attach",
             "projectDir": "${workspaceFolder}",
             "remoteNode": "some@host",
