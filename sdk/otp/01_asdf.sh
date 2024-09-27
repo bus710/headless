@@ -50,7 +50,7 @@ install_asdf(){
 
 configure_rc(){
     term_color_red
-    echo "Congirue RC"
+    echo "Configure RC"
     term_color_white
     
     sed -i '/#ASDF_0/c\. $HOME\/.asdf\/asdf.sh' $HOME/.shrc
