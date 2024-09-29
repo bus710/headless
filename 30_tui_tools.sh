@@ -70,18 +70,6 @@ install_superfile(){
     bash -c "$(wget -qO- https://raw.githubusercontent.com/yorukot/superfile/main/install.sh)"
 }
 
-install_ducker(){
-    term_color_red
-    echo "Install Harlequin"
-    term_color_white
-
-    if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
-        cargo install --git https://github.com/robertpsoane/ducker
-    else
-        echo "No cargo found"
-    fi
-}
-
 install_harlequin(){
     term_color_red
     echo "Install Harlequin"
@@ -90,6 +78,7 @@ install_harlequin(){
     sudo apt install -y \
         pipx
 
+    pipx uninstall harlequin # so the $HOME/.local/share/pipx cache can be cleaned up
     pipx install harlequin
     pipx inject harlequin harlequin-postgres
 
@@ -116,6 +105,18 @@ install_harlequin(){
     # How to read a table "user" in the demo_dev DB
     # select * from public.user;
 
+}
+
+install_ducker(){
+    term_color_red
+    echo "Install Ducker"
+    term_color_white
+
+    if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
+        cargo install --git https://github.com/robertpsoane/ducker
+    else
+        echo "No cargo found"
+    fi
 }
 
 post(){
