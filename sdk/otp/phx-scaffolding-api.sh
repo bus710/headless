@@ -185,10 +185,9 @@ install_ecto(){
 
 config_gitignore(){
     term_color_red
-    echo "Config .gitignore not to commit the heroicons/optimized"
+    echo "Config .gitignore not to commit the elixir-tools directory"
     term_color_white
 
-    echo "/assets/vendor/heroicons/optimized/" >> .gitignore
     echo ".elixir-tools" >> .gitignore
 }
 
