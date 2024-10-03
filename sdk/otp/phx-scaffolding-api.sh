@@ -22,10 +22,9 @@ term_color_white () {
 
 confirmation(){
     term_color_red
-    echo "Phoenix scaffolding:"
+    echo "Phoenix scaffolding for API server:"
+    echo "- Make sure the project created with 'mix phx.new api --no-html --no-assets --no-live --no-gettext --no-mailer'"
     echo "- Credo and ecto will be added"
-    echo "- DaisyUI and AlpineJS will be added"
-    echo "- Some theme will be cleaned up"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
