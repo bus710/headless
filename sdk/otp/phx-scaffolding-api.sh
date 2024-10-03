@@ -193,28 +193,6 @@ config_gitignore(){
     echo ".elixir-tools" >> .gitignore
 }
 
-run_phx_gen_auth(){
-    term_color_red
-    echo "Run 'mix phx.gen.auth Accounts Users user'"
-    echo "- mix deps.get & mix ecto.migrate will follow"
-    echo
-    echo "Do you want to proceed? (y/N)"
-    term_color_white
-
-    echo
-    read -n 1 ans
-    echo
-
-    if [[ ! $ans == "y" ]]; then
-        echo "No auth related codes are installed"
-        return
-    fi
-
-    mix phx.gen.auth Accounts Users user
-    mix deps.get
-    mix ecto.migrate
-}
-
 post(){
     term_color_red
     echo "Done"
@@ -232,5 +210,4 @@ install_credo
 reset_docker_container
 install_ecto
 config_gitignore
-run_phx_gen_auth
 post
