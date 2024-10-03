@@ -188,6 +188,7 @@ alias svelte-scaffolding="/home/$LOGNAME/repo/headless/sdk/svelte/sv-scaffolding
 alias sveltekit-scaffolding="/home/$LOGNAME/repo/headless/sdk/svelte/sk-scaffolding.sh"
 alias tauri-scaffolding="/home/$LOGNAME/repo/headless/sdk/tauri/tauri-scaffolding.sh"
 alias phx-scaffolding="/home/$LOGNAME/repo/headless/sdk/otp/phx-scaffolding.sh"
+alias phx-scaffolding-api="/home/$LOGNAME/repo/headless/sdk/otp/phx-scaffolding-api.sh"
 alias phx-restore="/home/$LOGNAME/repo/headless/sdk/otp/phx-restore.sh"
 
 alias tf="terraform"
