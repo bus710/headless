@@ -75,6 +75,7 @@ install_node_lts(){
         "vscode-langservers-extracted" # need for nvim tailwindcss cmp
         "typescript"                   # need for LSP
         "typescript-language-server"   # need for LSP
+        "tsx"                          # need for transpile
     )
 
     for p in "${packages[@]}"; do
