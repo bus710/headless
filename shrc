@@ -334,6 +334,12 @@ get-elixir-vscode-launch-json(){
     cp -r ~/repo/headless/sdk/otp/vscode ./.vscode
 }
 
+npm-commands(){
+    echo "npm create vite@latest $APP_NAME -- --template react-ts|svelte"
+    echo "npm run dev -- --host --open"
+    echo
+}
+
 # For gotk4
 export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 
