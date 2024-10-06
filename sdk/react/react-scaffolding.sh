@@ -127,6 +127,7 @@ function App() {
 
 export default App;
 " >> ./src/App.jsx 
+        #
     elif [[ -f ./src/App.tsx ]]; then
         > ./src/App.tsx
         echo -e \
@@ -149,6 +150,7 @@ function App() {
 }
 export default App
 " >> ./src/App.tsx 
+        #
     else
         echo "No App.jsx is found"
     fi
