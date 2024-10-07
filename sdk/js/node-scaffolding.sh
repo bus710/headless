@@ -56,7 +56,8 @@ install(){
     # Update the main and required package
     cat package.json |
         jq '.main = "src/main.ts"' |
-        jq '.scripts.dev = "npx tsx src/main.ts"' > package.tmp
+        jq '.scripts.dev = "npx tsx src/main.ts"' |
+        jq '.scripts.build = "tsc"' > package.tmp
     cat package.tmp > package.json && rm -rf package.tmp
 
     # Also add typescript for restoring
