@@ -66,11 +66,17 @@ install(){
     # Add the main.ts file
     mkdir src
     echo 'console.log("hello");' > src/main.ts
+
+    touch .gitignore
+    echo 'package-lock.json' >> .gitignore
+    echo 'node_modules' >> .gitignore
+    echo 'dist' >> .gitignore
 }
 
 post(){
     term_color_red
     echo "Done"
+    echo "- git init --initial-branch=main"
     term_color_white
 }
 
