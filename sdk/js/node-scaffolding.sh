@@ -57,11 +57,18 @@ install(){
     cat package.json |
         jq '.main = "src/main.ts"' |
         jq '.scripts.dev = "npx tsx src/main.ts"' |
-        jq '.scripts.build = "tsc"' > package.tmp
+        jq '.scripts.build = "tsc"' |
+        jq '.scripts.lint = "eslint"' |
+        jq '.scripts.format = "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""'> package.tmp
     cat package.tmp > package.json && rm -rf package.tmp
 
-    # Also add typescript for restoring
+    # Also add packages for restoring
     npm i --save-dev typescript
+    npm i --save-dev eslint \
+        @typescript-eslint/parser \
+        @typescript-eslint/eslint-plugin \
+        eslint-config-prettier \
+        prettier
 
     # Add the main.ts file
     mkdir src
@@ -71,6 +78,19 @@ install(){
     echo 'package-lock.json' >> .gitignore
     echo 'node_modules' >> .gitignore
     echo 'dist' >> .gitignore
+
+    term_color_red
+    echo 'Some questions will be asked'
+    echo '- ✔ How would you like to use ESLint? · problems'
+    echo '- ✔ What type of modules does your project use? · javascript module'
+    echo '- ✔ Which framework does your project use? · none of those'
+    echo '- ✔ Does your project use TypeScript? · yes, typescript'
+    echo '- ✔ Where does your code run? · node (use the space key to toggle)'
+    echo '- ✔ Would you like to install them now? · Yes'
+    echo '- ✔ Which package manager do you want to use? · npm'
+    term_color_white
+
+    npx eslint --init
 }
 
 post(){
