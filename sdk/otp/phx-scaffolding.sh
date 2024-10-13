@@ -315,6 +315,7 @@ config_gitignore(){
 
     echo "/assets/vendor/heroicons/optimized/" >> .gitignore
     echo ".elixir-tools" >> .gitignore
+    echo "/assets/svelte/_build" >> .gitignore
 }
 
 post(){
