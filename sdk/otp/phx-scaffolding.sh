@@ -25,8 +25,8 @@ confirmation(){
 
     term_color_red
     echo "Phoenix scaffolding:"
+    echo "- Liveview based auth will be added (gen auth)"
     echo "- Credo, Ecto, DaisyUI and LiveSvelte will be added"
-    echo "- Some theme will be cleaned up"
     echo "- The container name will be $CONTAINER_NAME"
     echo
     echo "Do you want to proceed? (Y/n)"
