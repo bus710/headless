@@ -23,8 +23,7 @@ term_color_white () {
 confirmation(){
     term_color_red
     echo "Phoenix scaffolding:"
-    echo "- Credo and ecto will be added"
-    echo "- DaisyUI and AlpineJS will be added"
+    echo "- Credo, Ecto, DaisyUI and LiveSvelte will be added"
     echo "- Some theme will be cleaned up"
     echo
     echo "Do you want to proceed? (y/n)"
@@ -103,11 +102,58 @@ install_credo(){
     if [[ $CREDO_EXISTS == "0" ]]; then
         # (The output of below might be {:credo,"~> 1.7"},)
         CREDO_VERSION=$(mix hex.info credo | grep Config | awk '{print $2 " " $3 " " $4 ","}')
-        # Add!
-        sed -i "/:phoenix,/a\ \t${CREDO_VERSION}" mix.exs
+        # Add after 3 lines after matching (with 6 spaces and a new line)
+        sed -i "/defp deps do/{N;N;N;a\ \ \ \ \ \ ${CREDO_VERSION}
+        }" mix.exs
     fi
     mix deps.get
     mix credo gen.config
+}
+
+install_live_svelte_lib(){
+    term_color_red
+    echo "Install live_svelte library"
+    term_color_white
+
+    # Add live_svelte after phoenix in the dependencies.
+    SVELTE_EXISTS=$(grep live_svelte < mix.exs | wc -l)
+    if [[ $SVELTE_EXISTS == "0" ]]; then
+
+        # 1. Update the deps list for the live_svelte library in the mix.exs
+        # - The output of below might be {:live_svelte,"~> 0.14.0"},
+        # - Add the info with 6 spaces and a new line after 3 lines after matching 
+        SVELTE_VERSION=$(mix hex.info live_svelte | grep Config | awk '{print $2 " " $3 " " $4 ","}')
+        sed -i "/defp deps do/{N;N;N;a\ \ \ \ \ \ ${SVELTE_VERSION}
+        }" mix.exs
+
+        # 2. Update the aliases list for the setup process in the mix.exs
+        # - Replace the setup line with the given string
+        # - Replace the esbuild line with the given string
+        sed -i '/setup\: /c\ \ \ \ \ \ setup: ["deps.get", "ecto.setup", "npm install --prefix assets"],' mix.exs
+        sed -i '/"esbuild .* --minify"/c\ \ \ \ \ \ \ "node build.js --deploy --prefix assets",' mix.exs
+
+        # 3. Get dependencies and run the setup process 
+        mix deps.get
+        mix live_svelte.setup
+
+        # 4. Update /lib/${APP}_web.ex for the html_helpers
+        # - Add a comment and import lines in the html_helpers function
+        HTML_HELPER="./lib/${BASENAME}_web.ex"
+        sed -i "/defp html_helpers do/{N;N;N;N;N;N;a\ \ \ \ \ \ import LiveSvelte
+        }" $HTML_HELPER
+        sed -i "/defp html_helpers do/{N;N;N;N;N;N;a\ \ \ \ \ \ # Svelte helper
+        }" $HTML_HELPER
+
+        # 5. Update the /assets/tailwind.config.js to get TW support
+        # - Add the svelte config
+        TW_CONFIG="./assets/tailwind.config.js"
+        sed -i "/content: /a\ \ \ \ \"./svelte/**/*.svelte\"," $TW_CONFIG
+
+        # 6. Update the /config/config.exs to remove the esbuild config
+        # - Delete the esbuild block - 9 lines
+        CONFIG_EXS="./config/config.exs"
+        sed -i "/Configure esbuild/{N;N;N;N;N;N;N;N;N;d}" $CONFIG_EXS
+    fi
 }
 
 reset_docker_container(){
@@ -117,6 +163,8 @@ reset_docker_container(){
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
+
+    docker container ls
 
     echo
     read -n 1 ans
@@ -205,6 +253,85 @@ install_daisyui(){
     cd ..
 }
 
+config_gitignore(){
+    term_color_red
+    echo "Config .gitignore not to commit the heroicons/optimized"
+    term_color_white
+
+    echo "/assets/vendor/heroicons/optimized/" >> .gitignore
+    echo ".elixir-tools" >> .gitignore
+}
+
+run_phx_gen_auth(){
+    term_color_red
+    echo "Run 'mix phx.gen.auth Accounts Users user'"
+    echo "- mix deps.get & mix ecto.migrate will follow"
+    echo
+    echo "Do you want to proceed? (y/n)"
+    term_color_white
+
+    echo
+    read -n 1 ans
+    echo
+
+    if [[ ! $ans == "y" ]]; then
+        echo "No auth related codes are installed"
+        return
+    fi
+
+    mix phx.gen.auth Accounts Users user
+    mix deps.get
+    mix ecto.migrate
+}
+
+install_live_svelte_example(){
+    term_color_red
+    echo "Install live_svelte example"
+    echo "- Add [live \"/example\", Example] in the router.ex"
+    term_color_white
+
+    # If there is live_svelte, add a set of example liveview and svelte files
+    # - Add a liveview under the /lib/${APP}_web/live2 directory
+    # - Add a svelte file under the /assets/
+
+    SVELTE_EXISTS=$(grep live_svelte < mix.exs | wc -l)
+    if [[ ! $SVELTE_EXISTS == "0" ]]; then
+        mkdir ./lib/${BASENAME}_web/live2
+        cat /home/$LOGNAME/repo/headless/sdk/otp/99_live_svelte_example.ex >> ./lib/${BASENAME}_web/live2/example.ex
+        cat /home/$LOGNAME/repo/headless/sdk/otp/99_live_svelte_example.svelte >> ./assets/svelte/Example.svelte
+    fi
+}
+
+post(){
+    term_color_red
+    echo "Done"
+    echo "Try \"mix phx.server --open\""
+    echo "Or  \"iex -S mix phx.server\" (for better interactivity)"
+    term_color_white
+}
+
+trap term_color_white EXIT
+confirmation
+modify_endpoint_ip
+config_http_port
+config_db_port
+install_credo
+install_live_svelte_lib
+reset_docker_container
+install_ecto
+install_daisyui
+config_gitignore
+run_phx_gen_auth
+install_live_svelte_example
+post
+
+
+## No need to run below functions
+# install_alpinejs
+# modify_app_component    # If want to cleanup
+# modify_home_controller  # If want to cleanup
+# modify_css              # If want to cleanup
+
 install_alpinejs(){
     term_color_red
     echo "Install alphinejs"
@@ -248,59 +375,3 @@ modify_css(){
     cat /home/$LOGNAME/repo/headless/sdk/otp/99_app.css >> css/app.css
     cd ..
 }
-
-config_gitignore(){
-    term_color_red
-    echo "Config .gitignore not to commit the heroicons/optimized"
-    term_color_white
-
-    echo "/assets/vendor/heroicons/optimized/" >> .gitignore
-    echo ".elixir-tools" >> .gitignore
-}
-
-run_phx_gen_auth(){
-    term_color_red
-    echo "Run 'mix phx.gen.auth Accounts Users user'"
-    echo "- mix deps.get & mix ecto.migrate will follow"
-    echo
-    echo "Do you want to proceed? (y/n)"
-    term_color_white
-
-    echo
-    read -n 1 ans
-    echo
-
-    if [[ ! $ans == "y" ]]; then
-        echo "No auth related codes are installed"
-        return
-    fi
-
-    mix phx.gen.auth Accounts Users user
-    mix deps.get
-    mix ecto.migrate
-}
-
-post(){
-    term_color_red
-    echo "Done"
-    echo "Try \"mix phx.server --open\""
-    echo "Or  \"iex -S mix phx.server\" (for better interactivity)"
-    term_color_white
-}
-
-trap term_color_white EXIT
-confirmation
-modify_endpoint_ip
-config_http_port
-config_db_port
-install_credo
-reset_docker_container
-install_ecto
-install_daisyui
-install_alpinejs
-# modify_app_component    # If want to cleanup
-# modify_home_controller  # If want to cleanup
-# modify_css              # If want to cleanup
-config_gitignore
-run_phx_gen_auth
-post
