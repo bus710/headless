@@ -21,23 +21,27 @@ term_color_white () {
 }
 
 confirmation(){
+    CONTAINER_NAME=${CONTAINER}_${BASENAME}
+
     term_color_red
     echo "Phoenix scaffolding:"
     echo "- Credo, Ecto, DaisyUI and LiveSvelte will be added"
     echo "- Some theme will be cleaned up"
+    echo "- The container name will be $CONTAINER_NAME"
     echo
-    echo "Do you want to proceed? (y/n)"
+    echo "Do you want to proceed? (Y/n)"
     term_color_white
 
     echo
     read -n 1 ans
     echo
 
-    if [[ ! $ans == "y" ]]; then
+    if [[ $ans == "n" ]]; then
         echo ""
         exit 1
     fi
 
+    # Check if this is a typical phoenix project made by [mix phx.new].
     IS_PHOENIX=$(grep :phoenix < mix.exs | wc -l)
     if [[ $IS_PHOENIX == "0" ]]; then
         echo "Not a phoenix project"
@@ -45,11 +49,40 @@ confirmation(){
         echo "- mix phx.new $PROJECT_NAME"
         exit 1
     fi
+
+    # Check if there is an existing container that has the same name.
+    # If exists, it should be reset or this script should quit
+    CONTAINER_EXISTS=$(docker container ls --format '{"name":"{{.Names}}"}' | \
+        jq '.name' | jq -s | \
+        jq --arg CONTAINER_NAME "$CONTAINER_NAME" 'any(. == $CONTAINER_NAME)')
+
+    if [[ $CONTAINER_EXISTS == "true" ]]; then
+        term_color_red
+        echo "There is a docker container that has the same name as this project - $CONTAINER_NAME"
+        term_color_white
+
+        echo "Please review below:"
+        docker container ls --format '{"name":"{{.Names}}"}' | jq '.name' 
+        echo
+
+        term_color_red
+        echo "Abort."
+        echo "Please use another project name or remove the container with [docker container stop \$CONTAINER_NAME]"
+        term_color_white
+
+        exit 1
+    fi
+
+    term_color_red
+    echo "Get the basic libraries"
+    term_color_white
+
+    mix deps.get
 }
 
 modify_endpoint_ip(){
     term_color_red
-    echo "Change the endpoint ip to 0.0.0.0"
+    echo "Change the endpoint ip to 0.0.0.0 to open to public"
     term_color_white
 
     sed -i "s/{127, 0, 0, 1}/{0, 0, 0, 0}/" config/dev.exs
@@ -67,11 +100,8 @@ config_http_port(){
 
 config_db_port(){
     term_color_red
-    echo "Config the DB port to 5501 or something else"
-    echo "- Check with netstat -tuln or ss -tuln"
-    echo "- Docker Postgresql container might be using the 5501 port, then don't change"
-    echo
-    echo "The default port is 5501 - change? (y/N)"
+    echo "The DB port is 5501 - change? (y/N)"
+    echo "Check with [ss -tulnp]"
     term_color_white
 
     echo
@@ -79,7 +109,7 @@ config_db_port(){
     echo
 
     if [[ $ans == "y" ]]; then
-        echo "Please put 4 digits numbers"
+        echo "Please specify 4 digits number:"
         read -n 4 port 
 
         if [[ ! $port == "" ]]; then
@@ -92,95 +122,17 @@ config_db_port(){
     fi
 }
 
-install_credo(){
+launch_postgresql_docker_container(){
     term_color_red
-    echo "Install credo"
+    echo "Launch the docker container"
+    echo "- docker container ${CONTAINER}_${BASENAME}:$DB_PORT will be launched" 
     term_color_white
-
-    # Add credo after phoenix in the dependencies.
-    CREDO_EXISTS=$(grep credo < mix.exs | wc -l)
-    if [[ $CREDO_EXISTS == "0" ]]; then
-        # (The output of below might be {:credo,"~> 1.7"},)
-        CREDO_VERSION=$(mix hex.info credo | grep Config | awk '{print $2 " " $3 " " $4 ","}')
-        # Add after 3 lines after matching (with 6 spaces and a new line)
-        sed -i "/defp deps do/{N;N;N;a\ \ \ \ \ \ ${CREDO_VERSION}
-        }" mix.exs
-    fi
-    mix deps.get
-    mix credo gen.config
-}
-
-install_live_svelte_lib(){
-    term_color_red
-    echo "Install live_svelte library"
-    term_color_white
-
-    # Add live_svelte after phoenix in the dependencies.
-    SVELTE_EXISTS=$(grep live_svelte < mix.exs | wc -l)
-    if [[ $SVELTE_EXISTS == "0" ]]; then
-
-        # 1. Update the deps list for the live_svelte library in the mix.exs
-        # - The output of below might be {:live_svelte,"~> 0.14.0"},
-        # - Add the info with 6 spaces and a new line after 3 lines after matching 
-        SVELTE_VERSION=$(mix hex.info live_svelte | grep Config | awk '{print $2 " " $3 " " $4 ","}')
-        sed -i "/defp deps do/{N;N;N;a\ \ \ \ \ \ ${SVELTE_VERSION}
-        }" mix.exs
-
-        # 2. Update the aliases list for the setup process in the mix.exs
-        # - Replace the setup line with the given string
-        # - Replace the esbuild line with the given string
-        sed -i '/setup\: /c\ \ \ \ \ \ setup: ["deps.get", "ecto.setup", "npm install --prefix assets"],' mix.exs
-        sed -i '/"esbuild .* --minify"/c\ \ \ \ \ \ \ "node build.js --deploy --prefix assets",' mix.exs
-
-        # 3. Get dependencies and run the setup process 
-        mix deps.get
-        mix live_svelte.setup
-
-        # 4. Update /lib/${APP}_web.ex for the html_helpers
-        # - Add a comment and import lines in the html_helpers function
-        HTML_HELPER="./lib/${BASENAME}_web.ex"
-        sed -i "/defp html_helpers do/{N;N;N;N;N;N;a\ \ \ \ \ \ import LiveSvelte
-        }" $HTML_HELPER
-        sed -i "/defp html_helpers do/{N;N;N;N;N;N;a\ \ \ \ \ \ # Svelte helper
-        }" $HTML_HELPER
-
-        # 5. Update the /assets/tailwind.config.js to get TW support
-        # - Add the svelte config
-        TW_CONFIG="./assets/tailwind.config.js"
-        sed -i "/content: /a\ \ \ \ \"./svelte/**/*.svelte\"," $TW_CONFIG
-
-        # 6. Update the /config/config.exs to remove the esbuild config
-        # - Delete the esbuild block - 9 lines
-        CONFIG_EXS="./config/config.exs"
-        sed -i "/Configure esbuild/{N;N;N;N;N;N;N;N;N;d}" $CONFIG_EXS
-    fi
-}
-
-reset_docker_container(){
-    term_color_red
-    echo "Reset the docker container"
-    echo "- docker container ${CONTAINER}_${BASENAME} will be reset" 
-    echo "- Answer 'yes' if there is the same container"
-    echo
-    echo "Do you want to proceed? (y/n)"
-    term_color_white
-
-    docker container ls
-
-    echo
-    read -n 1 ans
-    echo
-
-    if [[ ! $ans == "y" ]]; then
-        echo 
-        return 0
-    fi
 
     # Check if DB is being used by this project
     POSTGRES_EXISTS=$(grep "postgres" < config/dev.exs | wc -l)
     if [[ $POSTGRES_EXISTS == "0" ]]; then
         echo 
-        echo "No DB is being used - abort"
+        echo "No DB is specified in the config/dev.exs - abort"
         echo
         return 0
     fi
@@ -233,12 +185,26 @@ install_ecto(){
     mix ecto.migrate
 }
 
-install_tailwind(){
+run_phx_gen_auth(){
     term_color_red
-    echo "Install tailwind"
+    echo "Run 'mix phx.gen.auth Accounts Users user'"
+    echo "- mix deps.get & mix ecto.migrate will follow"
+    echo
+    echo "Do you want to proceed? (Y/n)"
     term_color_white
 
-    mix tailwind.install
+    echo
+    read -n 1 ans
+    echo
+
+    if [[ $ans == "n" ]]; then
+        echo "No auth related codes are installed"
+        return
+    fi
+
+    mix phx.gen.auth Accounts Users user
+    mix deps.get
+    mix ecto.migrate
 }
 
 install_daisyui(){
@@ -254,36 +220,50 @@ install_daisyui(){
     cd ..
 }
 
-config_gitignore(){
+install_live_svelte_lib(){
     term_color_red
-    echo "Config .gitignore not to commit the heroicons/optimized"
+    echo "Install live_svelte library"
     term_color_white
 
-    echo "/assets/vendor/heroicons/optimized/" >> .gitignore
-    echo ".elixir-tools" >> .gitignore
-}
+    # Add live_svelte after phoenix in the dependencies.
+    SVELTE_EXISTS=$(grep live_svelte < mix.exs | wc -l)
+    if [[ $SVELTE_EXISTS == "0" ]]; then
 
-run_phx_gen_auth(){
-    term_color_red
-    echo "Run 'mix phx.gen.auth Accounts Users user'"
-    echo "- mix deps.get & mix ecto.migrate will follow"
-    echo "- Answer 'yes' unless otherwise"
-    echo
-    echo "Do you want to proceed? (Y/n)"
-    term_color_white
+        # 1. Update the deps list for the live_svelte library in the mix.exs
+        # - The output of below might be {:live_svelte,"~> 0.14.0"},
+        # - Add the info with 6 spaces and a new line after 3 lines after matching 
+        SVELTE_VERSION=$(mix hex.info live_svelte | grep Config | awk '{print $2 " " $3 " " $4 ","}')
+        sed -i "/defp deps do/{N;N;N;a\ \ \ \ \ \ ${SVELTE_VERSION}
+        }" mix.exs
 
-    echo
-    read -n 1 ans
-    echo
+        # 2. Update the aliases list for the setup process in the mix.exs
+        # - Replace the setup line with the given string
+        # - Replace the esbuild line with the given string
+        sed -i '/setup\: /c\ \ \ \ \ \ setup: ["deps.get", "ecto.setup", "npm install --prefix assets"],' mix.exs
+        sed -i '/"esbuild .* --minify"/c\ \ \ \ \ \ \ "node build.js --deploy --prefix assets",' mix.exs
 
-    if [[ ! $ans == "y" ]]; then
-        echo "No auth related codes are installed"
-        return
+        # 3. Get dependencies and run the setup process 
+        mix deps.get
+        mix live_svelte.setup
+
+        # 4. Update /lib/${APP}_web.ex for the html_helpers
+        # - Add a comment and import lines in the html_helpers function
+        HTML_HELPER="./lib/${BASENAME}_web.ex"
+        sed -i "/defp html_helpers do/{N;N;N;N;N;N;a\ \ \ \ \ \ import LiveSvelte
+        }" $HTML_HELPER
+        sed -i "/defp html_helpers do/{N;N;N;N;N;N;a\ \ \ \ \ \ # Svelte helper
+        }" $HTML_HELPER
+
+        # 5. Update the /assets/tailwind.config.js to get TW support
+        # - Add the svelte config
+        TW_CONFIG="./assets/tailwind.config.js"
+        sed -i "/content: /a\ \ \ \ \"./svelte/**/*.svelte\"," $TW_CONFIG
+
+        # 6. Update the /config/config.exs to remove the esbuild config
+        # - Delete the esbuild block - 9 lines
+        CONFIG_EXS="./config/config.exs"
+        sed -i "/Configure esbuild/{N;N;N;N;N;N;N;N;N;d}" $CONFIG_EXS
     fi
-
-    mix phx.gen.auth Accounts Users user
-    mix deps.get
-    mix ecto.migrate
 }
 
 install_live_svelte_example(){
@@ -304,8 +284,37 @@ install_live_svelte_example(){
 
         cat /home/$LOGNAME/repo/headless/sdk/otp/99_live_svelte_example.svelte >> ./assets/svelte/Example.svelte
 
-        echo '# live \"/example\", Example' >> ./lib/${BASENAME}_web/router.ex
+        # Add a new line and commented route for reference
+        echo "" >> ./lib/${BASENAME}_web/router.ex
+        echo '# live "/example", Example' >> ./lib/${BASENAME}_web/router.ex
     fi
+}
+
+install_credo(){
+    term_color_red
+    echo "Install credo"
+    term_color_white
+
+    # Add credo after phoenix in the dependencies.
+    CREDO_EXISTS=$(grep credo < mix.exs | wc -l)
+    if [[ $CREDO_EXISTS == "0" ]]; then
+        # (The output of below might be {:credo,"~> 1.7"},)
+        CREDO_VERSION=$(mix hex.info credo | grep Config | awk '{print $2 " " $3 " " $4 ","}')
+        # Add after 3 lines after matching (with 6 spaces and a new line)
+        sed -i "/defp deps do/{N;N;N;a\ \ \ \ \ \ ${CREDO_VERSION}
+        }" mix.exs
+    fi
+    mix deps.get
+    mix credo gen.config
+}
+
+config_gitignore(){
+    term_color_red
+    echo "Config .gitignore not to commit the heroicons/optimized"
+    term_color_white
+
+    echo "/assets/vendor/heroicons/optimized/" >> .gitignore
+    echo ".elixir-tools" >> .gitignore
 }
 
 post(){
@@ -321,14 +330,14 @@ confirmation
 modify_endpoint_ip
 config_http_port
 config_db_port
-install_credo
-install_live_svelte_lib
-reset_docker_container
+launch_postgresql_docker_container
 install_ecto
-install_daisyui
-config_gitignore
 run_phx_gen_auth
+install_daisyui
+install_live_svelte_lib
 install_live_svelte_example
+install_credo
+config_gitignore
 post
 
 
@@ -337,6 +346,14 @@ post
 # modify_app_component    # If want to cleanup
 # modify_home_controller  # If want to cleanup
 # modify_css              # If want to cleanup
+
+install_tailwind(){
+    term_color_red
+    echo "Install tailwind"
+    term_color_white
+
+    mix tailwind.install
+}
 
 install_alpinejs(){
     term_color_red
