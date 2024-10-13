@@ -298,6 +298,9 @@ install_live_svelte_example(){
     if [[ ! $SVELTE_EXISTS == "0" ]]; then
         mkdir ./lib/${BASENAME}_web/live2
         cat /home/$LOGNAME/repo/headless/sdk/otp/99_live_svelte_example.ex >> ./lib/${BASENAME}_web/live2/example.ex
+        CAP_BASENAME="${BASENAME^}"
+        sed -i "s/{APP_NAME}/${CAP_BASENAME}/g" ./lib/${BASENAME}_web/live2/example.ex
+
         cat /home/$LOGNAME/repo/headless/sdk/otp/99_live_svelte_example.svelte >> ./assets/svelte/Example.svelte
     fi
 }
