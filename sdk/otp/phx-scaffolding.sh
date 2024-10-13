@@ -160,6 +160,7 @@ reset_docker_container(){
     term_color_red
     echo "Reset the docker container"
     echo "- docker container ${CONTAINER}_${BASENAME} will be reset" 
+    echo "- Answer 'yes' if there is the same container"
     echo
     echo "Do you want to proceed? (y/n)"
     term_color_white
@@ -266,8 +267,9 @@ run_phx_gen_auth(){
     term_color_red
     echo "Run 'mix phx.gen.auth Accounts Users user'"
     echo "- mix deps.get & mix ecto.migrate will follow"
+    echo "- Answer 'yes' unless otherwise"
     echo
-    echo "Do you want to proceed? (y/n)"
+    echo "Do you want to proceed? (Y/n)"
     term_color_white
 
     echo
@@ -287,7 +289,6 @@ run_phx_gen_auth(){
 install_live_svelte_example(){
     term_color_red
     echo "Install live_svelte example"
-    echo "- Add [live \"/example\", Example] in the router.ex"
     term_color_white
 
     # If there is live_svelte, add a set of example liveview and svelte files
@@ -302,6 +303,8 @@ install_live_svelte_example(){
         sed -i "s/{APP_NAME}/${CAP_BASENAME}/g" ./lib/${BASENAME}_web/live2/example.ex
 
         cat /home/$LOGNAME/repo/headless/sdk/otp/99_live_svelte_example.svelte >> ./assets/svelte/Example.svelte
+
+        echo '# live \"/example\", Example' >> ./lib/${BASENAME}_web/router.ex
     fi
 }
 
