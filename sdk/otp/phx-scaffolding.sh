@@ -268,13 +268,11 @@ install_live_svelte_lib(){
 
 install_live_svelte_example(){
     term_color_red
-    echo "Install live_svelte example"
+    echo "Install live_svelte examples"
     term_color_white
 
-    # If there is live_svelte, add a set of example liveview and svelte files
-    # - Add a liveview under the /lib/${APP}_web/live2 directory
-    # - Add a svelte file under the /assets/
-
+    # If there is the live_svelte in the deps, add a set of example liveview and svelte files
+    
     SVELTE_EXISTS=$(grep live_svelte < mix.exs | wc -l)
     if [[ ! $SVELTE_EXISTS == "0" ]]; then
         mkdir ./lib/${BASENAME}_web/live2
@@ -287,6 +285,10 @@ install_live_svelte_example(){
         # Add a new line and commented route for reference
         echo "" >> ./lib/${BASENAME}_web/router.ex
         echo '# live "/example", Example' >> ./lib/${BASENAME}_web/router.ex
+
+        echo "- update /lib/${BASENAME}_web/router.ex"
+        echo "- check /lib/${BASENAME}_web/live2/example.ex"
+        echo "- check /assets/svelte/Example.svelte"
     fi
 }
 
