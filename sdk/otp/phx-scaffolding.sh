@@ -269,7 +269,7 @@ install_live_svelte_lib(){
         # 2. Update the aliases list for the setup process in the mix.exs
         # - Replace the setup line with the given string
         # - Replace the esbuild line with the given string
-        sed -i '/setup\: /c\ \ \ \ \ \ setup: ["deps.get", "ecto.setup", "npm install --prefix assets"],' mix.exs
+        sed -i '/setup\: /c\ \ \ \ \ \ setup: ["deps.get", "ecto.setup", "cmd npm install --prefix assets"],' mix.exs
         sed -i '/"esbuild .* --minify"/c\ \ \ \ \ \ \ "node build.js --deploy --prefix assets",' mix.exs
 
         # 3. Get dependencies and run the setup process 
