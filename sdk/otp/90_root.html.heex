@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<!-- <html lang="en" class="[scrollbar-gutter:stable]"> -->
+<html lang="en" class="overflow-x-hidden">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "Proposal" %>
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+  </head>
+  <body class="bg-white">
+
+    <div class="flex flex-col h-screen">
+      <div class="flex-none">
+
+        <!-- Header  -->
+        <ul class="flex relative z-10 items-center gap-4 justify-end p-2 pr-4 m-2 border-2 border-black"> 
+          <%= if @current_users do %>
+            <li class="text-[0.8125rem] leading-6 text-zinc-900">
+              <%= @current_users.email %>
+            </li>
+            <li>
+              <.link
+                href={~p"/user/settings"}
+                class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+              >
+                Settings
+              </.link>
+            </li>
+            <li>
+              <.link
+                href={~p"/user/log_out"}
+                method="delete"
+                class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+              >
+                Log out
+              </.link>
+            </li>
+          <% else %>
+            <li>
+              <.link
+                href={~p"/user/register"}
+                class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+              >
+                Register
+              </.link>
+            </li>
+            <li>
+              <.link
+                href={~p"/user/log_in"}
+                class="text-[0.8125rem] leading-6 text-zinc-900 font-semibold hover:text-zinc-700"
+              >
+                Log in
+              </.link>
+            </li>
+          <% end %>
+        </ul>
+
+      </div>
+
+      <!-- Body -->
+      <div class="flex-1 border-2 border-blue-900 m-2">
+          <%= @inner_content %>
+      </div>
+
+      <!-- Footer -->
+      <div class="flex-none">
+        <div class="flex relative z-10 items-center gap-4 justify-end p-2 pr-4 m-2 border-2
+          border-black h-10">
+
+          <div class="flex space-x-4">
+
+            <!-- Symbol and version -->
+            <img src={~p"/images/logo.svg"} width="24" />
+            <h1 class="text-brand flex items-center text-sm font-semibold leading-6">
+              Phoenix Framework
+              <small class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6">
+                v<%= Application.spec(:phoenix, :vsn) %>
+              </small>
+            </h1>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
