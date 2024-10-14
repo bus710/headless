@@ -220,6 +220,36 @@ install_daisyui(){
     cd ..
 }
 
+modify_root_component(){
+    term_color_red
+    echo "Modify:"
+    echo "- lib/${BASENAME}_web/components/layouts/root.html.heex"
+    term_color_white
+
+    > lib/${BASENAME}_web/components/layouts/root.html.heex
+    cat /home/$LOGNAME/repo/headless/sdk/otp/90_root.html.heex >> lib/${BASENAME}_web/components/layouts/root.html.heex
+}
+
+modify_app_component(){
+    term_color_red
+    echo "Modify:"
+    echo "- lib/${BASENAME}_web/components/layouts/app.html.heex"
+    term_color_white
+
+    > lib/${BASENAME}_web/components/layouts/app.html.heex
+    cat /home/$LOGNAME/repo/headless/sdk/otp/91_app.html.heex >> lib/${BASENAME}_web/components/layouts/app.html.heex
+}
+
+modify_page_html_home(){
+    term_color_red
+    echo "Modify:"
+    echo "- lib/${BASENAME}_web/controllers/page_html/home.html.heex"
+    term_color_white
+
+    > lib/${BASENAME}_web/controllers/page_html/home.html.heex
+    cat /home/$LOGNAME/repo/headless/sdk/otp/92_home.html.heex >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
+}
+
 install_live_svelte_lib(){
     term_color_red
     echo "Install live_svelte library"
@@ -337,6 +367,9 @@ launch_postgresql_docker_container
 install_ecto
 run_phx_gen_auth
 install_daisyui
+modify_root_component
+modify_app_component
+modify_page_html_home
 install_live_svelte_lib
 install_live_svelte_example
 install_credo
@@ -344,60 +377,4 @@ config_gitignore
 post
 
 
-## No need to run below functions
-# install_alpinejs
-# modify_app_component    # If want to cleanup
-# modify_home_controller  # If want to cleanup
-# modify_css              # If want to cleanup
 
-install_tailwind(){
-    term_color_red
-    echo "Install tailwind"
-    term_color_white
-
-    mix tailwind.install
-}
-
-install_alpinejs(){
-    term_color_red
-    echo "Install alphinejs"
-    term_color_white
-
-    cd assets
-    npm i alpinejs
-    > js/app.js
-    cat /home/$LOGNAME/repo/headless/sdk/otp/99_app.js >> js/app.js
-    cd ..
-}
-
-modify_app_component(){
-    term_color_red
-    echo "Modify:"
-    echo "- lib/${BASENAME}_web/components/layouts/app.html.heex"
-    term_color_white
-
-    > lib/${BASENAME}_web/components/layouts/app.html.heex
-    cat /home/$LOGNAME/repo/headless/sdk/otp/99_app.html.heex >> lib/${BASENAME}_web/components/layouts/app.html.heex
-}
-
-modify_home_controller(){
-    term_color_red
-    echo "Modify:"
-    echo "- lib/${BASENAME}_web/controllers/page_html/home.html.heex"
-    term_color_white
-
-    > lib/${BASENAME}_web/controllers/page_html/home.html.heex
-    cat /home/$LOGNAME/repo/headless/sdk/otp/99_home.html.heex >> lib/${BASENAME}_web/controllers/page_html/home.html.heex
-}
-
-modify_css(){
-    term_color_red
-    echo "Modify:"
-    echo "- assets/app.css"
-    term_color_white
-
-    cd assets
-    > css/app.css
-    cat /home/$LOGNAME/repo/headless/sdk/otp/99_app.css >> css/app.css
-    cd ..
-}
