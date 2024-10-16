@@ -145,6 +145,7 @@ install_module_entry
 install_module_function
 install_extra_apps
 install_credo
+install_vscode_launch_json
 config_gitignore
 post
 
