@@ -86,7 +86,7 @@ end" >> ./lib/${BASENAME}.ex
 
 install_extra_apps(){
     term_color_red
-    echo "Install extra application - eex, wx, runtime_tools, debugger, observer"
+    echo "Install extra applications such as eex, wx, runtime_tools, debugger, observer"
     term_color_white
 
     sed -i '/extra_applications\: /c\ \ \ \ \ \ extra_applications: [:logger, :eex, :wx, :runtime_tools, :debugger, :observer],' mix.exs
@@ -123,7 +123,7 @@ post(){
     term_color_red
     echo "Done"
     echo "- Try \"mix run\""
-    echo "- Or \"iex -S mix\" and \"${CAP_BASENAME}.start(1,2)\" or :debugger.start()"
+    echo "- Or \"iex -S mix\" and \"${CAP_BASENAME}.start(1,2)\" or \":debugger.start()\""
     term_color_white
 }
 
