@@ -78,7 +78,9 @@ install_module_function(){
   use Application
 
   def start(_type, _args) do
-    IO.puts \"start\"
+    IO.puts \"1\"
+    IO.puts \"2\"
+    IO.puts \"3\"
     {:ok, self()}
   end
 end" >> ./lib/${BASENAME}.ex
@@ -108,6 +110,15 @@ install_credo(){
     fi
     mix deps.get
     mix credo gen.config
+}
+
+install_vscode_launch_json(){
+    term_color_red
+    echo "Install vscode launch json for debugging"
+    term_color_white
+
+    rm -rf ./.vscode
+    cp -r ~/repo/headless/sdk/otp/vscode ./.vscode
 }
 
 config_gitignore(){
