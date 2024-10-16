@@ -332,7 +332,7 @@ restart-container(){
     docker container inspect $1 | grep Status
 }
 
-get-elixir-vscode-launch-json(){
+cp-elixir-vscode-launch-json(){
     rm -rf ./.vscode
     cp -r ~/repo/headless/sdk/otp/vscode ./.vscode
 }
