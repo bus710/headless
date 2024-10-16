@@ -117,6 +117,7 @@ config_gitignore(){
 
     echo ".elixir-tools" >> .gitignore
     echo ".elixir_ls" >> .gitignore
+    echo ".vscode" >> .gitignore
 }
 
 post(){
