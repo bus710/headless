@@ -88,10 +88,10 @@ end" >> ./lib/${BASENAME}.ex
 
 install_extra_apps(){
     term_color_red
-    echo "Install extra applications such as eex, wx, runtime_tools, debugger, observer"
+    echo "Install extra applications such as eex, runtime_tools, debugger, observer"
     term_color_white
 
-    sed -i '/extra_applications\: /c\ \ \ \ \ \ extra_applications: [:logger, :eex, :wx, :runtime_tools, :debugger, :observer],' mix.exs
+    sed -i '/extra_applications\: /c\ \ \ \ \ \ extra_applications: [:logger, :eex, :runtime_tools, :debugger, :observer],' mix.exs
 }
 
 install_credo(){
