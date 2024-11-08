@@ -112,6 +112,8 @@ install_wxwidgets() {
 	cd /home/"$LOGNAME"/repo
 	git clone --branch WX_3_0_BRANCH git@github.com:wxWidgets/wxWidgets.git
 
+	# The configure takes the webview option, 
+	# but erlang installation doesn't see this wx as webview enabled.
 	cd wxWidgets
 	./configure --prefix=/usr/local --enable-webview --enable-compat28 --with-gtk=3
 	git submodule update --init src/png
@@ -143,11 +145,16 @@ install_erlang() {
 	# https://github.com/asdf-vm/asdf-erlang/issues/203#issuecomment-846602541
 	export KERL_BUILD_DOCS=yes
 	export KERL_USE_AUTOCONF=0
+	# export KERL_CONFIGURE_OPTIONS="--disable-debug \
+ 	#        --enable-wx \
+ 	#        --with-wx \
+ 	#        --enable-webview \
+ 	#        --with-wx-config=/usr/local/bin/wx-config \
+ 	#        --without-javac \
+ 	#        --without-jinterface \
+ 	#        --without-odbc"
 	export KERL_CONFIGURE_OPTIONS="--disable-debug \
-        --enable-wx \
-        --with-wx \
-        --enable-webview \
-        --with-wx-config=/usr/local/bin/wx-config \
+		--without-wx \
         --without-javac \
         --without-jinterface \
         --without-odbc"
@@ -207,8 +214,8 @@ trap term_color_white EXIT
 register_repo
 confirmation
 install_packages
-install_packages_for_wx_debugger
-install_wxwidgets
+# install_packages_for_wx_debugger
+# install_wxwidgets
 install_erlang
 install_rebar3
 install_escript_symbol
