@@ -110,19 +110,27 @@ install_wxwidgets() {
 	term_color_white
 
 	cd /home/"$LOGNAME"/repo
-	git clone --branch WX_3_0_BRANCH git@github.com:wxWidgets/wxWidgets.git
+	# git clone --branch WX_3_0_BRANCH git@github.com:wxWidgets/wxWidgets.git
+	git clone --branch v3.2.5 git@github.com:wxWidgets/wxWidgets.git
 
 	# The configure takes the webview option, 
 	# but erlang installation doesn't see this wx as webview enabled.
 	cd wxWidgets
-	./configure --prefix=/usr/local --enable-webview --enable-compat28 --with-gtk=3
+
 	git submodule update --init src/png
 	git submodule update --init src/jpeg
-
+	git submodule update --init 3rdparty/catch
+	git submodule update --init 3rdparty/nanosvg
 	# git submodule update --init src/stc/scintilla
 	# git submodule update --init src/stc/lexilla
-	# git submodule update --init 3rdparty/catch
-	# git submodule update --init 3rdparty/nanosvg
+
+	./configure \
+		--prefix=/usr/local \
+		--enable-webview \
+		--enable-compat28 \
+		--enable-compat30 \
+		--enable-unicode \
+		--with-gtk=3
 
 	make -j4 && sudo make install
 	export PATH=/usr/local/bin:$PATH
@@ -146,18 +154,18 @@ install_erlang() {
 	export KERL_BUILD_DOCS=yes
 	export KERL_USE_AUTOCONF=0
 	# export KERL_CONFIGURE_OPTIONS="--disable-debug \
- 	#        --enable-wx \
- 	#        --with-wx \
- 	#        --enable-webview \
- 	#        --with-wx-config=/usr/local/bin/wx-config \
- 	#        --without-javac \
- 	#        --without-jinterface \
- 	#        --without-odbc"
+ 	#  --enable-wx \
+ 	#  --with-wx \
+ 	#  --enable-webview \
+ 	#  --with-wx-config=/usr/local/bin/wx-config \
+ 	#  --without-javac \
+ 	#  --without-jinterface \
+ 	#  --without-odbc"
 	export KERL_CONFIGURE_OPTIONS="--disable-debug \
 		--without-wx \
-        --without-javac \
-        --without-jinterface \
-        --without-odbc"
+		--without-javac \
+		--without-jinterface \
+		--without-odbc"
 	asdf install erlang "$ERLANG_VERSION"
 	asdf global erlang "$ERLANG_VERSION"
 
