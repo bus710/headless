@@ -63,9 +63,6 @@ install() {
 		"ms-vscode-remote.remote-ssh-edit"
 		"ms-vscode-remote.remote-containers"
 		"ms-azuretools.vscode-docker"
-		# Terraform
-		"HashiCorp.terraform"
-		"4ops.terraform"
 		# Config files
 		"redhat.vscode-yaml"
 		"tamasfe.even-better-toml"
@@ -79,35 +76,41 @@ install() {
 		"ms-vscode.cpptools-extension-pack"
 		"ms-vscode.cmake-tools"
 		"ms-vscode.makefile-tools"
-		# Go
-		"golang.Go"
+		# Zig
+		"ziglang.vscode-zig"
+		"bwork.zig-tools"
 		# Rust
 		"rust-lang.rust-analyzer"
 		"fill-labs.dependi"		# "serayuzgur.crates"
 		"vadimcn.vscode-lldb"
 		"tauri-apps.tauri-vscode"
+		# Go
+		"golang.Go"
+		# Flutter
+		"Dart-Code.dart-code"
+		"Dart-Code.flutter"
 
 		# JS/Node
-		"christian-kohler.npm-intellisense"
-		"dbaeumer.vscode-eslint"
-		"rvest.vs-code-prettier-eslint"
+		# "christian-kohler.npm-intellisense"
+		# "dbaeumer.vscode-eslint"
+		# "rvest.vs-code-prettier-eslint"
 
 		# Svelte
-		"svelte.svelte-vscode"
-		"ardenivanov.svelte-intellisense"
+		# "svelte.svelte-vscode"
+		# "ardenivanov.svelte-intellisense"
 		
 		# Tailwind
-		"bradlc.vscode-tailwindcss"
-		"austenc.tailwind-docs"
+		# "bradlc.vscode-tailwindcss"
+		# "austenc.tailwind-docs"
 
 		# Python and MicroPython
-		"ms-python.python"
-		"ms-python.vscode-pylance"
+		# "ms-python.python"
+		# "ms-python.vscode-pylance"
 		# "paulober.pico-w-go"
 		# "visualstudioexptteam.vscodeintellicode"
 
 		# Erlang
-		#"erlang-ls.erlang-ls"
+		# "erlang-ls.erlang-ls"
 
 		# Elixir
 		# "JakeBecker.elixir-ls"
@@ -118,10 +121,10 @@ install() {
 		# "animus-coop.vscode-elixir-mix-formatter"
 
 		# Arduino
-		#"vsciot-vscode.vscode-arduino"
+		# "vsciot-vscode.vscode-arduino"
 		# ARM
-		#"marus25.cortex-debug"
-		#"webfreak.debug"
+		# "marus25.cortex-debug"
+		# "webfreak.debug"
 		# ESP32
 		# "espressif.esp-idf-extension"
 
@@ -130,14 +133,6 @@ install() {
 		# SFTP
 		# "Natizyskunk.sftp"
 		
-		# Zig
-		"ziglang.vscode-zig"
-		"bwork.zig-tools"
-
-		# Flutter
-		# "Dart-Code.dart-code"
-		# "Dart-Code.flutter"
-
 		# React
 		# "dsznajder.es7-react-js-snippets"
 		# "planbcoding.vscode-react-refactor"
@@ -146,6 +141,10 @@ install() {
 
 		# Alpine
 		# "adrianwilczynski.alpine-js-intellisense"
+
+		# Terraform
+		# "HashiCorp.terraform"
+		# "4ops.terraform"
 	)
 
 	term_color_red
