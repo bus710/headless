@@ -2,11 +2,12 @@
 
 set -e
 
+
 URL_STUDIO="https://redirector.gvt1.com/edgedl/android/studio/ide-zips/"
-URL_STUDIO+="2022.3.1.21/android-studio-2022.3.1.21-linux.tar.gz"
+URL_STUDIO+="2024.2.1.11/android-studio-2024.2.1.11-linux.tar.gz"
 
 URL_SDK="https://dl.google.com/android/repository/"
-URL_SDK+="commandlinetools-linux-10406996_latest.zip"
+URL_SDK+="commandlinetools-linux-11076708_latest.zip"
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as a normal user (w/o sudo)"
@@ -48,18 +49,18 @@ install_ide_and_sdk(){
 
     FILE_STUDIO=$(ls $HOME/android-studio-*.tar.gz 2> /dev/null | wc -l)
     if [[ $FILE_STUDIO == "0" ]]; then
-        echo "STUDIO file is not exist"
+        echo "STUDIO file does not exist"
         wget $URL_STUDIO
     else
-        echo "STUDIO file is exist"
+        echo "STUDIO file does exist"
     fi
 
     FILE_SDK=$(ls $HOME/commandlinetools-linux-*_latest.zip 2> /dev/null | wc -l)
     if [[ $FILE_SDK == "0" ]]; then
-        echo "SDK file is not exist"
+        echo "SDK file does not exist"
         wget $URL_SDK
     else
-        echo "SDK file is exist"
+        echo "SDK file does exist"
     fi
 }
 
