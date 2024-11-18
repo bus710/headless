@@ -53,9 +53,9 @@ configure_rc(){
     echo "Configure RC"
     term_color_white
     
-    sed -i '/#ASDF_0/c\. $HOME\/.asdf\/asdf.sh' $HOME/.shrc
-    sed -i '/#ASDF_1/c\fpath=($HOME\/.asdf\/completions $fpath)' $HOME/.shrc
-    sed -i '/#ASDF_2/c\autoload -Uz compinit && compinit' $HOME/.shrc
+    sed -i '/#ASDF_0/c\\t. $HOME\/.asdf\/asdf.sh' $HOME/.shrc
+    sed -i '/#ASDF_1/c\\tfpath=($HOME\/.asdf\/completions $fpath)' $HOME/.shrc
+    sed -i '/#ASDF_2/c\\tautoload -Uz compinit && compinit' $HOME/.shrc
 }
 
 post(){

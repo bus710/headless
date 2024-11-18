@@ -49,9 +49,9 @@ function activate_aws(){
 
 # ASDF path for erlang
 if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
-#ASDF_0
-#ASDF_1
-#ASDF_2
+    #ASDF_0
+    #ASDF_1
+    #ASDF_2
 fi
 
 # Erlang erl shell args
@@ -68,8 +68,8 @@ fi
 
 # Terraform
 if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
-#TERRAFORM_0
-#TERRAFORM_1
+    #TERRAFORM_0
+    #TERRAFORM_1
 fi
 
 # k8s

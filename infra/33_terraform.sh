@@ -97,8 +97,8 @@ configure_runcom(){
     term_color_white
 
     if [[ -f /usr/local/bin/terraform ]]; then
-        sed -i '/#TERRAFORM_0/c\autoload -U +X bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#TERRAFORM_1/c\complete -o nospace -C \/usr\/local\/bin\/terraform terraform' /home/$LOGNAME/.shrc
+        sed -i '/#TERRAFORM_0/c\\tautoload -U +X bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
+        sed -i '/#TERRAFORM_1/c\\tcomplete -o nospace -C \/usr\/local\/bin\/terraform terraform' /home/$LOGNAME/.shrc
     fi
 
     source /home/$LOGNAME/.shrc

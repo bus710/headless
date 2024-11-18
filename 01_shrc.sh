@@ -115,9 +115,9 @@ configure_runcom(){
     # ASDF if exists
     if [[ -d /home/$LOGNAME/.asdf ]]; then
         echo "Activate ASDF"
-        sed -i '/#ASDF_0/c\. $HOME\/.asdf\/asdf.sh' /home/$LOGNAME/.shrc
-        sed -i '/#ASDF_1/c\fpath=($HOME\/.asdf\/completions $fpath)' /home/$LOGNAME/.shrc
-        sed -i '/#ASDF_2/c\autoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
+        sed -i '/#ASDF_0/c\\t. $HOME\/.asdf\/asdf.sh' /home/$LOGNAME/.shrc
+        sed -i '/#ASDF_1/c\\tfpath=($HOME\/.asdf\/completions $fpath)' /home/$LOGNAME/.shrc
+        sed -i '/#ASDF_2/c\\tautoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
     fi
 
     # ERL/erl args if exists
@@ -142,8 +142,8 @@ configure_runcom(){
     # Terraform if exists
     if [[ -f /usr/local/bin/terraform ]]; then
         echo "Activate Terraform auto-completion"
-        sed -i '/#TERRAFORM_0/c\autoload -U +X bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#TERRAFORM_1/c\complete -o nospace -C \/usr\/local\/bin\/terraform terraform' /home/$LOGNAME/.shrc
+        sed -i '/#TERRAFORM_0/c\\tautoload -U +X bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
+        sed -i '/#TERRAFORM_1/c\\tcomplete -o nospace -C \/usr\/local\/bin\/terraform terraform' /home/$LOGNAME/.shrc
     fi
 
     # k8s if exists
