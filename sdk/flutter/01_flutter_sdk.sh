@@ -1,4 +1,5 @@
 #!/bin/bash
+#!/usr/bin/zsh
 
 set -e
 
@@ -47,7 +48,7 @@ find_version() {
 
     # Filter out the keys
     CURRENT_HASH=$(echo $RELEASES | \
-        jq --raw-output --slurp .[]."current_release".beta)
+        jq --raw-output ."current_release".beta)
     CURRENT_INFO=""
 
     CURRENT_INFO=$(echo $RELEASES \
@@ -69,6 +70,7 @@ confirmation(){
     
     echo
     read -n 1 ans
+    # read -k 1 ans
     echo
     
     if [[ ! $ans == "y" ]]; then
@@ -131,7 +133,6 @@ configure_runcom(){
         sed -i '/#FLUTTER_2/c\export PATH=\$PATH:\$HOME\/flutter\/.pub-cache\/bin' /home/$LOGNAME/.shrc
         sed -i '/#FLUTTER_3/c\export PATH=\$PATH:\$HOME\/repo\/flutter\/bin' /home/$LOGNAME/.shrc # embedded 
         sed -i '/#FLUTTER_4/c\export PATH=\$PATH:\$HOME\/.pub-cache\/bin' /home/$LOGNAME/.shrc # embedded 
-        source /home/$LOGNAME/.shrc
     fi
 }
 
@@ -139,7 +140,9 @@ update_configuration(){
     term_color_red
     echo "Config the SDK"
     term_color_white
-    
+
+    source /home/$LOGNAME/.shrc
+
     flutter doctor
     flutter update-packages
     
@@ -180,3 +183,4 @@ install_flutter
 configure_runcom
 update_configuration
 post
+

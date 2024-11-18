@@ -47,10 +47,12 @@ function activate_aws(){
 #ANDROID_4
 #ANDROID_5
 
+if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
 # ASDF path for erlang
 #ASDF_0
 #ASDF_1
 #ASDF_2
+fi
 
 # Erlang erl shell args
 #ERL_0
@@ -64,9 +66,11 @@ function activate_aws(){
 #FLYCTL_0
 #FLYCTL_1
 
+if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
 # Terraform
 #TERRAFORM_0
 #TERRAFORM_1
+fi
 
 # k8s
 #KUBE_EDITOR
@@ -78,8 +82,10 @@ export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 
 export PICO_SDK_PATH=$HOME/pico/pico-sdk
 
+if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
 if [[ -f /usr/local/bin/kubectl ]]; then
     source <(kubectl completion zsh)
+fi
 fi
 
 # =============================
