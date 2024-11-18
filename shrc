@@ -47,8 +47,8 @@ function activate_aws(){
 #ANDROID_4
 #ANDROID_5
 
-if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
 # ASDF path for erlang
+if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
 #ASDF_0
 #ASDF_1
 #ASDF_2
@@ -66,8 +66,8 @@ fi
 #FLYCTL_0
 #FLYCTL_1
 
-if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
 # Terraform
+if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
 #TERRAFORM_0
 #TERRAFORM_1
 fi
@@ -82,10 +82,11 @@ export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 
 export PICO_SDK_PATH=$HOME/pico/pico-sdk
 
+# kubectl auto completion
 if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
-if [[ -f /usr/local/bin/kubectl ]]; then
-    source <(kubectl completion zsh)
-fi
+    if [[ -f /usr/local/bin/kubectl ]]; then
+        source <(kubectl completion zsh)
+    fi
 fi
 
 # =============================
