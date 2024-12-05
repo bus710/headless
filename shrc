@@ -26,6 +26,7 @@
 # AWS
 function activate_aws(){
     if [[ -f /usr/local/bin/aws && -f ~/.aws/config ]]; then
+        :
         # AWS cli
         #AWS_0
         #AWS_1
@@ -49,6 +50,7 @@ function activate_aws(){
 
 # ASDF path for erlang
 if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
+    :
     #ASDF_0
     #ASDF_1
     #ASDF_2
@@ -68,6 +70,7 @@ fi
 
 # Terraform
 if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
+    :
     #TERRAFORM_0
     #TERRAFORM_1
 fi
