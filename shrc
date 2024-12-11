@@ -221,8 +221,8 @@ alias fan-check="cat /proc/acpi/ibm/fan"
 alias cal="ncal -b -A2"
 alias aaw=activate_aws
 
-alias start-sway="exec sway"
-alias start-cinnamon="startx; cinnamon-session"
+alias swaywm-start="exec sway"
+alias cinnamon-start="startx; cinnamon-session"
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
 
