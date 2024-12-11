@@ -220,6 +220,9 @@ alias fan-auto="sudo bash -c \"echo level auto > /proc/acpi/ibm/fan /dev/null\""
 alias fan-check="cat /proc/acpi/ibm/fan"
 alias cal="ncal -b -A2"
 alias aaw=activate_aws
+
+alias start-sway="exec sway"
+alias start-cinnamon="startx; cinnamon-session"
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
 
