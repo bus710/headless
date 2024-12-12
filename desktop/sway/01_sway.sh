@@ -53,10 +53,11 @@ install_packages(){
     # Audio
     sudo apt install -y \
         alsa-utils \
-        pulseaudio \
-        pulseaudio-utils \
-        pulseaudio-module-bluetooth \
+        pipewire \
+        pipewire-alsa \
+        pipewire-bin \
         pipewire-pulse \
+        pulseaudio-utils \
         pavucontrol
 
     sudo usermod -aG audio $LOGNAME
