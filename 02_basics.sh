@@ -56,7 +56,6 @@ install_basic_packages(){
         psmisc \
         keychain \
         fastfetch \
-        powerline \
         bash-completion \
         command-not-found \
         jq \
@@ -67,6 +66,7 @@ install_basic_packages(){
         aptitude \
         pipewire-audio
         # autofs \
+        # powerline \
 
     # https://manpages.debian.org/stretch/lm-sensors/sensors-detect.8.en.html
     # https://wiki.archlinux.org/title/lm_sensors
@@ -132,10 +132,10 @@ install_platform_specific_packages(){
     echo "Install platform specific packages"
     term_color_white
 
-    if [[ $OS_TYPE =~ "Debian" ]]; then
-        sudo apt install -y \
-            software-properties-common
-    fi
+    # if [[ $OS_TYPE =~ "Debian" ]]; then
+    #     sudo apt install -y \
+    #         software-properties-common
+    # fi
 
     if [[ $CPU_TYPE == "x86_64" ]]; then
         echo
