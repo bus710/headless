@@ -37,9 +37,9 @@ install_packages (){
         fcitx5-hangul
 
     sudo apt install -y \
-        fonts-nanum \
-        fonts-nanum-coding \
-        fonts-noto-cjk 
+        fonts-nanum 
+        # fonts-nanum-coding \
+        # fonts-noto-cjk 
 }
 
 configuration (){
