@@ -60,6 +60,7 @@ install_basic_packages(){
         command-not-found \
         jq \
         fzf \
+        rsync \
         ranger \
         ripgrep \
         progress \
