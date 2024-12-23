@@ -62,6 +62,7 @@ install_basic_packages(){
         fzf \
         ranger \
         ripgrep \
+        progress \
         xmlstarlet \
         aptitude \
         pipewire-audio
