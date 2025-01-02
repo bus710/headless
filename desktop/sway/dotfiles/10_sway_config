@@ -69,8 +69,9 @@ output eDP-1 scale 1.1
 # $ sudo libinput list-devices | grep ELAN
 # $ swaymsg -rt get_inputs | grep _Touch
 # $ swaymsg -rt get_inputs | jq -r '.[] | select(.identifier | contains("Touch")) | .identifier'
+# - t14s g3: input "1739:52839:SYNA8018:00_06CB:CE67_Touchpad" {
+# - t14s g6: input "1267:12693:ELAN0676:00_04F3:3195_Touchpad" {
 # - x1: input "1267:12624:ELAN0670:00_04F3:3150_Touchpad" {
-# - t14s: input "1739:52839:SYNA8018:00_06CB:CE67_Touchpad" {
 # - t490s: input "1267:47:Elan_Touchpad" {
 input #TOUCH_ID {
     dwt enabled
