@@ -225,6 +225,8 @@ alias swaywm-start="exec sway"
 alias cinnamon-start="startx; cinnamon-session"
 # eval $(keychain --eval --quite $PRIVATE_KEY)
 
+alias rn="restart-networking"
+alias rk="restart-keyring"
 
 # =============================
 # Cheatsheets
