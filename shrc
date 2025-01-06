@@ -216,6 +216,7 @@ alias cpu-check="grep . /sys/devices/system/cpu/cpu*/cpufreq/scaling_max_freq"
 alias fan0="sudo bash -c \"echo level 0 > /proc/acpi/ibm/fan\""
 alias fan1="sudo bash -c \"echo level 1 > /proc/acpi/ibm/fan\""
 alias fan-auto="sudo bash -c \"echo level auto > /proc/acpi/ibm/fan \""
+alias fan-auto-tp="restart-thinkfan"
 alias fan-check="cat /proc/acpi/ibm/fan"
 alias cal="ncal -b -A2"
 alias aaw=activate_aws
@@ -226,6 +227,7 @@ alias cinnamon-start="startx; cinnamon-session"
 
 alias rn="restart-networking"
 alias rk="restart-keyring"
+alias rt="restart-thinkfan"
 
 # =============================
 # Cheatsheets
@@ -323,6 +325,15 @@ stop-keyring () {
 
     systemctl stop --now --user gnome-keyring-daemon
     systemctl status --user gnome-keyring-daemon --no-pager | grep -A2 CGroup
+}
+
+restart-thinkfan() {
+    echo -e "\e[91m"
+    echo "Restart thinkfan daemon"
+    echo -e "\e[39m"
+    echo
+
+    sudo systemctl restart thinkfan.service
 }
 
 restart-audio () {
