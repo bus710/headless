@@ -146,7 +146,8 @@ alias an='minicom -b 9600 -o -D /dev/ttyACM0'
 alias eval-ssh-agent='eval "$(ssh-agent -s -t 12h)"'
 
 alias disk620='sshfs bus710@disk620:/ ~/disk620'
-alias disk87='sshfs bus710@n02:/home/bus710/shared ~/disk87'
+alias disk87='sshfs bus710@r02:/home/bus710/shared ~/disk87'
+
 alias nv='nvim'
 alias nvc='cd ~/.config/nvim && pwd'
 alias rr='ranger'
