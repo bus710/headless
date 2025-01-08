@@ -229,6 +229,7 @@ alias cinnamon-start="startx; cinnamon-session"
 alias rn="restart-networking"
 alias rk="restart-keyring"
 alias rt="restart-thinkfan"
+alias ras="restart-as-cmd" # restart audio-share
 
 # =============================
 # Cheatsheets
@@ -335,6 +336,17 @@ restart-thinkfan() {
     echo
 
     sudo systemctl restart thinkfan.service
+}
+
+restart-as-cmd() {
+    echo -e "\e[91m"
+    echo "Restart as-cmd"
+    echo -e "\e[39m"
+    echo
+
+    # sh -c 'exec ps --no-headers --pid "$$" -N' | grep as-cmd | awk '{print $1}' | xargs kill
+    killall as-cmd  
+    as-cmd -b
 }
 
 restart-audio () {
