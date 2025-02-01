@@ -282,7 +282,8 @@ bindsym $mod+Shift+z exec grim ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 bindsym $mod+Alt+z exec grim -g "$(slurp)" ~/Downloads/$(date +%Y-%m-%d_%H-%M-%S).png
 
 # Shortcuts for browser and vscode
-bindsym $mod+y exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland --gtk-version=4 --enable-wayland-ime 
+# bindsym $mod+y exec google-chrome-stable --enable-features=UserOzonePlatform --ozone-platform=wayland --gtk-version=4 --enable-wayland-ime 
+bindsym $mod+y exec google-chrome-stable --ozone-platform-hint=auto --ozone-platform=wayland --gtk-version=4 --enable-wayland-ime --enable-features=AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoDecodeLinuxGL,VaapiIgnoreDriverChecks 
 bindsym $mod+u exec code --enable-features=UserOzonePlatform --ozone-platform=wayland
 
 # Notification
