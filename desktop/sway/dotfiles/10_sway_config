@@ -242,7 +242,7 @@ input "type:keyboard" {
     xkb_layout "us,kr"
 }
 
-default_border pixel 2
+default_border pixel 3
 gaps inner 2
 
 # Workspace left and right
