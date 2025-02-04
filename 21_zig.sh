@@ -10,6 +10,12 @@ ZLS_RELEASE=""
 ZIG_FILE_NAME=""
 ZLS_FILE_NAME=""
 
+ZIG_RELEASE_URL_MASTER=https://ziglang.org/download/index.json 
+ZIG_RELEASE_MASTER=""
+ZIG_FILE_NAME_MASTER=""
+
+TARGET="master"
+
 if [[ "$EUID" == 0 ]];
     then echo "Please run as normal user (w/o sudo)"
     exit
@@ -35,23 +41,41 @@ check_architecture_and_version(){
     ZLS_FILE_NAME=https://github.com/zigtools/zls/releases/download/${ZLS_RELEASE}/zls-${CPU_TARGET}-linux.tar.xz
 }
 
+check_architecture_and_version_master(){
+    CPU_TARGET=$(uname -m)
+    if [[ $CPU_TARGET != "x86_64" && $CPU_TARGET != "aarch64" ]]; then
+        exit
+    fi
+
+    ZIG_RELEASE_MASTER=$(curl -o- -s $ZIG_RELEASE_URL_MASTER | jq -r '.master.version')
+    ZIG_FILE_NAME_MASTER=https://ziglang.org/builds/zig-linux-${CPU_TARGET}-${ZIG_RELEASE_MASTER}.tar.xz
+}
+
+
 confirmation(){
     term_color_red
     echo "What will happen:"
     echo "- Remove ~/zig"
     echo "- Install llvm and lldb"
-    echo "- Install zig $ZIG_RELEASE"
-    echo "- Install zls $ZLS_RELEASE"
+    echo "- Install zig and zls from stable or master"
+    echo "- Stable zig $ZIG_RELEASE and zls $ZLS_RELEASE"
+    echo "- Master zig $ZIG_RELEASE_MASTER and zls building on the fly"
     echo
-    echo "Do you want to proceed? (y/n)"
+    echo "Do you want to proceed? (m/s/n)"
     term_color_white
 
     read -n 1 ans
     echo
 
-    if [[ ! $ans == "y" ]]; then
+    if [[ $ans == "s" ]]; then
+        TARGET="stable"
+    elif [[ $ans == "m" || $ans == "y" ]]; then
+        TARGET="master"
+    else
         exit 1
     fi
+
+    echo "The target version is $TARGET"
 }
 
 cleanup(){
@@ -78,7 +102,15 @@ install_zig(){
     term_color_white
 
     cd /home/${LOGNAME}
-    wget ${ZIG_FILE_NAME}
+
+    echo $TARGET
+    echo $ZIG_FILE_NAME_MASTER
+
+    if [[ $TARGET == "stable" ]]; then
+        wget ${ZIG_FILE_NAME}
+    else
+        wget ${ZIG_FILE_NAME_MASTER}
+    fi
 
     term_color_red
     echo "Wait for untar..."
@@ -109,6 +141,24 @@ install_zls(){
     mv zlsRepo/zls .
     rm -rf zls-*
     rm -rf zlsRepo
+
+    cd /home/$LOGNAME/repo/headless
+}
+
+build_zls(){
+    term_color_red
+    echo "Clone and Zig Language Server"
+    term_color_white
+
+    cd /home/${LOGNAME}/zig
+    rm -rf zls*
+    git clone git@github.com:zigtools/zls.git zlsRepo
+
+    source /home/${LOGNAME}/.shrc
+
+    cd zlsRepo
+    zig build -Doptimize=ReleaseSafe
+    mv zig-out/bin/zls /home/$LOGNAME/zig/
 
     cd /home/$LOGNAME/repo/headless
 }
@@ -146,11 +196,18 @@ post(){
 
 trap term_color_white EXIT
 check_architecture_and_version
+check_architecture_and_version_master
 confirmation
 cleanup
 install_llvm
 install_zig
 configure_runcom
 configure_zls_config
-install_zls
+
+if [[ $TARGET == "stable" ]]; then
+    install_zls
+else
+    build_zls
+fi
+
 post
