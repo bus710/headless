@@ -147,7 +147,7 @@ install_zls(){
 
 build_zls(){
     term_color_red
-    echo "Clone and Zig Language Server"
+    echo "Clone and build Zig Language Server"
     term_color_white
 
     cd /home/${LOGNAME}/zig
