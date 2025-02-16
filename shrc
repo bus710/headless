@@ -120,7 +120,7 @@ alias rw='cd ~/repo/rustws'
 alias zl='cd ~/repo/zigws'
 alias zb='zig build'
 alias zrm='zig run src/main.zig'
-alias ztm='zig test src/main.zig'
+alias ztr='zig test src/root.zig'
 
 alias fw='cd ~/repo/fltws'
 alias jw='cd ~/repo/jsws'
