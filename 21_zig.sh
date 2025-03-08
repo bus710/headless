@@ -14,7 +14,8 @@ ZIG_RELEASE_URL_MASTER=https://ziglang.org/download/index.json
 ZIG_RELEASE_MASTER=""
 ZIG_FILE_NAME_MASTER=""
 
-TARGET="master"
+# Becuase the libxev only supports stable version
+TARGET="stable"
 
 if [[ "$EUID" == 0 ]];
     then echo "Please run as normal user (w/o sudo)"
@@ -67,9 +68,9 @@ confirmation(){
     read -n 1 ans
     echo
 
-    if [[ $ans == "s" ]]; then
+    if [[ $ans == "s" || $ans == "y" ]]; then
         TARGET="stable"
-    elif [[ $ans == "m" || $ans == "y" ]]; then
+    elif [[ $ans == "m" ]]; then
         TARGET="master"
     else
         exit 1
