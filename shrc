@@ -111,19 +111,20 @@ alias sw='cd ~/repo/headless/desktop/sway'
 alias qw='cd ~/repo/headless/desktop/lxqt'
 alias ds='cd ~/repo/docs'
 
+alias kw='cd ~/repo/linux-kernel-modules'
+
+alias zl='cd ~/repo/zigws'
+alias rw='cd ~/repo/rustws'
 alias gw='cd ~/repo/gows'
 alias er='cd ~/repo/erlangws'
 alias el='cd ~/repo/elixirws'
-alias lx='elixir'
+alias fw='cd ~/repo/fltws'
+alias jw='cd ~/repo/jsws'
 
-alias rw='cd ~/repo/rustws'
-alias zl='cd ~/repo/zigws'
 alias zb='zig build'
 alias zrm='zig build run'
 alias ztr='zig test src/root.zig'
-
-alias fw='cd ~/repo/fltws'
-alias jw='cd ~/repo/jsws'
+alias lx='elixir'
 
 alias iw='cd ~/repo/iac-workspace'
 alias bw='cd ~/repo/blog'
