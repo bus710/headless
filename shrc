@@ -119,7 +119,7 @@ alias lx='elixir'
 alias rw='cd ~/repo/rustws'
 alias zl='cd ~/repo/zigws'
 alias zb='zig build'
-alias zrm='zig run src/main.zig'
+alias zrm='zig build run'
 alias ztr='zig test src/root.zig'
 
 alias fw='cd ~/repo/fltws'
