@@ -1,3 +1,6 @@
+# To check the shell
+IS_ZSH=$(echo $ZSH) 
+
 # Path
 
 # Neovim
@@ -49,7 +52,7 @@ function activate_aws(){
 #ANDROID_5
 
 # ASDF path for erlang
-if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
+if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
     :
     #ASDF_0
     #ASDF_1
@@ -69,7 +72,7 @@ fi
 #FLYCTL_1
 
 # Terraform
-if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
+if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
     :
     #TERRAFORM_0
     #TERRAFORM_1
@@ -86,7 +89,7 @@ export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 export PICO_SDK_PATH=$HOME/pico/pico-sdk
 
 # kubectl auto completion
-if [[ $(echo $0) == "/usr/bin/zsh" ]]; then
+if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
     if [[ -f /usr/local/bin/kubectl ]]; then
         source <(kubectl completion zsh)
     fi
@@ -154,7 +157,7 @@ alias nvc='cd ~/.config/nvim && pwd'
 alias rr='ranger'
 alias ll='ls -la'
 alias nf='echo "neofetch" && neofetch'
-alias ff='echo "fastfatch" && fastfetch'
+alias ff='echo "fastfetch" && fastfetch'
 alias sp='spf'
 alias lg='lazygit'
 
