@@ -47,6 +47,7 @@ install_packages (){
         cmake \
         meson \
         global \
+        cscope \
         sqlite3 \
         minicom \
         ninja-build \
