@@ -167,10 +167,19 @@ install_erlang() {
 		--without-jinterface \
 		--without-odbc"
 	asdf install erlang "$ERLANG_VERSION"
-	asdf global erlang "$ERLANG_VERSION"
+	# asdf global erlang "$ERLANG_VERSION"
 
 	# To put some arguments for the erl shell.
 	sed -i '/#ERL_0/c\export ERL_AFLAGS=\"+pc unicode -kernel shell_history enabled\"' /home/$LOGNAME/.shrc
+
+	# Add the tool version
+	if [[ -f /home/$LOGNAME/.tool-versions ]]; then
+		TV=$(cat /home/$LOGNAME/.tool-versions | grep erlang | wc -m)
+		if [[ $TV != "0" ]]; then
+			sed -i '/erlang/c\ ' /home/$LOGNAME/.tool-versions
+		fi
+	fi
+	echo "erlang $ERLANG_VERSION" >> /home/$LOGNAME/.tool-versions
 }
 
 install_rebar3() {

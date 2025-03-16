@@ -115,9 +115,16 @@ configure_runcom(){
     # ASDF if exists
     if [[ -d /home/$LOGNAME/.asdf ]]; then
         echo "Activate ASDF"
-        sed -i '/#ASDF_0/c\\t. $HOME\/.asdf\/asdf.sh' /home/$LOGNAME/.shrc
-        sed -i '/#ASDF_1/c\\tfpath=($HOME\/.asdf\/completions $fpath)' /home/$LOGNAME/.shrc
-        sed -i '/#ASDF_2/c\\tautoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
+        # sed -i '/#ASDF_0/c\\t. $HOME\/.asdf\/asdf.sh' /home/$LOGNAME/.shrc
+        # sed -i '/#ASDF_1/c\\tfpath=($HOME\/.asdf\/completions $fpath)' /home/$LOGNAME/.shrc
+        # sed -i '/#ASDF_2/c\\tautoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
+
+        sed -i '/#ASDF_0/c\\texport PATH=${ASDF_DATA_DIR:-$HOME\/.asdf}\/shims:$PATH' $HOME/.shrc
+        sed -i '/#ASDF_1/c\\tfpath=($HOME\/.asdf\/completions $fpath)' $HOME/.shrc
+        sed -i '/#ASDF_2/c\\tautoload -Uz compinit && compinit' $HOME/.shrc
+
+        mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+        asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
     fi
 
     # ERL/erl args if exists

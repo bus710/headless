@@ -27,7 +27,7 @@ confirmation(){
 
     if [[ ! $ans == "y" ]]; then
         echo ""
-        exit -1
+        exit 1
     fi
 }
 
@@ -45,17 +45,21 @@ install_asdf(){
     term_color_white
     
     TARGET_ASDF_VERSION=$(curl -o- -s https://api.github.com/repos/asdf-vm/asdf/releases/latest | jq -r '.tag_name')
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $TARGET_ASDF_VERSION
+    # git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch $TARGET_ASDF_VERSION
+    go install github.com/asdf-vm/asdf/cmd/asdf@${TARGET_ASDF_VERSION}
 }
 
 configure_rc(){
     term_color_red
     echo "Configure RC"
     term_color_white
-    
-    sed -i '/#ASDF_0/c\\t. $HOME\/.asdf\/asdf.sh' $HOME/.shrc
+   
+    sed -i '/#ASDF_0/c\\texport PATH=${ASDF_DATA_DIR:-$HOME\/.asdf}\/shims:$PATH' $HOME/.shrc
     sed -i '/#ASDF_1/c\\tfpath=($HOME\/.asdf\/completions $fpath)' $HOME/.shrc
     sed -i '/#ASDF_2/c\\tautoload -Uz compinit && compinit' $HOME/.shrc
+
+    mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+    asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
 }
 
 post(){
