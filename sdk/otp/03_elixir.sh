@@ -62,7 +62,7 @@ install_elixir() {
 	term_color_white
 
 	asdf install elixir "$ELIXIR_VERSION"
-	asdf global elixir "$ELIXIR_VERSION"
+	# asdf global elixir "$ELIXIR_VERSION"
 
 	# To help Elixir_LS vscode extension.
 	# If error occurs, check the error from "Developer: Toggle Developer Tools"
@@ -78,6 +78,15 @@ install_elixir() {
 	# The inotify-tools package is installed
 	# by the erlang installation script.
 	# sudo apt install -y inotify-tools
+
+	# Add the tool version
+	if [[ -f /home/$LOGNAME/.tool-versions ]]; then
+		TV=$(cat /home/$LOGNAME/.tool-versions | grep elixir | wc -m)
+		if [[ $TV != "0" ]]; then
+			sed -i '/elixir/c\ ' /home/$LOGNAME/.tool-versions
+		fi
+	fi
+	echo "elixir $ELIXIR_VERSION" >> /home/$LOGNAME/.tool-versions
 }
 
 install_hex() {
