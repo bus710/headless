@@ -379,6 +379,12 @@ cp-elixir-vscode-launch-json(){
     cp -r ~/repo/headless/sdk/otp/vscode ./.vscode
 }
 
+cp-kernel-clangd(){
+    touch .clangd
+    echo "CompileFlags:\n  CompilationDatabase: /home/bus710/repo/module-test/linux/" \
+        >> .clangd
+}
+
 npm-create-react-ts(){
     echo "npm create vite@latest $1 -- --template react-ts"
     npm create vite@latest $1 -- --template react-ts
