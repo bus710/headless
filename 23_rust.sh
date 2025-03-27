@@ -61,7 +61,7 @@ install_rustup_cargo(){
     echo "Update Rust components"
     term_color_white
 
-    rustup component add rustfmt clippy rls rust-analysis rust-src
+    rustup component add rustfmt clippy rust-analysis rust-src rust-analyzer
 }
 
 configure_runcom(){
