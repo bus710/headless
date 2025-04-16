@@ -121,6 +121,7 @@ alias rw='cd ~/repo/rustws'
 alias gw='cd ~/repo/gows'
 alias er='cd ~/repo/erlangws'
 alias el='cd ~/repo/elixirws'
+alias gg='cd ~/repo/gleamws'
 alias fw='cd ~/repo/fltws'
 alias jw='cd ~/repo/jsws'
 
