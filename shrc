@@ -127,6 +127,8 @@ alias jw='cd ~/repo/jsws'
 alias zb='zig build'
 alias zrm='zig build run'
 alias ztr='zig test src/root.zig'
+
+alias glm='gleam'
 alias lx='elixir'
 
 alias iw='cd ~/repo/iac-workspace'
