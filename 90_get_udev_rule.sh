@@ -29,7 +29,7 @@ if [[ $(echo $ENO | wc -m) != 0 ]]; then
     ENO_MAC=$(cat /sys/class/net/$ENO/address)
     ENO_NAME="eth0"
 
-    echo "SUBSYSTEM==\"net\", ACTION==\"add\", DRIVERS==\"?*\", ATTR{address}==\"$ENO_MAC\", ATTR{dev_id}==\"0x0\", ATTR{type}==\"1\", KERNEL==\"eth*\", NAME=\"$ENO_NAME\""
+    echo "SUBSYSTEM==\"net\", ACTION==\"add\", DRIVERS==\"?*\", ATTR{address}==\"$ENO_MAC\", ATTR{dev_id}==\"0x0\", ATTR{type}==\"1\", NAME=\"$ENO_NAME\""
 fi
 
 
