@@ -238,6 +238,8 @@ alias rk="restart-keyring"
 alias rt="restart-thinkfan"
 alias ras="restart-as-cmd" # restart audio-share
 
+alias za="source ~/zephyrproject/.venv/bin/activate"
+
 # =============================
 # Cheatsheets
 
