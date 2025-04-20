@@ -239,6 +239,8 @@ alias rt="restart-thinkfan"
 alias ras="restart-as-cmd" # restart audio-share
 
 alias za="source ~/zephyrproject/.venv/bin/activate"
+alias zp="cd ~/zephyrproject/zephyr"
+alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
 
 # =============================
 # Cheatsheets
