@@ -77,8 +77,8 @@ install() {
 		"ms-vscode.cmake-tools"
 		"ms-vscode.makefile-tools"
 		# Zig
-		"ziglang.vscode-zig"
-		"bwork.zig-tools"
+		# "ziglang.vscode-zig"
+		# "bwork.zig-tools"
 		# Rust
 		"rust-lang.rust-analyzer"
 		"fill-labs.dependi"		# "serayuzgur.crates"
@@ -87,8 +87,8 @@ install() {
 		# Go
 		"golang.Go"
 		# Flutter
-		"Dart-Code.dart-code"
-		"Dart-Code.flutter"
+		# "Dart-Code.dart-code"
+		# "Dart-Code.flutter"
 
 		# JS/Node
 		# "christian-kohler.npm-intellisense"
@@ -110,15 +110,25 @@ install() {
 		# "visualstudioexptteam.vscodeintellicode"
 
 		# Erlang
-		# "erlang-ls.erlang-ls"
+		"pgourlain.erlang"
+		"erlang-ls.erlang-ls"
+		"szTheory.erlang-formatter"
+		"yuce.erlang-otp"
 
 		# Elixir
-		# "JakeBecker.elixir-ls"
-		# "benvp.vscode-hex-pm-intellisense"
-		# "pantajoe.vscode-elixir-credo"
-		# "phoenixframework.phoenix"
-		# "Ritvyk.heex-html"
-		# "animus-coop.vscode-elixir-mix-formatter"
+		"JakeBecker.elixir-ls"
+		"benvp.vscode-hex-pm-intellisense"
+		"pantajoe.vscode-elixir-credo"
+		"phoenixframework.phoenix"
+		"Ritvyk.heex-html"
+		"animus-coop.vscode-elixir-mix-formatter"
+
+		# Gleam
+		"gleam.gleam"
+
+		# Elm
+		"Elmtooling.elm-ls-vscode"
+		"elm-land.elm-land"
 
 		# Arduino
 		# "vsciot-vscode.vscode-arduino"
