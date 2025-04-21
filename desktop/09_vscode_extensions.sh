@@ -135,8 +135,9 @@ install() {
 		# ARM
 		# "marus25.cortex-debug"
 		# "webfreak.debug"
+
 		# ESP32
-		# "espressif.esp-idf-extension"
+		"espressif.esp-idf-extension"
 
 		# =====================================
 
