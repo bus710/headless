@@ -193,6 +193,7 @@ alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp
 
 alias cp-zig-vscode="rm -rf .vscode && mkdir .vscode && cp -r /home/$LOGNAME/repo/headless/sdk/zig/zig-vscode/* .vscode/"
 
+alias esp="cd ~/esp"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias idf="idf.py"
 
@@ -241,6 +242,7 @@ alias ras="restart-as-cmd" # restart audio-share
 alias za="source ~/zephyrproject/.venv/bin/activate"
 alias zp="cd ~/zephyrproject/zephyr"
 alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
+
 
 # =============================
 # Cheatsheets
