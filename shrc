@@ -193,11 +193,6 @@ alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp
 
 alias cp-zig-vscode="rm -rf .vscode && mkdir .vscode && cp -r /home/$LOGNAME/repo/headless/sdk/zig/zig-vscode/* .vscode/"
 
-alias esp="cd ~/esp"
-alias eso="cd ~/repo/esp32"
-alias get_idf=". $HOME/esp/esp-idf/export.sh"
-alias idf="idf.py"
-
 alias cargo-upgrade-incompatible="cargo upgrade --incompatible"
 alias cargo-watch-x-run="cargo watch -x 'run'"
 
@@ -240,10 +235,17 @@ alias rk="restart-keyring"
 alias rt="restart-thinkfan"
 alias ras="restart-as-cmd" # restart audio-share
 
+alias pi="cd ~/pico"
+alias po="cd ~/repo/pico"
+
+alias esp="cd ~/esp"
+alias eso="cd ~/repo/esp32"
+alias get_idf=". $HOME/esp/esp-idf/export.sh"
+alias idf="idf.py"
+
 alias za="source ~/zephyrproject/.venv/bin/activate"
 alias zp="cd ~/zephyrproject/zephyr"
 alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
-
 
 # =============================
 # Cheatsheets
