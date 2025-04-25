@@ -238,13 +238,13 @@ alias ras="restart-as-cmd" # restart audio-share
 alias pi="cd ~/pico"
 alias po="cd ~/repo/pico"
 
-alias esp="cd ~/esp"
-alias eso="cd ~/repo/esp32"
+alias ei="cd ~/esp"
+alias eo="cd ~/repo/esp32"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias idf="idf.py"
 
 alias za="source ~/zephyrproject/.venv/bin/activate"
-alias zp="cd ~/zephyrproject/zephyr"
+alias zi="cd ~/zephyrproject/zephyr"
 alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
 
 # =============================
