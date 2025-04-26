@@ -397,6 +397,14 @@ cp-kernel-clangd(){
         >> .clangd
 }
 
+cp-pico-clangd(){
+    touch .clangd
+    P0="/home/bus710/pico/pico-sdk/src/host/pici_stdio/include/pico"
+    P1="/usr/lib/arm-none-eabi/include"
+    echo "CompileFlags:\n  Add: [\n    -I$P0,\n    -I$P1]" \
+        >> .clangd
+}
+
 npm-create-react-ts(){
     echo "npm create vite@latest $1 -- --template react-ts"
     npm create vite@latest $1 -- --template react-ts
