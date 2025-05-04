@@ -179,7 +179,7 @@ install_astro_nvim_v4() {
 	term_color_white
 
 	git clone --depth 1 \
-		https://github.com/bus710/astronvim-template-v4 \
+		https://github.com/bus710/astronvim-template \
 		/home/$LOGNAME/.config/nvim
 
 	cd /home/$LOGNAME/.config/nvim
@@ -189,7 +189,7 @@ config_astro_nvim_v4() {
 	# Config the user email
 	NAME="bus710"
 	git config user.email "$NAME@gmail.com"
-	git remote set-url origin git@github.com:$NAME/astronvim-template-v4
+	git remote set-url origin git@github.com:$NAME/astronvim-template
 	cd -
 
 	# Install plugins - TSInstall with ! enforces the installation without question
