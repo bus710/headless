@@ -157,8 +157,8 @@ install_nerd_fonts() {
 		echo "Install ${F}"
 		term_color_white
 
-		git sparse-checkout add patched-fonts/${F} > /dev/null 2>&1 
-		./install.sh ${F} > /dev/null 2>&1
+		git sparse-checkout add patched-fonts/${F} >/dev/null 2>&1
+		./install.sh ${F} >/dev/null 2>&1
 	done
 
 	cd /home/$LOGNAME/repo/headless
@@ -170,12 +170,12 @@ remove_previous_installation() {
 	echo "Remove previous installation"
 	term_color_white
 
-	rm -rf /home/$LOGNAME/.config/nvim      #/home/$LOGNAME/.config/nvim.bak￼
+	rm -rf /home/$LOGNAME/.config/nvim #/home/$LOGNAME/.config/nvim.bak￼
 }
 
-install_astro_nvim_v4() {
+install_astro_nvim_v5() {
 	term_color_red
-	echo "Install AstroNvim (v4+)"
+	echo "Install AstroNvim (v5+)"
 	term_color_white
 
 	git clone --depth 1 \
@@ -185,7 +185,7 @@ install_astro_nvim_v4() {
 	cd /home/$LOGNAME/.config/nvim
 }
 
-config_astro_nvim_v4() {
+config_astro_nvim_v5() {
 	# Config the user email
 	NAME="bus710"
 	git config user.email "$NAME@gmail.com"
@@ -201,10 +201,8 @@ config_astro_nvim_v4() {
 	# nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
 	# nv --headless -c ':LspInstall elixirls' -c 'quitall' # Never do this as the elixir-tools takes case of it
 
-
 	# npm install -g @tailwindcss/language-server # Done by another script
-	
-	
+
 	# To monitor the lsp log in realtime
 	# tail -f ~/.local/state/nvim/lsp.log
 }
@@ -225,6 +223,6 @@ install_lazygit
 install_btm
 install_nerd_fonts
 remove_previous_installation
-install_astro_nvim_v4
-config_astro_nvim_v4
+install_astro_nvim_v5
+config_astro_nvim_v5
 post
