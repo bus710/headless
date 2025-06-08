@@ -237,6 +237,7 @@ alias ras="restart-as-cmd" # restart audio-share
 
 alias pi="cd ~/pico"
 alias po="cd ~/repo/pico"
+alias poo="cd ~/repo/WIZnet-PICO-C/"
 
 alias ei="cd ~/esp"
 alias eo="cd ~/repo/esp32"
