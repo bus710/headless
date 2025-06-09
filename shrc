@@ -162,7 +162,6 @@ alias rr='ranger'
 alias ll='ls -la'
 alias nf='echo "neofetch" && neofetch'
 alias ff='echo "fastfetch" && fastfetch'
-alias sp='spf'
 alias lg='lazygit'
 
 alias gp='git pull origin HEAD'
