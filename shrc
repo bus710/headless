@@ -113,6 +113,7 @@ alias dw='cd ~/repo/headless/desktop'
 alias sw='cd ~/repo/headless/desktop/sway'
 alias qw='cd ~/repo/headless/desktop/lxqt'
 alias ds='cd ~/repo/docs'
+alias sp="cd ~/repo/ships"
 
 alias kw='cd ~/repo/linux-kernel-modules'
 
@@ -188,7 +189,6 @@ alias k="kubectl"
 alias hl="helm"
 alias skl="source <(kubectl completion zsh)"
 alias pl="pulumi"
-alias sp="cd ~/repo/ships"
 
 alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp-01 --region us-central1 --project connect-qaus-k8s-e004"
 
