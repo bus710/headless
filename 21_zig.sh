@@ -37,8 +37,9 @@ check_architecture_and_version(){
     fi
 
     ZIG_RELEASE=$(curl -o- -s $ZIG_RELEASE_URL | jq -r '.tag_name')
+    ZIG_FILE_NAME=https://ziglang.org/download/${ZIG_RELEASE}/zig-${CPU_TARGET}-linux-${ZIG_RELEASE}.tar.xz
+
     ZLS_RELEASE=$(curl -o- -s $ZLS_RELEASE_URL | jq -r '.tag_name')
-    ZIG_FILE_NAME=https://ziglang.org/download/${ZIG_RELEASE}/zig-linux-${CPU_TARGET}-${ZIG_RELEASE}.tar.xz
     ZLS_FILE_NAME=https://github.com/zigtools/zls/releases/download/${ZLS_RELEASE}/zls-${CPU_TARGET}-linux.tar.xz
 }
 
@@ -49,7 +50,7 @@ check_architecture_and_version_master(){
     fi
 
     ZIG_RELEASE_MASTER=$(curl -o- -s $ZIG_RELEASE_URL_MASTER | jq -r '.master.version')
-    ZIG_FILE_NAME_MASTER=https://ziglang.org/builds/zig-linux-${CPU_TARGET}-${ZIG_RELEASE_MASTER}.tar.xz
+    ZIG_FILE_NAME_MASTER=https://ziglang.org/builds/zig-${CPU_TARGET}-linux-${ZIG_RELEASE_MASTER}.tar.xz
 }
 
 
@@ -61,8 +62,9 @@ confirmation(){
     echo "- Install zig and zls from stable or master"
     echo "- Stable zig $ZIG_RELEASE and zls $ZLS_RELEASE"
     echo "- Master zig $ZIG_RELEASE_MASTER and zls building on the fly"
+    echo "- https://ziglang.org/download/"
     echo
-    echo "Do you want to proceed? (m/s/n)"
+    echo "Do you want to proceed? (y/s/m/n)"
     term_color_white
 
     read -n 1 ans
@@ -105,21 +107,20 @@ install_zig(){
     cd /home/${LOGNAME}
 
     echo $TARGET
-    echo $ZIG_FILE_NAME_MASTER
 
     if [[ $TARGET == "stable" ]]; then
+        echo $ZIG_FILE_NAME
         wget ${ZIG_FILE_NAME}
+        tar xf zig-${CPU_TARGET}-linux-${ZIG_RELEASE}.tar.xz
     else
+        echo $ZIG_FILE_NAME_MASTER
         wget ${ZIG_FILE_NAME_MASTER}
+        tar xf zig-${CPU_TARGET}-linux-${ZIG_RELEASE_MASTER}.tar.xz
     fi
 
-    term_color_red
-    echo "Wait for untar..."
-    term_color_white
-
-    tar xf zig-linux-*.tar.xz
+    # tar xf $ZIG_FILE_NAME
     rm -rf zig*.tar.xz
-    mv zig-linux-* zig
+    mv zig-* zig
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/zig
 }
 
@@ -130,6 +131,8 @@ install_zls(){
 
     cd /home/${LOGNAME}/zig
     rm -rf zls*
+
+    echo ${ZLS_FILE_NAME}
     wget ${ZLS_FILE_NAME}
     mkdir zlsRepo
 
