@@ -207,11 +207,12 @@ install_llvm
 install_zig
 configure_runcom
 configure_zls_config
+build_zls
 
-if [[ $TARGET == "stable" ]]; then
-    install_zls
-else
-    build_zls
-fi
+# if [[ $TARGET == "stable" ]]; then
+#     install_zls
+# else
+#     build_zls
+# fi
 
 post
