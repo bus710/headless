@@ -77,13 +77,13 @@ install() {
 		"ms-vscode.cmake-tools"
 		"ms-vscode.makefile-tools"
 		# Zig
-		# "ziglang.vscode-zig"
-		# "bwork.zig-tools"
+		"ziglang.vscode-zig"
+		"bwork.zig-tools"
 		# Rust
-		"rust-lang.rust-analyzer"
-		"fill-labs.dependi"		# "serayuzgur.crates"
-		"vadimcn.vscode-lldb"
-		"tauri-apps.tauri-vscode"
+		# "rust-lang.rust-analyzer"
+		# "fill-labs.dependi"		# "serayuzgur.crates"
+		# "vadimcn.vscode-lldb"
+		# "tauri-apps.tauri-vscode"
 		# Go
 		"golang.Go"
 		# Flutter
@@ -110,25 +110,25 @@ install() {
 		# "visualstudioexptteam.vscodeintellicode"
 
 		# Erlang
-		"pgourlain.erlang"
-		"erlang-ls.erlang-ls"
-		"szTheory.erlang-formatter"
-		"yuce.erlang-otp"
+		# "pgourlain.erlang"
+		# "erlang-ls.erlang-ls"
+		# "szTheory.erlang-formatter"
+		# "yuce.erlang-otp"
 
 		# Elixir
-		"JakeBecker.elixir-ls"
-		"benvp.vscode-hex-pm-intellisense"
-		"pantajoe.vscode-elixir-credo"
-		"phoenixframework.phoenix"
-		"Ritvyk.heex-html"
-		"animus-coop.vscode-elixir-mix-formatter"
+		# "JakeBecker.elixir-ls"
+		# "benvp.vscode-hex-pm-intellisense"
+		# "pantajoe.vscode-elixir-credo"
+		# "phoenixframework.phoenix"
+		# "Ritvyk.heex-html"
+		# "animus-coop.vscode-elixir-mix-formatter"
 
 		# Gleam
-		"gleam.gleam"
+		# "gleam.gleam"
 
 		# Elm
-		"Elmtooling.elm-ls-vscode"
-		"elm-land.elm-land"
+		# "Elmtooling.elm-ls-vscode"
+		# "elm-land.elm-land"
 
 		# Arduino
 		# "vsciot-vscode.vscode-arduino"
@@ -137,7 +137,7 @@ install() {
 		# "webfreak.debug"
 
 		# ESP32
-		"espressif.esp-idf-extension"
+		# "espressif.esp-idf-extension"
 
 		# =====================================
 
