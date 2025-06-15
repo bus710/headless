@@ -60,10 +60,9 @@ confirmation(){
     echo "- Remove ~/zig"
     echo "- Install llvm and lldb"
     echo "- Install zig and zls from stable or master"
-    echo "  - Stable zig $ZIG_RELEASE"
-    echo "  - Master zig $ZIG_RELEASE_MASTER"
-    echo "  - Zls $ZLS_RELEASE"
-    echo "- https://ziglang.org/download/"
+    echo "  - https://ziglang.org/download/"
+    echo "  - Stable zig $ZIG_RELEASE + zls $ZLS_RELEASE" 
+    echo "  - Master zig $ZIG_RELEASE_MASTER + zls build on the fly"
     echo
     echo "Do you want to proceed? (y/s/m/n)"
     term_color_white
@@ -208,12 +207,11 @@ install_llvm
 install_zig
 configure_runcom
 configure_zls_config
-build_zls
 
-# if [[ $TARGET == "stable" ]]; then
-#     install_zls
-# else
-#     build_zls
-# fi
+if [[ $TARGET == "stable" ]]; then
+    install_zls
+else
+    build_zls
+fi
 
 post
