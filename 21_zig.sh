@@ -60,8 +60,9 @@ confirmation(){
     echo "- Remove ~/zig"
     echo "- Install llvm and lldb"
     echo "- Install zig and zls from stable or master"
-    echo "- Stable zig $ZIG_RELEASE and zls $ZLS_RELEASE"
-    echo "- Master zig $ZIG_RELEASE_MASTER and zls building on the fly"
+    echo "  - Stable zig $ZIG_RELEASE"
+    echo "  - Master zig $ZIG_RELEASE_MASTER"
+    echo "  - Zls $ZLS_RELEASE"
     echo "- https://ziglang.org/download/"
     echo
     echo "Do you want to proceed? (y/s/m/n)"
