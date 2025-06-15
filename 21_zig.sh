@@ -190,10 +190,10 @@ post(){
     term_color_red
     echo "Done"
     echo "- Restart terminal"
-    echo "- Run \"mkdir hello-world && cd hello-world && zig init\" to start a new Zig project"
+    echo "- Run \"mkdir hello_zig && cd hello_zig && zig init\" to start a new Zig project"
     echo "- Run \"zls --config-path \$SOMEWHERE\" to specify the location of zls.json"
     echo "- Run \"cp-zig-vscode\" to copy VSCODE configurations into the current path"
-    echo "- Press \"<Space>d-c\" to start a debugging session in AstroNvim" 
+    echo "- Press \"<Space> d-c\" to start a debugging session in AstroNvim" 
     echo "  (will be asked the path to the executable. Then zig-out/bin/\$BASENAME)"
     term_color_white
 }

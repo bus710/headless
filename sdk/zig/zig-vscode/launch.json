@@ -5,9 +5,7 @@
             "name": "Debug",
             "type": "lldb",
             "request": "launch",
-            "target": "./zig-out/bin/hello-world",
-            "arguments": "",
-            "stopAtEntry": false,
+            "program": "./zig-out/bin/hello_zig",
             "cwd": "${workspaceFolder}",
             "preLaunchTask": "build"
         }
