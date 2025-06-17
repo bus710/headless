@@ -82,9 +82,9 @@ install() {
 		"ziglang.vscode-zig"
 		"bwork.zig-tools"
 		# Rust
-		# "rust-lang.rust-analyzer"
-		# "fill-labs.dependi"		# "serayuzgur.crates"
-		# "tauri-apps.tauri-vscode"
+		"rust-lang.rust-analyzer"
+		"fill-labs.dependi"		# "serayuzgur.crates"
+		"tauri-apps.tauri-vscode"
 		# Go
 		"golang.Go"
 
