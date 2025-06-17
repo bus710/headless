@@ -76,16 +76,18 @@ install() {
 		"ms-vscode.cpptools-extension-pack"
 		"ms-vscode.cmake-tools"
 		"ms-vscode.makefile-tools"
+		# LLDB for zig and rust
+		"vadimcn.vscode-lldb"
 		# Zig
 		"ziglang.vscode-zig"
 		"bwork.zig-tools"
 		# Rust
 		# "rust-lang.rust-analyzer"
 		# "fill-labs.dependi"		# "serayuzgur.crates"
-		# "vadimcn.vscode-lldb"
 		# "tauri-apps.tauri-vscode"
 		# Go
 		"golang.Go"
+
 		# Flutter
 		# "Dart-Code.dart-code"
 		# "Dart-Code.flutter"
