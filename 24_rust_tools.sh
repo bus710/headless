@@ -7,6 +7,7 @@ then echo "Please run as normal user (w/o sudo)"
     exit
 fi
 
+source /home/$LOGNAME/.zshrc
 
 term_color_red () {
     echo -e "\e[91m"
@@ -56,9 +57,11 @@ build_cargo_tools(){
     # https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands
     cargo install cargo-watch
     cargo install cargo-deb
-    cargo install cargo-edit # cargo upgrade
+    cargo install cargo-edit 
+    cargo install cargo-upgrades # -f? cargo upgrades or cargo upgrade
     cargo install cargo-outdated
     cargo install cargo-make
+    cargo install cargo-generate
     #cargo install cbindgen
     #cargo install flutter_rust_bridge_codegen
     #cargo install bluer-tools
@@ -112,5 +115,5 @@ post(){
 trap term_color_white EXIT
 install_packages
 build_cargo_tools
-build_cargo_tools_2
+# build_cargo_tools_2
 post
