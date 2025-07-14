@@ -30,6 +30,15 @@ confirmation(){
     fi
 }
 
+cleanup(){
+    term_color_red
+    echo "Clean up"
+    term_color_white
+
+    for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; \
+    do sudo apt-get remove $pkg; done
+}
+
 install_docker_base(){
     term_color_red
     echo "Install docker base packages"
@@ -39,7 +48,21 @@ install_docker_base(){
     sudo apt install -y \
         gnupg-agent \
         apt-transport-https \
-        ca-certificates
+        ca-certificates \
+        curl
+
+    sudo install -m 0755 -d /etc/apt/keyrings
+
+    sudo rm -rf /etc/apt/keyrings/docker.asc
+    sudo curl -fsSL \
+        https://download.docker.com/linux/debian/gpg \
+        -o /etc/apt/keyrings/docker.asc
+    sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+    echo \
+        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 }
 
 install_docker(){
@@ -48,11 +71,18 @@ install_docker(){
     term_color_white
 
     sudo apt update
-    sudo apt install -y docker.io
-    sudo apt install -y docker-compose
+    # sudo apt install -y docker.io
+    # sudo apt install -y docker-compose
+    #
+    # sudo systemctl enable docker
+    # sudo systemctl start docker
 
-    sudo systemctl enable docker
-    sudo systemctl start docker
+    sudo apt-get install -y \
+        docker-ce \
+        docker-ce-cli \
+        containerd.io \
+        docker-buildx \
+        docker-compose-plugin
 }
 
 configure_permission(){
@@ -74,6 +104,7 @@ post(){
 
 trap term_color_white EXIT
 confirmation
+cleanup
 install_docker_base
 install_docker
 configure_permission
