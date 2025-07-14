@@ -96,7 +96,8 @@ configure_permission(){
 post(){
     term_color_red
     echo "Docker daemon is enabled/started"
-    echo "(reboot to take effect)"
+    echo "Try - sudo docker run hello-world"
+    echo "Reboot required"
     echo
     echo "Done"
     term_color_white
