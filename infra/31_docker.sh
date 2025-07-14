@@ -39,8 +39,7 @@ install_docker_base(){
     sudo apt install -y \
         gnupg-agent \
         apt-transport-https \
-        ca-certificates \
-        software-properties-common
+        ca-certificates
 }
 
 install_docker(){
