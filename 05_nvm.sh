@@ -46,10 +46,10 @@ install_nvm(){
     echo "Get ENV"
     term_color_white
 
-    if [[ $OS_TYPE =~ "Ubuntu" ]]; then
-        export NVM_DIR="$HOME/.config/nvm"
-    elif [[ $OS_TYPE =~ "Debian" ]]; then
+    if [[ -d $HOME/.nvm ]]; then
         export NVM_DIR="$HOME/.nvm"
+    else
+        export NVM_DIR="$HOME/.config/nvm"
     fi
 
     # This loads nvm
