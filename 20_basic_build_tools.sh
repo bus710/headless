@@ -3,7 +3,6 @@
 set -e
 
 CPU_TYPE=$(uname -m)
-OS_TYPE=$(lsb_release -i)
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"

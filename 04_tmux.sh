@@ -2,9 +2,6 @@
 
 set -e
 
-OS_TYPE=$(lsb_release -i)
-ARCH_TYPE=$(uname -m)
-
 if [[ "$EUID" == 0 ]]; then
     echo "Please run as normal user (w/o sudo)"
     exit
@@ -30,7 +27,7 @@ confirmation(){
     echo
 
     if [[ ! $ans == "y" ]]; then
-        exit -1
+        exit 1
     fi
 }
 

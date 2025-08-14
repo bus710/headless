@@ -2,7 +2,6 @@
 
 set -e
 
-OS_TYPE=$(lsb_release -i)
 ARCH_TREE_SITTER=""
 ARCH_LAZYGIT=""
 ARCH_BTM=""

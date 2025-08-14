@@ -4,7 +4,6 @@ set -e
 
 OS_TYPE=$(lsb_release -i)
 ARCH_TYPE=$(uname -m)
-NVIM_VERSION=""
 
 if [[ "$EUID" == 0 ]]; then
 	echo "Please run as normal user (w/o sudo)"
