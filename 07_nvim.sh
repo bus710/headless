@@ -2,7 +2,7 @@
 
 set -e
 
-OS_TYPE=$(lsb_release -i)
+OS_TYPE=$(cat /etc/os-release)
 ARCH_TYPE=$(uname -m)
 
 if [[ "$EUID" == 0 ]]; then

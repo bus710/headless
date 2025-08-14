@@ -2,7 +2,7 @@
 
 set -e
 
-OS_TYPE=$(lsb_release -i)
+OS_TYPE=$(cat /etc/os-release)
 
 if [[ "$EUID" == 0 ]]
 then echo "Please run as normal user (w/o sudo)"
