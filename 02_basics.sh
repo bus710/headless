@@ -65,7 +65,8 @@ install_basic_packages(){
         progress \
         xmlstarlet \
         aptitude \
-        pipewire-audio
+        pipewire-audio \
+        console-setup
         # autofs \
         # powerline \
 
