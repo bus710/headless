@@ -429,8 +429,9 @@ export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 export XDG_CURRENT_DESKTOP=sway
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
-keychain $HOME/.ssh/bus710@local --eval --quiet > /dev/null 2>&1
-keychain $HOME/.ssh/bus710@dsm --eval --quiet > /dev/null 2>&1
-keychain $HOME/.ssh/bus710@github --eval --quiet > /dev/null 2>&1
-keychain $HOME/.ssh/gl.dev01.net --eval --quiet > /dev/null 2>&1
-source $HOME/.keychain/$(hostname)-sh 
+# Enable lines below only for clients
+# keychain $HOME/.ssh/bus710@local --eval --quiet > /dev/null 2>&1
+# keychain $HOME/.ssh/bus710@dsm --eval --quiet > /dev/null 2>&1
+# keychain $HOME/.ssh/bus710@github --eval --quiet > /dev/null 2>&1
+# keychain $HOME/.ssh/gl.dev01.net --eval --quiet > /dev/null 2>&1
+# source $HOME/.keychain/$(hostname)-sh 
