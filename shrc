@@ -230,7 +230,6 @@ alias aaw=activate_aws
 
 alias swaywm-start="exec sway"
 alias cinnamon-start="startx; cinnamon-session"
-# eval $(keychain --eval --quite $PRIVATE_KEY)
 
 alias rn="restart-networking"
 alias rk="restart-keyring"
@@ -426,9 +425,12 @@ npm-commands(){
 # For gotk4
 export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 
-# For swaywm ssh socket
-#SSH_AUTH_SOCK
-
 # For swaywm screen sharing
 export XDG_CURRENT_DESKTOP=sway
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
+keychain $HOME/.ssh/bus710@local --eval --quiet > /dev/null 2>&1
+keychain $HOME/.ssh/bus710@dsm --eval --quiet > /dev/null 2>&1
+keychain $HOME/.ssh/bus710@github --eval --quiet > /dev/null 2>&1
+keychain $HOME/.ssh/gl.dev01.net --eval --quiet > /dev/null 2>&1
+source $HOME/.keychain/$(hostname)-sh 
