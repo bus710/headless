@@ -15,6 +15,14 @@ term_color_white () {
     echo -e "\e[39m"
 }
 
+discontinued(){
+    term_color_red 
+    echo "Please find the keychain usage in the shrc."
+    term_color_white
+
+    exit 0
+}
+
 confirmation (){
     term_color_red
     echo "Configure Gnome Keyring? (y/n)"
@@ -74,6 +82,7 @@ post (){
 }
 
 trap term_color_white EXIT
+discontinued
 confirmation
 install_packages
 configure_keyring
