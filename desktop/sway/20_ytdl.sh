@@ -68,7 +68,7 @@ post(){
     term_color_red
     echo "Done"
     echo "- ytdl -F: to see the available formats"
-    echo "- ytml -f 140 $URL: to do something"
+    echo "- ytdl -f 140 $URL: to do something"
     term_color_white
 }
 
