@@ -68,7 +68,9 @@ post(){
     term_color_red
     echo "Done"
     echo "- ytdl -F: to see the available formats"
-    echo "- ytdl -f 140 $URL: to do something"
+    echo "- ytdl -f 140 $URL: for 128kbps mp4 audio"
+    echo "- ytdl -f 137 $URL: for 1080p mp4 video"
+    echo "- ytdl -f 136 $URL: for 720mp4 video"
     term_color_white
 }
 
