@@ -40,8 +40,7 @@ confirmation(){
     echo "Check the stable version"
     term_color_white
 
-    # VERSION=$(curl -L -s -w '\n' https://dl.k8s.io/release/stable.txt)
-    VERSION=$(curl -o- -s  https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r '.tag_name')
+    VERSION=$(curl -o- -s  https://api.github.com/repos/k3s-io/k3s/releases/latest | jq -r '.tag_name')
     VERSION_TMP=$(echo $VERSION | grep -Eo '.*\.')
     VERSION2=${VERSION_TMP::-1}
 
