@@ -188,6 +188,7 @@ config_editor(){
     echo "Config to use nvim as the default editor for kubectl-edit"
     term_color_white
 
+    sed -i '/#KUBECONFIG/c\export KUBECONFIG=~/.kube/config' /home/$LOGNAME/.shrc
     sed -i '/#KUBE_EDITOR/c\export KUBE_EDITOR=nv' /home/$LOGNAME/.shrc
 }
 

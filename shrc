@@ -78,7 +78,8 @@ if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
     #TERRAFORM_1
 fi
 
-# k8s
+# k3s
+#KUBECONFIG
 #KUBE_EDITOR
 
 # Etc
