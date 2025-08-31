@@ -40,15 +40,8 @@ confirmation(){
     echo "Check the stable version"
     term_color_white
 
-    VERSION=$(curl -o- -s  https://api.github.com/repos/k3s-io/k3s/releases/latest | jq -r '.tag_name')
-    VERSION_TMP=$(echo $VERSION | grep -Eo '.*\.')
-    VERSION2=${VERSION_TMP::-1}
-
-    echo "kubectl - " $VERSION
-    echo "kubeadm - " $VERSION2
-
     term_color_red
-    echo "Kubectl, Minikube, and Kubeadm will be installed"
+    echo "k3s will be installed"
     echo "Do you want to install? (y/n)"
     term_color_white
 
@@ -61,85 +54,85 @@ confirmation(){
     fi
 }
 
-install_kubectl(){
-    # Remove if there is an old one
-    if [[ -f /usr/local/bin/kubectl ]]; then
-        sudo rm -rf /usr/local/bin/kubectl
-    fi
+# install_kubectl(){
+#     # Remove if there is an old one
+#     if [[ -f /usr/local/bin/kubectl ]]; then
+#         sudo rm -rf /usr/local/bin/kubectl
+#     fi
+#
+#     term_color_red
+#     echo "Install Kubectl"
+#     echo "- https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/"
+#     term_color_white
+#
+#     curl -LO "https://dl.k8s.io/release/${VERSION}/bin/linux/${CPU_TARGET}/kubectl"
+#
+#     term_color_red
+#     echo "Validate Kubectl"
+#     term_color_white
+#
+#     curl -LO "https://dl.k8s.io/${VERSION}/bin/linux/${CPU_TARGET}/kubectl.sha256"
+#     RES=$(echo "$(cat kubectl.sha256) kubectl" | sha256sum --check)
+#     rm -rf kubectl.sha256
+#
+#     if [[ ! $RES =~ "kubectl: OK" ]]; then
+#         term_color_red
+#         echo "Validation failed - exit"
+#         term_color_white
+#         exit
+#     fi
+#
+#     term_color_red
+#     echo "Validation succeeded"
+#     echo "- move Kubectl under /usr/local/bin"
+#     term_color_white
+#
+#     sudo install \
+#         -o $LOGNAME -g root -m 0755 \
+#         kubectl /usr/local/bin/kubectl
+#     sudo rm -rf kubectl
+# }
 
-    term_color_red
-    echo "Install Kubectl"
-    echo "- https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/"
-    term_color_white
-
-    curl -LO "https://dl.k8s.io/release/${VERSION}/bin/linux/${CPU_TARGET}/kubectl"
-
-    term_color_red
-    echo "Validate Kubectl"
-    term_color_white
-
-    curl -LO "https://dl.k8s.io/${VERSION}/bin/linux/${CPU_TARGET}/kubectl.sha256"
-    RES=$(echo "$(cat kubectl.sha256) kubectl" | sha256sum --check)
-    rm -rf kubectl.sha256
-    
-    if [[ ! $RES =~ "kubectl: OK" ]]; then
-        term_color_red
-        echo "Validation failed - exit"
-        term_color_white
-        exit
-    fi
-
-    term_color_red
-    echo "Validation succeeded"
-    echo "- move Kubectl under /usr/local/bin"
-    term_color_white
-
-    sudo install \
-        -o $LOGNAME -g root -m 0755 \
-        kubectl /usr/local/bin/kubectl
-    sudo rm -rf kubectl
-}
-
-install_kubeadm(){
-    term_color_red
-    echo "Install Kubeadm"
-    echo "- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/"
-    term_color_white
-
-    # Cleanup
-    sudo rm -rf /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-    sudo rm -rf /etc/apt/sources.list.d/kubernetes.list
-
-    # Get the key
-    sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/${VERSION2}/deb/Release.key | \
-        sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-    
-    # Config the source list
-    A="[signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg]"
-    B="https://pkgs.k8s.io/core:/stable:/${VERSION2}/deb/"
-    echo "deb $A $B /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
-
-    # Install Kubeadm
-    sudo apt-get update
-    sudo apt-get install -y kubelet kubeadm
-    # sudo apt-mark hold kubelet kubeadm
-}
-
-install_minikube(){
-    # Remove if there is an old one
-    sudo rm -rf /usr/local/bin/minikube
-
-    term_color_red
-    echo "Install Minikube"
-    term_color_white
-
-    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-${CPU_TARGET}
-
-    sudo install \
-        -o $LOGNAME -g root -m 0755 \
-        minikube-linux-${CPU_TARGET} /usr/local/bin/minikube
-    sudo rm -rf minikube
-}
+# install_kubeadm(){
+#     term_color_red
+#     echo "Install Kubeadm"
+#     echo "- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/"
+#     term_color_white
+#
+#     # Cleanup
+#     sudo rm -rf /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+#     sudo rm -rf /etc/apt/sources.list.d/kubernetes.list
+#
+#     # Get the key
+#     sudo curl -fsSL https://pkgs.k8s.io/core:/stable:/${VERSION2}/deb/Release.key | \
+#         sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+#
+#     # Config the source list
+#     A="[signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg]"
+#     B="https://pkgs.k8s.io/core:/stable:/${VERSION2}/deb/"
+#     echo "deb $A $B /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+#
+#     # Install Kubeadm
+#     sudo apt-get update
+#     sudo apt-get install -y kubelet kubeadm
+#     # sudo apt-mark hold kubelet kubeadm
+# }
+#
+# install_minikube(){
+#     # Remove if there is an old one
+#     sudo rm -rf /usr/local/bin/minikube
+#
+#     term_color_red
+#     echo "Install Minikube"
+#     term_color_white
+#
+#     curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-${CPU_TARGET}
+#
+#     sudo install \
+#         -o $LOGNAME -g root -m 0755 \
+#         minikube-linux-${CPU_TARGET} /usr/local/bin/minikube
+#     sudo rm -rf minikube
+# }
 
 cleanup_k3s(){
     # Remove if there is an old one
@@ -230,8 +223,8 @@ post(){
 trap term_color_white EXIT
 check_architecture
 confirmation
-install_kubectl
-install_kubeadm
+# install_kubectl
+# install_kubeadm
 cleanup_k3s
 install_k3s
 install_helm
