@@ -7,7 +7,7 @@ then echo "Please run as normal user (w/o sudo)"
     exit
 fi
 
-source /home/$LOGNAME/.zshrc
+# source /home/$LOGNAME/.zshrc
 
 term_color_red () {
     echo -e "\e[91m"
