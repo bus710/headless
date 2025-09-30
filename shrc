@@ -250,6 +250,8 @@ alias za="source ~/zephyrproject/.venv/bin/activate"
 alias zi="cd ~/zephyrproject/zephyr"
 alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
 
+unalias gow
+
 # =============================
 # Cheatsheets
 
