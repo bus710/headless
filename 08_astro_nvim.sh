@@ -185,19 +185,26 @@ install_astro_nvim_v5() {
 }
 
 config_astro_nvim_v5() {
+	term_color_red
+	echo "Config AstroNvim (v5+)"
+	echo "- TSInstall and LspInstall"
+	term_color_white
+
 	# Config the user email
 	NAME="bus710"
 	git config user.email "$NAME@gmail.com"
 	git remote set-url origin git@github.com:$NAME/astronvim-template
-	cd -
+	cd -	
 
 	# Install plugins - TSInstall with ! enforces the installation without question
 	nv --headless -c ':TSInstall! elixir' -c 'quitall'
 	nv --headless -c ':TSInstall! heex' -c 'quitall'
 	nv --headless -c ':TSInstall! eex' -c 'quitall'
 
-	# nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
-	# nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+	nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
+	nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
+	nv --headless -c ':LspInstall htmx' -c 'quitall'
+	
 	# nv --headless -c ':LspInstall elixirls' -c 'quitall' # Never do this as the elixir-tools takes case of it
 
 	# npm install -g @tailwindcss/language-server # Done by another script
