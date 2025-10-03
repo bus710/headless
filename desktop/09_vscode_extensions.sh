@@ -83,8 +83,7 @@ install() {
 		"bwork.zig-tools"
 		# Rust
 		"rust-lang.rust-analyzer"
-		"fill-labs.dependi"		# "serayuzgur.crates"
-		"tauri-apps.tauri-vscode"
+		"fill-labs.dependi"		
 		# Go
 		"golang.Go"
 
@@ -174,7 +173,8 @@ install() {
 	done
 
 	if [[ -f /usr/bin/code ]]; then
-		code $PARAM 2>/dev/null
+		# code $PARAM 2>/dev/null
+		code $PARAM --force
 	fi
 
 	if [[ -f /usr/bin/code-insiders ]]; then
