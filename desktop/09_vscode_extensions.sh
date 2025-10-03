@@ -88,6 +88,10 @@ install() {
 		# Go
 		"golang.Go"
 
+		# HTMX & Templ
+		"otovo-oss.htmx-tags"
+		"a-h.templ"
+
 		# Flutter
 		# "Dart-Code.dart-code"
 		# "Dart-Code.flutter"
@@ -182,6 +186,7 @@ install() {
 post() {
 	term_color_red
 	echo "Done"
+	echo "Make sure the settings.json file contents"
 	term_color_white
 }
 
@@ -205,4 +210,17 @@ post
 #     "git.autofetch": true,
 #     "go.toolsManagement.autoUpdate": true,
 #     "terminal.integrated.fontSize": 16
+# }
+#
+# {
+#     "workbench.colorTheme": "Dracula Theme",
+#     "security.workspace.trust.untrustedFiles": "open",
+#     "markdown-pdf.displayHeaderFooter": false,
+#     "markdown-pdf.format": "Letter",
+#     "git.openRepositoryInParentFolders": "never",
+#     "idf.hasWalkthroughBeenShown": true,
+#     "zig.zls.enabled": "on",
+#     "go.toolsManagement.autoUpdate": true,
+#     "tailwindCSS.experimental.configFile": null,
+#     "tailwindCSS.includeLanguages" : { "templ": "html" }
 # }
