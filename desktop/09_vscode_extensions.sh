@@ -97,7 +97,7 @@ install() {
 		# "Dart-Code.flutter"
 
 		# JS/Node
-		# "christian-kohler.npm-intellisense"
+		"christian-kohler.npm-intellisense"
 		# "dbaeumer.vscode-eslint"
 		# "rvest.vs-code-prettier-eslint"
 
@@ -106,8 +106,8 @@ install() {
 		# "ardenivanov.svelte-intellisense"
 		
 		# Tailwind
-		# "bradlc.vscode-tailwindcss"
-		# "austenc.tailwind-docs"
+		"bradlc.vscode-tailwindcss"
+		"austenc.tailwind-docs"
 
 		# Python and MicroPython
 		# "ms-python.python"
