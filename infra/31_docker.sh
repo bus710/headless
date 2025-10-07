@@ -2,6 +2,8 @@
 
 set -e
 
+LSB_RELEASE_CODENAME=$(lsb_release -cs)
+
 if [[ "$EUID" == 0 ]]; then 
     echo "Please run as super user (w/o sudo)"
     exit
@@ -71,18 +73,27 @@ install_docker(){
     term_color_white
 
     sudo apt update
-    # sudo apt install -y docker.io
-    # sudo apt install -y docker-compose
-    #
-    # sudo systemctl enable docker
-    # sudo systemctl start docker
-
     sudo apt-get install -y \
         docker-ce \
         docker-ce-cli \
         containerd.io \
         docker-buildx \
         docker-compose-plugin
+}
+
+install_docker_forky(){
+    term_color_red
+    echo "Install docker & docker-compose for debian forky"
+    term_color_white
+
+    sudo apt update
+    sudo apt install -y \
+        docker.io \
+        docker-compose \
+        docker-cli 
+
+    sudo systemctl enable docker
+    sudo systemctl start docker
 }
 
 configure_permission(){
@@ -107,7 +118,12 @@ post(){
 trap term_color_white EXIT
 confirmation
 cleanup
-install_docker_base
-install_docker
+
+if [[ ! $LSB_RELEASE_CODENAME == "forky" ]]; then 
+    install_docker_base
+    install_docker
+else 
+    install_docker_forky
+fi
 configure_permission
 post
