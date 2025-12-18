@@ -238,6 +238,7 @@ alias rt="restart-thinkfan"
 alias ras="restart-as-cmd" # restart audio-share
 
 alias pi="cd ~/pico"
+alias pe="cd ~/pico/pico-examples"
 alias po="cd ~/repo/pico"
 alias poo="cd ~/repo/WIZnet-PICO-C/"
 
