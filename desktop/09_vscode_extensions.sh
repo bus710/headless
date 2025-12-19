@@ -83,7 +83,8 @@ install() {
 		"bwork.zig-tools"
 		# Rust
 		"rust-lang.rust-analyzer"
-		"fill-labs.dependi"		
+		"fill-labs.dependi"	
+		"probe-rs.probe-rs-debugger"
 		# Go
 		"golang.Go"
 
