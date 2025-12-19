@@ -54,9 +54,9 @@ function activate_aws(){
 # ASDF path for erlang
 if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
     :
-    #ASDF_0
-    #ASDF_1
-    #ASDF_2
+    # #ASDF_0
+    # #ASDF_1
+    # #ASDF_2
 fi
 
 # Erlang erl shell args
@@ -251,7 +251,7 @@ alias za="source ~/zephyrproject/.venv/bin/activate"
 alias zi="cd ~/zephyrproject/zephyr"
 alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
 
-unalias gow
+# unalias gow
 
 # =============================
 # Cheatsheets
