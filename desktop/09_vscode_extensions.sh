@@ -130,7 +130,7 @@ install() {
 		# "animus-coop.vscode-elixir-mix-formatter"
 
 		# Gleam
-		# "gleam.gleam"
+		"gleam.gleam"
 
 		# Elm
 		# "Elmtooling.elm-ls-vscode"
