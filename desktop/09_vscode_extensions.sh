@@ -89,8 +89,8 @@ install() {
 		"golang.Go"
 
 		# HTMX & Templ
-		"otovo-oss.htmx-tags"
-		"a-h.templ"
+		# "otovo-oss.htmx-tags"
+		# "a-h.templ"
 
 		# Flutter
 		# "Dart-Code.dart-code"
@@ -144,6 +144,9 @@ install() {
 
 		# ESP32
 		# "espressif.esp-idf-extension"
+		
+		# Raspberry Pico
+		"raspberry-pi.raspberry-pi-pico"
 
 		# =====================================
 
