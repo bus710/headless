@@ -155,6 +155,7 @@ install_zls(){
 build_zls(){
     term_color_red
     echo "Clone and build Zig Language Server"
+    echo "The linking might take some time"
     term_color_white
 
     cd /home/${LOGNAME}/zig
