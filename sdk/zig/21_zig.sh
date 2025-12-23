@@ -64,13 +64,16 @@ confirmation(){
     echo "  - Stable zig $ZIG_RELEASE + zls $ZLS_RELEASE" 
     echo "  - Master zig $ZIG_RELEASE_MASTER + zls build on the fly"
     echo
-    echo "Do you want to proceed? (y/s/m/n)"
+    echo "Do you want to proceed?"
+    echo "- Press 's' for the stable branch version"
+    echo "- Press 'm' for the master branch version"
+    echo "- Press 'n' to exit"
     term_color_white
 
     read -n 1 ans
     echo
 
-    if [[ $ans == "s" || $ans == "y" ]]; then
+    if [[ $ans == "s" ]]; then
         TARGET="stable"
     elif [[ $ans == "m" ]]; then
         TARGET="master"
