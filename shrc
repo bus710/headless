@@ -52,12 +52,12 @@ function activate_aws(){
 #ANDROID_5
 
 # ASDF path for erlang
-# if [[ $IS_ZSH == *"oh-my-zsh"* ]]; then
-#     :
-#     # #ASDF_0
-#     # #ASDF_1
-#     # #ASDF_2
-# fi
+if [[ $IS_ZSH == *"oh-my-zsh"* ]]; then
+    :
+    # #ASDF_0
+    # #ASDF_1
+    # #ASDF_2
+fi
 
 # Erlang erl shell args
 #ERL_0
