@@ -82,9 +82,28 @@ install_tree_sitter() {
 	wget -O tree-sitter.gz \
 		https://github.com/tree-sitter/tree-sitter/releases/download/${TREE_SITTER_VERSION}/tree-sitter-linux-${ARCH_TREE_SITTER}.gz
 
-	gzip -d tree-sitter.gz
+	gzip -d tree-sitter.gz#
 	chmod 550 tree-sitter
-	sudo mv tree-sitter /usr/local/bin
+	sudo mv tree-sitter-main /usr/local/bin/
+
+	cd -
+}
+
+install_tree_sitter_main() {
+	term_color_red
+	echo "Install tree-sitter from the main branch"
+	term_color_white
+
+	cd /home/$LOGNAME/Downloads
+	rm -rf tree-sitter*
+	sudo rm -rf /usr/local/bin/tree-sitter
+
+	wget -O tree-sitter.zip \
+		https://github.com/nvim-treesitter/nvim-treesitter/archive/refs/heads/main.zip
+
+	unzip tree-sitter.zip
+	chmod 550 nvim-treesitter-main
+	sudo mv nvim-treesitter-main /usr/local/bin/tree-sitter
 
 	cd -
 }
@@ -225,7 +244,7 @@ post() {
 trap term_color_white EXIT
 confirmation
 install_utils
-install_tree_sitter
+install_tree_sitter_main
 install_lazygit
 install_btm
 install_nerd_fonts
