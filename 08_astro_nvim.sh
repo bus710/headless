@@ -95,15 +95,15 @@ install_tree_sitter_main() {
 	term_color_white
 
 	cd /home/$LOGNAME/Downloads
-	rm -rf tree-sitter*
+	rm -rf nvim-treesitter*
 	sudo rm -rf /usr/local/bin/tree-sitter
 
-	wget -O tree-sitter.zip \
-		https://github.com/nvim-treesitter/nvim-treesitter/archive/refs/heads/main.zip
-
-	unzip tree-sitter.zip
-	chmod 550 nvim-treesitter-main
-	sudo mv nvim-treesitter-main /usr/local/bin/tree-sitter
+	# wget -O tree-sitter.zip \
+		# https://github.com/nvim-treesitter/nvim-treesitter/archive/refs/heads/main.zip
+	git clone git@github.com:nvim-treesitter/nvim-treesitter.git
+	# unzip tree-sitter.zip
+	chmod 550 nvim-treesitter
+	sudo mv nvim-treesitter /usr/local/bin/tree-sitter
 
 	cd -
 }
