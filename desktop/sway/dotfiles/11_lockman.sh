@@ -4,8 +4,8 @@
 
 # Times the screen off and puts it to background
 swayidle \
-    timeout 3 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' &
+    timeout 3 'swaymsg "output * power off"' \
+    resume 'swaymsg "output * power on"' &
 
 # Locks the screen immediately
 swaylock -c 101010
