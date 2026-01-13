@@ -77,8 +77,14 @@ install_docker(){
         docker-ce \
         docker-ce-cli \
         containerd.io \
-        docker-buildx \
+        docker-buildx-plugin \
         docker-compose-plugin
+
+    # If the docker-buildx-plugin doesn't work:
+    # mkdir -p ~/.docker/cli-plugin
+    # cd ~/.docker/cli-plugin
+    # wget -O docker-buildx https://github.com/docker/buildx/releases/download/v0.30.1/buildx-v0.30.1.linux-amd64
+    # chmod 764 docker-buildx
 }
 
 install_docker_forky(){
