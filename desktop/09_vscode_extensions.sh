@@ -97,7 +97,7 @@ install() {
 		# "Dart-Code.flutter"
 
 		# JS/Node
-		"christian-kohler.npm-intellisense"
+		# "christian-kohler.npm-intellisense"
 		# "dbaeumer.vscode-eslint"
 		# "rvest.vs-code-prettier-eslint"
 
@@ -106,8 +106,8 @@ install() {
 		# "ardenivanov.svelte-intellisense"
 		
 		# Tailwind
-		"bradlc.vscode-tailwindcss"
-		"austenc.tailwind-docs"
+		# "bradlc.vscode-tailwindcss"
+		# "austenc.tailwind-docs"
 
 		# Python and MicroPython
 		# "ms-python.python"
@@ -130,7 +130,7 @@ install() {
 		# "animus-coop.vscode-elixir-mix-formatter"
 
 		# Gleam
-		"gleam.gleam"
+		# "gleam.gleam"
 
 		# Elm
 		# "Elmtooling.elm-ls-vscode"
@@ -143,7 +143,7 @@ install() {
 		# "webfreak.debug"
 
 		# ESP32
-		# "espressif.esp-idf-extension"
+		"espressif.esp-idf-extension"
 		
 		# Raspberry Pico
 		"raspberry-pi.raspberry-pi-pico"
