@@ -164,6 +164,7 @@ post (){
     echo "- Restart terminal"
     echo "- If SwayWM, run the gnome keyring script again"
     echo "- If SwayWM, uncomment the keychain part of the .shrc and the personal dotenv repo"
+    echo "- Check at the end of the shrc and the .env file"
     echo
     term_color_white
 }
