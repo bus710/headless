@@ -413,7 +413,8 @@ cp-pico-clangd(){
 
 cp-esp32-vscode-c-cpp-properties-json(){
     rm -rf ./.vscode/c_cpp_properties.json
-    cp ~/repo/headless/esp32/c_cpp_properties.json
+    mkdir .vscode
+    cp ~/repo/headless/esp32/c_cpp_properties.json ./.vscode
 }
 
 npm-create-react-ts(){
