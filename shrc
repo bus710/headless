@@ -411,6 +411,11 @@ cp-pico-clangd(){
         >> .clangd
 }
 
+cp-esp32-vscode-c-cpp-properties-json(){
+    rm -rf ./.vscode/c_cpp_properties.json
+    cp ~/repo/headless/esp32/c_cpp_properties.json
+}
+
 npm-create-react-ts(){
     echo "npm create vite@latest $1 -- --template react-ts"
     npm create vite@latest $1 -- --template react-ts
