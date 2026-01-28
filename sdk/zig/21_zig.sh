@@ -199,6 +199,9 @@ post(){
     echo "- Run \"cp-zig-vscode\" to copy VSCODE configurations into the current path"
     echo "- Press \"<Space> d-c\" to start a debugging session in AstroNvim" 
     echo "  (will be asked the path to the executable. Then zig-out/bin/\$BASENAME)"
+    echo ""
+    echo "- For ZLS build_runner_path error, update the ~/.config/zls.json file"
+    echo "  with the ~/.cache/zls/build_runner/\$HASH"
     term_color_white
 }
 
