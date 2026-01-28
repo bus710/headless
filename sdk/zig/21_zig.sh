@@ -187,7 +187,10 @@ configure_zls_config(){
     echo "- Options: https://github.com/zigtools/zls/wiki/Configuration"
     term_color_white
 
-    cp /home/$LOGNAME/repo/headless/sdk/zig/zls.json /home/$LOGNAME/.config/zls.json
+    RUNNER_HASH=$(ls /home/$LOGNAME/.cache/zls/build_runner/)
+    cat /home/$LOGNAME/repo/headless/sdk/zig/zls.json | sed "s/\$HASH/${RUNNER_HASH}/g" > /home/$LOGNAME/.config/zls.json
+
+    cat /home/$LOGNAME/.config/zls.json | jq
 }
 
 post(){
