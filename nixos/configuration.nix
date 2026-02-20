@@ -80,8 +80,8 @@
   networking.wireless = {
     enable = true;
     networks = {
-      BELLA = {
-        psk = "8584864589";
+      SSID = {
+        psk = "PASSWORD";
       };
     };
   };
