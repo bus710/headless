@@ -15,8 +15,7 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    # font = "Lat2-Terminus32";
-    font = "ter-124b";
+    font = "ter-132b";                  # ter-124b?
     keyMap = "us";
     #useXkbConfig = true; 
     packages = with pkgs; [ terminus_font ];
@@ -56,6 +55,8 @@
     eza
     bat
     lldb
+    terminus_font
+    jetbrains-mono
 
     bison
     flex
@@ -71,6 +72,15 @@
 
     docker-compose
   ];
+
+  services.kmscon = {
+    enable = true;
+    extraConfig = ''
+      font-name=JetBrainsMono Nerd Font
+      font-size=22
+      xkb-layout=us
+    '';
+  };
 
   services.openssh.enable = true;
   services.openssh.ports = [ 2222 ];
@@ -105,6 +115,7 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    jetbrains-mono
   ];
 }
 
