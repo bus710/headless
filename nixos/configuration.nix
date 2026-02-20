@@ -86,6 +86,26 @@
     };
   };
 
+
+  # ====================================
+  imports =
+    [
+      <home-manager/nixos>
+    ];
+
+  nixpkgs.config.allowUnfree = true;
+
+  home-manager.users.bus710 = { pkgs, ... }: {
+    home.stateVersion = "25.11";
+
+    home.packages = [
+      pkgs.git
+      pkgs.tmux
+      pkgs.neovim
+    ];
+  };
+
+  # ====================================
   users.users.bus710 = {
     isNormalUser = true;
     createHome = true;
