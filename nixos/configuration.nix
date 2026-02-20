@@ -15,14 +15,16 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Lat2-Terminus32";
+    # font = "Lat2-Terminus32";
+    font = "ter-124b";
     keyMap = "us";
     #useXkbConfig = true; 
+    packages = with pkgs; [ terminus_font ];
   };
 
   programs.nix-ld.enable = true;
 
-  networking.hostName = "r04"; # Define your hostname.
+  networking.hostName = "r04";          # Define your hostname.
   time.timeZone = "America/Los_Angeles";
 
   environment.systemPackages = with pkgs; [
