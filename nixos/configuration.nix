@@ -4,6 +4,7 @@
   imports =
     [ 
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -88,11 +89,6 @@
 
 
   # ====================================
-  imports =
-    [
-      <home-manager/nixos>
-    ];
-
   nixpkgs.config.allowUnfree = true;
 
   home-manager.users.bus710 = { pkgs, ... }: {
