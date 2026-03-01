@@ -90,11 +90,11 @@ export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 export PICO_SDK_PATH=$HOME/pico/pico-sdk
 
 # kubectl auto completion
-if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
+# if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
     if [[ -f /usr/local/bin/kubectl ]]; then
         source <(kubectl completion zsh)
     fi
-fi
+# fi
 
 # =============================
 # Aliases
