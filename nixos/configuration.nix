@@ -98,8 +98,16 @@
     };
   };
 
+  # ====================================
+  # For Qemu VMs
+
+  #services.cloud-init.enable = true;
+  #boot.kernelParams = [ "console=ttyS0,115200n8" ];
+  #systemd.services."serial-getty@ttyS0".enable = true;
 
   # ====================================
+  # For the home directory
+
   users.users.bus710 = {
     isNormalUser = true;
     createHome = true;
