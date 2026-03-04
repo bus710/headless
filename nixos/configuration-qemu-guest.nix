@@ -89,14 +89,12 @@
 
   virtualisation.docker.enable = true;
 
-  networking.wireless = {
-    enable = true;
-    networks = {
-      SSID = {
-        psk = "PASSWORD";
-      };
-    };
-  };
+  # ====================================
+  # For Qemu VMs
+
+  boot.kernelParams = [ "console=ttyS0,115200n8" ];
+  systemd.services."serial-getty@ttyS0".enable = true;
+  networking.useDHCP = true;
 
   # ====================================
   # For the home directory
