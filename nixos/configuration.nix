@@ -101,9 +101,9 @@
   # ====================================
   # For Qemu VMs
 
-  #services.cloud-init.enable = true;
   #boot.kernelParams = [ "console=ttyS0,115200n8" ];
   #systemd.services."serial-getty@ttyS0".enable = true;
+  #networking.useDHCP = true;
 
   # ====================================
   # For the home directory
