@@ -240,3 +240,8 @@ post
 # All commands
 # - ^a + :
 # - Tab key works for auto completion
+#
+
+# Tmux clipboard to system clipbaord
+# In tmux, press shift and drag, control + shift + c
+# In another terminal, press control + shift + v
