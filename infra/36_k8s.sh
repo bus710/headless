@@ -5,9 +5,6 @@
 
 set -e
 
-CPU_TYPE=$(uname -m)
-CPU_TARGET=""
-
 VERSION=""
 TARGET=""
 
@@ -22,18 +19,6 @@ term_color_red () {
 
 term_color_white () {
     echo -e "\e[39m"
-}
-
-check_architecture(){
-    if [[ $CPU_TYPE == "x86_64" ]]; then
-        CPU_TARGET="amd64" 
-    elif [[ $CPU_TYPE == "aarch64" ]]; then
-        CPU_TARGET="arm64"
-    else
-        exit
-    fi
-
-    cd $HOME/Downloads
 }
 
 confirmation(){
