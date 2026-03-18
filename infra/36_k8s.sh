@@ -92,12 +92,19 @@ install_containerd(){
     term_color_white
 
     apt-get update -y
+
+    echo '1'
+
     apt-get install -y ca-certificates curl gnupg
+
+    echo '2'
 
     sleep 1
 
     install -m 0755 -d /etc/apt/keyrings
+    echo '3'
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    echo '4'
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
     sleep 1
