@@ -141,7 +141,7 @@ init_k8s(){
     fi
 
     term_color_red 
-    echo "Innitialize k8s"
+    echo "Innitialize k8s (it takes some time)"
     term_color_white
 
     ADDR=$(ip -4 -o addr show eth0 | awk '{print $4}' | cut -d/ -f1)
