@@ -195,7 +195,8 @@ join(){
     fi
 
     term_color_red 
-    echo "Please manually join to the cluster"
+    echo "Please manually join to the cluster with sudo:"
+    echo "- sudo kubeadm join..."
     term_color_white
 }
 
