@@ -255,7 +255,7 @@ load_kernerl_module
 config_sysctl
 install_containerd 
 config_containerd
-install_k8sa
+install_k8s
 init_k8s
 config_kubectl 
 install_calico 
