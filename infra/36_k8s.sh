@@ -92,8 +92,8 @@ install_containerd(){
     echo "Install containerd"
     term_color_white
 
-    apt-get update -y
-    apt-get install -y ca-certificates curl gnupg
+    sudo apt-get update -y
+    sudo apt-get install -y ca-certificates curl gnupg
 
     install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
