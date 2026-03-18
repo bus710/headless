@@ -46,7 +46,8 @@ confirmation(){
         exit 1
     fi
 
-    VERSION=$(curl -o- -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r '.name')
+    VER=$(curl -o- -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r '.name')
+    VERSION="${VER%.*}"
 }
 
 swapoff() {
@@ -124,10 +125,10 @@ install_k8s(){
 
     sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 
-    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key | \
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/"$VERSION"/deb/Release.key | \
         sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 
-    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/${VERSION}/deb/ /' | \
+    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/"$VERSION"/deb/ /' | \
         sudo tee /etc/apt/sources.list.d/kubernetes.list
 
     sudo apt-get update -y
