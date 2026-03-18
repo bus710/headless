@@ -5,7 +5,9 @@
 
 set -e
 
-VERSION=""
+VER=$(curl -o- -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r '.name')
+VERSION="${VER%.*}"
+
 TARGET=""
 
 if [[ "$EUID" == 0 ]]; then 
@@ -45,11 +47,6 @@ confirmation(){
     else
         exit 1
     fi
-
-    VER=$(curl -o- -s https://api.github.com/repos/kubernetes/kubernetes/releases/latest | jq -r '.name')
-    VERSION="${VER%.*}"
-    echo $VERSION
-    sleep 2
 }
 
 swapoff() {
