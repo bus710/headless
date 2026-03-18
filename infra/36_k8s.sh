@@ -197,7 +197,10 @@ join(){
     fi
 
     term_color_red 
-    echo "Please manually join to the cluster with sudo:"
+    echo "From the control plane:"
+    echo "- kubeadm token create --print-join-command"
+    echo 
+    echo "From the workers:"
     echo "- sudo kubeadm join..."
     term_color_white
 }
