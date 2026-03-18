@@ -251,6 +251,8 @@ alias za="source ~/zephyrproject/.venv/bin/activate"
 alias zi="cd ~/zephyrproject/zephyr"
 alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
 
+alias vs="vagrant ssh"
+
 # unalias gow
 
 # =============================
