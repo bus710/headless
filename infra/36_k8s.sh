@@ -186,6 +186,8 @@ print_kubeadm_join(){
     echo "Show the k8s token to be used by workers"
     term_color_white
 
+    echo 
+    echo "kubeadm token create --print-join-command"
     kubeadm token create --print-join-command
 }
 
