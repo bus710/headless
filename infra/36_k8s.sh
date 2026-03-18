@@ -252,9 +252,7 @@ post(){
 }
 
 trap term_color_white EXIT
-check_architecture
 confirmation
-
 swapoff
 load_kernerl_module 
 config_sysctl
