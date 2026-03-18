@@ -209,9 +209,11 @@ install_helm(){
     echo "Install helm"
     term_color_white
 
+    cd ~
     curl -LO https://git.io/get_helm.sh
     chmod 700 get_helm.sh
     ./get_helm.sh
+    cd -
 }
 
 post(){
