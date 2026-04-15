@@ -3,14 +3,14 @@
 set -e
 
 CPU_TARGET=""
-ZIG_RELEASE_URL=https://api.github.com/repos/ziglang/zig/releases/latest
+# ZIG_RELEASE_URL=https://api.github.com/repos/ziglang/zig/releases/latest
 ZIG_RELEASE=""
 ZLS_RELEASE_URL=https://api.github.com/repos/zigtools/zls/releases/latest
 ZLS_RELEASE=""
 ZIG_FILE_NAME=""
 ZLS_FILE_NAME=""
 
-ZIG_RELEASE_URL_MASTER=https://ziglang.org/download/index.json 
+ZIG_RELEASE_URL=https://ziglang.org/download/index.json 
 ZIG_RELEASE_MASTER=""
 ZIG_FILE_NAME_MASTER=""
 
@@ -36,7 +36,8 @@ check_architecture_and_version(){
         exit
     fi
 
-    ZIG_RELEASE=$(curl -o- -s $ZIG_RELEASE_URL | jq -r '.tag_name')
+    ZIG_RELEASE=$(curl -s $ZIG_RELEASE_URL \
+        | jq -r '[to_entries[] | select(.key != "master")] | first | .value.version')
     ZIG_FILE_NAME=https://ziglang.org/download/${ZIG_RELEASE}/zig-${CPU_TARGET}-linux-${ZIG_RELEASE}.tar.xz
 
     ZLS_RELEASE=$(curl -o- -s $ZLS_RELEASE_URL | jq -r '.tag_name')
@@ -49,7 +50,7 @@ check_architecture_and_version_master(){
         exit
     fi
 
-    ZIG_RELEASE_MASTER=$(curl -o- -s $ZIG_RELEASE_URL_MASTER | jq -r '.master.version')
+    ZIG_RELEASE_MASTER=$(curl -o- -s $ZIG_RELEASE_URL | jq -r '.master.version')
     ZIG_FILE_NAME_MASTER=https://ziglang.org/builds/zig-${CPU_TARGET}-linux-${ZIG_RELEASE_MASTER}.tar.xz
 }
 
@@ -75,6 +76,16 @@ confirmation(){
 
     if [[ $ans == "s" ]]; then
         TARGET="stable"
+
+        if [[ "$ZIG_RELEASE" != "$ZLS_RELEASE" ]]; then
+            term_color_red 
+            echo "ZIG and ZLS versions don't match."
+            echo "Abort."
+            term_color_white
+
+            exit 1
+        fi
+
     elif [[ $ans == "m" ]]; then
         TARGET="master"
     else
