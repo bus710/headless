@@ -3,16 +3,20 @@
 set -e
 
 CPU_TARGET=""
-# ZIG_RELEASE_URL=https://api.github.com/repos/ziglang/zig/releases/latest
+
+ZIG_RELEASE_URL=https://ziglang.org/download/index.json 
 ZIG_RELEASE=""
 ZLS_RELEASE_URL=https://api.github.com/repos/zigtools/zls/releases/latest
 ZLS_RELEASE=""
 ZIG_FILE_NAME=""
 ZLS_FILE_NAME=""
 
-ZIG_RELEASE_URL=https://ziglang.org/download/index.json 
 ZIG_RELEASE_MASTER=""
 ZIG_FILE_NAME_MASTER=""
+
+FIXED="0.15.1"
+ZIG_RELEASE_FIXED=""
+ZLS_RELEASE_FIXED=""
 
 # Becuase the libxev only supports stable version
 TARGET="stable"
@@ -54,6 +58,19 @@ check_architecture_and_version_master(){
     ZIG_FILE_NAME_MASTER=https://ziglang.org/builds/zig-${CPU_TARGET}-linux-${ZIG_RELEASE_MASTER}.tar.xz
 }
 
+check_architecture_and_version_fixed(){
+    CPU_TARGET=$(uname -m)
+    if [[ $CPU_TARGET != "x86_64" && $CPU_TARGET != "aarch64" ]]; then
+        exit
+    fi
+
+    ZIG_RELEASE_FIXED=$FIXED
+    ZIG_FILE_NAME_FIXED=https://ziglang.org/download/${ZIG_RELEASE_FIXED}/zig-${CPU_TARGET}-linux-${ZIG_RELEASE_FIXED}.tar.xz
+
+    ZLS_RELEASE_FIXED=$FIXED
+    ZLS_FILE_NAME_FIXED=https://github.com/zigtools/zls/releases/download/${ZLS_RELEASE_FIXED}/zls-${CPU_TARGET}-linux.tar.xz
+}
+
 
 confirmation(){
     term_color_red
@@ -64,10 +81,12 @@ confirmation(){
     echo "  - https://ziglang.org/download/"
     echo "  - Stable zig $ZIG_RELEASE + zls $ZLS_RELEASE" 
     echo "  - Master zig $ZIG_RELEASE_MASTER + zls build on the fly"
+    echo "  - Fixed  zig $ZIG_RELEASE_FIXED + zls $ZIG_RELEASE_FIXED" 
     echo
     echo "Do you want to proceed?"
     echo "- Press 's' for the stable branch version"
     echo "- Press 'm' for the master branch version"
+    echo "- Press 'f' for the $FIXED version"
     echo "- Press 'n' to exit"
     term_color_white
 
@@ -88,6 +107,8 @@ confirmation(){
 
     elif [[ $ans == "m" ]]; then
         TARGET="master"
+    elif [[ $ans == "f" ]]; then
+        TARGET=$FIXED
     else
         exit 1
     fi
@@ -120,16 +141,20 @@ install_zig(){
 
     cd /home/${LOGNAME}
 
-    echo $TARGET
+    echo "TARGET: $TARGET"
 
     if [[ $TARGET == "stable" ]]; then
         echo $ZIG_FILE_NAME
         wget ${ZIG_FILE_NAME}
         tar xf zig-${CPU_TARGET}-linux-${ZIG_RELEASE}.tar.xz
-    else
+    elif [[ $TARGET == "master" ]]; then
         echo $ZIG_FILE_NAME_MASTER
         wget ${ZIG_FILE_NAME_MASTER}
         tar xf zig-${CPU_TARGET}-linux-${ZIG_RELEASE_MASTER}.tar.xz
+    else 
+        echo $ZIG_FILE_NAME_FIXED
+        wget ${ZIG_FILE_NAME_FIXED}
+        tar xf zig-${CPU_TARGET}-linux-${FIXED}.tar.xz
     fi
 
     # tar xf $ZIG_FILE_NAME
@@ -148,6 +173,31 @@ install_zls(){
 
     echo ${ZLS_FILE_NAME}
     wget ${ZLS_FILE_NAME}
+    mkdir zlsRepo
+
+    term_color_red
+    echo "Wait for untar..."
+    term_color_white
+
+    tar xf zls-${CPU_TARGET}-linux.tar.xz -C zlsRepo
+
+    mv zlsRepo/zls .
+    rm -rf zls-*
+    rm -rf zlsRepo
+
+    cd /home/$LOGNAME/repo/headless
+}
+
+install_zls_fixed(){
+    term_color_red
+    echo "Download and install Zig Language Server"
+    term_color_white
+
+    cd /home/${LOGNAME}/zig
+    rm -rf zls*
+
+    echo ${ZLS_FILE_NAME_FIXED}
+    wget ${ZLS_FILE_NAME_FIXED}
     mkdir zlsRepo
 
     term_color_red
@@ -222,6 +272,7 @@ post(){
 trap term_color_white EXIT
 check_architecture_and_version
 check_architecture_and_version_master
+check_architecture_and_version_fixed
 confirmation
 cleanup
 install_llvm
@@ -231,8 +282,10 @@ configure_zls_config
 
 if [[ $TARGET == "stable" ]]; then
     install_zls
-else
+elif [[ $TARGET == "master" ]]; then
     build_zls
+else
+    install_zls_fixed
 fi
 
 post
