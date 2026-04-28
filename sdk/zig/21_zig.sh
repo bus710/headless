@@ -72,11 +72,32 @@ check_architecture_and_version_fixed(){
 }
 
 
+install_anyzig(){
+    term_color_red
+    echo "Install anyzig"
+    term_color_white
+
+    ANYZIG_TARBALL=anyzig-${CPU_TARGET}-linux.tar.gz
+    ANYZIG_URL=https://github.com/marler8997/anyzig/releases/latest/download/${ANYZIG_TARBALL}
+
+    cd /tmp
+    rm -rf ${ANYZIG_TARBALL} anyzig-tmp
+    wget ${ANYZIG_URL}
+    mkdir anyzig-tmp
+    tar xf ${ANYZIG_TARBALL} -C anyzig-tmp
+    sudo mv anyzig-tmp/zig /usr/local/bin/anyzig
+    sudo chown root:root /usr/local/bin/anyzig
+    rm -rf ${ANYZIG_TARBALL} anyzig-tmp
+
+    cd /home/$LOGNAME/repo/headless
+}
+
 confirmation(){
     term_color_red
     echo "What will happen:"
     echo "- Remove ~/zig"
     echo "- Install llvm and lldb"
+    echo "- Install anyzig to /usr/local/bin/anyzig"
     echo "- Install zig and zls from stable or master"
     echo "  - https://ziglang.org/download/"
     echo "  - Stable zig $ZIG_RELEASE + zls $ZLS_RELEASE" 
@@ -257,6 +278,7 @@ configure_zls_config(){
 post(){
     term_color_red
     echo "Done"
+    echo "- anyzig is installed at /usr/local/bin/anyzig"
     echo "- Restart terminal"
     echo "- Run \"mkdir hello_zig && cd hello_zig && zig init\" to start a new Zig project"
     echo "- Run \"zls --config-path \$SOMEWHERE\" to specify the location of zls.json"
@@ -276,6 +298,7 @@ check_architecture_and_version_fixed
 confirmation
 cleanup
 install_llvm
+install_anyzig
 install_zig
 configure_runcom
 configure_zls_config

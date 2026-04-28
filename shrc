@@ -131,6 +131,10 @@ alias zb='zig build'
 alias zrm='zig build run'
 alias ztr='zig test src/root.zig'
 
+alias zzb='anyzig build'
+alias zzrm='anyzig build run'
+alias zztr='anyzig test src/root.zig'
+
 alias glm='gleam'
 alias lx='elixir'
 
