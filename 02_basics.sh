@@ -66,7 +66,8 @@ install_basic_packages(){
         xmlstarlet \
         aptitude \
         pipewire-audio \
-        console-setup
+        console-setup \
+        watchman
         # autofs \
         # powerline \
 

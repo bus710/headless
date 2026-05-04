@@ -366,12 +366,12 @@ config_db_port
 launch_postgresql_docker_container
 install_ecto
 run_phx_gen_auth
-install_daisyui
-modify_root_component
-modify_app_component
-modify_page_html_home
-install_live_svelte_lib
-install_live_svelte_example
+# install_daisyui
+# modify_root_component
+# modify_app_component
+# modify_page_html_home
+# install_live_svelte_lib
+# install_live_svelte_example
 install_credo
 config_gitignore
 post
