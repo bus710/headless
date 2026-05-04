@@ -32,7 +32,8 @@ register_repo() {
 	# https://github.com/elixir-lang/elixir/tags
 	
 	# ELIXIR_VERSION="1.15.5-otp-25"
-	ELIXIR_VERSION="1.17.0-otp-27"
+	# ELIXIR_VERSION="1.17.0-otp-27"
+	ELIXIR_VERSION="1.19.5-otp-27"
 
 	# github API equivalent
 	# curl -o- -s https://api.github.com/repos/elixir-lang/elixir/releases/latest | jq -r '.tag_name'
