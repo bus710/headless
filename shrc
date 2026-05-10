@@ -258,7 +258,7 @@ alias zo="cd ~/repo/zephyr-rtos-development-in-linux"
 alias vg="vagrant"
 alias vgs="vagrant ssh"
 
-alias cld="claude"
+alias ccc="claude --continue"
 
 # unalias gow
 
