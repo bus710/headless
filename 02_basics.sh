@@ -59,6 +59,7 @@ install_basic_packages(){
         command-not-found \
         jq \
         fzf \
+        tio \
         rsync \
         ranger \
         ripgrep \
