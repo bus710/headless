@@ -26,6 +26,9 @@
   networking.hostName = "r04";          # Define your hostname.
   time.timeZone = "America/Los_Angeles";
 
+  security.sudo.wheelNeedsPassword = false;
+  security.sudo.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     neovim
@@ -37,7 +40,6 @@
     nodejs
     python3
     go
-    cargo
     rustup
     ncdu
     htop
@@ -101,9 +103,8 @@
     isNormalUser = true;
     createHome = true;
     home = "/home/bus710";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" ];
   };
-  security.sudo.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
   programs.zsh = {
