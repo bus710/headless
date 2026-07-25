@@ -69,8 +69,6 @@
     automake
     libtool
     busybox
-
-    docker-compose
   ];
 
   services.kmscon = {
@@ -86,8 +84,6 @@
   services.openssh.ports = [ 2222 ];
   services.openssh.settings.PermitRootLogin = "no";
   services.openssh.settings.UseDns = false;
-
-  virtualisation.docker.enable = true;
 
   networking.wireless = {
     enable = true;
@@ -105,7 +101,7 @@
     isNormalUser = true;
     createHome = true;
     home = "/home/bus710";
-    extraGroups = [ "wheel" "networkmanager" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
   security.sudo.enable = true;
 
