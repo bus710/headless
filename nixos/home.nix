@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
 {
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   home.username = "bus710";
   home.homeDirectory = "/home/bus710";
   home.stateVersion = "25.11"; # Please read the comment before changing.
