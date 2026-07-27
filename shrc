@@ -139,6 +139,8 @@ alias glm='gleam'
 alias lx='elixir'
 
 alias nw='cd ~/repo/nix-workspace'
+alias deploy='nix run github:serokell/deploy-rs --'
+
 alias iw='cd ~/repo/iac-workspace'
 alias bw='cd ~/repo/blog'
 alias cl='cd ~/repo/cloud'
