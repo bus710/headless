@@ -116,7 +116,7 @@ install_neovim() {
 	echo "Install required packages"
 	term_color_white
 
-	sudo apt install -y fuse3 libfuse2 ack-grep
+	sudo apt install -y fuse3 libfuse3-4 ack
 
 	term_color_red
 	echo "Clean up existing configuration"
