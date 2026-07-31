@@ -73,14 +73,14 @@ install_packages(){
     # Extra apps and theming
     sudo apt install -y \
         fonts-noto-color-emoji \
-        nm-connection-editor \
-        network-manager-applet \
         ristretto \
         zathura \
         inxi \
         mpv \
         imv
         #qtwayland5
+        #nm-connection-editor \
+        #network-manager-applet \
 
     # For "Open terminal here", 
     # > Edit > Configure Custom Action > kitty %f
