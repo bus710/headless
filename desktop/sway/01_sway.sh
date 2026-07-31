@@ -73,7 +73,8 @@ install_packages(){
     # Extra apps and theming
     sudo apt install -y \
         fonts-noto-color-emoji \
-        network-manager-gnome \
+        nm-connection-editor \
+        network-manager-applet \
         ristretto \
         zathura \
         inxi \
