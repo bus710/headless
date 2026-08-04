@@ -68,6 +68,17 @@ post(){
     echo "Per project:  uv init   (new project)"
     echo "              uv sync   (create .venv + install deps)"
     echo "Launch nvim from the project root so LSP/DAP find .venv."
+    echo ""
+    echo "DAP gotcha: 'uv: Launch file' runs the open file as a script, so"
+    echo "breakpoints only hit in code that actually executes at import time."
+    echo "A fresh 'uv init' leaves src/<pkg>/__init__.py defining main() but"
+    echo "never calling it, so debugging that file stops nothing. Make the"
+    echo "file runnable before debugging, e.g. add to the entry module:"
+    echo "    if __name__ == \"__main__\":"
+    echo "        main()"
+    echo "or add src/<pkg>/__main__.py ('from <pkg> import main; main()') and"
+    echo "use 'uv: Launch module' with module <pkg> (needed once you have"
+    echo "package-relative imports)."
 }
 
 trap term_color_white EXIT
