@@ -1,0 +1,77 @@
+#!/bin/bash
+
+set -e
+
+# Install uv (Python package / venv / interpreter manager), a uv-managed
+# Python interpreter, and pre-cache debugpy so the first Neovim DAP debug
+# session is fast. uv installs to ~/.local/bin, which is already on PATH
+# (see .shrc), so no runcom edits are needed here.
+
+PYTHON_VERSION="3.12"
+
+if [[ "$EUID" == 0 ]]; then
+    echo "Please run as normal user (w/o sudo)"
+    exit
+fi
+
+term_color_red () {
+    echo -e "\e[91m"
+}
+
+term_color_white () {
+    echo -e "\e[39m"
+}
+
+install_uv(){
+    term_color_red
+    echo "Install / update uv"
+    term_color_white
+
+    if command -v uv >/dev/null 2>&1; then
+        uv self update || true
+    else
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+    fi
+
+    # Make uv visible to the rest of this script (installer target dir).
+    export PATH="$HOME/.local/bin:$PATH"
+    uv --version
+}
+
+install_python(){
+    term_color_red
+    echo "Install Python ${PYTHON_VERSION} via uv"
+    term_color_white
+
+    uv python install "${PYTHON_VERSION}"
+    uv python list
+}
+
+install_debugpy(){
+    term_color_red
+    echo "Pre-cache debugpy for nvim-dap (via uv)"
+    term_color_white
+
+    # The Neovim DAP adapter (z18-py.lua) launches debugpy with:
+    #   uv run --with debugpy python -m debugpy.adapter
+    # Running it once here downloads debugpy into uv's cache, so the first
+    # real debug session does not pay the resolve/download cost.
+    uv run --python "${PYTHON_VERSION}" --with debugpy \
+        python -c "import debugpy; print('debugpy', debugpy.__version__)"
+}
+
+post(){
+    term_color_red
+    echo "Done"
+    term_color_white
+
+    echo "Per project:  uv init   (new project)"
+    echo "              uv sync   (create .venv + install deps)"
+    echo "Launch nvim from the project root so LSP/DAP find .venv."
+}
+
+trap term_color_white EXIT
+install_uv
+install_python
+install_debugpy
+post
