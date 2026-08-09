@@ -108,15 +108,17 @@ configure_sway (){
     mkdir /home/$LOGNAME/.config/sway
     cp dotfiles/10_sway_config /home/$LOGNAME/.config/sway/config
 
-    # auto start config (zprofile)
-    if [[ -f /home/$LOGNAME/.zprofile ]]; then
-        SWAY_IN_ZPROFILE=$(cat /home/$LOGNAME/.zprofile | grep sway)
-        if [[ ! $SWAY_IN_ZPROFILE =~ "sway" ]]; then
-            cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
-        fi
-    else
-        cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
-    fi
+    # auto start config (zprofile) -- DISABLED: greetd + tuigreet now handles
+    # session start (see install_greetd). Re-enable this block if you switch
+    # back to tty1 autologin instead of a greeter.
+    # if [[ -f /home/$LOGNAME/.zprofile ]]; then
+    #     SWAY_IN_ZPROFILE=$(cat /home/$LOGNAME/.zprofile | grep sway)
+    #     if [[ ! $SWAY_IN_ZPROFILE =~ "sway" ]]; then
+    #         cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
+    #     fi
+    # else
+    #     cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
+    # fi
 
     # kitty config
     rm -rf /home/$LOGNAME/.config/kitty
@@ -174,9 +176,37 @@ configure_touchpad(){
     fi
 }
 
+install_greetd(){
+    term_color_red
+    echo "Install and configure greetd + tuigreet"
+    term_color_white
+
+    sudo apt install -y \
+        greetd \
+        tuigreet
+
+    # Write the greetd config:
+    # - vt 7 so kernel log messages on tty1 don't bleed into the prompt
+    # - greeter runs as the Debian _greetd system user
+    # - after auth, launch sway; F-key power actions need the commands defined
+    sudo tee /etc/greetd/config.toml > /dev/null <<'EOF'
+[terminal]
+vt = 7
+
+[default_session]
+command = "tuigreet --time --remember --cmd sway --power-shutdown 'systemctl poweroff' --power-reboot 'systemctl reboot'"
+user = "_greetd"
+EOF
+
+    # Make greetd the login manager
+    sudo systemctl enable greetd.service
+}
+
 post (){
     term_color_red
     echo "Done"
+    echo "- greetd + tuigreet is enabled; reboot to get the greeter on vt7"
+    echo "- to auto-unlock the keyring on login, add pam_gnome_keyring to /etc/pam.d/greetd"
     term_color_white
 }
 
@@ -186,5 +216,6 @@ install_packages
 configure_sway
 configure_gtk_dark
 configure_touchpad
+install_greetd
 post
 
