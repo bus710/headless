@@ -195,8 +195,6 @@ EOF
 post (){
     term_color_red
     echo "Done"
-    echo "- greetd + tuigreet is enabled; reboot to get the greeter on vt7"
-    echo "- to auto-unlock the keyring on login, add pam_gnome_keyring to /etc/pam.d/greetd"
     term_color_white
 }
 
