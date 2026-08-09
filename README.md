@@ -1,31 +1,66 @@
 # Headless
 
-To install tools on Debian Buster (or newer):
-- Global git config
-- Basic packages 
-- Zsh 
-- Nvim (+ vim-plug)
-- Go
-- Docker
-- Firebase
-- GCP
+Bootstrap scripts for a headless-first Debian dev machine. Each script is
+standalone, prompts before making changes, and is numbered so they read in a
+sensible install order.
 
-<br/><br/>
+## Install order
 
-## References
+Run the numbered scripts as a normal user (they call `sudo` where needed):
 
-- [git](https://confluence.atlassian.com/bitbucketserver/basic-git-commands-776639767.html)
-- [nvim](https://neovim.io/)
-- [delve](https://github.com/go-delve/delve)
-- [vim-plug](https://github.com/junegunn/vim-plug)
-- [vim-fugitive](https://github.com/tpope/vim-fugitive)
-- [vim-go](https://github.com/fatih/vim-go)
-- [vim-delve](https://github.com/sebdah/vim-delve)
-- [vim-godebug](https://github.com/jodosha/vim-godebug)
-- [dart-vim-plugin](https://github.com/dart-lang/dart-vim-plugin)
-- [vim-flutter](https://github.com/thosakwe/vim-flutter)
-- [vim-markdown-preview](https://github.com/iamcco/markdown-preview.nvim)
-- [Learn Vimscript the Hardway](http://learnvimscriptthehardway.stevelosh.com)
-- [My neovim setup for Go](https://hackernoon.com/my-neovim-setup-for-go-7f7b6e805876)
+### Base system (`00`–`22`)
 
+| Script | What it does |
+|--------|--------------|
+| `00_git_setup.sh` | Global git config |
+| `01_shrc.sh` | Shell runcom (`~/.shrc`) |
+| `02_basics.sh` | Basic apt packages |
+| `03_zsh.sh` | Zsh + oh-my-zsh |
+| `04_tmux.sh` | tmux + tmuxp |
+| `20_basic_build_tools.sh` | Compilers / build essentials |
+| `22_tui_tools.sh` | Misc TUI/CLI tools |
 
+### Language SDKs (`30`–`34`) — cores only
+
+Install the runtime/compiler and wire up `PATH`. Node lands before nvim so its
+LSP servers exist by the time the editor is set up.
+
+| Script | SDK |
+|--------|-----|
+| `30_node.sh` | nvm + Node LTS |
+| `31_python.sh` | uv + a uv-managed Python |
+| `32_go.sh` | Go toolchain |
+| `33_rust.sh` | rustup + stable toolchain |
+| `34_zig.sh` | Zig + zls (uses `sdk/zig/zls.json`) |
+
+### SDK tooling (`40`)
+
+| Script | What it does |
+|--------|--------------|
+| `40_sdk_tools.sh` | Post-install tooling for node / python / go / rust in one pass. Each language is a wrapped section, so one failure doesn't abort the rest. |
+
+### Editor (`50`–`51`) — runs last
+
+Depends on every SDK above (LSPs, formatters, DAP adapters).
+
+| Script | What it does |
+|--------|--------------|
+| `50_nvim.sh` | Neovim |
+| `51_astro_nvim.sh` | AstroNvim config + utils |
+
+### System rules (`90`–`91`)
+
+| Script | What it does |
+|--------|--------------|
+| `90_network_udev_rule.sh` | Pin NICs to `eth0` / `wlan0` by MAC (writes a persistent-net udev rule) |
+| `91_cpu_gpu_low_freq_cron_rule.sh` | Cap CPU/GPU max frequency via a root helper + cron. GPU handling is driver-aware (amdgpu / i915 / xe / devfreq) |
+
+## Layout
+
+- `sdk/` — SDKs outside the daily core:
+  - `sdk/embedded/` — rust-embedded, esp32, arduino
+  - `sdk/android/`, `sdk/flutter/`, `sdk/zig/` (zls template)
+- `desktop/` — desktop-environment setup (Sway, etc.)
+- `infra/` — infrastructure snippets
+- `archlinux/` — Arch-specific notes/scripts
+- `shrc`, `tmux.conf` — dotfiles copied into place by the base scripts
