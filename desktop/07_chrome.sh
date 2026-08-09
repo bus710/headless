@@ -16,6 +16,14 @@ if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
         chrome-gnome-shell
 fi
 
+term_color_red () {
+    echo -e "\e[91m"
+}
+
+term_color_white () {
+    echo -e "\e[39m"
+}
+
 function install(){
     echo 
     echo "Install Chrome Browser"
@@ -28,12 +36,14 @@ function install(){
 
 function post(){
     rm ${PACKAGE_NAME}
+    term_color_red
     echo
     echo "Done"
     echo "- Enable chrome://flags/#enable-webrtc-pipewire-capturer for Google Meet screen sharing in SwayWM"
     echo "- Enable chrome://flags/#ozone-platform-hint as wayland for Google Meet screen sharing in SwayWM"
     echo "- Run sudo apt --fix-broken intall"
     echo
+    term_color_white
 }
 
 trap post EXIT
