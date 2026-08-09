@@ -72,7 +72,7 @@ output eDP-1 scale 1.1
 # - t14s g6: input "1267:12693:ELAN0676:00_04F3:3195_Touchpad" {
 # - x1: input "1267:12624:ELAN0670:00_04F3:3150_Touchpad" {
 # - t490s: input "1267:47:Elan_Touchpad" {
-input #TOUCH_ID {
+input type:touchpad {
     dwt enabled
     tap enabled
     natural_scroll enabled
