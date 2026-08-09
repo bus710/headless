@@ -37,6 +37,8 @@ confirmation(){
         echo ""
         exit 1
     fi
+
+    mkdir ~/Downloads
 }
 
 cleanup(){
