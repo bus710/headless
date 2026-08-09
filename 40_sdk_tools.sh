@@ -68,6 +68,8 @@ confirmation(){
         echo ""
         exit 1
     fi
+
+    sudo echo ""
 }
 
 # Run a section function; record but do not propagate its failure.
