@@ -158,6 +158,10 @@ install_rust_tools(){
     cargo install cargo-outdated
     cargo install cargo-make
     cargo install cargo-generate
+
+    # Ducker - Docker TUI (moved from 22_tui_tools.sh; needs cargo, which only
+    # exists after the rust core in 33_rust.sh).
+    cargo install --git https://github.com/robertpsoane/ducker
 }
 
 post(){

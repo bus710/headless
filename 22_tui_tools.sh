@@ -26,7 +26,6 @@ confirmation(){
     echo "- https://github.com/jesseduffield/lazygit"
     echo "- https://github.com/yorukot/superfile"
     echo "- https://github.com/tconbeer/harlequin"
-    echo "- https://github.com/robertpsoane/ducker"
     term_color_white
 
     echo
@@ -38,7 +37,7 @@ confirmation(){
         exit 1
     fi
 
-    mkdir ~/Downloads
+    mkdir -p ~/Downloads
 }
 
 cleanup(){
@@ -80,7 +79,7 @@ install_harlequin(){
     sudo apt install -y \
         pipx
 
-    pipx uninstall harlequin # so the $HOME/.local/share/pipx cache can be cleaned up
+    pipx uninstall harlequin || true # nothing to remove on a fresh box; keep going
     pipx install harlequin
     pipx inject harlequin harlequin-postgres
 
@@ -109,18 +108,6 @@ install_harlequin(){
 
 }
 
-install_ducker(){
-    term_color_red
-    echo "Install Ducker"
-    term_color_white
-
-    if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
-        cargo install --git https://github.com/robertpsoane/ducker
-    else
-        echo "No cargo found"
-    fi
-}
-
 post(){
     term_color_red
     echo "Done"
@@ -133,5 +120,4 @@ cleanup
 install_lazygit
 install_superfile
 install_harlequin
-install_ducker
 post
