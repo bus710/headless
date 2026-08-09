@@ -51,17 +51,6 @@ function activate_aws(){
 #ANDROID_4
 #ANDROID_5
 
-# ASDF path for erlang
-if [[ $IS_ZSH == *"oh-my-zsh"* ]]; then
-    :
-    # #ASDF_0
-    # #ASDF_1
-    # #ASDF_2
-fi
-
-# Erlang erl shell args
-#ERL_0
-
 # ARDUINO_CLI path
 #ARDUINO_CLI_0
 # ARDUINO V2 path
@@ -121,11 +110,7 @@ alias kw='cd ~/repo/linux-kernel-modules'
 alias zl='cd ~/repo/zigws'
 alias rw='cd ~/repo/rustws'
 alias gw='cd ~/repo/gows'
-alias er='cd ~/repo/erlangws'
-alias el='cd ~/repo/elixirws'
-alias gg='cd ~/repo/gleamws'
 alias fw='cd ~/repo/fltws'
-alias jw='cd ~/repo/jsws'
 
 alias zb='zig build'
 alias zrm='zig build run'
@@ -135,8 +120,6 @@ alias zzb='anyzig build'
 alias zzrm='anyzig build run'
 alias zztr='anyzig test src/root.zig'
 
-alias glm='gleam'
-alias lx='elixir'
 
 alias nw='cd ~/repo/nix-workspace'
 alias deploy='nix run github:serokell/deploy-rs --'
@@ -189,9 +172,6 @@ alias go-export="export GOPROXY=direct; export GOSUMDB=off; export GO111MODULE=o
 
 alias goserve="echo \"waiting at 8080\" && gommand 'http.Handle(\"/\", http.FileServer(http.Dir(\".\"))); fmt.Println(http.ListenAndServe(\":8080\", nil))'"
 
-alias code="code --enable-features=UserOzonePlatform --ozone-platform=wayland . 2> /dev/null"
-alias insider="code-insiders ."
-
 alias dk="docker"
 alias mink="minikube"
 alias k="kubectl"
@@ -201,21 +181,8 @@ alias pl="pulumi"
 
 alias gcloud-auth-qaus="gcloud container clusters get-credentials connect-qa-gcp-01 --region us-central1 --project connect-qaus-k8s-e004"
 
-alias cp-zig-vscode="rm -rf .vscode && mkdir .vscode && cp -r /home/$LOGNAME/repo/headless/sdk/zig/zig-vscode/* .vscode/"
-
 alias cargo-upgrade-incompatible="cargo upgrade --incompatible"
 alias cargo-watch-x-run="cargo watch -x 'run'"
-
-alias node-scaffolding="/home/$LOGNAME/repo/headless/sdk/js/node-scaffolding.sh"
-alias react-scaffolding="/home/$LOGNAME/repo/headless/sdk/js/react-scaffolding.sh"
-alias svelte-scaffolding="/home/$LOGNAME/repo/headless/sdk/js/sv-scaffolding.sh"
-alias sveltekit-scaffolding="/home/$LOGNAME/repo/headless/sdk/js/sk-scaffolding.sh"
-
-alias tauri-scaffolding="/home/$LOGNAME/repo/headless/sdk/tauri/tauri-scaffolding.sh"
-alias elx-scaffolding="/home/$LOGNAME/repo/headless/sdk/otp/elx-scaffolding.sh"
-alias phx-scaffolding="/home/$LOGNAME/repo/headless/sdk/otp/phx-scaffolding.sh"
-alias phx-scaffolding-api="/home/$LOGNAME/repo/headless/sdk/otp/phx-scaffolding-api.sh"
-alias phx-restore="/home/$LOGNAME/repo/headless/sdk/otp/phx-restore.sh"
 
 alias tf="terraform"
 alias tf-scaffolding="cat /home/$LOGNAME/repo/headless/infra/main.tf >> main.tf"
@@ -306,17 +273,6 @@ cmd-git () {
     echo "git log --color=always --follow -p -- \$FILE or \$DIR"
 }
 
-cmd-phoenix () {
-    echo "Install Phoenix"
-    echo "- mix archive.install hex phx_new"
-    echo "Create & run a Phoenix app"
-    echo "- mix phx.new hello"
-    echo "- cd hello"
-    echo "- mix ecto.create # after editing config/dev.exs"
-    echo "- mix deps.get"
-    echo "- mix phx.server"
-}
-
 cmd-kubectl () {
     echo "k3s, minikube(mink), kubectl(kl)"
     echo
@@ -405,11 +361,6 @@ restart-container(){
     docker container inspect $1 | grep Status
 }
 
-cp-elixir-vscode-launch-json(){
-    rm -rf ./.vscode
-    cp -r ~/repo/headless/sdk/otp/vscode ./.vscode
-}
-
 cp-kernel-clangd(){
     touch .clangd
     echo "CompileFlags:\n  CompilationDatabase: /home/bus710/repo/module-test/linux/" \
@@ -422,27 +373,6 @@ cp-pico-clangd(){
     P1="/usr/lib/arm-none-eabi/include"
     echo "CompileFlags:\n  Add: [\n    -I$P0,\n    -I$P1]" \
         >> .clangd
-}
-
-cp-esp32-vscode-c-cpp-properties-json(){
-    rm -rf ./.vscode/c_cpp_properties.json
-    mkdir .vscode
-    cp ~/repo/headless/sdk/esp32/c_cpp_properties.json ./.vscode
-}
-
-npm-create-react-ts(){
-    echo "npm create vite@latest $1 -- --template react-ts"
-    npm create vite@latest $1 -- --template react-ts
-}
-
-npm-commands(){
-    echo "npm init -y"
-    echo "npm run dev"
-    echo
-    echo "npm create vite@latest $APP_NAME -- --template react-ts|svelte"
-    echo "npm run dev -- --host --open"
-    echo
-    echo "npm-create-react-ts $APP_NAME"
 }
 
 # For gotk4
