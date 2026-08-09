@@ -108,17 +108,15 @@ configure_sway (){
     mkdir /home/$LOGNAME/.config/sway
     cp dotfiles/10_sway_config /home/$LOGNAME/.config/sway/config
 
-    # auto start config (zprofile) -- DISABLED: greetd + tuigreet now handles
-    # session start (see install_greetd). Re-enable this block if you switch
-    # back to tty1 autologin instead of a greeter.
-    # if [[ -f /home/$LOGNAME/.zprofile ]]; then
-    #     SWAY_IN_ZPROFILE=$(cat /home/$LOGNAME/.zprofile | grep sway)
-    #     if [[ ! $SWAY_IN_ZPROFILE =~ "sway" ]]; then
-    #         cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
-    #     fi
-    # else
-    #     cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
-    # fi
+    # auto start config (zprofile) 
+    if [[ -f /home/$LOGNAME/.zprofile ]]; then
+        SWAY_IN_ZPROFILE=$(cat /home/$LOGNAME/.zprofile | grep sway)
+        if [[ ! $SWAY_IN_ZPROFILE =~ "sway" ]]; then
+            cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
+        fi
+    else
+        cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
+    fi
 
     # kitty config
     rm -rf /home/$LOGNAME/.config/kitty
@@ -198,7 +196,17 @@ command = "tuigreet --time --remember --cmd sway --power-shutdown 'systemctl pow
 user = "_greetd"
 EOF
 
+    # Delay the greeter until boot jobs are dispatched so kernel/boot log
+    # messages don't bleed onto the greeter's vt (equivalent to
+    # "systemctl edit greetd" adding [Service] Type=idle)
+    sudo mkdir -p /etc/systemd/system/greetd.service.d
+    sudo tee /etc/systemd/system/greetd.service.d/override.conf > /dev/null <<'EOF'
+[Service]
+Type=idle
+EOF
+
     # Make greetd the login manager
+    sudo systemctl daemon-reload
     sudo systemctl enable greetd.service
 }
 
@@ -216,6 +224,6 @@ install_packages
 configure_sway
 configure_gtk_dark
 configure_touchpad
-install_greetd
+# install_greetd
 post
 
