@@ -2,10 +2,10 @@
 
 set -e
 
-# Install uv (Python package / venv / interpreter manager), a uv-managed
-# Python interpreter, and pre-cache debugpy so the first Neovim DAP debug
-# session is fast. uv installs to ~/.local/bin, which is already on PATH
+# Install uv (Python package / venv / interpreter manager) and a uv-managed
+# Python interpreter. uv installs to ~/.local/bin, which is already on PATH
 # (see .shrc), so no runcom edits are needed here.
+# The debugpy pre-cache for nvim-dap lives in 40_sdk_tools.sh.
 
 PYTHON_VERSION="3.12"
 
@@ -47,19 +47,6 @@ install_python(){
     uv python list
 }
 
-install_debugpy(){
-    term_color_red
-    echo "Pre-cache debugpy for nvim-dap (via uv)"
-    term_color_white
-
-    # The Neovim DAP adapter (z18-py.lua) launches debugpy with:
-    #   uv run --with debugpy python -m debugpy.adapter
-    # Running it once here downloads debugpy into uv's cache, so the first
-    # real debug session does not pay the resolve/download cost.
-    uv run --python "${PYTHON_VERSION}" --with debugpy \
-        python -c "import debugpy; print('debugpy', debugpy.__version__)"
-}
-
 post(){
     term_color_red
     echo "Done"
@@ -84,5 +71,4 @@ post(){
 trap term_color_white EXIT
 install_uv
 install_python
-install_debugpy
 post

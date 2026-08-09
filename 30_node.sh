@@ -62,34 +62,13 @@ install_node_lts(){
     term_color_white
 
     nvm install --lts
-
-    term_color_red
-    echo "Install packages"
-    term_color_white
-
-    packages=(
-        "yarn"
-        "@tailwindcss/language-server" # need for nvim tailwindcss cmp
-        "vscode-langservers-extracted" # need for nvim tailwindcss cmp
-        "typescript"                   # need for LSP
-        "typescript-language-server"   # need for LSP
-        "tsx"                          # need for transpile
-    )
-
-    for p in "${packages[@]}"; do
-        term_color_red
-        echo Install $p
-        term_color_white
-
-        npm install -no-fund -g $p
-        echo 
-    done
 }
 
 post(){
     term_color_red
     echo "Done"
     echo "- restart terminal"
+    echo "- global npm packages are installed by 40_sdk_tools.sh"
     term_color_white
 }
 
