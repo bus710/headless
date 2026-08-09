@@ -48,12 +48,20 @@ Depends on every SDK above (LSPs, formatters, DAP adapters).
 | `50_nvim.sh` | Neovim |
 | `51_astro_nvim.sh` | AstroNvim config + utils |
 
-### System rules (`90`–`91`)
+### Local config (`60`–`61`)
+
+Machine-local hardware/system tweaks.
 
 | Script | What it does |
 |--------|--------------|
-| `90_network_udev_rule.sh` | Pin NICs to `eth0` / `wlan0` by MAC (writes a persistent-net udev rule) |
-| `91_cpu_gpu_low_freq_cron_rule.sh` | Cap CPU/GPU max frequency via a root helper + cron. GPU handling is driver-aware (amdgpu / i915 / xe / devfreq) |
+| `60_network_udev_rule.sh` | Pin NICs to `eth0` / `wlan0` by MAC (writes a persistent-net udev rule) |
+| `61_cpu_gpu_low_freq_cron_rule.sh` | Cap CPU/GPU max frequency via a root helper + cron. GPU handling is driver-aware (amdgpu / i915 / xe / devfreq) |
+
+### External services (`90`)
+
+| Script | What it does |
+|--------|--------------|
+| `90_external_services.sh` | Tailscale (mesh VPN) + Claude Code (Anthropic CLI) |
 
 ## Layout
 
