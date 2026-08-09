@@ -161,7 +161,10 @@ install_rust_tools(){
 
     # Ducker - Docker TUI (moved from 22_tui_tools.sh; needs cargo, which only
     # exists after the rust core in 33_rust.sh).
-    cargo install --git https://github.com/robertpsoane/ducker
+    # Install the published crate with --locked so it uses the maintainer's
+    # pinned Cargo.lock; a plain --git build re-resolves deps and pulls a newer
+    # bollard that breaks compilation (E0603 on bollard::secret::*).
+    cargo install ducker --locked
 }
 
 post(){
