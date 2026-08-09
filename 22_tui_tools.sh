@@ -2,11 +2,6 @@
 
 set -e
 
-URL=https://go.dev/VERSION\?m\=text
-CPU_TYPE=$(uname -m)
-CPU_TARGET=""
-FULL_VERSION=""
-
 if [[ "$EUID" == 0 ]];
     then echo "Please run as normal user (w/o sudo)"
     exit

@@ -269,10 +269,27 @@ configure_zls_config(){
     echo "- Options: https://github.com/zigtools/zls/wiki/Configuration"
     term_color_white
 
-    RUNNER_HASH=$(ls /home/$LOGNAME/.cache/zls/build_runner/)
-    cat /home/$LOGNAME/repo/headless/sdk/zig/zls.json | sed "s/\$HASH/${RUNNER_HASH}/g" > /home/$LOGNAME/.config/zls.json
+    SRC=/home/$LOGNAME/repo/headless/sdk/zig/zls.json
+    DST=/home/$LOGNAME/.config/zls.json
+    mkdir -p /home/$LOGNAME/.config
 
-    cat /home/$LOGNAME/.config/zls.json | jq
+    # zls only creates ~/.cache/zls/build_runner/<hash>/ the first time it runs
+    # in a Zig project, so on a fresh install the cache is legitimately absent.
+    RUNNER_HASH=$(ls /home/$LOGNAME/.cache/zls/build_runner/ 2>/dev/null | head -n1)
+
+    if [[ -n $RUNNER_HASH ]]; then
+        sed "s/\$HASH/${RUNNER_HASH}/g" "$SRC" > "$DST"
+    else
+        term_color_red
+        echo "No zls build_runner cache yet (normal on a fresh install)."
+        echo "Writing zls.json without build_runner_path; zls fills it in itself"
+        echo "the first time you open a Zig project. Re-run this script afterwards"
+        echo "to pin the hash (or follow the note printed at the end)."
+        term_color_white
+        jq 'del(.build_runner_path)' "$SRC" > "$DST"
+    fi
+
+    jq . "$DST"
 }
 
 post(){
