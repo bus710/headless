@@ -61,8 +61,10 @@ post(){
     echo "A fresh 'uv init' leaves src/<pkg>/__init__.py defining main() but"
     echo "never calling it, so debugging that file stops nothing. Make the"
     echo "file runnable before debugging, e.g. add to the entry module:"
+    term_color_red
     echo "    if __name__ == \"__main__\":"
     echo "        main()"
+    term_color_white
     echo "or add src/<pkg>/__main__.py ('from <pkg> import main; main()') and"
     echo "use 'uv: Launch module' with module <pkg> (needed once you have"
     echo "package-relative imports)."
