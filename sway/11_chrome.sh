@@ -11,11 +11,6 @@ if [[ "$EUID" == 0 ]]; then
     exit
 fi
 
-if [[ $XDG_CURRENT_DESKTOP =~ "ubuntu:GNOME" ]]; then
-    sudo apt install -y \
-        chrome-gnome-shell
-fi
-
 term_color_red () {
     echo -e "\e[91m"
 }
@@ -31,21 +26,30 @@ function install(){
 
     cd ~/Downloads
     wget ${URL}${PACKAGE_NAME}
-    sudo dpkg -i ${PACKAGE_NAME}
+    # Use `apt install ./file.deb` (not `dpkg -i`) so apt resolves and installs
+    # Chrome's dependencies in the same transaction. `dpkg -i` only unpacks and
+    # leaves unmet deps half-configured, which is what forces the manual
+    # `apt --fix-broken install` afterward. The leading ./ makes apt treat it as
+    # a local file rather than a package name to fetch from the repos.
+    sudo apt install -y ./${PACKAGE_NAME}
+}
+
+# Remove the downloaded .deb on exit (success or failure). rm -f so it is a
+# harmless no-op if the download never happened.
+function cleanup(){
+    rm -f ~/Downloads/${PACKAGE_NAME}
 }
 
 function post(){
-    rm ${PACKAGE_NAME}
     term_color_red
     echo
     echo "Done"
     echo "- Enable chrome://flags/#enable-webrtc-pipewire-capturer for Google Meet screen sharing in SwayWM"
     echo "- Enable chrome://flags/#ozone-platform-hint as wayland for Google Meet screen sharing in SwayWM"
-    echo "- Run sudo apt --fix-broken intall"
     echo
     term_color_white
 }
 
-trap post EXIT
+trap cleanup EXIT
 install
 post

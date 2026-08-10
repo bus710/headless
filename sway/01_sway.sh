@@ -82,10 +82,28 @@ install_packages(){
         #nm-connection-editor \
         #network-manager-applet \
 
-    # For "Open terminal here", 
+    # For "Open terminal here",
     # > Edit > Configure Custom Action > kitty %f
-    sudo apt install -y \
-        thunar
+    #
+    # --no-install-recommends bounds exactly what Thunar can pull in: its default
+    # Recommends include "policykit-1-gnome | polkit-1-auth-agent" and "gvfs"
+    # (whose own Recommends pull gvfs-backends -> gnome-online-accounts), which is
+    # how a stray DE / gnome bloat can ride in. We instead list the recommends
+    # Thunar actually needs, so no desktop environment can sneak through:
+    #   thunar-volman = automount removable media, tumbler = thumbnails,
+    #   gvfs + udisks2 = mounting, xdg-user-dirs = standard dirs,
+    #   mate-polkit = a lightweight (non-gnome) polkit agent for privileged mounts.
+    # (gvfs-backends for smb/sftp/mtp is intentionally omitted - add it by hand if
+    # you need network/phone mounts; it's what drags in the gnome-online-accounts
+    # stack.)
+    sudo apt install -y --no-install-recommends \
+        thunar \
+        thunar-volman \
+        tumbler \
+        gvfs \
+        udisks2 \
+        xdg-user-dirs \
+        mate-polkit
 
     # Auth
     sudo apt install -y \
