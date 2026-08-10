@@ -48,7 +48,7 @@ Depends on every SDK above (LSPs, formatters, DAP adapters).
 | `50_nvim.sh` | Neovim |
 | `51_astro_nvim.sh` | AstroNvim config + utils |
 
-### Local config (`60`–`61`)
+### Local config (`60`–`62`)
 
 Machine-local hardware/system tweaks.
 
@@ -56,6 +56,7 @@ Machine-local hardware/system tweaks.
 |--------|--------------|
 | `60_network_udev_rule.sh` | Pin NICs to `eth0` / `wlan0` by MAC (writes a persistent-net udev rule) |
 | `61_cpu_gpu_low_freq_cron_rule.sh` | Cap CPU/GPU max frequency via a root helper + cron. GPU handling is driver-aware (amdgpu / i915 / xe / devfreq) |
+| `62_swap_16gb.sh` | Create a 16 GB swapfile (`/opt/swapfile`) and enable it |
 
 ### External services (`90`)
 
@@ -68,7 +69,7 @@ Machine-local hardware/system tweaks.
 - `sdk/` — SDKs outside the daily core:
   - `sdk/embedded/` — rust-embedded, esp32, arduino
   - `sdk/android/`, `sdk/flutter/`, `sdk/zig/` (zls template)
-- `desktop/` — desktop-environment setup (Sway, etc.)
+- `sway/` — Sway desktop setup: install/config scripts (compositor, fcitx, keyring, chrome, vscode, waydroid, etc.) plus `sway/dotfiles/` (sway config, waybar, wofi, kitty) copied into place
 - `infra/` — infrastructure snippets
 - `archlinux/` — Arch-specific notes/scripts
 - `shrc`, `tmux.conf` — dotfiles copied into place by the base scripts
