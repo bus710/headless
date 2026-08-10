@@ -166,7 +166,7 @@ install_rust_tools(){
     # Install the published crate with --locked so it uses the maintainer's
     # pinned Cargo.lock; a plain --git build re-resolves deps and pulls a newer
     # bollard that breaks compilation (E0603 on bollard::secret::*).
-    cargo install ducker --locked
+    # cargo install ducker --locked
 }
 
 post(){
