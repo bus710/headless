@@ -65,7 +65,8 @@ post(){
     echo "               (\"tailscale status\" / \"tailscale ip\" to verify)"
     echo "- Claude Code: installed to ~/.local/bin (on PATH via .shrc)"
     echo "               run \"claude\" and follow the login prompt"
-    echo "- restart terminal"
+    echo 
+    echo "Restart terminal"
     term_color_white
 }
 
