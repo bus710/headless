@@ -99,9 +99,7 @@ alias fix-broken='sudo apt --fix-broken install'
 
 alias re='cd ~/repo'
 alias hw='cd ~/repo/headless'
-alias dw='cd ~/repo/headless/desktop'
-alias sw='cd ~/repo/headless/desktop/sway'
-alias qw='cd ~/repo/headless/desktop/lxqt'
+alias sw='cd ~/repo/headless/sway'
 alias ds='cd ~/repo/docs'
 alias sp="cd ~/repo/ships"
 
