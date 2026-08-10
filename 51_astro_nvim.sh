@@ -100,7 +100,7 @@ install_tree_sitter_main() {
 
 	# wget -O tree-sitter.zip \
 		# https://github.com/nvim-treesitter/nvim-treesitter/archive/refs/heads/main.zip
-	git clone git@github.com:nvim-treesitter/nvim-treesitter.git
+	git clone https://github.com/nvim-treesitter/nvim-treesitter.git
 	# unzip tree-sitter.zip
 	chmod 550 nvim-treesitter
 	sudo mv nvim-treesitter /usr/local/bin/tree-sitter
