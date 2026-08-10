@@ -237,7 +237,6 @@ post() {
 	term_color_red
 	echo
 	echo "Done"
-	echo "- Please run \":Copilot auth\" to authenticate copilot"
 	term_color_white
 }
 
