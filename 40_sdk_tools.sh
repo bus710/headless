@@ -17,6 +17,23 @@ fi
 PYTHON_VERSION="3.12"
 FAILED=()
 
+# Rust tooling is opt-in: it pulls apt deps and compiles a pile of cargo
+# subcommands, which is slow and not always wanted. Pass --rust to include it.
+RUN_RUST=0
+
+parse_args(){
+    for arg in "$@"; do
+        case "$arg" in
+            --rust) RUN_RUST=1 ;;
+            *)
+                echo "Unknown argument: $arg"
+                echo "Usage: $0 [--rust]"
+                exit 1
+                ;;
+        esac
+    done
+}
+
 term_color_red () {
     echo -e "\e[91m"
 }
@@ -54,7 +71,11 @@ setup_env(){
 
 confirmation(){
     term_color_red
-    echo "Install post tooling for node, python, go and rust?"
+    if [[ "$RUN_RUST" == 1 ]]; then
+        echo "Install post tooling for node, python, go and rust?"
+    else
+        echo "Install post tooling for node, python and go? (pass --rust to add rust)"
+    fi
     echo "(cores 30..34 should already be installed)"
     echo
     echo "Do you want to install? (y/n)"
@@ -184,10 +205,15 @@ post(){
 }
 
 trap term_color_white EXIT
+parse_args "$@"
 setup_env
 confirmation
 run_section "node tools"   install_node_tools
 run_section "python tools" install_python_tools
 run_section "go tools"     install_go_tools
-run_section "rust tools"   install_rust_tools
+if [[ "$RUN_RUST" == 1 ]]; then
+    run_section "rust tools" install_rust_tools
+else
+    echo "Skipping rust tools (pass --rust to include them)"
+fi
 post
