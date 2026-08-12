@@ -43,6 +43,10 @@ term_color_white () {
     echo -e "\e[39m"
 }
 
+cleanup_home (){
+    rm -rf ~/Desktop ~/Documents ~/Music ~/Pictures ~/Projects ~/Public ~/Templates ~/Video
+}
+
 # Print what would be purged; return non-zero if nothing matches.
 preview_removal (){
     term_color_red
@@ -97,8 +101,6 @@ remove_desktop_environments (){
     term_color_white
 
     sudo apt autoremove --purge -y
-
-    rm -rf ~/Desktop ~/Documents ~/Music ~/Pictures ~/Projects ~/Public ~/Templates
 }
 
 verify (){
@@ -122,6 +124,8 @@ post (){
 }
 
 trap term_color_white EXIT
+
+cleanup_home
 
 if ! preview_removal; then
     term_color_red
