@@ -97,6 +97,8 @@ remove_desktop_environments (){
     term_color_white
 
     sudo apt autoremove --purge -y
+
+    rm -rf ~/Desktop ~/Documents ~/Music ~/Pictures ~/Projects ~/Public ~/Templates
 }
 
 verify (){
@@ -132,3 +134,5 @@ confirmation
 remove_desktop_environments
 verify
 post
+
+
