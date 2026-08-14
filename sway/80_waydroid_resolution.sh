@@ -22,9 +22,10 @@ confirmation(){
     echo "Do you want to proceed?"
     echo "- Press '1' for 1280 x 720"
     echo "- Press '2' for 1920 x 1080"
-    echo "- Press '3' for 3840 x 2160"
-    echo "- Press '4' for 2160 x 1350 (X1 Nano native)"
-    echo "- Press '5' to exit"
+    echo "- Press '3' for 1920 x 1200"
+    echo "- Press '4' for 3840 x 2160"
+    echo "- Press '5' for 2160 x 1350 (X1 Nano native)"
+    echo "- Press '6' to exit"
     term_color_white
 
     read -n 1 ans
@@ -50,13 +51,21 @@ confirmation(){
         waydroid prop set persist.waydroid.dpi 240
     elif [[ $ans == "3" ]]; then
         term_color_red
+        echo "1920x1200 and DPI 240"
+        term_color_white
+        # Width/height trimmed 60px each to leave room under the compositor.
+        waydroid prop set persist.waydroid.width 1700
+        waydroid prop set persist.waydroid.height 1020
+        waydroid prop set persist.waydroid.dpi 240
+    elif [[ $ans == "4" ]]; then
+        term_color_red
         echo "3840x2160 and DPI 480"
         term_color_white
         # Width/height trimmed 60px each to leave room under the compositor.
         waydroid prop set persist.waydroid.width 3780
         waydroid prop set persist.waydroid.height 2100
         waydroid prop set persist.waydroid.dpi 480
-    elif [[ $ans == "4" ]]; then
+    elif [[ $ans == "5" ]]; then
         term_color_red
         echo "2160x1350 and DPI 320"
         term_color_white
