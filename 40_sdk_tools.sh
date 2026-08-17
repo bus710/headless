@@ -208,12 +208,14 @@ trap term_color_white EXIT
 parse_args "$@"
 setup_env
 confirmation
-run_section "node tools"   install_node_tools
-run_section "python tools" install_python_tools
-run_section "go tools"     install_go_tools
+
 if [[ "$RUN_RUST" == 1 ]]; then
     run_section "rust tools" install_rust_tools
 else
     echo "Skipping rust tools (pass --rust to include them)"
 fi
+run_section "python tools" install_python_tools
+run_section "go tools"     install_go_tools
+run_section "node tools"   install_node_tools
+
 post
