@@ -8,7 +8,7 @@ sensible install order.
 
 Run the numbered scripts as a normal user (they call `sudo` where needed):
 
-### Base system (`00`–`22`)
+### Base system (`00`–`20`)
 
 | Script | What it does |
 |--------|--------------|
@@ -18,7 +18,6 @@ Run the numbered scripts as a normal user (they call `sudo` where needed):
 | `03_zsh.sh` | Zsh + oh-my-zsh |
 | `04_tmux.sh` | tmux + tmuxp |
 | `20_basic_build_tools.sh` | Compilers / build essentials |
-| `22_tui_tools.sh` | Misc TUI/CLI tools |
 
 ### Language SDKs (`30`–`34`) — cores only
 
@@ -37,9 +36,9 @@ LSP servers exist by the time the editor is set up.
 
 | Script | What it does |
 |--------|--------------|
-| `40_sdk_tools.sh` | Post-install tooling for node / python / go / rust in one pass. Each language is a wrapped section, so one failure doesn't abort the rest. |
+| `40_sdk_tools.sh` | Post-install tooling for node / python / go in one pass; pass `--rust` to also build the rust cargo subcommands (opt-in since they're slow to compile). Each language is a wrapped section, so one failure doesn't abort the rest. |
 
-### Editor (`50`–`51`) — runs last
+### Editor (`50`–`52`) — runs last
 
 Depends on every SDK above (LSPs, formatters, DAP adapters).
 
@@ -47,6 +46,7 @@ Depends on every SDK above (LSPs, formatters, DAP adapters).
 |--------|--------------|
 | `50_nvim.sh` | Neovim |
 | `51_astro_nvim.sh` | AstroNvim config + utils |
+| `52_tui_tools.sh` | Misc TUI tools (lazygit, superfile, harlequin) |
 
 ### Local config (`60`–`62`)
 
@@ -69,7 +69,10 @@ Machine-local hardware/system tweaks.
 - `sdk/` — SDKs outside the daily core:
   - `sdk/embedded/` — rust-embedded, esp32, arduino
   - `sdk/android/`, `sdk/flutter/`, `sdk/zig/` (zls template)
-- `sway/` — Sway desktop setup: install/config scripts (compositor, fcitx, keyring, chrome, vscode, waydroid, etc.) plus `sway/dotfiles/` (sway config, waybar, wofi, kitty) copied into place
+- `dotfiles/` — all dotfiles, numbered, copied into place by the scripts:
+  `01_shrc`, `02_tmux.conf` (by the base scripts) and the Sway desktop files
+  `10_sway_config`, `11_lockman.sh`, `15_sway_zprofile`, `20_kitty.conf`,
+  `30_waybar_config`, `31_waybar_style.css`, `35_wofi_style.css` (by `sway/01_sway.sh`)
+- `sway/` — Sway desktop setup: install/config scripts (compositor, fcitx, keyring, chrome, vscode, waydroid, etc.)
 - `infra/` — infrastructure snippets
 - `archlinux/` — Arch-specific notes/scripts
-- `shrc`, `tmux.conf` — dotfiles copied into place by the base scripts

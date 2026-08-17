@@ -41,7 +41,7 @@ update (){
     term_color_white
     
     rm -rf /home/$LOGNAME/.shrc
-    cat shrc >> /home/$LOGNAME/.shrc
+    cat dotfiles/01_shrc >> /home/$LOGNAME/.shrc
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.shrc
     
     SHRC=$(cat /home/$LOGNAME/.bashrc | grep "\\.shrc" | wc -l)

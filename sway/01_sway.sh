@@ -124,22 +124,22 @@ configure_sway (){
     # sway config
     rm -rf /home/$LOGNAME/.config/sway
     mkdir /home/$LOGNAME/.config/sway
-    cp dotfiles/10_sway_config /home/$LOGNAME/.config/sway/config
+    cp ../dotfiles/10_sway_config /home/$LOGNAME/.config/sway/config
 
     # auto start config (zprofile) 
     if [[ -f /home/$LOGNAME/.zprofile ]]; then
         SWAY_IN_ZPROFILE=$(cat /home/$LOGNAME/.zprofile | grep sway)
         if [[ ! $SWAY_IN_ZPROFILE =~ "sway" ]]; then
-            cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
+            cat ../dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
         fi
     else
-        cat dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
+        cat ../dotfiles/15_sway_zprofile >> /home/$LOGNAME/.zprofile
     fi
 
     # kitty config
     rm -rf /home/$LOGNAME/.config/kitty
     mkdir /home/$LOGNAME/.config/kitty
-    cp dotfiles/20_kitty.conf /home/$LOGNAME/.config/kitty/kitty.conf
+    cp ../dotfiles/20_kitty.conf /home/$LOGNAME/.config/kitty/kitty.conf
     # download the dracula.conf and diff.conf
     wget https://raw.githubusercontent.com/dracula/kitty/master/dracula.conf
     mv dracula.conf /home/$LOGNAME/.config/kitty/dracula.conf
@@ -149,17 +149,17 @@ configure_sway (){
     # waybar config
     rm -rf /home/$LOGNAME/.config/waybar
     mkdir /home/$LOGNAME/.config/waybar
-    cp dotfiles/30_waybar_config /home/$LOGNAME/.config/waybar/config
-    cp dotfiles/31_waybar_style.css /home/$LOGNAME/.config/waybar/style.css
+    cp ../dotfiles/30_waybar_config /home/$LOGNAME/.config/waybar/config
+    cp ../dotfiles/31_waybar_style.css /home/$LOGNAME/.config/waybar/style.css
 
     # wofi config
     rm -rf /home/$LOGNAME/.config/wofi
     mkdir /home/$LOGNAME/.config/wofi
-    cp dotfiles/35_wofi_style.css /home/$LOGNAME/.config/wofi/style.css
+    cp ../dotfiles/35_wofi_style.css /home/$LOGNAME/.config/wofi/style.css
 
     # manual lock config
     rm -rf /home/$LOGNAME/.config/sway/lockman.sh
-    cp dotfiles/11_lockman.sh /home/$LOGNAME/.config/sway/lockman.sh
+    cp ../dotfiles/11_lockman.sh /home/$LOGNAME/.config/sway/lockman.sh
 }
 
 configure_gtk_dark(){

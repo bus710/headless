@@ -46,7 +46,7 @@ install_tmux(){
 
     # To apply ^a shortcut to the tmux config
     rm -rf /home/$LOGNAME/.tmux.conf
-    cat tmux.conf >> /home/$LOGNAME/.tmux.conf
+    cat dotfiles/02_tmux.conf >> /home/$LOGNAME/.tmux.conf
     chown $LOGNAME:$LOGNAME /home/$LOGNAME/.tmux.conf
 }
 
