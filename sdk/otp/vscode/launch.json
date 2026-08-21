@@ -1,0 +1,655 @@
+commit 8bba924a019ee0647493a711d8b3449c8843e132
+Author: bus710 <bus710@gmail.com>
+Date:   Sat Aug 8 20:31:07 2026 -0700
+
+    progress
+
+diff --git a/30_tui_tools.sh b/22_tui_tools.sh
+similarity index 100%
+rename from 30_tui_tools.sh
+rename to 22_tui_tools.sh
+diff --git a/26_go_tools.sh b/26_go_tools.sh
+deleted file mode 100755
+index 85b7c96..0000000
+--- a/26_go_tools.sh
++++ /dev/null
+@@ -1,76 +0,0 @@
+-#!/bin/bash
+-
+-set -e
+-
+-# This is splitted from Golang installation because 
+-
+-if [[ "$EUID" == 0 ]]; then 
+-    echo "Please run as normal user (w/o sudo)" 
+-    exit
+-fi
+-
+-
+-term_color_red () {
+-    echo -e "\e[91m"
+-}
+-
+-term_color_white () {
+-    echo -e "\e[39m"
+-}
+-
+-install_packages(){
+-    term_color_red
+-    echo "Install packages"
+-    term_color_white
+-
+-    # Internal tools
+-    go install -v golang.org/x/tools/cmd/goimports@latest
+-    go install -v golang.org/x/tools/cmd/callgraph@latest
+-    #go install -v golang.org/x/tools/cmd/digragh@latest
+-    go install -v golang.org/x/tools/cmd/stringer@latest
+-    go install -v golang.org/x/tools/cmd/toolstash@latest
+-
+-    # Unit test
+-    go install -v github.com/cweill/gotests/gotests@latest
+-
+-    # Debugger
+-    go install -v github.com/go-delve/delve/cmd/dlv@latest
+-
+-    # Go exec (and its usage)
+-    # goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'
+-    go install -v github.com/shurcooL/goexec@latest 
+-
+-    go install github.com/sno6/gommand@latest
+-    # gommand 'http.Handle("/", http.FileServer(http.Dir("."))); \
+-    #   fmt.Println(http.ListenAndServe(":8080", nil))'
+-
+-    # Bubble tea related
+-    go install -v github.com/maaslalani/slides@latest
+-
+-    # Wails
+-    go install github.com/wailsapp/wails/v2/cmd/wails@latest
+-
+-    # Nice to haves
+-    #go install github.com/hajimehoshi/wasmserve
+-    #go install github.com/swaggo/swag/cmd/swag
+-    #go install github.com/google/gops
+-}
+-
+-install_vim_go_plugins(){
+-    term_color_red
+-    echo "Install vim-go plugins"
+-    term_color_white
+-
+-    nvim -c :GoInstallBinaries
+-}
+-
+-post(){
+-    term_color_red
+-    echo "Done"
+-    term_color_white
+-}
+-
+-trap term_color_white EXIT
+-install_packages
+-#install_vim_go_plugins
+-post
+diff --git a/05_nvm.sh b/30_node.sh
+similarity index 71%
+rename from 05_nvm.sh
+rename to 30_node.sh
+index f4882c2..cf3fb48 100755
+--- a/05_nvm.sh
++++ b/30_node.sh
+@@ -62,34 +62,13 @@ install_node_lts(){
+     term_color_white
+ 
+     nvm install --lts
+-
+-    term_color_red
+-    echo "Install packages"
+-    term_color_white
+-
+-    packages=(
+-        "yarn"
+-        "@tailwindcss/language-server" # need for nvim tailwindcss cmp
+-        "vscode-langservers-extracted" # need for nvim tailwindcss cmp
+-        "typescript"                   # need for LSP
+-        "typescript-language-server"   # need for LSP
+-        "tsx"                          # need for transpile
+-    )
+-
+-    for p in "${packages[@]}"; do
+-        term_color_red
+-        echo Install $p
+-        term_color_white
+-
+-        npm install -no-fund -g $p
+-        echo 
+-    done
+ }
+ 
+ post(){
+     term_color_red
+     echo "Done"
+     echo "- restart terminal"
++    echo "- global npm packages are installed by 40_sdk_tools.sh"
+     term_color_white
+ }
+ 
+diff --git a/27_py.sh b/31_python.sh
+similarity index 70%
+rename from 27_py.sh
+rename to 31_python.sh
+index 05882d3..2f10375 100755
+--- a/27_py.sh
++++ b/31_python.sh
+@@ -2,10 +2,10 @@
+ 
+ set -e
+ 
+-# Install uv (Python package / venv / interpreter manager), a uv-managed
+-# Python interpreter, and pre-cache debugpy so the first Neovim DAP debug
+-# session is fast. uv installs to ~/.local/bin, which is already on PATH
++# Install uv (Python package / venv / interpreter manager) and a uv-managed
++# Python interpreter. uv installs to ~/.local/bin, which is already on PATH
+ # (see .shrc), so no runcom edits are needed here.
++# The debugpy pre-cache for nvim-dap lives in 40_sdk_tools.sh.
+ 
+ PYTHON_VERSION="3.12"
+ 
+@@ -47,19 +47,6 @@ install_python(){
+     uv python list
+ }
+ 
+-install_debugpy(){
+-    term_color_red
+-    echo "Pre-cache debugpy for nvim-dap (via uv)"
+-    term_color_white
+-
+-    # The Neovim DAP adapter (z18-py.lua) launches debugpy with:
+-    #   uv run --with debugpy python -m debugpy.adapter
+-    # Running it once here downloads debugpy into uv's cache, so the first
+-    # real debug session does not pay the resolve/download cost.
+-    uv run --python "${PYTHON_VERSION}" --with debugpy \
+-        python -c "import debugpy; print('debugpy', debugpy.__version__)"
+-}
+-
+ post(){
+     term_color_red
+     echo "Done"
+@@ -84,5 +71,4 @@ post(){
+ trap term_color_white EXIT
+ install_uv
+ install_python
+-install_debugpy
+ post
+diff --git a/25_go.sh b/32_go.sh
+similarity index 100%
+rename from 25_go.sh
+rename to 32_go.sh
+diff --git a/sdk/rust/23_rust.sh b/33_rust.sh
+similarity index 100%
+rename from sdk/rust/23_rust.sh
+rename to 33_rust.sh
+diff --git a/sdk/zig/21_zig.sh b/34_zig.sh
+similarity index 100%
+rename from sdk/zig/21_zig.sh
+rename to 34_zig.sh
+diff --git a/40_sdk_tools.sh b/40_sdk_tools.sh
+new file mode 100755
+index 0000000..084ec6f
+--- /dev/null
++++ b/40_sdk_tools.sh
+@@ -0,0 +1,184 @@
++#!/bin/bash
++
++# Post-install tooling for the language SDKs (node, python, go, rust).
++# Run this AFTER the language cores (30..34) and BEFORE nvim (50/51), since
++# nvim/AstroNvim wires up the LSPs, formatters and DAP adapters installed here.
++#
++# Each language is its own section. Sections are wrapped so that one
++# language's failure does not abort the rest; a summary is printed at the end.
++
++set -e
++
++if [[ "$EUID" == 0 ]]; then
++    echo "Please run as normal user (w/o sudo)"
++    exit
++fi
++
++PYTHON_VERSION="3.12"
++FAILED=()
++
++term_color_red () {
++    echo -e "\e[91m"
++}
++
++term_color_white () {
++    echo -e "\e[39m"
++}
++
++setup_env(){
++    # The cores install into standard locations wired up by .shrc, but this
++    # script may run in a shell that predates those edits, so make each SDK
++    # visible here explicitly.
++
++    # uv (python)
++    export PATH="$HOME/.local/bin:$PATH"
++
++    # cargo (rust)
++    [ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
++    export PATH="$HOME/.cargo/bin:$PATH"
++
++    # go
++    export GOROOT=/usr/local/go
++    export GOPATH="$HOME/go"
++    export GOBIN="$GOPATH/bin"
++    export PATH="$GOROOT/bin:$GOBIN:$PATH"
++
++    # nvm / node
++    if [[ -d "$HOME/.nvm" ]]; then
++        export NVM_DIR="$HOME/.nvm"
++    else
++        export NVM_DIR="$HOME/.config/nvm"
++    fi
++    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
++}
++
++confirmation(){
++    term_color_red
++    echo "Install post tooling for node, python, go and rust?"
++    echo "(cores 30..34 should already be installed)"
++    echo
++    echo "Do you want to install? (y/n)"
++    term_color_white
++
++    echo
++    read -n 1 ans
++    echo
++
++    if [[ ! $ans == "y" ]]; then
++        echo ""
++        exit 1
++    fi
++}
++
++# Run a section function; record but do not propagate its failure.
++run_section(){
++    local name="$1"; shift
++    term_color_red
++    echo ">>> $name"
++    term_color_white
++
++    if "$@"; then
++        echo "--- $name: ok"
++    else
++        term_color_red
++        echo "--- $name: FAILED (continuing)"
++        term_color_white
++        FAILED+=("$name")
++    fi
++}
++
++install_node_tools(){
++    packages=(
++        "yarn"
++        "@tailwindcss/language-server" # need for nvim tailwindcss cmp
++        "vscode-langservers-extracted" # need for nvim tailwindcss cmp
++        "typescript"                   # need for LSP
++        "typescript-language-server"   # need for LSP
++        "tsx"                          # need for transpile
++    )
++
++    for p in "${packages[@]}"; do
++        echo "Install $p"
++        npm install -no-fund -g "$p"
++    done
++}
++
++install_python_tools(){
++    # Pre-cache debugpy for nvim-dap. The adapter (z18-py.lua) launches:
++    #   uv run --with debugpy python -m debugpy.adapter
++    # Running it once here downloads debugpy into uv's cache, so the first
++    # real debug session does not pay the resolve/download cost.
++    uv run --python "${PYTHON_VERSION}" --with debugpy \
++        python -c "import debugpy; print('debugpy', debugpy.__version__)"
++}
++
++install_go_tools(){
++    # Internal tools
++    go install -v golang.org/x/tools/cmd/goimports@latest
++    go install -v golang.org/x/tools/cmd/callgraph@latest
++    go install -v golang.org/x/tools/cmd/stringer@latest
++    go install -v golang.org/x/tools/cmd/toolstash@latest
++
++    # Unit test
++    go install -v github.com/cweill/gotests/gotests@latest
++
++    # Debugger
++    go install -v github.com/go-delve/delve/cmd/dlv@latest
++
++    # Go exec (and its usage)
++    # goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'
++    go install -v github.com/shurcooL/goexec@latest
++
++    go install github.com/sno6/gommand@latest
++
++    # Bubble tea related
++    go install -v github.com/maaslalani/slides@latest
++}
++
++install_rust_tools(){
++    term_color_red
++    echo "apt deps for cargo tools (openssl, LLVM/clang, dbus, udev)"
++    term_color_white
++
++    sudo apt install -y \
++        pkg-config \
++        libssl-dev \
++        cmake \
++        clang \
++        ninja-build \
++        libclang-dev \
++        libdbus-1-dev \
++        libudev-dev
++
++    # https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands
++    cargo install cargo-watch
++    cargo install cargo-deb
++    cargo install cargo-edit
++    cargo install cargo-upgrades
++    cargo install cargo-outdated
++    cargo install cargo-make
++    cargo install cargo-generate
++}
++
++post(){
++    term_color_red
++    if [[ ${#FAILED[@]} -eq 0 ]]; then
++        echo "Done - all sections ok"
++    else
++        echo "Done - with failures:"
++        for f in "${FAILED[@]}"; do
++            echo "  - $f"
++        done
++    fi
++    echo "- restart terminal, then run 50_nvim.sh / 51_astro_nvim.sh"
++    term_color_white
++}
++
++trap term_color_white EXIT
++setup_env
++confirmation
++run_section "node tools"   install_node_tools
++run_section "python tools" install_python_tools
++run_section "go tools"     install_go_tools
++run_section "rust tools"   install_rust_tools
++post
+diff --git a/07_nvim.sh b/50_nvim.sh
+similarity index 100%
+rename from 07_nvim.sh
+rename to 50_nvim.sh
+diff --git a/08_astro_nvim.sh b/51_astro_nvim.sh
+similarity index 100%
+rename from 08_astro_nvim.sh
+rename to 51_astro_nvim.sh
+diff --git a/sdk/dotnet/01_dotnet.sh b/sdk/dotnet/01_dotnet.sh
+deleted file mode 100644
+index 4f5b2c5..0000000
+--- a/sdk/dotnet/01_dotnet.sh
++++ /dev/null
+@@ -1,7 +0,0 @@
+-#!/bin/sh
+-
+-
+-# https://learn.microsoft.com/en-us/dotnet/core/install/linux-debian
+-# https://github.com/AstroNvim/astrocommunity/blob/main/lua/astrocommunity/pack/cs/README.md
+-# https://github.com/razzmatazz/csharp-language-server
+-# https://aaronbos.dev/posts/csharp-dotnet-neovim
+diff --git a/sdk/elm/01_elm.sh b/sdk/elm/01_elm.sh
+deleted file mode 100755
+index 5318f8a..0000000
+--- a/sdk/elm/01_elm.sh
++++ /dev/null
+@@ -1,107 +0,0 @@
+-#!/bin/bash
+-
+-set -e
+-
+-ELM_RELEASE_URL=https://api.github.com/repos/elm/compiler/releases/latest
+-ELM_RELEASE=""
+-
+-CPU_TYPE=$(uname -m)
+-FILE_NAME=""
+-FULL_VERSION=""
+-
+-if [[ "$EUID" == 0 ]];
+-    then echo "Please run as normal user (w/o sudo)"
+-    exit
+-fi
+-
+-term_color_red () {
+-    echo -e "\e[91m"
+-}
+-
+-term_color_white () {
+-    echo -e "\e[39m"
+-}
+-
+-check_architecture(){
+-    if [[ $CPU_TYPE == "x86_64" ]]; then
+-        FILE_NAME="binary-for-linux-64-bit.gz"
+-    elif [[ $CPU_TYPE == "aarch64" ]]; then
+-        # FILE_NAME="binary-for-linux-64-bit-ARM.gz"
+-        echo "ARM64 is not supported yet."
+-        # https://dev.to/csaltos/elm-for-linux-arm64-32bc
+-        exit 1
+-    else
+-        exit 1
+-    fi
+-
+-    ELM_RELEASE=$(curl -o- -s $ELM_RELEASE_URL | jq -r '.tag_name')
+-    FULL_VERSION="$ELM_RELEASE/$FILE_NAME"
+-}
+-
+-confirmation(){
+-    term_color_red
+-    echo "1. Remove /usr/local/bin/elm"
+-    echo "2. Install ${FULL_VERSION}"
+-    echo
+-    echo "Do you want to proceed? (y/n)"
+-    term_color_white
+-
+-    echo
+-    read -n 1 ans
+-    echo
+-
+-    if [[ ! $ans == "y" ]]; then
+-        echo ""
+-        exit 1
+-    fi
+-}
+-
+-cleanup(){
+-    term_color_red
+-    echo "Existing ELM directories will be deleted"
+-    term_color_white
+-
+-    sudo bash -c "rm -rf /usr/local/bin/elm"
+-    sudo rm -rf /home/$LOGNAME/.elm
+-    rm -rf /home/$LOGNAME/.config/elm
+-    rm -rf /home/$LOGNAME/.cache/elm
+-}
+-
+-install_elm(){
+-    term_color_red
+-    echo "Download and install ELM SDK"
+-    term_color_white
+-
+-    # Remove if there is old tarballs
+-    echo
+-    rm -rf elm.gz
+-    echo
+-
+-    cd /home/bus710/Downloads
+-
+-    curl -L -o elm.gz https://github.com/elm/compiler/releases/download/${FULL_VERSION}
+-
+-    term_color_red
+-    echo "Wait for unzip..."
+-    term_color_white
+-
+-    gunzip elm.gz
+-    chmod +x elm
+-    sudo mv elm /usr/local/bin/
+-
+-    rm -rf elm*
+-    cd -
+-}
+-
+-post(){
+-    term_color_red
+-    echo "Done"
+-    term_color_white
+-}
+-
+-trap term_color_white EXIT
+-check_architecture
+-confirmation
+-cleanup
+-install_elm
+-post
+diff --git a/sdk/rust/25_rust_embedded.sh b/sdk/embedded/25_rust_embedded.sh
+similarity index 100%
+rename from sdk/rust/25_rust_embedded.sh
+rename to sdk/embedded/25_rust_embedded.sh
+diff --git a/sdk/arduino/01_arduino_cli.sh b/sdk/embedded/arduino/01_arduino_cli.sh
+similarity index 100%
+rename from sdk/arduino/01_arduino_cli.sh
+rename to sdk/embedded/arduino/01_arduino_cli.sh
+diff --git a/sdk/esp32/c_cpp_properties.json b/sdk/embedded/esp32/c_cpp_properties.json
+similarity index 100%
+rename from sdk/esp32/c_cpp_properties.json
+rename to sdk/embedded/esp32/c_cpp_properties.json
+diff --git a/sdk/rust/24_rust_tools.sh b/sdk/rust/24_rust_tools.sh
+deleted file mode 100755
+index 9e51e1a..0000000
+--- a/sdk/rust/24_rust_tools.sh
++++ /dev/null
+@@ -1,119 +0,0 @@
+-#!/bin/bash
+-
+-set -e
+-
+-if [[ "$EUID" == 0 ]]
+-then echo "Please run as normal user (w/o sudo)"
+-    exit
+-fi
+-
+-# source /home/$LOGNAME/.zshrc
+-
+-term_color_red () {
+-    echo -e "\e[91m"
+-}
+-
+-term_color_white () {
+-    echo -e "\e[39m"
+-}
+-
+-install_packages(){
+-    term_color_red
+-    echo "Some packages for cargo tools"
+-    term_color_white
+-
+-    sudo apt install -y pkg-config libssl-dev
+-
+-    term_color_red
+-    echo "Some packages for LLVM and OpenCV"
+-    term_color_white
+-
+-    sudo apt install -y \
+-        cmake \
+-        clang \
+-        ninja-build \
+-        libclang-dev
+-
+-    term_color_red
+-    echo "Some packages for BlueZ"
+-    term_color_white
+-
+-    sudo apt install -y \
+-        libdbus-1-dev
+-
+-    term_color_red
+-    echo "Some packages for permissions"
+-    term_color_white
+-
+-    sudo apt install -y \
+-        libudev-dev
+-}
+-
+-build_cargo_tools(){
+-    term_color_red
+-    echo "Build some cargo tools"
+-    term_color_white
+-
+-    # https://github.com/rust-lang/cargo/wiki/Third-party-cargo-subcommands
+-    cargo install cargo-watch
+-    cargo install cargo-deb
+-    cargo install cargo-edit 
+-    cargo install cargo-upgrades # -f? cargo upgrades or cargo upgrade
+-    cargo install cargo-outdated
+-    cargo install cargo-make
+-    cargo install cargo-generate
+-    #cargo install cbindgen
+-    #cargo install flutter_rust_bridge_codegen
+-    #cargo install bluer-tools
+-
+-}
+-
+-build_cargo_tools_2(){
+-
+-    term_color_red
+-    echo "Build some cargo tools for desktop"
+-    echo "Do you want to install? (y/n)"
+-    term_color_white
+-
+-    echo
+-    read -n 1 ans
+-    echo
+-
+-    if [[ ! $ans == "y" ]]; then
+-        return
+-    fi
+-
+-
+-    # Tauri
+-    # - https://tauri.app/v1/guides/getting-started/setup/
+-    # - https://tauri.app/v1/guides/getting-started/prerequisites#setting-up-linux
+-    cargo install create-tauri-app
+-    cargo install tauri-cli
+-    sudo apt install -y \
+-        libwebkit2gtk-4."*"-dev \
+-        build-essential \
+-        curl \
+-        wget \
+-        libssl-dev \
+-        libgtk-3-dev \
+-        libayatana-appindicator3-dev \
+-        librsvg2-dev
+-
+-    # Rustlings
+-    # To start:
+-    # $ cd ~/repo/rustlings
+-    # $ rustlings watch
+-    #curl -L https://raw.githubusercontent.com/rust-lang/rustlings/main/install.sh | bash -s ~/repo/rustlings
+-}
+-
+-post(){
+-    term_color_red
+-    echo "Done"
+-    term_color_white
+-}
+-
+-trap term_color_white EXIT
+-install_packages
+-build_cargo_tools
+-# build_cargo_tools_2
+-post
