@@ -39,7 +39,11 @@ output eDP-1 scale 1.1
 
 # output DP-1 pos 0 0 scale 1.0         # DELL
 # output eDP-1 pos 3840 0 scale 1.0     # T14
-# output DP-2 pos 3840 1200 scale 1.25  # USB
+# LG UltraHD 4K over USB-C DP-alt: 4K@60 blinks. Same cable+laptop ran a Dell U32
+# at 4K@60 fine, so it's LG-side (likely 2-lane DP-alt from its USB-C input — check
+# monitor OSD USB-C/High-Resolution setting, firmware, factory reset).
+# Stable options: 1440p@60 (smooth) or 3840x2160@30Hz (sharp).
+# output DP-2 mode 2560x1440@60Hz pos 0 0 scale 1.0  # USB — LG 4K
 
 # Example configuration:
 #
