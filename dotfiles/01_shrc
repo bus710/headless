@@ -118,7 +118,7 @@ alias zzb='anyzig build'
 alias zzrm='anyzig build run'
 alias zztr='anyzig test src/root.zig'
 
-
+alias bl='cd ~/repo/buildroot-workspace/'
 alias nw='cd ~/repo/nix-workspace'
 alias deploy='nix run github:serokell/deploy-rs --'
 
