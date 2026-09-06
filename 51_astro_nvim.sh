@@ -176,7 +176,7 @@ install_nerd_fonts() {
 		term_color_white
 
 		git sparse-checkout add patched-fonts/${F} >/dev/null 2>&1
-		./install.sh ${F} >/dev/null 2>&1
+		./install.sh install ${F} >/dev/null 2>&1
 	done
 
 	cd /home/$LOGNAME/repo/headless
