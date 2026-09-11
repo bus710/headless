@@ -380,12 +380,11 @@ export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 export XDG_CURRENT_DESKTOP=sway
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
-# Enable lines below only for linux desktop clients
-# Check $HOME/.env for the values. 
-# If not loaded, check /home/bus710/.oh-my-zsh/cache
-
-# keychain $KEY00 --eval --quiet > /dev/null 2>&1
-# keychain $KEY01 --eval --quiet > /dev/null 2>&1
-# keychain $KEY02 --eval --quiet > /dev/null 2>&1
-# keychain $KEY03 --eval --quiet > /dev/null 2>&1
-# source $HOME/.keychain/$(hostname)-sh 
+# Enable only on desktop/laptop clients — detected by presence of ~/.env.
+# Servers have no ~/.env, so they skip this and keep any forwarded agent.
+# KEY00..03 are defined in ~/.env. If not loaded, check /home/bus710/.oh-my-zsh/cache
+if [ -f "$HOME/.env" ]; then
+  . "$HOME/.env"                                            # ensure KEY00..03 resolve with $HOME set
+  keychain "$KEY00" "$KEY01" "$KEY02" "$KEY03" --quiet      # one persistent agent, all keys
+  source "$HOME/.keychain/$(hostname)-sh"
+fi
