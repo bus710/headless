@@ -16,7 +16,8 @@ Run the numbered scripts as a normal user (they call `sudo` where needed):
 | `01_shrc.sh` | Shell runcom (`~/.shrc`) |
 | `02_basics.sh` | Basic apt packages |
 | `03_zsh.sh` | Zsh + oh-my-zsh |
-| `04_tmux.sh` | tmux + tmuxp |
+| `04_zsh_post.sh` | ssh-keychain block into `~/.zshrc` (run after `p10k configure`) |
+| `05_tmux.sh` | tmux + tmuxp |
 | `20_basic_build_tools.sh` | Compilers / build essentials |
 
 ### Language SDKs (`30`–`34`) — cores only

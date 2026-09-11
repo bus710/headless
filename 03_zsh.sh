@@ -101,7 +101,10 @@ install_plugins(){
 
 post(){
     term_color_red
-    echo "Please reboot and run 'p10k prompt'"
+    echo "Please reboot and run 'p10k configure'"
+    echo "AFTER 'p10k configure', run:  ./04_zsh_post.sh"
+    echo "  (inserts the ssh-keychain block at the top of ~/.zshrc, above the"
+    echo "   instant-prompt block; idempotent — skips if already present.)"
     echo "(For cloud platforms, edit /etc/pam.d/chsh - required to sufficient)"
     echo
     echo "Done"

@@ -380,18 +380,12 @@ export ASSUME_NO_MOVING_GC_UNSAFE_RISK_IT_WITH=go1.19
 export XDG_CURRENT_DESKTOP=sway
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 
-# Enable only on desktop/laptop clients — detected by presence of ~/.env.
-# Servers have no ~/.env, so they skip this and keep any forwarded agent.
-# KEY00..03 are defined in ~/.env. If not loaded, check /home/bus710/.oh-my-zsh/cache
-if [ -f "$HOME/.env" ]; then
-  . "$HOME/.env"                                            # ensure KEY00..03 resolve with $HOME set
-  # Keep this silent. ~/.shrc is sourced below Powerlevel10k's instant-prompt
-  # preamble, which forbids console I/O after it (that's the p10k warning), and
-  # with the tty already owned by p10k, ssh-add can't prompt for a passphrase —
-  # it falls back to a GUI askpass and fails with "Can't open display". So the
-  # output here is only noise/errors, never a working prompt. Passphrase-
-  # protected keys must be added above the instant-prompt line in ~/.zshrc, or
-  # loaded manually with `keychain`/`ssh-add`.
-  keychain "$KEY00" "$KEY01" "$KEY02" "$KEY03" --quiet >/dev/null 2>&1  # one persistent agent, all keys
-  source "$HOME/.keychain/$(hostname)-sh" >/dev/null 2>&1
+# ssh-agent via keychain — CLIENT ONLY (gated on ~/.env; servers skip and keep any
+# forwarded agent). The keys are ADDED in ~/.zshrc, ABOVE the p10k instant-prompt
+# line, because ssh-add's passphrase prompt cannot work once instant prompt owns
+# the tty (it falls back to a GUI askpass and fails with "Can't open display").
+# Here we only re-export SSH_AUTH_SOCK so every shell (bash, tmux panes, etc.)
+# reuses that one agent — no prompting.
+if [ -f "$HOME/.env" ] && [ -f "$HOME/.keychain/$(hostname)-sh" ]; then
+  . "$HOME/.keychain/$(hostname)-sh" >/dev/null 2>&1
 fi
