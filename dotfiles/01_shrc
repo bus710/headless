@@ -1,40 +1,60 @@
-# To check the shell
-IS_ZSH=$(echo $ZSH) 
-
 # Path
+# Each block activates only when the tool is installed, so no installer
+# needs to edit this file.
 
 # Neovim
-#NVIM_0
+if [[ -d $HOME/.tools ]]; then
+    export PATH=$PATH:$HOME/.tools
+fi
 
 # Go
-#GO_0
-#GO_1
-#GO_2
-#GO_3
-#GO_4
+if [[ -x /usr/local/go/bin/go ]]; then
+    export GOROOT=/usr/local/go
+    export GOPATH=$HOME/go
+    export GOBIN=$GOPATH/bin
+    export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+    export DELVE_EDITOR=nvim
+fi
 
 # Zig
-#ZIG_0
+if [[ -x $HOME/zig/zig ]]; then
+    export PATH=$PATH:$HOME/zig
+fi
 
 # Flutter
-#FLUTTER_0
-#FLUTTER_1
-#FLUTTER_2
-#FLUTTER_3
-#FLUTTER_4
+if [[ -x $HOME/flutter/bin/flutter ]]; then
+    export PATH=$PATH:$HOME/flutter/bin
+    export PATH=$PATH:$HOME/flutter/bin/cache/dart-sdk/bin
+    export PATH=$PATH:$HOME/flutter/.pub-cache/bin
+    export PATH=$PATH:$HOME/.pub-cache/bin
+fi
+if [[ -d $HOME/repo/flutter/bin ]]; then # embedded
+    export PATH=$PATH:$HOME/repo/flutter/bin
+fi
 
 # Rust
-#RUST_0
+if [[ -d $HOME/.cargo/bin ]]; then
+    export PATH=$PATH:$HOME/.cargo/bin
+fi
+
+# ASDF & Erlang
+if [[ -d ${ASDF_DATA_DIR:-$HOME/.asdf} ]]; then
+    export PATH=${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH
+    if [[ -n "$ZSH_VERSION" ]]; then
+        fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+    fi
+    export ERL_AFLAGS="+pc unicode -kernel shell_history enabled"
+fi
 
 # AWS
 function activate_aws(){
     if [[ -f /usr/local/bin/aws && -f ~/.aws/config ]]; then
-        :
-        # AWS cli
-        #AWS_0
-        #AWS_1
-        #AWS_2
-        #AWS_3
+        # AWS cli completion
+        if [[ -n "$ZSH_VERSION" ]]; then
+            autoload bashcompinit && bashcompinit
+            autoload -Uz compinit && compinit
+        fi
+        complete -C /usr/local/bin/aws_completer aws
 
         # AWS creds
         export AWS_USER=terraform
@@ -43,47 +63,54 @@ function activate_aws(){
     fi
 }
 
-# Android SDK path
-#ANDROID_0
-#ANDROID_1
-#ANDROID_2
-#ANDROID_3
-#ANDROID_4
-#ANDROID_5
+# Android SDK
+if [[ -d $HOME/Android ]]; then
+    export JAVA_HOME=$HOME/Android/android-studio/jbr
+    export PATH=$JAVA_HOME/bin:$PATH
+    export PATH=$HOME/Android/android-studio/bin:$PATH
+    export ANDROID_SDK_ROOT=$HOME/Android
+    export PATH=$HOME/Android/cmdline-tools/latest/bin:$PATH
+    export PATH=$HOME/Android/platform-tools:$PATH
+fi
 
-# ARDUINO_CLI path
-#ARDUINO_CLI_0
-# ARDUINO V2 path
-#ARDUINO_V2_0
+# Arduino CLI
+if [[ -d $HOME/Arduino/cli ]]; then
+    export PATH=$PATH:$HOME/Arduino/cli
+fi
 
 # fly.io - flyctl
-#FLYCTL_0
-#FLYCTL_1
+if [[ -d $HOME/.fly ]]; then
+    export FLYCTL_INSTALL=$HOME/.fly
+    export PATH=$FLYCTL_INSTALL/bin:$PATH
+fi
 
-# Terraform
-if [[ $IS_ZSH =~ "oh-my-zsh" ]]; then
-    :
-    #TERRAFORM_0
-    #TERRAFORM_1
+# Terraform completion
+if [[ -x /usr/local/bin/terraform ]]; then
+    if [[ -n "$ZSH_VERSION" ]]; then
+        autoload -U +X bashcompinit && bashcompinit
+    fi
+    complete -o nospace -C /usr/local/bin/terraform terraform
 fi
 
 # k3s
-#KUBECONFIG
-#KUBE_EDITOR
+if [[ -x /usr/local/bin/kubectl ]]; then
+    if [[ -f $HOME/.kube/config ]]; then
+        export KUBECONFIG=$HOME/.kube/config
+    fi
+    export KUBE_EDITOR=nv
+fi
 
 # Etc
-export PATH=$PATH:/snap/bin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.local/share/JetBrains/Toolbox/bin
 
 export PICO_SDK_PATH=$HOME/pico/pico-sdk
 
 # kubectl auto completion
 if [[ -f /usr/local/bin/kubectl ]]; then
     if [[ -n "$ZSH_VERSION" ]] && command -v compdef >/dev/null; then
-        source <(kubectl completion zsh)
+        source <(kubectl completion zsh 2>/dev/null)
     elif [[ -n "$BASH_VERSION" ]]; then
-        source <(kubectl completion bash)
+        source <(kubectl completion bash 2>/dev/null)
     fi
 fi
 

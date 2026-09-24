@@ -88,22 +88,6 @@ install_terraform_bin(){
 
 }
 
-configure_runcom(){
-    term_color_red
-    echo "Add autocompletion in zshrc"
-    echo "These lines will be added to /\$HOME/.shrc"
-    echo "- autoload -U +X bashcompinit && bashcompinit"
-    echo "- complete -o nospace -C /usr/local/bin/terraform terraform"
-    term_color_white
-
-    if [[ -f /usr/local/bin/terraform ]]; then
-        sed -i '/#TERRAFORM_0/c\\tautoload -U +X bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#TERRAFORM_1/c\\tcomplete -o nospace -C \/usr\/local\/bin\/terraform terraform' /home/$LOGNAME/.shrc
-    fi
-
-    source /home/$LOGNAME/.shrc
-}
-
 post(){
     term_color_red
     echo "Done"
@@ -114,6 +98,5 @@ trap term_color_white EXIT
 check_architecture
 confirmation
 install_terraform_bin
-configure_runcom
 post
 

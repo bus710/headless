@@ -77,11 +77,6 @@ install_packages () {
     tar xf arduino-cli_${TARGET_VERSION_WITHOUT_V}_Linux_${ARCH}.tar.gz
     rm -rf *.gz
 
-    term_color_red
-    echo "Add to path"
-    term_color_white
-
-    sed -i '/#ARDUINO_CLI_0/c\export PATH=$PATH:$HOME/Arduino/cli' /home/$LOGNAME/.shrc
 }
 
 install_pico_board () {

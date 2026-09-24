@@ -192,16 +192,6 @@ check_version() {
 	nvim -v
 }
 
-configure_runcom() {
-	term_color_red
-	echo "Configure runcom"
-	term_color_white
-
-	if [[ -f /usr/bin/nvim ]]; then
-		sed -i '/#NVIM_0/c\export PATH=\$PATH:$HOME/.tools' /home/$LOGNAME/.shrc
-	fi
-}
-
 install_plugins() {
 	term_color_red
 	echo "Install plugins"
@@ -226,6 +216,5 @@ install_neovim
 install_dependencies
 #update_configuration
 check_version
-configure_runcom
 #install_plugins
 post

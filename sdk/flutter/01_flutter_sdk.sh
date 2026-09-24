@@ -115,27 +115,6 @@ install_flutter(){
     rm $FILENAME
 }
 
-configure_runcom(){
-    if [[ $SYSTEM != "Linux" ]]; then
-        term_color_red
-        echo "Not Linux - runcom will not be configured"
-        term_color_white
-        return
-    fi
-
-    term_color_red
-    echo "Configure the runcom"
-    term_color_white
-    
-    if [[ -f /home/$LOGNAME/flutter/bin/flutter ]]; then
-        sed -i '/#FLUTTER_0/c\export PATH=\$PATH:\$HOME\/flutter\/bin' /home/$LOGNAME/.shrc
-        sed -i '/#FLUTTER_1/c\export PATH=\$PATH:\$HOME\/flutter\/bin\/cache\/dart-sdk\/bin' /home/$LOGNAME/.shrc
-        sed -i '/#FLUTTER_2/c\export PATH=\$PATH:\$HOME\/flutter\/.pub-cache\/bin' /home/$LOGNAME/.shrc
-        sed -i '/#FLUTTER_3/c\export PATH=\$PATH:\$HOME\/repo\/flutter\/bin' /home/$LOGNAME/.shrc # embedded 
-        sed -i '/#FLUTTER_4/c\export PATH=\$PATH:\$HOME\/.pub-cache\/bin' /home/$LOGNAME/.shrc # embedded 
-    fi
-}
-
 update_configuration(){
     term_color_red
     echo "Config the SDK"
@@ -180,7 +159,6 @@ find_version
 confirmation
 install_packages
 install_flutter
-configure_runcom
 update_configuration
 post
 

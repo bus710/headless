@@ -74,19 +74,6 @@ install_sdk(){
     rm -rf /home/$LOGNAME/Downloads/awscliv2.zip
 }
 
-configure_runcom(){
-    term_color_red
-    echo "Add completer to path"
-    term_color_white
-
-    if [[ -f /usr/local/bin/aws ]]; then
-        sed -i '/#AWS_0/c\\t\texport PATH=\$PATH:\/usr\/local\/bin' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_1/c\\t\tautoload bashcompinit && bashcompinit' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_2/c\\t\tautoload -Uz compinit && compinit' /home/$LOGNAME/.shrc
-        sed -i '/#AWS_3/c\\t\tcomplete -C \"\/usr\/local\/bin\/aws_completer\" aws' /home/$LOGNAME/.shrc
-    fi
-}
-
 post(){
     term_color_red
     echo "Done"
@@ -96,5 +83,4 @@ post(){
 trap term_color_white EXIT
 cleanup
 install_sdk
-configure_runcom
 post

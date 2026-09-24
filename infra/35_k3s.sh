@@ -183,15 +183,6 @@ install_helm(){
     cd -
 }
 
-config_editor(){
-    term_color_red
-    echo "Config to use nvim as the default editor for kubectl-edit"
-    term_color_white
-
-    sed -i '/#KUBECONFIG/c\export KUBECONFIG=~/.kube/config' /home/$LOGNAME/.shrc
-    sed -i '/#KUBE_EDITOR/c\export KUBE_EDITOR=nv' /home/$LOGNAME/.shrc
-}
-
 post(){
     term_color_red
     echo "Done"
@@ -229,7 +220,6 @@ confirmation
 cleanup_k3s
 install_k3s
 install_helm
-config_editor
 post
 
 # Also consider:

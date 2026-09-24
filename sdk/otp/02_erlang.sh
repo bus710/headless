@@ -170,7 +170,6 @@ install_erlang() {
 	# asdf global erlang "$ERLANG_VERSION"
 
 	# To put some arguments for the erl shell.
-	sed -i '/#ERL_0/c\export ERL_AFLAGS=\"+pc unicode -kernel shell_history enabled\"' /home/$LOGNAME/.shrc
 
 	# Add the tool version
 	if [[ -f /home/$LOGNAME/.tool-versions ]]; then

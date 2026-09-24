@@ -253,16 +253,6 @@ build_zls(){
     cd /home/$LOGNAME/repo/headless
 }
 
-configure_runcom(){
-    term_color_red
-    echo "Configure runcom"
-    term_color_white
-
-    if [[ -f /home/$LOGNAME/zig/zig ]]; then
-        sed -i '/\#ZIG_0/c\export PATH=$PATH:\/home\/$LOGNAME\/zig' /home/$LOGNAME/.shrc
-    fi
-}
-
 configure_zls_config(){
     term_color_red
     echo "Configure zls"
@@ -316,7 +306,6 @@ cleanup
 install_llvm
 install_anyzig
 install_zig
-configure_runcom
 configure_zls_config
 
 if [[ $TARGET == "stable" ]]; then

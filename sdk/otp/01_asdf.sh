@@ -54,9 +54,6 @@ configure_rc(){
     echo "Configure RC"
     term_color_white
    
-    sed -i '/#ASDF_0/c\\texport PATH=${ASDF_DATA_DIR:-$HOME\/.asdf}\/shims:$PATH' $HOME/.shrc
-    sed -i '/#ASDF_1/c\\tfpath=($HOME\/.asdf\/completions $fpath)' $HOME/.shrc
-    sed -i '/#ASDF_2/c\\tautoload -Uz compinit && compinit' $HOME/.shrc
 
     mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
     asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"

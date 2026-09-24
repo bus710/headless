@@ -23,8 +23,6 @@ install_flyctl(){
     rm -rf /home/$LOGNAME/.fly
     curl -L https://fly.io/install.sh | sh
 
-    sed -i '/#FLYCTL_0/c\export FLYCTL_INSTALL="\/home\/$LOGNAME\/.fly"' /home/$LOGNAME/.shrc
-    sed -i '/#FLYCTL_1/c\export PATH="$FLYCTL_INSTALL\/bin:$PATH"' /home/$LOGNAME/.shrc
 }
 
 post(){

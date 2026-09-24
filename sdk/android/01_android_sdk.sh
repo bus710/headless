@@ -127,19 +127,6 @@ cleanup(){
     rm commandlinetools-linux-*_latest.zip
 }
 
-configure_runcom(){
-    term_color_red
-    echo "Activate variables in ~/.shrc"
-    term_color_white
-
-    sed -i '/#ANDROID_0/c\export JAVA_HOME=\$HOME\/Android\/android-studio\/jbr' /home/$LOGNAME/.shrc
-    sed -i '/#ANDROID_1/c\export PATH=\$JAVA_HOME\/bin:\$PATH' /home/$LOGNAME/.shrc
-    sed -i '/#ANDROID_2/c\export PATH=\$HOME\/Android\/android-studio\/bin:\$PATH' /home/$LOGNAME/.shrc
-    sed -i '/#ANDROID_3/c\export ANDROID_SDK_ROOT=\$HOME\/Android' /home/$LOGNAME/.shrc
-    sed -i '/#ANDROID_4/c\export PATH=\$HOME\/Android\/cmdline-tools\/latest\/bin:\$PATH' /home/$LOGNAME/.shrc
-    sed -i '/#ANDROID_5/c\export PATH=\$HOME\/Android\/platform-tools:\$PATH' /home/$LOGNAME/.shrc
-}
-
 post(){
     term_color_red
     echo "Please source ~/.shrc"
@@ -155,5 +142,4 @@ prep_files
 configure_java
 configure_usb_debugging
 cleanup
-configure_runcom
 post

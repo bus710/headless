@@ -64,16 +64,6 @@ install_rustup_cargo(){
     rustup component add rustfmt clippy rust-analysis rust-src rust-analyzer
 }
 
-configure_runcom(){
-    term_color_red
-    echo "Configure runcom"
-    term_color_white
-
-    if [[ -f /home/$LOGNAME/.cargo/bin/cargo ]]; then
-        sed -i '/#RUST_0/c\export PATH=\$PATH:$HOME/.cargo/bin' /home/$LOGNAME/.shrc
-    fi
-}
-
 configure_vim(){
     term_color_red
     echo "Configure vim"
@@ -93,6 +83,5 @@ post(){
 trap term_color_white EXIT
 confirmation
 install_rustup_cargo
-configure_runcom
 #configure_vim
 post
