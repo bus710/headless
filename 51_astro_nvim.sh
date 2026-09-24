@@ -216,6 +216,8 @@ config_astro_nvim_v5() {
 	cd -	
 
 	# Install plugins - TSInstall with ! enforces the installation without question
+	nv --headless -c ':TSInstall dart' -c 'quitall'
+
 	nv --headless -c ':TSInstall! elixir' -c 'quitall'
 	nv --headless -c ':TSInstall! heex' -c 'quitall'
 	nv --headless -c ':TSInstall! eex' -c 'quitall'
