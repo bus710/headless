@@ -138,6 +138,7 @@ alias zl='cd ~/repo/zigws'
 alias rw='cd ~/repo/rustws'
 alias gw='cd ~/repo/gows'
 alias fw='cd ~/repo/fltws'
+alias gn='cd ~/repo/goth-ws'
 
 alias zb='zig build'
 alias zrm='zig build run'
@@ -153,7 +154,6 @@ alias deploy='nix run github:serokell/deploy-rs --'
 
 alias iw='cd ~/repo/iac-workspace'
 alias bw='cd ~/repo/blog'
-alias cl='cd ~/repo/cloud'
 alias aw='cd ~/repo/algorithms'
 alias lw='cd ~/repo/leetcode'
 
