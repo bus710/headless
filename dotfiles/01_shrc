@@ -258,7 +258,9 @@ alias vgs="vagrant ssh"
 
 alias cld="claude"
 
-# unalias gow
+# oh-my-zsh's golang plugin aliases `gow` to `go work`; drop it so `gow` is the
+# mitranim/gow file-watcher (loaded after oh-my-zsh, so this wins)
+unalias gow 2>/dev/null
 
 # =============================
 # Cheatsheets
