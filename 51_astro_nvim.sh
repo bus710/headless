@@ -225,6 +225,7 @@ config_astro_nvim_v5() {
 	nv --headless -c ':LspInstall emmet_ls' -c 'quitall'
 	nv --headless -c ':LspInstall tailwindcss' -c 'quitall'
 	nv --headless -c ':LspInstall html ' -c 'quitall'
+	nv --headless -c ':LspInstall templ' -c 'quitall' # HTML + Go completion in .templ (proxies gopls)
 
 	nv --headless -c ':LspInstall htmx' -c 'quitall' # The HTMX conflicts with HTML 
 	nv --headless -c ':LspInstall elixirls' -c 'quitall' # Never do this as the elixir-tools takes case of it
